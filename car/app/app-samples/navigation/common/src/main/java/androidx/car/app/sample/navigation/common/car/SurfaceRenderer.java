@@ -16,50 +16,28 @@
 
 package androidx.car.app.sample.navigation.common.car;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Paint.Align;
 import android.graphics.Paint.Style;
 import android.graphics.Rect;
-import android.graphics.RectF;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
 import android.util.Log;
 import android.view.Surface;
 
-import androidx.annotation.MainThread;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.car.app.AppManager;
 import androidx.car.app.CarContext;
 import androidx.car.app.SurfaceCallback;
 import androidx.car.app.SurfaceContainer;
-import androidx.car.app.sample.navigation.common.R;
 import androidx.lifecycle.DefaultLifecycleObserver;
 import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleOwner;
 
-import org.jspecify.annotations.NonNull;
-import org.jspecify.annotations.Nullable;
-
 /** A very simple implementation of a renderer for the app's background surface. */
 public final class SurfaceRenderer implements DefaultLifecycleObserver {
     private static final String TAG = "SurfaceRenderer";
-
-    /** The maximum scale factor of the background map. */
-    private static final float MAX_SCALE_FACTOR = 5f;
-
-    /** The minimum scale factor of the background map. */
-    private static final float MIN_SCALE_FACTOR = 0.5f;
-
-    /** The scale factor to apply when initializing the background map. */
-    private static final float MAP_ENLARGE_FACTOR = 5f;
-
-    /** Looper msg to trigger a frame rendering */
-    private static final int MSG_RENDER_FRAME = 1;
 
     @Nullable
     Surface mSurface;
@@ -79,45 +57,12 @@ public final class SurfaceRenderer implements DefaultLifecycleObserver {
     private int mActiveMarker;
     private String mLocationString = "unknown";
 
-    /** The bitmap that contains the background map image. */
-    private final Bitmap mBackgroundMap;
-
-    /**
-     * The transformation matrix for the background map image, to reflect the result of the user's
-     * pan and zoom actions.
-     */
-    final Matrix mBackgroundMapMatrix = new Matrix();
-
-    /** The cumulative scale factor for the background map image. */
-    float mCumulativeScaleFactor = 1f;
-
-    /**
-     * The current horizontal center point of the background map, used to prevent the map from
-     * disappearing from pan actions.
-     */
-    float mBackgroundMapCenterX = 0f;
-
-    /**
-     * The current vertical center point of the background map, used to prevent the map from
-     * disappearing from pan actions.
-     */
-    float mBackgroundMapCenterY = 0f;
-
-    /**
-     * The original clip bounds of the background map, used to prevent the map from disappearing
-     * from pan actions.
-     */
-    Rect mBackgroundMapClipBounds = new Rect();
-
-    public final SurfaceCallback mSurfaceCallback =
+    private final SurfaceCallback mSurfaceCallback =
             new SurfaceCallback() {
                 @Override
                 public void onSurfaceAvailable(@NonNull SurfaceContainer surfaceContainer) {
                     synchronized (SurfaceRenderer.this) {
-                        Log.i(TAG, "Surface available " + surfaceContainer);
-                        if (mSurface != null) {
-                            mSurface.release();
-                        }
+                        Log.i(TAG, String.format("Surface available %s", surfaceContainer));
                         mSurface = surfaceContainer.getSurface();
                         renderFrame();
                     }
@@ -126,8 +71,11 @@ public final class SurfaceRenderer implements DefaultLifecycleObserver {
                 @Override
                 public void onVisibleAreaChanged(@NonNull Rect visibleArea) {
                     synchronized (SurfaceRenderer.this) {
-                        Log.i(TAG, "Visible area changed " + mSurface + ". stableArea: "
-                                + mStableArea + " visibleArea:" + visibleArea);
+                        Log.i(
+                                TAG,
+                                String.format(
+                                        "Visible area changed %s. stableArea:%s visibleArea:%s",
+                                        mSurface, mStableArea, visibleArea));
                         mVisibleArea = visibleArea;
                         renderFrame();
                     }
@@ -136,8 +84,11 @@ public final class SurfaceRenderer implements DefaultLifecycleObserver {
                 @Override
                 public void onStableAreaChanged(@NonNull Rect stableArea) {
                     synchronized (SurfaceRenderer.this) {
-                        Log.i(TAG, "Stable area changed " + mSurface + ". stableArea: "
-                                + mStableArea + " visibleArea:" + mVisibleArea);
+                        Log.i(
+                                TAG,
+                                String.format(
+                                        "Stable area changed %s. stable:%s inset:%s",
+                                        mSurface, stableArea, mVisibleArea));
                         mStableArea = stableArea;
                         renderFrame();
                     }
@@ -147,45 +98,10 @@ public final class SurfaceRenderer implements DefaultLifecycleObserver {
                 public void onSurfaceDestroyed(@NonNull SurfaceContainer surfaceContainer) {
                     synchronized (SurfaceRenderer.this) {
                         Log.i(TAG, "Surface destroyed");
-                        if (mSurface != null) {
-                            mSurface.release();
-                            mSurface = null;
-                        }
+                        mSurface = null;
                     }
-                }
-
-                @Override
-                public void onScroll(float distanceX, float distanceY) {
-                    synchronized (SurfaceRenderer.this) {
-                        float newBackgroundCenterX = mBackgroundMapCenterX - distanceX;
-                        float newBackgroundCenterY = mBackgroundMapCenterY - distanceY;
-
-                        // If the map stays within the clip bounds, pan the map.
-                        if (mBackgroundMapClipBounds.contains((int) newBackgroundCenterX,
-                                (int) newBackgroundCenterY)) {
-                            mBackgroundMapCenterX = newBackgroundCenterX;
-                            mBackgroundMapCenterY = newBackgroundCenterY;
-                            mBackgroundMapMatrix.postTranslate(-distanceX, -distanceY);
-                            renderFrame();
-                        }
-                    }
-                }
-
-                @Override
-                public void onScale(float focusX, float focusY, float scaleFactor) {
-                    handleScale(focusX, focusY, scaleFactor);
                 }
             };
-
-    private Handler mHandler = new Handler(Looper.getMainLooper()) {
-        @Override
-        public void handleMessage(Message msg) {
-            switch (msg.what) {
-                case MSG_RENDER_FRAME:
-                    doRenderFrame();
-            }
-        }
-    };
 
     public SurfaceRenderer(@NonNull CarContext carContext, @NonNull Lifecycle lifecycle) {
         mCarContext = carContext;
@@ -208,8 +124,6 @@ public final class SurfaceRenderer implements DefaultLifecycleObserver {
         mMarkerPaint.setStyle(Style.STROKE);
         mMarkerPaint.setStrokeWidth(3);
 
-        mBackgroundMap = BitmapFactory.decodeResource(carContext.getResources(),
-                R.drawable.map);
         lifecycle.addObserver(this);
     }
 
@@ -221,41 +135,6 @@ public final class SurfaceRenderer implements DefaultLifecycleObserver {
 
     /** Callback called when the car configuration changes. */
     public void onCarConfigurationChanged() {
-        renderFrame();
-    }
-
-    /** Handles the map zoom-in and zoom-out events. */
-    public void handleScale(float focusX, float focusY, float scaleFactor) {
-        synchronized (this) {
-            float x = focusX;
-            float y = focusY;
-
-            Rect visibleArea = mVisibleArea;
-            if (visibleArea != null) {
-                // If a focal point value is negative, use the center point of the visible area.
-                if (x < 0) {
-                    x = visibleArea.centerX();
-                }
-                if (y < 0) {
-                    y = visibleArea.centerY();
-                }
-            }
-
-            // If the map stays between the maximum and minimum scale factors, scale the map.
-            float newCumulativeScaleFactor = mCumulativeScaleFactor * scaleFactor;
-            if (newCumulativeScaleFactor > MIN_SCALE_FACTOR
-                    && newCumulativeScaleFactor < MAX_SCALE_FACTOR) {
-                mCumulativeScaleFactor = newCumulativeScaleFactor;
-                mBackgroundMapMatrix.postScale(scaleFactor, scaleFactor, x, y);
-                renderFrame();
-            }
-        }
-    }
-
-    /** Handles the map re-centering events. */
-    public void handleRecenter() {
-        // Resetting the map matrix will trigger the initialization logic in renderFrame().
-        mBackgroundMapMatrix.reset();
         renderFrame();
     }
 
@@ -274,11 +153,6 @@ public final class SurfaceRenderer implements DefaultLifecycleObserver {
     }
 
     void renderFrame() {
-        mHandler.sendEmptyMessage(MSG_RENDER_FRAME);
-    }
-
-    @MainThread
-    void doRenderFrame() {
         if (mSurface == null || !mSurface.isValid()) {
             // Surface is not available, or has been destroyed, skip this frame.
             return;
@@ -287,31 +161,6 @@ public final class SurfaceRenderer implements DefaultLifecycleObserver {
 
         // Clear the background.
         canvas.drawColor(mCarContext.isDarkMode() ? Color.DKGRAY : Color.LTGRAY);
-
-        // Initialize the background map.
-        if (mBackgroundMapMatrix.isIdentity()) {
-            // Enlarge the original image.
-            RectF backgroundRect = new RectF(0, 0, mBackgroundMap.getWidth(),
-                    mBackgroundMap.getHeight());
-            RectF scaledBackgroundRect = new RectF(0, 0,
-                    backgroundRect.width() * MAP_ENLARGE_FACTOR,
-                    backgroundRect.height() * MAP_ENLARGE_FACTOR);
-
-            // Initialize the cumulative scale factor and map center points.
-            mCumulativeScaleFactor = 1f;
-            mBackgroundMapCenterX = scaledBackgroundRect.centerX();
-            mBackgroundMapCenterY = scaledBackgroundRect.centerY();
-
-            // Move to the center of the enlarged map.
-            mBackgroundMapMatrix.setRectToRect(backgroundRect, scaledBackgroundRect,
-                    Matrix.ScaleToFit.FILL);
-            mBackgroundMapMatrix.postTranslate(
-                    -mBackgroundMapCenterX + canvas.getClipBounds().centerX(),
-                    -mBackgroundMapCenterY + canvas.getClipBounds().centerY());
-            scaledBackgroundRect.round(mBackgroundMapClipBounds);
-        }
-        canvas.drawBitmap(mBackgroundMap, mBackgroundMapMatrix, null);
-
 
         final int horizontalTextMargin = 10;
         final int verticalTextMarginFromTop = 20;

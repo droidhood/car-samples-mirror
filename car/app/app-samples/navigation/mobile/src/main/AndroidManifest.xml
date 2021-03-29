@@ -15,13 +15,14 @@
      limitations under the License.
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="androidx.car.app.sample.navigation"
+    android:versionCode="1"
+    android:versionName="1.0">
 
   <uses-permission android:name="android.permission.INTERNET"/>
   <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
   <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-  <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-  <uses-permission android:name="android.permission.FOREGROUND_SERVICE_LOCATION"/>
 
   <uses-permission android:name="androidx.car.app.NAVIGATION_TEMPLATES"/>
   <uses-permission android:name="androidx.car.app.ACCESS_SURFACE"/>
@@ -41,32 +42,33 @@
     </activity>
 
     <meta-data android:name="com.google.android.gms.car.application"
-        android:resource="@xml/automotive_app_desc"/>
-
-    <meta-data android:name="androidx.car.app.minCarApiLevel"
-        android:value="1"/>
+        android:resource="@xml/automotive_app_desc"
+        tools:ignore="MetadataTagInsideApplicationTag" />
 
     <service
         android:name="androidx.car.app.sample.navigation.common.car.NavigationCarAppService"
+        android:foregroundServiceType="location"
         android:exported="true">
 
       <intent-filter>
         <action android:name="androidx.car.app.CarAppService" />
         <category android:name="androidx.car.app.category.NAVIGATION"/>
-        <category android:name="androidx.car.app.category.FEATURE_CLUSTER"/>
-      </intent-filter>
-      <intent-filter>
-        <action android:name="androidx.car.app.action.NAVIGATE" />
-        <category android:name="android.intent.category.DEFAULT"/>
-        <data android:scheme="geo" />
       </intent-filter>
     </service>
     <service
         android:name="androidx.car.app.sample.navigation.common.nav.NavigationService"
         android:enabled="true"
-        android:foregroundServiceType="location"
         android:exported="true">
     </service>
+
+    <receiver
+        android:name="androidx.car.app.sample.navigation.common.nav.DeepLinkNotificationReceiver"
+        android:enabled="true"
+        android:exported="true">
+      <intent-filter>
+        <action android:name="com.navigation.INTENT_ACTION_NAV_NOTIFICATION_OPEN_APP"/>
+      </intent-filter>
+    </receiver>
 
   </application>
 </manifest>

@@ -16,6 +16,8 @@
 
 package androidx.car.app.sample.navigation.common.car;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.car.app.CarContext;
 import androidx.car.app.Screen;
 import androidx.car.app.model.Action;
@@ -25,9 +27,6 @@ import androidx.car.app.model.SearchTemplate;
 import androidx.car.app.model.SearchTemplate.SearchCallback;
 import androidx.car.app.model.Template;
 import androidx.car.app.sample.navigation.common.model.DemoScripts;
-
-import org.jspecify.annotations.NonNull;
-import org.jspecify.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -105,6 +104,7 @@ public final class SearchScreen extends Screen {
         }
         mItemList = builder.build();
         invalidate();
+        return;
     }
 
     void onClickSearch(@NonNull String searchText) {

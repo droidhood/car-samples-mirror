@@ -16,7 +16,7 @@
 
 package androidx.car.app.sample.navigation.common.model;
 
-import org.jspecify.annotations.NonNull;
+import androidx.annotation.NonNull;
 
 /** Contains information about a fake place. */
 public class PlaceInfo {

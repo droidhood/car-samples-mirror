@@ -16,84 +16,80 @@
 
 package androidx.car.app.sample.showcase.common;
 
-import static androidx.car.app.sample.showcase.common.ShowcaseService.INTENT_ACTION_NAV_NOTIFICATION_OPEN_APP;
-
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.res.Configuration;
 import android.net.Uri;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.car.app.CarContext;
+import androidx.car.app.CarToast;
 import androidx.car.app.Screen;
 import androidx.car.app.ScreenManager;
 import androidx.car.app.Session;
-import androidx.car.app.sample.showcase.common.renderer.Renderer;
-import androidx.car.app.sample.showcase.common.renderer.SurfaceController;
-import androidx.car.app.sample.showcase.common.screens.ResultDemoScreen;
-import androidx.car.app.sample.showcase.common.screens.navigationdemos.NavigatingDemoScreen;
-import androidx.car.app.sample.showcase.common.screens.navigationdemos.NavigationNotificationService;
-import androidx.car.app.sample.showcase.common.screens.navigationdemos.NavigationNotificationsDemoScreen;
-import androidx.car.app.sample.showcase.common.screens.userinteractions.RequestPermissionScreen;
+import androidx.car.app.sample.showcase.common.misc.GoToPhoneScreen;
+import androidx.car.app.sample.showcase.common.misc.PreSeedingFlowScreen;
+import androidx.car.app.sample.showcase.common.misc.ReservationCancelledScreen;
+import androidx.car.app.sample.showcase.common.navigation.NavigationNotificationsDemoScreen;
+import androidx.car.app.sample.showcase.common.navigation.SurfaceRenderer;
+import androidx.car.app.sample.showcase.common.navigation.routing.NavigatingDemoScreen;
 import androidx.lifecycle.DefaultLifecycleObserver;
 import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleOwner;
 
-import org.jspecify.annotations.NonNull;
-import org.jspecify.annotations.Nullable;
+import java.util.Objects;
 
 /** Session class for the Showcase sample app. */
-public class ShowcaseSession extends Session implements DefaultLifecycleObserver {
+class ShowcaseSession extends Session implements DefaultLifecycleObserver {
     static final String URI_SCHEME = "samples";
     static final String URI_HOST = "showcase";
 
-    private @Nullable SurfaceController mSurfaceController;
+    @Nullable
+    private SurfaceRenderer mRenderer;
 
+    private final BroadcastReceiver mReceiver =
+            new BroadcastReceiver() {
+                @Override
+                public void onReceive(Context context, Intent intent) {
+                    CarToast.makeText(getCarContext(), "Returned from phone", CarToast.LENGTH_LONG)
+                            .show();
+                    getGoToPhoneScreenAndSetItAsTop().onPhoneFlowComplete();
+                }
+            };
+
+    @NonNull
     @Override
-    public @NonNull Screen onCreateScreen(@NonNull Intent intent) {
+    public Screen onCreateScreen(@NonNull Intent intent) {
         Lifecycle lifecycle = getLifecycle();
         lifecycle.addObserver(this);
-        mSurfaceController = new SurfaceController(getCarContext(), lifecycle);
+        mRenderer = new SurfaceRenderer(getCarContext(), lifecycle);
 
         if (CarContext.ACTION_NAVIGATE.equals(intent.getAction())) {
             // Handle the navigation Intent by pushing first the "home" screen onto the stack, then
             // returning the screen that we want to show a template for.
             // Doing this allows the app to go back to the previous screen when the user clicks on a
-            // back action.
+            // back
+            // action.
             getCarContext()
                     .getCarService(ScreenManager.class)
-                    .push(new StartScreen(getCarContext(), this));
+                    .push(new StartScreen(getCarContext()));
             return new NavigatingDemoScreen(getCarContext());
         }
 
-        if (getCarContext().getCallingComponent() != null) {
-            // Similarly, if the application has been called "for result", we push a "home"
-            // screen onto the stack and return the results demo screen.
-            getCarContext()
-                    .getCarService(ScreenManager.class)
-                    .push(new StartScreen(getCarContext(), this));
-            return new ResultDemoScreen(getCarContext());
-        }
-
-        boolean shouldLoadScreen =
-                getCarContext()
-                        .getSharedPreferences(ShowcaseService.SHARED_PREF_KEY, Context.MODE_PRIVATE)
-                        .getBoolean(ShowcaseService.LOADING_KEY, false);
-        if (shouldLoadScreen) {
-            // Reset so that we don't require it next time
-            getCarContext()
-                    .getSharedPreferences(ShowcaseService.SHARED_PREF_KEY, Context.MODE_PRIVATE)
-                    .edit()
-                    .putBoolean(ShowcaseService.LOADING_KEY, false)
-                    .apply();
-        }
-
         // For demo purposes this uses a shared preference setting to store whether we should
-        // pre-seed the screen back stack. This allows the app to have a way to go back to the
-        // home/start screen making the home/start screen the 0th position.
+        // pre-seed
+        // the screen back stack.  This allows the app to have a way to go back to the home/start
+        // screen
+        // making the home/start screen the 0th position.
         // For a real application, it would probably check if it has all the needed system
-        // permissions, and if any are missing, it would pre-seed the start screen and return a
-        // screen that will send the user to the phone to grant the needed permissions.
+        // permissions,
+        // and if any are missing, it would pre-seed the start screen and return a screen that will
+        // send
+        // the user to the phone to grant the needed permissions.
         boolean shouldPreSeedBackStack =
                 getCarContext()
                         .getSharedPreferences(ShowcaseService.SHARED_PREF_KEY, Context.MODE_PRIVATE)
@@ -108,19 +104,27 @@ public class ShowcaseSession extends Session implements DefaultLifecycleObserver
 
             getCarContext()
                     .getCarService(ScreenManager.class)
-                    .push(new StartScreen(getCarContext(), this));
-            return new RequestPermissionScreen(getCarContext(), /*preSeedMode*/ true);
+                    .push(new StartScreen(getCarContext()));
+            return new PreSeedingFlowScreen(getCarContext());
         }
-        return new StartScreen(getCarContext(), this);
+        return new StartScreen(getCarContext());
+    }
+
+    @Override
+    public void onStart(@NonNull LifecycleOwner owner) {
+        getCarContext()
+                .registerReceiver(
+                        mReceiver, new IntentFilter(GoToPhoneScreen.PHONE_COMPLETE_ACTION));
+    }
+
+    @Override
+    public void onStop(@NonNull LifecycleOwner owner) {
+        getCarContext().unregisterReceiver(mReceiver);
     }
 
     @Override
     public void onDestroy(@NonNull LifecycleOwner owner) {
         Log.i("SHOWCASE", "onDestroy");
-
-        // Stop navigation notification service if it is running.
-        CarContext context = getCarContext();
-        context.stopService(new Intent(context, NavigationNotificationService.class));
     }
 
     @Override
@@ -138,37 +142,48 @@ public class ShowcaseSession extends Session implements DefaultLifecycleObserver
             return;
         }
 
-        if (getCarContext().getCallingComponent() != null) {
-            // Remove any other instances of the results screen.
-            screenManager.popToRoot();
-            screenManager.push(new ResultDemoScreen(getCarContext()));
-            return;
-        }
-
         Uri uri = intent.getData();
         if (uri != null
                 && URI_SCHEME.equals(uri.getScheme())
                 && URI_HOST.equals(uri.getSchemeSpecificPart())) {
 
             Screen top = screenManager.getTop();
-            // No-op
-            if (INTENT_ACTION_NAV_NOTIFICATION_OPEN_APP.equals(uri.getFragment())) {
-                if (!(top instanceof NavigationNotificationsDemoScreen)) {
-                    screenManager.push(new NavigationNotificationsDemoScreen(getCarContext()));
-                }
+            switch (uri.getFragment()) {
+                case DeepLinkNotificationReceiver.INTENT_ACTION_PHONE:
+                    getGoToPhoneScreenAndSetItAsTop();
+                    break;
+                case DeepLinkNotificationReceiver.INTENT_ACTION_CANCEL_RESERVATION:
+                    if (!(top instanceof ReservationCancelledScreen)) {
+                        screenManager.push(new ReservationCancelledScreen(getCarContext()));
+                    }
+                    break;
+                case DeepLinkNotificationReceiver.INTENT_ACTION_NAV_NOTIFICATION_OPEN_APP:
+                    if (!(top instanceof NavigationNotificationsDemoScreen)) {
+                        screenManager.push(new NavigationNotificationsDemoScreen(getCarContext()));
+                    }
+                    break;
+                default:
+                    // No-op
             }
         }
     }
 
     @Override
     public void onCarConfigurationChanged(@NonNull Configuration configuration) {
-        if (mSurfaceController != null) {
-            mSurfaceController.onCarConfigurationChanged();
+        if (mRenderer != null) {
+            mRenderer.onCarConfigurationChanged();
         }
     }
 
-    /** Tells the session whether to override the default renderer. */
-    public void overrideRenderer(@Nullable Renderer renderer) {
-        mSurfaceController.overrideRenderer(renderer);
+    GoToPhoneScreen getGoToPhoneScreenAndSetItAsTop() {
+        ScreenManager screenManager =
+                Objects.requireNonNull(getCarContext().getCarService(ScreenManager.class));
+
+        Screen top = screenManager.getTop();
+        if (!(top instanceof GoToPhoneScreen)) {
+            top = new GoToPhoneScreen(getCarContext());
+            screenManager.push(top);
+        }
+        return (GoToPhoneScreen) top;
     }
 }
