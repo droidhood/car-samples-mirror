@@ -17,6 +17,7 @@
 package androidx.car.app.sample.navigation.common.app;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -26,22 +27,17 @@ import android.os.IBinder;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
-import androidx.activity.ComponentActivity;
-import androidx.car.app.connection.CarConnection;
+import androidx.annotation.NonNull;
 import androidx.car.app.sample.navigation.common.R;
 import androidx.car.app.sample.navigation.common.nav.NavigationService;
-
-import org.jspecify.annotations.Nullable;
 
 /**
  * The main app activity.
  *
- * <p>See {@link androidx.car.app.sample.navigation.common.car.NavigationCarAppService} for the
- * app's entry point to the cat host.
+ * <p>See {@link NavigationCarAppService} for the app's entry point to Android Auto.
  */
-public class MainActivity extends ComponentActivity {
+public class MainActivity extends Activity {
     static final String TAG = MainActivity.class.getSimpleName();
 
     // A reference to the navigation service used to get location updates and routing.
@@ -50,13 +46,16 @@ public class MainActivity extends ComponentActivity {
     // Tracks the bound state of the navigation service.
     boolean mIsBound = false;
 
+    private Button mStartNavButton;
+    private Button mStopNavButton;
+
     // Monitors the state of the connection to the navigation service.
     private final ServiceConnection mServiceConnection =
             new ServiceConnection() {
 
                 @Override
                 public void onServiceConnected(ComponentName name, IBinder service) {
-                    Log.i(TAG, "In onServiceConnected() component:" + name);
+                    Log.i(TAG, String.format("In onServiceConnected() component:%s", name));
                     NavigationService.LocalBinder binder = (NavigationService.LocalBinder) service;
                     mService = binder.getService();
                     mIsBound = true;
@@ -64,27 +63,24 @@ public class MainActivity extends ComponentActivity {
 
                 @Override
                 public void onServiceDisconnected(ComponentName name) {
-                    Log.i(TAG, "In onServiceDisconnected() component:" + name);
+                    Log.i(TAG, String.format("In onServiceDisconnected() component:%s", name));
                     mService = null;
                     mIsBound = false;
                 }
             };
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(@NonNull Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.i(TAG, "In onCreate()");
 
         setContentView(R.layout.activity_main);
 
         // Hook up some manual navigation controls.
-        Button startNavButton = findViewById(R.id.start_nav);
-        startNavButton.setOnClickListener(this::startNavigation);
-        Button stopNavButton = findViewById(R.id.stop_nav);
-        stopNavButton.setOnClickListener(this::stopNavigation);
-
-        new CarConnection(this).getType().observe(this,
-                this::onConnectionStateUpdate);
+        mStartNavButton = findViewById(R.id.start_nav);
+        mStartNavButton.setOnClickListener(this::startNavigation);
+        mStopNavButton = findViewById(R.id.stop_nav);
+        mStopNavButton.setOnClickListener(this::stopNavigation);
     }
 
     @Override
@@ -110,13 +106,6 @@ public class MainActivity extends ComponentActivity {
             mService = null;
         }
         super.onStop();
-    }
-
-    private void onConnectionStateUpdate(Integer connectionState) {
-        String message = connectionState > CarConnection.CONNECTION_TYPE_NOT_CONNECTED
-                ? "Connected to a car head unit"
-                : "Not Connected to a car head unit";
-        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
     }
 
     private void startNavigation(View view) {

@@ -18,15 +18,15 @@ package androidx.car.app.sample.showcase.common.common;
 
 import android.location.Location;
 
+import androidx.annotation.NonNull;
 import androidx.car.app.model.PlaceMarker;
-
-import org.jspecify.annotations.NonNull;
 
 /** Simple data model representing a place. */
 public class PlaceInfo {
     public final CharSequence title;
     public final CharSequence address;
     public final CharSequence description;
+    public final CharSequence locationCode;
     public final CharSequence phoneNumber;
     public final Location location;
     public final PlaceMarker marker;
@@ -35,12 +35,14 @@ public class PlaceInfo {
             @NonNull CharSequence title,
             @NonNull CharSequence address,
             @NonNull CharSequence description,
+            @NonNull CharSequence locationCode,
             @NonNull CharSequence phoneNumber,
             @NonNull Location location,
             @NonNull PlaceMarker marker) {
         this.title = title;
         this.address = address;
         this.description = description;
+        this.locationCode = locationCode;
         this.phoneNumber = phoneNumber;
         this.location = location;
         this.marker = marker;

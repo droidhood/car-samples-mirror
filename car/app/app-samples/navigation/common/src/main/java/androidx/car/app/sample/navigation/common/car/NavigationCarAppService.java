@@ -16,29 +16,36 @@
 
 package androidx.car.app.sample.navigation.common.car;
 
+import android.annotation.SuppressLint;
+import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.pm.ApplicationInfo;
 import android.net.Uri;
 import android.os.Build;
 
+import androidx.annotation.NonNull;
 import androidx.car.app.CarAppService;
 import androidx.car.app.Session;
-import androidx.car.app.SessionInfo;
+import androidx.car.app.sample.navigation.common.R;
 import androidx.car.app.validation.HostValidator;
-
-import org.jspecify.annotations.NonNull;
+import androidx.core.app.NotificationCompat;
+import androidx.lifecycle.DefaultLifecycleObserver;
+import androidx.lifecycle.LifecycleOwner;
 
 /**
  * Entry point for the templated app.
  *
- * <p>{@link CarAppService} is the main interface between the app and the car host. For more
+ * <p>{@link CarAppService} is the main interface between the app and Android Auto. For more
  * details, see the <a href="https://developer.android.com/training/cars/navigation">Android for
  * Cars Library developer guide</a>.
  */
 public final class NavigationCarAppService extends CarAppService {
     /** Navigation session channel id. */
     public static final String CHANNEL_ID = "NavigationSessionChannel";
+
+    /** The identifier for the notification displayed for the foreground service. */
+    private static final int NOTIFICATION_ID = 97654321;
 
     /** Create a deep link URL from the given deep link action. */
     @NonNull
@@ -47,16 +54,35 @@ public final class NavigationCarAppService extends CarAppService {
                 NavigationSession.URI_SCHEME, NavigationSession.URI_HOST, deepLinkAction);
     }
 
-    @SuppressWarnings("deprecation")
     @Override
     @NonNull
-    public Session onCreateSession(@NonNull SessionInfo sessionInfo) {
-        if (sessionInfo.getDisplayType() == SessionInfo.DISPLAY_TYPE_CLUSTER) {
-            return new ClusterSession();
-        } else {
-            createNotificationChannel();
-            return new NavigationSession();
-        }
+    public Session onCreateSession() {
+        createNotificationChannel();
+
+        // Turn the car app service into a foreground service in order to make sure we can use all
+        // granted "while-in-use" permissions (e.g. location) in the app's process.
+        // The "while-in-use" location permission is granted as long as there is a foreground
+        // service
+        // running in a process in which location access takes place. Here, we set this service, and
+        // not
+        // NavigationService (which runs only during navigation), as a foreground service because we
+        // need location access even when not navigating. If location access is needed only during
+        // navigation, we can set NavigationService as a foreground service instead.
+        // See
+        // https://developer.android.com/reference/com/google/android/libraries/car/app
+        // /CarAppService#accessing-location for more details.
+        startForeground(NOTIFICATION_ID, getNotification());
+        NavigationSession session = new NavigationSession();
+        session.getLifecycle()
+                .addObserver(
+                        new DefaultLifecycleObserver() {
+                            @Override
+                            public void onDestroy(@NonNull LifecycleOwner owner) {
+                                stopForeground(true);
+                            }
+                        });
+
+        return session;
     }
 
     @NonNull
@@ -71,6 +97,7 @@ public final class NavigationCarAppService extends CarAppService {
         }
     }
 
+    @SuppressLint("UnsafeNewApiCall")
     private void createNotificationChannel() {
         NotificationManager notificationManager = getSystemService(NotificationManager.class);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -79,5 +106,20 @@ public final class NavigationCarAppService extends CarAppService {
                     new NotificationChannel(CHANNEL_ID, name, NotificationManager.IMPORTANCE_HIGH);
             notificationManager.createNotificationChannel(serviceChannel);
         }
+    }
+
+    /** Returns the {@link NotificationCompat} used as part of the foreground service. */
+    private Notification getNotification() {
+        NotificationCompat.Builder builder =
+                new NotificationCompat.Builder(this, CHANNEL_ID)
+                        .setContentTitle("Navigation App")
+                        .setContentText("App is running")
+                        .setSmallIcon(R.drawable.ic_launcher);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            builder.setChannelId(CHANNEL_ID);
+            builder.setPriority(NotificationManager.IMPORTANCE_HIGH);
+        }
+        return builder.build();
     }
 }

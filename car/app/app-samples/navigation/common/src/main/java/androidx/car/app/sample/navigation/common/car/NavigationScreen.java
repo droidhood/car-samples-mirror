@@ -16,12 +16,9 @@
 
 package androidx.car.app.sample.navigation.common.car;
 
-import android.content.ComponentName;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.car.app.CarContext;
-import androidx.car.app.CarToast;
 import androidx.car.app.Screen;
 import androidx.car.app.model.Action;
 import androidx.car.app.model.ActionStrip;
@@ -36,29 +33,15 @@ import androidx.car.app.navigation.model.NavigationTemplate;
 import androidx.car.app.navigation.model.RoutingInfo;
 import androidx.car.app.navigation.model.Step;
 import androidx.car.app.navigation.model.TravelEstimate;
-import androidx.car.app.notification.CarPendingIntent;
 import androidx.car.app.sample.navigation.common.R;
 import androidx.car.app.sample.navigation.common.model.Instruction;
-import androidx.car.app.suggestion.SuggestionManager;
-import androidx.car.app.suggestion.model.Suggestion;
 import androidx.core.graphics.drawable.IconCompat;
-
-import org.jspecify.annotations.NonNull;
-import org.jspecify.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /** Simple demo of how to present a trip on the routing screen. */
 public final class NavigationScreen extends Screen {
-    /** Invalid zoom focal point value, used for the zoom buttons. */
-    private static final float INVALID_FOCAL_POINT_VAL = -1f;
-
-    /** Zoom-in scale factor, used for the zoom-in button. */
-    private static final float ZOOM_IN_BUTTON_SCALE_FACTOR = 1.1f;
-
-    /** Zoom-out scale factor, used for the zoom-out button. */
-    private static final float ZOOM_OUT_BUTTON_SCALE_FACTOR = 0.9f;
 
     /** A listener for navigation start and stop signals. */
     public interface Listener {
@@ -75,8 +58,6 @@ public final class NavigationScreen extends Screen {
     private final Action mSettingsAction;
     @NonNull
     private final SurfaceRenderer mSurfaceRenderer;
-    @NonNull
-    private final MicrophoneRecorder mMicrophoneRecorder;
 
     private boolean mIsNavigating;
     private boolean mIsRerouting;
@@ -99,8 +80,6 @@ public final class NavigationScreen extends Screen {
     @Nullable
     CarIcon mJunctionImage;
 
-    private boolean mIsInPanMode;
-
     public NavigationScreen(
             @NonNull CarContext carContext,
             @NonNull Action settingsAction,
@@ -110,7 +89,6 @@ public final class NavigationScreen extends Screen {
         mListener = listener;
         mSettingsAction = settingsAction;
         mSurfaceRenderer = surfaceRenderer;
-        mMicrophoneRecorder = new MicrophoneRecorder(carContext);
     }
 
     /** Updates the navigation screen with the next instruction. */
@@ -141,39 +119,14 @@ public final class NavigationScreen extends Screen {
     @NonNull
     @Override
     public Template onGetTemplate() {
-        // Send out suggestion when navigation screen start
-        createAndSendSuggestion();
-
         mSurfaceRenderer.updateMarkerVisibility(
                 /* showMarkers=*/ false, /* numMarkers=*/ 0, /* activeMarker=*/ -1);
 
         NavigationTemplate.Builder builder = new NavigationTemplate.Builder();
         builder.setBackgroundColor(CarColor.SECONDARY);
 
-        // Set the action strip.
         ActionStrip.Builder actionStripBuilder = new ActionStrip.Builder();
-        if (mIsNavigating) {
-            actionStripBuilder.addAction(
-                    new Action.Builder()
-                            .setIcon(
-                                    new CarIcon.Builder(
-                                            IconCompat.createWithResource(
-                                                    getCarContext(),
-                                                    R.drawable.ic_add_stop))
-                                            .build())
-                            .setOnClickListener(this::openFavorites)
-                            .build());
-        }
-
         actionStripBuilder.addAction(mSettingsAction);
-        actionStripBuilder.addAction(
-                new Action.Builder()
-                        .setTitle("Voice")
-                        .setIcon(new CarIcon.Builder(
-                            IconCompat.createWithResource(getCarContext(),
-                                    R.drawable.ic_mic)).build()).setOnClickListener(
-                            mMicrophoneRecorder::record)
-                        .build());
         if (mIsNavigating) {
             actionStripBuilder.addAction(
                     new Action.Builder()
@@ -183,7 +136,6 @@ public final class NavigationScreen extends Screen {
         } else {
             actionStripBuilder.addAction(
                     new Action.Builder()
-                            .setTitle("Search")
                             .setIcon(
                                     new CarIcon.Builder(
                                             IconCompat.createWithResource(
@@ -195,80 +147,10 @@ public final class NavigationScreen extends Screen {
             actionStripBuilder.addAction(
                     new Action.Builder()
                             .setTitle("Favorites")
-                            .setIcon(
-                                    new CarIcon.Builder(
-                                            IconCompat.createWithResource(
-                                                    getCarContext(),
-                                                    R.drawable.ic_favorite_white_24dp))
-                                            .build())
                             .setOnClickListener(this::openFavorites)
                             .build());
         }
         builder.setActionStrip(actionStripBuilder.build());
-
-        // Set the map action strip with the pan and zoom buttons.
-        CarIcon.Builder panIconBuilder = new CarIcon.Builder(
-                IconCompat.createWithResource(
-                        getCarContext(),
-                        R.drawable.ic_pan_24));
-        if (mIsInPanMode) {
-            panIconBuilder.setTint(CarColor.BLUE);
-        }
-
-        builder.setMapActionStrip(new ActionStrip.Builder()
-                .addAction(new Action.Builder(Action.PAN)
-                        .setIcon(panIconBuilder.build())
-                        .build())
-                .addAction(
-                        new Action.Builder()
-                                .setIcon(
-                                        new CarIcon.Builder(
-                                                IconCompat.createWithResource(
-                                                        getCarContext(),
-                                                        R.drawable.ic_recenter_24))
-                                                .build())
-                                .setOnClickListener(
-                                        () -> mSurfaceRenderer.handleRecenter())
-                                .build())
-                .addAction(
-                        new Action.Builder()
-                                .setIcon(
-                                        new CarIcon.Builder(
-                                                IconCompat.createWithResource(
-                                                        getCarContext(),
-                                                        R.drawable.ic_zoom_out_24))
-                                                .build())
-                                .setOnClickListener(
-                                        () -> mSurfaceRenderer.handleScale(INVALID_FOCAL_POINT_VAL,
-                                                INVALID_FOCAL_POINT_VAL,
-                                                ZOOM_OUT_BUTTON_SCALE_FACTOR))
-                                .build())
-                .addAction(
-                        new Action.Builder()
-                                .setIcon(
-                                        new CarIcon.Builder(
-                                                IconCompat.createWithResource(
-                                                        getCarContext(),
-                                                        R.drawable.ic_zoom_in_24))
-                                                .build())
-                                .setOnClickListener(
-                                        () -> mSurfaceRenderer.handleScale(INVALID_FOCAL_POINT_VAL,
-                                                INVALID_FOCAL_POINT_VAL,
-                                                ZOOM_IN_BUTTON_SCALE_FACTOR))
-                                .build())
-                .build());
-
-        // When the user enters the pan mode, remind the user that they can exit the pan mode by
-        // pressing the select button again.
-        builder.setPanModeListener(isInPanMode -> {
-            if (isInPanMode) {
-                CarToast.makeText(getCarContext(),
-                        "Press Select to exit the pan mode",
-                        CarToast.LENGTH_LONG).show();
-            }
-            mIsInPanMode = isInPanMode;
-            invalidate();
-        });
 
         if (mIsNavigating) {
             if (mDestinationTravelEstimate != null) {
@@ -322,16 +204,15 @@ public final class NavigationScreen extends Screen {
                 .pushForResult(
                         new FavoritesScreen(getCarContext(), mSettingsAction, mSurfaceRenderer),
                         (obj) -> {
-                            if (obj == null || mIsNavigating) {
-                                return;
+                            if (obj != null) {
+                                // Need to copy over each element to satisfy Java type safety.
+                                List<?> results = (List<?>) obj;
+                                List<Instruction> instructions = new ArrayList<Instruction>();
+                                for (Object result : results) {
+                                    instructions.add((Instruction) result);
+                                }
+                                mListener.executeScript(instructions);
                             }
-                            // Need to copy over each element to satisfy Java type safety.
-                            List<?> results = (List<?>) obj;
-                            List<Instruction> instructions = new ArrayList<Instruction>();
-                            for (Object result : results) {
-                                instructions.add((Instruction) result);
-                            }
-                            mListener.executeScript(instructions);
                         });
     }
 
@@ -350,44 +231,5 @@ public final class NavigationScreen extends Screen {
                                 mListener.executeScript(instructions);
                             }
                         });
-    }
-
-    private void createAndSendSuggestion() {
-        CarIcon homeIcon = new CarIcon.Builder(IconCompat.createWithResource(
-                getCarContext(),
-                R.drawable.ic_home)).build();
-        CarIcon workIcon = new CarIcon.Builder(IconCompat.createWithResource(
-                getCarContext(),
-                R.drawable.ic_work)).build();
-
-        List<Suggestion> suggestionList = new ArrayList<>();
-        suggestionList.add(getSuggestion(R.string.suggestion_card_home_title,
-                R.string.suggestion_card_home_subtitle, homeIcon));
-        suggestionList.add(getSuggestion(R.string.suggestion_card_work_title,
-                R.string.suggestion_card_work_subtitle, workIcon));
-
-        // TODO(b/282958325): SuggestionManager is currently only on AAP. Remove conditional once
-        // SuggestionManager is available on AAOS.
-        if (!getCarContext().getPackageManager().hasSystemFeature(
-                PackageManager.FEATURE_AUTOMOTIVE)) {
-            getCarContext().getCarService(SuggestionManager.class)
-                    .updateSuggestions(suggestionList);
-        }
-    }
-
-    private Suggestion getSuggestion(int title, int subtitle, CarIcon icon) {
-        return new Suggestion.Builder()
-                .setIdentifier("0")
-                .setTitle(getCarContext().getString(title))
-                .setSubtitle(getCarContext().getString(subtitle))
-                .setIcon(icon)
-                .setAction(
-                        CarPendingIntent.getCarApp(getCarContext(), 0,
-                                new Intent().setComponent(
-                                        new ComponentName(getCarContext(),
-                                                NavigationCarAppService.class))
-                                        .setAction(NavigationSession.EXECUTE_SCRIPT),
-                                0))
-                .build();
     }
 }

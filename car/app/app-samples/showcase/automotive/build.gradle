@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2020 The Android Open Source Project
+ * Copyright (C) 2021 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,21 +15,16 @@
  */
 
 plugins {
-    alias(libs.plugins.jetbrains.kotlin.android)
-    alias(libs.plugins.android.application)
+    id("AndroidXPlugin")
+    id("com.android.application")
 }
 
 android {
-    compileSdk 34
-
     defaultConfig {
         applicationId "androidx.car.app.sample.showcase"
         minSdkVersion 29
-        targetSdkVersion 34
-        // Increment this to generate signed builds for uploading to Playstore
-        // Make sure this is different from the showcase-mobile version
-        versionCode 113
-        versionName "113"
+        versionCode 1
+        versionName "1.0"
     }
 
     buildTypes {
@@ -41,21 +36,9 @@ android {
                     'proguard-rules.pro'
         }
     }
-
-    java.toolchain {
-        languageVersion.set(JavaLanguageVersion.of(libs.versions.java.get()))
-    }
-
-    kotlinOptions {
-        jvmTarget = libs.versions.java.get()
-    }
-
-    testOptions.unitTests.includeAndroidResources true
-    namespace "androidx.car.app.sample.showcase"
 }
 
 dependencies {
-    implementation libs.androidx.app.automotive
-    implementation project(":showcase:common")
-    implementation libs.androidx.core.ktx
+    implementation(project(":car:app:app-samples:showcase-common"))
+    implementation(project(":car:app:app-activity"))
 }

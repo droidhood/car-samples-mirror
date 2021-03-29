@@ -14,8 +14,4 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 -->
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
-    <uses-permission android:name="android.permission.RECORD_AUDIO" />
-</manifest>
+<manifest package="androidx.car.app.sample.navigation.common" />

@@ -13,107 +13,104 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package androidx.car.app.sample.showcase.common;
 
+import androidx.annotation.NonNull;
 import androidx.car.app.CarContext;
 import androidx.car.app.Screen;
 import androidx.car.app.model.Action;
 import androidx.car.app.model.CarIcon;
-import androidx.car.app.model.Header;
 import androidx.car.app.model.ItemList;
 import androidx.car.app.model.ListTemplate;
 import androidx.car.app.model.Row;
 import androidx.car.app.model.Template;
-import androidx.car.app.sample.showcase.common.screens.MapDemosScreen;
-import androidx.car.app.sample.showcase.common.screens.NavigationDemosScreen;
-import androidx.car.app.sample.showcase.common.screens.SettingsScreen;
-import androidx.car.app.sample.showcase.common.screens.TemplateLayoutsDemoScreen;
-import androidx.car.app.sample.showcase.common.screens.UserInteractionsDemoScreen;
+import androidx.car.app.sample.showcase.common.misc.MiscDemoScreen;
+import androidx.car.app.sample.showcase.common.navigation.NavigationDemosScreen;
+import androidx.car.app.sample.showcase.common.templates.MiscTemplateDemosScreen;
+import androidx.car.app.sample.showcase.common.textandicons.TextAndIconsDemosScreen;
 import androidx.core.graphics.drawable.IconCompat;
-
-import org.jspecify.annotations.NonNull;
 
 /** The starting screen of the app. */
 public final class StartScreen extends Screen {
-    private final @NonNull ShowcaseSession mShowcaseSession;
-
-    public StartScreen(@NonNull CarContext carContext, @NonNull ShowcaseSession showcaseSession) {
+    public StartScreen(@NonNull CarContext carContext) {
         super(carContext);
-        mShowcaseSession = showcaseSession;
     }
 
+    @NonNull
     @Override
-    public @NonNull Template onGetTemplate() {
+    public Template onGetTemplate() {
         ItemList.Builder listBuilder = new ItemList.Builder();
 
-        listBuilder.addItem(createRowForScreen(R.string.template_layouts_demo_title,
-                new TemplateLayoutsDemoScreen(getCarContext())));
+        listBuilder.addItem(
+                new Row.Builder()
+                        .setTitle("Selectable Lists Demo")
+                        .setOnClickListener(
+                                () ->
+                                        getScreenManager()
+                                                .push(
+                                                        new SelectableListsDemoScreen(
+                                                                getCarContext())))
+                        .build());
 
-        listBuilder.addItem(createRowForScreen(R.string.user_interactions_demo_title,
-                new UserInteractionsDemoScreen(1, getCarContext())));
+        listBuilder.addItem(
+                new Row.Builder()
+                        .setTitle("Task Restriction Demo")
+                        .setOnClickListener(
+                                () ->
+                                        getScreenManager()
+                                                .push(
+                                                        new TaskRestrictionDemoScreen(
+                                                                1, getCarContext())))
+                        .build());
 
-        listBuilder.addItem(createRowForScreen(R.string.map_demos_title,
-                createCarIconForImage(R.drawable.ic_place_white_24dp),
-                new MapDemosScreen(getCarContext())));
+        listBuilder.addItem(
+                new Row.Builder()
+                        .setImage(
+                                new CarIcon.Builder(
+                                        IconCompat.createWithResource(
+                                                getCarContext(),
+                                                R.drawable.ic_map_white_48dp))
+                                        .build())
+                        .setTitle("Navigation Demos")
+                        .setOnClickListener(
+                                () -> getScreenManager()
+                                        .push(new NavigationDemosScreen(getCarContext())))
+                        .setBrowsable(true)
+                        .build());
 
-        listBuilder.addItem(createRowForScreen(R.string.nav_demos_title,
-                createCarIconForImage(R.drawable.ic_map_white_48dp),
-                NavigationDemosScreen.createScreen(getCarContext())));
+        listBuilder.addItem(
+                new Row.Builder()
+                        .setTitle("Misc Templates Demos")
+                        .setOnClickListener(
+                                () ->
+                                        getScreenManager()
+                                                .push(new MiscTemplateDemosScreen(getCarContext())))
+                        .setBrowsable(true)
+                        .build());
+
+        listBuilder.addItem(
+                new Row.Builder()
+                        .setTitle("Text and Icons Demos")
+                        .setOnClickListener(
+                                () ->
+                                        getScreenManager()
+                                                .push(new TextAndIconsDemosScreen(getCarContext())))
+                        .setBrowsable(true)
+                        .build());
+
+        listBuilder.addItem(
+                new Row.Builder()
+                        .setTitle("Misc Demos")
+                        .setOnClickListener(
+                                () -> getScreenManager().push(new MiscDemoScreen(getCarContext())))
+                        .setBrowsable(true)
+                        .build());
 
         return new ListTemplate.Builder()
                 .setSingleList(listBuilder.build())
-                .setHeader(new Header.Builder()
-                        .setTitle(getCarContext().getString(R.string.showcase_demos_title))
-                        .setStartHeaderAction(Action.APP_ICON)
-                        .addEndHeaderAction(createSettingsActionButton())
-                        .build())
-                .build();
-    }
-
-    /**
-     * Creates a new Settings Action button in the top right of the Home page
-     */
-    public @NonNull Action createSettingsActionButton() {
-        return new Action.Builder()
-                .setTitle(getCarContext().getString(R.string.settings_action_title))
-                .setOnClickListener(() -> getScreenManager().push(
-                        new SettingsScreen(getCarContext(), mShowcaseSession)))
-                .build();
-    }
-
-    /**
-     * Creates new row given a title, and the next screen on clicking the row
-     */
-    public @NonNull Row createRowForScreen(int titleId, @NonNull Screen screen) {
-        return new Row.Builder()
-            .setTitle(getCarContext().getString(titleId))
-            .setOnClickListener(() -> getScreenManager().push(screen))
-            .setBrowsable(true)
-            .build();
-    }
-
-    /**
-     * Creates new row given a title, CarIcon image and the next screen on clicking the row
-     */
-    public @NonNull Row createRowForScreen(int titleId, @NonNull CarIcon image,
-            @NonNull Screen screen) {
-        return new Row.Builder()
-                .setImage(image, Row.IMAGE_TYPE_ICON)
-                .setTitle(getCarContext().getString(titleId))
-                .setOnClickListener(() -> getScreenManager().push(screen))
-                .setBrowsable(true)
-                .build();
-    }
-
-    /**
-    * Given an imageId (as a drawable resource), this function outputs an CarIcon
-    */
-    public @NonNull CarIcon createCarIconForImage(int imageId) {
-        return new CarIcon.Builder(
-                IconCompat.createWithResource(
-                        getCarContext(),
-                        imageId))
+                .setTitle("Showcase Demos")
+                .setHeaderAction(Action.APP_ICON)
                 .build();
     }
 }
-
