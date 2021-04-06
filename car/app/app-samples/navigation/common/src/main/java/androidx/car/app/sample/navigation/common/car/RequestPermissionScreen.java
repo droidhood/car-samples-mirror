@@ -16,26 +16,29 @@
 
 package androidx.car.app.sample.navigation.common.car;
 
-import static android.Manifest.permission.ACCESS_FINE_LOCATION;
+import static java.util.concurrent.TimeUnit.SECONDS;
+
+import android.Manifest;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.OptIn;
 import androidx.car.app.CarContext;
-import androidx.car.app.CarToast;
 import androidx.car.app.Screen;
-import androidx.car.app.annotations.ExperimentalCarApi;
 import androidx.car.app.model.Action;
 import androidx.car.app.model.CarColor;
 import androidx.car.app.model.MessageTemplate;
-import androidx.car.app.model.OnClickListener;
 import androidx.car.app.model.ParkedOnlyOnClickListener;
 import androidx.car.app.model.Template;
-
-import java.util.ArrayList;
-import java.util.List;
+import androidx.car.app.sample.navigation.common.app.MainActivity;
+import androidx.lifecycle.DefaultLifecycleObserver;
+import androidx.lifecycle.LifecycleOwner;
 
 /** Screen for asking the user to grant location permission. */
-public class RequestPermissionScreen extends Screen {
+public class RequestPermissionScreen extends Screen implements DefaultLifecycleObserver {
 
     /** Callback called when the location permission is granted. */
     public interface LocationPermissionCheckCallback {
@@ -43,44 +46,87 @@ public class RequestPermissionScreen extends Screen {
         void onPermissionGranted();
     }
 
+    /** The location permission poll message id. */
+    private static final int MSG_SEND_POLL_PERMISSION = 1;
+
+    /** The frequency of the polls to check the location permission status. */
+    static final long POLL_PERMISSION_FREQUENCY_MILLIS = SECONDS.toMillis(1);
+
+    /** A handler for periodically checking the location permission. */
+    final Handler mHandler = new Handler(Looper.getMainLooper(), new HandlerCallback());
+
     LocationPermissionCheckCallback mLocationPermissionCheckCallback;
 
     public RequestPermissionScreen(
             @NonNull CarContext carContext, @NonNull LocationPermissionCheckCallback callback) {
         super(carContext);
+        getLifecycle().addObserver(this);
         mLocationPermissionCheckCallback = callback;
     }
 
-    @OptIn(markerClass = ExperimentalCarApi.class)
+    @Override
+    public void onStart(@NonNull LifecycleOwner owner) {
+        mHandler.sendMessageDelayed(
+                mHandler.obtainMessage(MSG_SEND_POLL_PERMISSION), POLL_PERMISSION_FREQUENCY_MILLIS);
+    }
+
+    @Override
+    public void onStop(@NonNull LifecycleOwner owner) {
+        mHandler.removeMessages(MSG_SEND_POLL_PERMISSION);
+    }
+
     @NonNull
     @Override
     public Template onGetTemplate() {
-        List<String> permissions = new ArrayList<>();
-        permissions.add(ACCESS_FINE_LOCATION);
+        ParkedOnlyOnClickListener listener = ParkedOnlyOnClickListener.create(
+                () -> {
+                    // Launch a phone activity to request the
+                    // location permission.
+                    getCarContext()
+                            .startActivity(
+                                    new Intent(
+                                            getCarContext(),
+                                            MainActivity.class)
+                                            .setFlags(
+                                                    Intent.FLAG_ACTIVITY_NEW_TASK));
+                });
 
-        String message = "This app needs access to location in order to navigate";
-
-        OnClickListener listener = ParkedOnlyOnClickListener.create(() ->
-                getCarContext().requestPermissions(
-                        permissions,
-                        (approved, rejected) -> {
-                            CarToast.makeText(
-                                    getCarContext(),
-                                    String.format("Approved: %s Rejected: %s", approved, rejected),
-                                    CarToast.LENGTH_LONG).show();
-                            if (!approved.isEmpty()) {
-                                mLocationPermissionCheckCallback.onPermissionGranted();
-                                finish();
-                            }
-                        }));
-
-        Action action = new Action.Builder()
-                .setTitle("Grant Permission")
-                .setBackgroundColor(CarColor.GREEN)
-                .setOnClickListener(listener)
+        return new MessageTemplate.Builder(
+                "Please allow location access on the phone while not driving.")
+                .setHeaderAction(Action.APP_ICON)
+                .addAction(
+                        new Action.Builder()
+                                .setBackgroundColor(CarColor.BLUE)
+                                .setOnClickListener(listener)
+                                .setTitle("Go to Phone")
+                                .build())
                 .build();
+    }
 
-        return new MessageTemplate.Builder(message).addAction(action).setHeaderAction(
-                Action.BACK).build();
+    /**
+     * A {@link Handler.Callback} used to process the message queue for polling the location
+     * permission.
+     */
+    final class HandlerCallback implements Handler.Callback {
+        @Override
+        public boolean handleMessage(Message msg) {
+            if (msg.what == MSG_SEND_POLL_PERMISSION) {
+                // If the location permission is granted, invoke the callback and pop the screen,
+                // which will
+                // show the preseeded navigation screen.
+                if (getCarContext().checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION)
+                        == PackageManager.PERMISSION_GRANTED) {
+                    mLocationPermissionCheckCallback.onPermissionGranted();
+                    RequestPermissionScreen.this.finish();
+                    return true;
+                }
+
+                mHandler.sendMessageDelayed(
+                        mHandler.obtainMessage(MSG_SEND_POLL_PERMISSION),
+                        POLL_PERMISSION_FREQUENCY_MILLIS);
+                return true;
+            }
+            return false;
+        }
     }
 }
