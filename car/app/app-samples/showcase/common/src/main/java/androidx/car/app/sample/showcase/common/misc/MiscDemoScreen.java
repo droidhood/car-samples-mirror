@@ -84,13 +84,17 @@ public final class MiscDemoScreen extends Screen {
 
         listBuilder.addItem(
                 new Row.Builder()
-                        .setTitle("Request Permission Demo")
-                        .setOnClickListener(() ->
-                                getScreenManager().push(
-                                        new RequestPermissionScreen(getCarContext())))
+                        .setTitle("Finish App Demo")
+                        .setOnClickListener(
+                                () ->
+                                        getScreenManager()
+                                                .push(
+                                                        new FinishAppScreen(
+                                                                getCarContext(),
+                                                                /** willPreseed= */
+                                                                false)))
                         .setBrowsable(true)
                         .build());
-
 
         listBuilder.addItem(
                 new Row.Builder()
@@ -100,7 +104,9 @@ public final class MiscDemoScreen extends Screen {
                                         getScreenManager()
                                                 .push(
                                                         new FinishAppScreen(
-                                                                getCarContext())))
+                                                                getCarContext(),
+                                                                /** willPreseed= */
+                                                                true)))
                         .setBrowsable(true)
                         .build());
 
