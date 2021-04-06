@@ -16,13 +16,11 @@
 
 package androidx.car.app.sample.showcase.common.templates;
 
-import static androidx.car.app.CarToast.LENGTH_LONG;
 import static androidx.car.app.model.Action.BACK;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.OptIn;
 import androidx.car.app.CarContext;
-import androidx.car.app.CarToast;
 import androidx.car.app.Screen;
 import androidx.car.app.model.Action;
 import androidx.car.app.model.ActionStrip;
@@ -98,13 +96,6 @@ public class LongMessageTemplateDemoScreen extends Screen {
                 .setActionStrip(new ActionStrip.Builder()
                         .addAction(new Action.Builder()
                             .setTitle("More")
-                            .setOnClickListener(
-                                    () ->
-                                            CarToast.makeText(
-                                                    getCarContext(),
-                                                    "Clicked More",
-                                                    LENGTH_LONG)
-                                                    .show())
                             .build())
                         .build())
                 .build();
