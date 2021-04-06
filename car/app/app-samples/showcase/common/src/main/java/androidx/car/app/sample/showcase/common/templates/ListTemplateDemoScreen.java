@@ -88,13 +88,8 @@ public final class ListTemplateDemoScreen extends Screen implements DefaultLifec
                                 .addAction(
                                         new Action.Builder()
                                                 .setTitle("Settings")
-                                                .setOnClickListener(
-                                                        () ->
-                                                                CarToast.makeText(
-                                                                        getCarContext(),
-                                                                        "Clicked Settings",
-                                                                        LENGTH_LONG)
-                                                                        .show())
+                                                .setOnClickListener(() -> {
+                                                })
                                                 .build())
                                 .build())
                 .build();
