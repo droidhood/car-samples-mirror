@@ -21,7 +21,7 @@ android {
 
     defaultConfig {
         applicationId "androidx.car.app.sample.navigation"
-        minSdkVersion 29
+        minSdkVersion 23
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
