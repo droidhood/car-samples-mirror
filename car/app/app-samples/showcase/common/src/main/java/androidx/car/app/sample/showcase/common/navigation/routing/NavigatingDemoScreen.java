@@ -46,7 +46,6 @@ public final class NavigatingDemoScreen extends Screen implements DefaultLifecyc
                                 .build())
                 .setDestinationTravelEstimate(RoutingDemoModels.getTravelEstimate())
                 .setActionStrip(RoutingDemoModels.getActionStrip(getCarContext(), this::finish))
-                .setMapActionStrip(RoutingDemoModels.getMapActionStrip(getCarContext()))
                 .setBackgroundColor(CarColor.SECONDARY)
                 .build();
     }
