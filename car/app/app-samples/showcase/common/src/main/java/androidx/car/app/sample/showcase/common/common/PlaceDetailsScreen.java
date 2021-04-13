@@ -16,7 +16,6 @@
 
 package androidx.car.app.sample.showcase.common.common;
 
-import static androidx.car.app.CarToast.LENGTH_LONG;
 import static androidx.car.app.model.Action.BACK;
 
 import android.content.Intent;
@@ -24,8 +23,6 @@ import android.net.Uri;
 
 import androidx.annotation.NonNull;
 import androidx.car.app.CarContext;
-import androidx.car.app.CarToast;
-import androidx.car.app.HostException;
 import androidx.car.app.Screen;
 import androidx.car.app.model.Action;
 import androidx.car.app.model.CarColor;
@@ -81,31 +78,13 @@ public class PlaceDetailsScreen extends Screen {
     private void onClickNavigate() {
         Uri uri = Uri.parse("geo:0,0?q=" + mPlace.address);
         Intent intent = new Intent(CarContext.ACTION_NAVIGATE, uri);
-
-        try {
-            getCarContext().startCarApp(intent);
-        } catch (HostException e) {
-            CarToast.makeText(
-                    getCarContext(),
-                    "Failure starting navigation",
-                    LENGTH_LONG)
-                    .show();
-        }
+        getCarContext().startCarApp(intent);
     }
 
     private void onClickDial() {
         Uri uri = Uri.parse("tel:" + mPlace.phoneNumber);
         Intent intent = new Intent(Intent.ACTION_DIAL, uri);
-
-        try {
-            getCarContext().startCarApp(intent);
-        } catch (HostException e) {
-            CarToast.makeText(
-                    getCarContext(),
-                    "Failure starting dialer",
-                    LENGTH_LONG)
-                    .show();
-        }
+        getCarContext().startCarApp(intent);
     }
 
     private PlaceDetailsScreen(@NonNull CarContext carContext, @NonNull PlaceInfo place) {
