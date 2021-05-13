@@ -16,7 +16,6 @@
 
 package androidx.car.app.sample.places.common;
 
-import static androidx.car.app.CarToast.LENGTH_LONG;
 import static androidx.car.app.sample.places.common.Executors.BACKGROUND_EXECUTOR;
 import static androidx.car.app.sample.places.common.Executors.UI_EXECUTOR;
 
@@ -32,8 +31,6 @@ import android.text.SpannableString;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.car.app.CarContext;
-import androidx.car.app.CarToast;
-import androidx.car.app.HostException;
 import androidx.car.app.Screen;
 import androidx.car.app.model.Action;
 import androidx.car.app.model.CarColor;
@@ -155,16 +152,7 @@ public class PlaceDetailsScreen extends Screen implements DefaultLifecycleObserv
     private void onClickNavigate() {
         Uri uri = Uri.parse("geo:0,0?q=" + mPlace.getAddress(mGeocoder).getAddressLine(0));
         Intent intent = new Intent(CarContext.ACTION_NAVIGATE, uri);
-
-        try {
-            getCarContext().startCarApp(intent);
-        } catch (HostException e) {
-            CarToast.makeText(
-                    getCarContext(),
-                    "Failure starting navigation",
-                    LENGTH_LONG)
-                    .show();
-        }
+        getCarContext().startCarApp(intent);
     }
 
     private static List<CharSequence> getAddressLines(Address address) {
