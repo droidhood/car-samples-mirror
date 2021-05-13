@@ -31,7 +31,8 @@
 
   <application
       android:label="@string/app_name"
-      android:icon="@drawable/ic_launcher">
+      android:icon="@drawable/ic_launcher"
+      android:extractNativeLibs="false">
 
     <meta-data
         android:name="com.android.automotive"
@@ -43,7 +44,7 @@
         android:resource="@style/CarAppTheme"
         tools:ignore="MetadataTagInsideApplicationTag"/>
 
-    <meta-data android:name="androidx.car.app.minCarApiLevel"
+    <meta-data android:name="androidx.car.app.minApiLevel"
         android:value="1"
         tools:ignore="MetadataTagInsideApplicationTag" />
 
