@@ -48,9 +48,6 @@ public final class PaneTemplateDemoScreen extends Screen implements DefaultLifec
     @Nullable
     private IconCompat mImage;
 
-    @Nullable
-    private IconCompat mIcon;
-
     public PaneTemplateDemoScreen(@NonNull CarContext carContext) {
         super(carContext);
         getLifecycle().addObserver(this);
@@ -61,7 +58,6 @@ public final class PaneTemplateDemoScreen extends Screen implements DefaultLifec
         Resources resources = getCarContext().getResources();
         Bitmap bitmap = BitmapFactory.decodeResource(resources, R.drawable.test_image_square);
         mImage = IconCompat.createWithBitmap(bitmap);
-        mIcon = IconCompat.createWithResource(getCarContext(), R.drawable.ic_commute_24px);
     }
 
     @NonNull
@@ -100,6 +96,7 @@ public final class PaneTemplateDemoScreen extends Screen implements DefaultLifec
                 .addAction(
                         new Action.Builder()
                                 .setTitle("Options")
+                                .setBackgroundColor(CarColor.YELLOW)
                                 .setOnClickListener(
                                         () -> CarToast.makeText(
                                                 getCarContext(),
@@ -114,15 +111,11 @@ public final class PaneTemplateDemoScreen extends Screen implements DefaultLifec
                         new ActionStrip.Builder()
                                 .addAction(
                                         new Action.Builder()
-                                                .setTitle("Commute")
-                                                .setIcon(
-                                                        new CarIcon.Builder(mIcon)
-                                                                .setTint(CarColor.BLUE)
-                                                                .build())
+                                                .setTitle("Settings")
                                                 .setOnClickListener(
                                                         () -> CarToast.makeText(
                                                                 getCarContext(),
-                                                                "Commute button"
+                                                                "Settings button"
                                                                         + " pressed",
                                                                 LENGTH_SHORT)
                                                                 .show())
