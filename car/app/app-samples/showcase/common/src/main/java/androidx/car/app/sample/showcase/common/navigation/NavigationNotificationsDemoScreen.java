@@ -40,7 +40,7 @@ public final class NavigationNotificationsDemoScreen extends Screen {
 
     // Suppressing 'ObsoleteSdkInt' as this code is shared between APKs with different min SDK
     // levels
-    @SuppressLint({"ObsoleteSdkInt"})
+    @SuppressLint({"UnsafeNewApiCall", "ObsoleteSdkInt"})
     @NonNull
     @Override
     public Template onGetTemplate() {
