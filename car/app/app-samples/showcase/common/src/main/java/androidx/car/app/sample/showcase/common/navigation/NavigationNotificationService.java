@@ -104,7 +104,7 @@ public final class NavigationNotificationService extends Service {
      */
     // Suppressing 'ObsoleteSdkInt' as this code is shared between APKs with different min SDK
     // levels
-    @SuppressLint({"ObsoleteSdkInt"})
+    @SuppressLint({"UnsafeNewApiCall", "ObsoleteSdkInt"})
     private static void initNotifications(Context context) {
         NotificationChannelCompat navChannel =
                 new NotificationChannelCompat.Builder(
