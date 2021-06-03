@@ -25,18 +25,14 @@ import androidx.car.app.model.ItemList;
 import androidx.car.app.model.ListTemplate;
 import androidx.car.app.model.Row;
 import androidx.car.app.model.Template;
-import androidx.car.app.sample.showcase.common.ShowcaseSession;
 
 /** Creates a screen that has an assortment of API demos. */
 public final class MiscDemoScreen extends Screen {
     static final String MARKER = "MiscDemoScreen";
-    @NonNull private final ShowcaseSession mShowcaseSession;
 
-    public MiscDemoScreen(@NonNull CarContext carContext,
-            @NonNull ShowcaseSession showcaseSession) {
+    public MiscDemoScreen(@NonNull CarContext carContext) {
         super(carContext);
         setMarker(MARKER);
-        mShowcaseSession = showcaseSession;
     }
 
     @NonNull
@@ -91,18 +87,6 @@ public final class MiscDemoScreen extends Screen {
                                                 .push(
                                                         new FinishAppScreen(
                                                                 getCarContext())))
-                        .setBrowsable(true)
-                        .build());
-
-        listBuilder.addItem(
-                new Row.Builder()
-                        .setTitle("Car Hardware Demo")
-                        .setOnClickListener(
-                                () ->
-                                        getScreenManager()
-                                                .push(
-                                                        new CarHardwareDemoScreen(
-                                                                getCarContext(), mShowcaseSession)))
                         .setBrowsable(true)
                         .build());
 
