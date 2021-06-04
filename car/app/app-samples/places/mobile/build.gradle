@@ -40,5 +40,4 @@ android {
 
 dependencies {
     implementation(project(":car:app:app-samples:places-common"))
-    implementation(project(":car:app:app-projected"))
 }
