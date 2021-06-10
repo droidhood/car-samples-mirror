@@ -45,7 +45,7 @@ import androidx.car.app.hardware.info.Gyroscope;
 import androidx.car.app.hardware.info.Mileage;
 import androidx.car.app.hardware.info.Model;
 import androidx.car.app.hardware.info.Speed;
-import androidx.car.app.hardware.info.TollCard;
+import androidx.car.app.hardware.info.Toll;
 import androidx.core.content.ContextCompat;
 import androidx.lifecycle.DefaultLifecycleObserver;
 import androidx.lifecycle.Lifecycle;
@@ -78,8 +78,7 @@ public final class SurfaceRenderer implements DefaultLifecycleObserver {
 
     @Nullable Model mModel;
     @Nullable EnergyProfile mEnergyProfile;
-    @Nullable
-    TollCard mTollCard;
+    @Nullable Toll mToll;
     @Nullable EnergyLevel mEnergyLevel;
     @Nullable Speed mSpeed;
     @Nullable Mileage mMileage;
@@ -104,10 +103,10 @@ public final class SurfaceRenderer implements DefaultLifecycleObserver {
         }
     };
 
-    private OnCarDataListener<TollCard> mTollListener = data -> {
+    private OnCarDataListener<Toll> mTollListener = data -> {
         synchronized (SurfaceRenderer.this) {
             Log.i(TAG, String.format("Received toll information %s", data));
-            mTollCard = data;
+            mToll = data;
             renderFrame();
         }
     };
@@ -259,7 +258,7 @@ public final class SurfaceRenderer implements DefaultLifecycleObserver {
             carInfo.getEnergyProfile(mCarHardwareExecutor, mEnergyProfileListener);
 
             // Request car info subscription items.
-            mTollCard = null;
+            mToll = null;
             carInfo.addTollListener(mCarHardwareExecutor, mTollListener);
 
             mEnergyLevel = null;
@@ -287,7 +286,7 @@ public final class SurfaceRenderer implements DefaultLifecycleObserver {
         } else {
             // Unsubscribe carinfo
             carInfo.removeTollListener(mTollListener);
-            mTollCard = null;
+            mToll = null;
             carInfo.removeEnergyLevelListener(mEnergyLevelListener);
             mEnergyLevel = null;
             carInfo.removeSpeedListener(mSpeedListener);
@@ -402,22 +401,20 @@ public final class SurfaceRenderer implements DefaultLifecycleObserver {
             verticalPos += height;
 
             // Prepare text for Toll card status
-            info = new StringBuilder();
-            if (mTollCard == null) {
+            if (mToll == null) {
                 info.append("Fetching Toll information.");
             } else {
-                if (mTollCard.getCardState().getStatus() != CarValue.STATUS_SUCCESS) {
+                if (mToll.getCardState().getStatus() != CarValue.STATUS_SUCCESS) {
                     info.append("Toll card state: Unavailable. ");
                 } else {
                     info.append("Toll card state: ");
-                    info.append(mTollCard.getCardState().getValue());
+                    info.append(mToll.getCardState().getValue());
                 }
             }
             canvas.drawText(info.toString(), visibleArea.centerX(), verticalPos, mCarInfoPaint);
             verticalPos += height;
 
             // Prepare text for Energy Level
-            info = new StringBuilder();
             if (mEnergyLevel == null) {
                 info.append("Fetching Energy Level.");
             } else {
@@ -454,7 +451,6 @@ public final class SurfaceRenderer implements DefaultLifecycleObserver {
             verticalPos += height;
 
             // Prepare text for Speed
-            info = new StringBuilder();
             if (mSpeed == null) {
                 info.append("Fetching Speed.");
             } else {
@@ -484,7 +480,6 @@ public final class SurfaceRenderer implements DefaultLifecycleObserver {
             verticalPos += height;
 
             // Prepare text for Odometer
-            info = new StringBuilder();
             if (mMileage == null) {
                 info.append("Fetching mileage.");
             } else {
@@ -507,7 +502,6 @@ public final class SurfaceRenderer implements DefaultLifecycleObserver {
             verticalPos += height;
 
             // Prepare text for Accelerometer
-            info = new StringBuilder();
             if (mAccelerometer == null) {
                 info.append("Fetching accelerometer");
             } else {
@@ -522,7 +516,6 @@ public final class SurfaceRenderer implements DefaultLifecycleObserver {
             verticalPos += height;
 
             // Prepare text for Gyroscope
-            info = new StringBuilder();
             if (mGyroscope == null) {
                 info.append("Fetching gyroscope");
             } else {
@@ -537,7 +530,6 @@ public final class SurfaceRenderer implements DefaultLifecycleObserver {
             verticalPos += height;
 
             // Prepare text for Compass
-            info = new StringBuilder();
             if (mCompass == null) {
                 info.append("Fetching compass");
             } else {
@@ -552,7 +544,6 @@ public final class SurfaceRenderer implements DefaultLifecycleObserver {
             verticalPos += height;
 
             // Prepare text for Location
-            info = new StringBuilder();
             if (mCarHardwareLocation == null) {
                 info.append("Fetching location");
             } else {
