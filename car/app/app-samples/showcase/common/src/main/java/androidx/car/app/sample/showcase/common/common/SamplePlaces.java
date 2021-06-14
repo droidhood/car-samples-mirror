@@ -60,10 +60,7 @@ public class SamplePlaces {
     public ItemList getPlaceList() {
         ItemList.Builder listBuilder = new ItemList.Builder();
 
-
-        for (int index = 0; index < mPlaces.size(); index++) {
-            PlaceInfo place = mPlaces.get(index);
-
+        for (PlaceInfo place : mPlaces) {
             // Build a description string that includes the required distance span.
             int distanceKm = getDistanceFromCurrentLocation(place.location) / 1000;
             SpannableString description = new SpannableString("   \u00b7 " + place.description);
@@ -78,15 +75,12 @@ public class SamplePlaces {
                     1,
                     Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
-            boolean isBrowsable = index > mPlaces.size() / 2;
-
             // Add the row for this place to the list.
             listBuilder.addItem(
                     new Row.Builder()
                             .setTitle(place.title)
                             .addText(description)
                             .setOnClickListener(() -> onClickPlace(place))
-                            .setBrowsable(isBrowsable)
                             .setMetadata(
                                     new Metadata.Builder()
                                             .setPlace(
