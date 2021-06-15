@@ -33,7 +33,7 @@ import androidx.car.app.SurfaceCallback;
 import androidx.car.app.SurfaceContainer;
 import androidx.car.app.hardware.CarHardwareManager;
 import androidx.car.app.hardware.common.CarValue;
-import androidx.car.app.hardware.common.OnCarDataListener;
+import androidx.car.app.hardware.common.OnCarDataAvailableListener;
 import androidx.car.app.hardware.info.Accelerometer;
 import androidx.car.app.hardware.info.CarHardwareLocation;
 import androidx.car.app.hardware.info.CarInfo;
@@ -76,93 +76,102 @@ public final class SurfaceRenderer implements DefaultLifecycleObserver {
     private final Paint mCarInfoPaint = new Paint();
     private boolean mShowCarHardwareSurfaceInfo;
 
-    @Nullable Model mModel;
-    @Nullable EnergyProfile mEnergyProfile;
+    @Nullable
+    Model mModel;
+    @Nullable
+    EnergyProfile mEnergyProfile;
     @Nullable
     TollCard mTollCard;
-    @Nullable EnergyLevel mEnergyLevel;
-    @Nullable Speed mSpeed;
-    @Nullable Mileage mMileage;
-    @Nullable Accelerometer mAccelerometer;
-    @Nullable Gyroscope mGyroscope;
-    @Nullable Compass mCompass;
-    @Nullable CarHardwareLocation mCarHardwareLocation;
+    @Nullable
+    EnergyLevel mEnergyLevel;
+    @Nullable
+    Speed mSpeed;
+    @Nullable
+    Mileage mMileage;
+    @Nullable
+    Accelerometer mAccelerometer;
+    @Nullable
+    Gyroscope mGyroscope;
+    @Nullable
+    Compass mCompass;
+    @Nullable
+    CarHardwareLocation mCarHardwareLocation;
 
-    private OnCarDataListener<Model> mModelListener = data -> {
+    private OnCarDataAvailableListener<Model> mModelListener = data -> {
         synchronized (SurfaceRenderer.this) {
-            Log.i(TAG, String.format("Received model information %s", data));
+            Log.i(TAG, "Received model information: " + data);
             mModel = data;
             renderFrame();
         }
     };
 
-    private OnCarDataListener<EnergyProfile> mEnergyProfileListener = data -> {
+    private OnCarDataAvailableListener<EnergyProfile> mEnergyProfileListener = data -> {
         synchronized (SurfaceRenderer.this) {
-            Log.i(TAG, String.format("Received energy profile information %s", data));
+            Log.i(TAG, "Received energy profile information: " + data);
             mEnergyProfile = data;
             renderFrame();
         }
     };
 
-    private OnCarDataListener<TollCard> mTollListener = data -> {
+    private OnCarDataAvailableListener<TollCard> mTollListener = data -> {
         synchronized (SurfaceRenderer.this) {
-            Log.i(TAG, String.format("Received toll information %s", data));
+            Log.i(TAG, "Received toll information:" + data);
             mTollCard = data;
             renderFrame();
         }
     };
 
-    private OnCarDataListener<EnergyLevel> mEnergyLevelListener = data -> {
+    private OnCarDataAvailableListener<EnergyLevel> mEnergyLevelListener = data -> {
         synchronized (SurfaceRenderer.this) {
-            Log.i(TAG, String.format("Received energy level information %s", data));
+            Log.i(TAG, "Received energy level information: " + data);
             mEnergyLevel = data;
             renderFrame();
         }
     };
 
-    private OnCarDataListener<Speed> mSpeedListener = data -> {
+    private OnCarDataAvailableListener<Speed> mSpeedListener = data -> {
         synchronized (SurfaceRenderer.this) {
-            Log.i(TAG, String.format("Received speed information %s", data));
+            Log.i(TAG, "Received speed information: " + data);
             mSpeed = data;
             renderFrame();
         }
     };
 
-    private OnCarDataListener<Mileage> mMileageListener = data -> {
+    private OnCarDataAvailableListener<Mileage> mMileageListener = data -> {
         synchronized (SurfaceRenderer.this) {
-            Log.i(TAG, String.format("Received mileage %s", data));
+            Log.i(TAG, "Received mileage: " + data);
             mMileage = data;
             renderFrame();
         }
     };
 
-    private OnCarDataListener<Accelerometer> mAccelerometerListener = data -> {
+    private OnCarDataAvailableListener<Accelerometer> mAccelerometerListener = data -> {
         synchronized (SurfaceRenderer.this) {
-            Log.i(TAG, String.format("Received accelerometer %s", data));
+            Log.i(TAG, "Received accelerometer: " + data);
             mAccelerometer = data;
             renderFrame();
         }
     };
 
-    private OnCarDataListener<Gyroscope> mGyroscopeListener = data -> {
+    private OnCarDataAvailableListener<Gyroscope> mGyroscopeListener = data -> {
         synchronized (SurfaceRenderer.this) {
-            Log.i(TAG, String.format("Received gyroscope %s", data));
+            Log.i(TAG, "Received gyroscope: " + data);
             mGyroscope = data;
             renderFrame();
         }
     };
 
-    private OnCarDataListener<Compass> mCompassListener = data -> {
+    private OnCarDataAvailableListener<Compass> mCompassListener = data -> {
         synchronized (SurfaceRenderer.this) {
-            Log.i(TAG, String.format("Received compass %s", data));
+            Log.i(TAG, "Received compass: " + data);
             mCompass = data;
             renderFrame();
         }
     };
 
-    private OnCarDataListener<CarHardwareLocation> mCarLocationListener = data -> {
+    private OnCarDataAvailableListener<CarHardwareLocation> mCarLocationListener = data -> {
         synchronized (SurfaceRenderer.this) {
-            Log.i(TAG, String.format("Received car location %s", data));
+            Log.i(TAG, "Received car location: " + data);
             mCarHardwareLocation = data;
             renderFrame();
         }
@@ -172,7 +181,7 @@ public final class SurfaceRenderer implements DefaultLifecycleObserver {
             new SurfaceCallback() {
                 @Override
                 public void onSurfaceAvailable(@NonNull SurfaceContainer surfaceContainer) {
-                    Log.i(TAG, String.format("Surface available %s", surfaceContainer));
+                    Log.i(TAG, "Surface available " + surfaceContainer);
                     mSurface = surfaceContainer.getSurface();
                     renderFrame();
                 }
@@ -180,11 +189,8 @@ public final class SurfaceRenderer implements DefaultLifecycleObserver {
                 @Override
                 public void onVisibleAreaChanged(@NonNull Rect visibleArea) {
                     synchronized (SurfaceRenderer.this) {
-                        Log.i(
-                                TAG,
-                                String.format(
-                                        "Visible area changed %s. stableArea:%s visibleArea:%s",
-                                        mSurface, mStableArea, visibleArea));
+                        Log.i(TAG, "Visible area changed " + mSurface + ". stableArea: "
+                                + mStableArea + " visibleArea:" + visibleArea);
                         mVisibleArea = visibleArea;
                         renderFrame();
                     }
@@ -193,11 +199,8 @@ public final class SurfaceRenderer implements DefaultLifecycleObserver {
                 @Override
                 public void onStableAreaChanged(@NonNull Rect stableArea) {
                     synchronized (SurfaceRenderer.this) {
-                        Log.i(
-                                TAG,
-                                String.format(
-                                        "Stable area changed %s. stable:%s inset:%s",
-                                        mSurface, stableArea, mVisibleArea));
+                        Log.i(TAG, "Stable area changed " + mSurface + ". stableArea: "
+                                + mStableArea + " visibleArea:" + mVisibleArea);
                         mStableArea = stableArea;
                         renderFrame();
                     }
@@ -253,10 +256,10 @@ public final class SurfaceRenderer implements DefaultLifecycleObserver {
         if (isEnabled) {
             // Request any single shot values.
             mModel = null;
-            carInfo.getModel(mCarHardwareExecutor, mModelListener);
+            carInfo.fetchModel(mCarHardwareExecutor, mModelListener);
 
             mEnergyProfile = null;
-            carInfo.getEnergyProfile(mCarHardwareExecutor, mEnergyProfileListener);
+            carInfo.fetchEnergyProfile(mCarHardwareExecutor, mEnergyProfileListener);
 
             // Request car info subscription items.
             mTollCard = null;
@@ -381,7 +384,7 @@ public final class SurfaceRenderer implements DefaultLifecycleObserver {
                     info.append("Fuel Types: Unavailable. ");
                 } else {
                     info.append("Fuel Types: [");
-                    for (int fuelType: mEnergyProfile.getFuelTypes().getValue()) {
+                    for (int fuelType : mEnergyProfile.getFuelTypes().getValue()) {
                         info.append(fuelType);
                         info.append(" ");
                     }
@@ -391,7 +394,7 @@ public final class SurfaceRenderer implements DefaultLifecycleObserver {
                     info.append(" EV Connector Types: Unavailable. ");
                 } else {
                     info.append("EV Connector Types:[");
-                    for (int connectorType: mEnergyProfile.getEvConnectorTypes().getValue()) {
+                    for (int connectorType : mEnergyProfile.getEvConnectorTypes().getValue()) {
                         info.append(connectorType);
                         info.append(" ");
                     }
@@ -428,11 +431,11 @@ public final class SurfaceRenderer implements DefaultLifecycleObserver {
                     info.append(mEnergyLevel.getEnergyIsLow().getValue());
                     info.append(" ");
                 }
-                if (mEnergyLevel.getRangeRemaining().getStatus() != CarValue.STATUS_SUCCESS) {
+                if (mEnergyLevel.getRangeRemainingMeters().getStatus() != CarValue.STATUS_SUCCESS) {
                     info.append("Range: Unavailable. ");
                 } else {
                     info.append("Range: ");
-                    info.append(mEnergyLevel.getRangeRemaining().getValue());
+                    info.append(mEnergyLevel.getRangeRemainingMeters().getValue());
                     info.append(" m. ");
                 }
                 if (mEnergyLevel.getFuelPercent().getStatus() != CarValue.STATUS_SUCCESS) {
@@ -458,18 +461,19 @@ public final class SurfaceRenderer implements DefaultLifecycleObserver {
             if (mSpeed == null) {
                 info.append("Fetching Speed.");
             } else {
-                if (mSpeed.getDisplaySpeed().getStatus() != CarValue.STATUS_SUCCESS) {
+                if (mSpeed.getDisplaySpeedMetersPerSecond().getStatus()
+                        != CarValue.STATUS_SUCCESS) {
                     info.append("Display Speed: Unavailable. ");
                 } else {
                     info.append("Display Speed: ");
-                    info.append(mSpeed.getDisplaySpeed().getValue());
+                    info.append(mSpeed.getDisplaySpeedMetersPerSecond().getValue());
                     info.append(" m/s. ");
                 }
-                if (mSpeed.getRawSpeed().getStatus() != CarValue.STATUS_SUCCESS) {
+                if (mSpeed.getRawSpeedMetersPerSecond().getStatus() != CarValue.STATUS_SUCCESS) {
                     info.append("Raw Speed: Unavailable. ");
                 } else {
                     info.append("Raw Speed: ");
-                    info.append(mSpeed.getRawSpeed().getValue());
+                    info.append(mSpeed.getRawSpeedMetersPerSecond().getValue());
                     info.append(" m/s. ");
                 }
                 if (mSpeed.getSpeedDisplayUnit().getStatus() != CarValue.STATUS_SUCCESS) {
@@ -488,11 +492,11 @@ public final class SurfaceRenderer implements DefaultLifecycleObserver {
             if (mMileage == null) {
                 info.append("Fetching mileage.");
             } else {
-                if (mMileage.getOdometer().getStatus() != CarValue.STATUS_SUCCESS) {
+                if (mMileage.getOdometerMeters().getStatus() != CarValue.STATUS_SUCCESS) {
                     info.append("Odometer: Unavailable. ");
                 } else {
                     info.append("Odometer: ");
-                    info.append(mMileage.getOdometer().getValue());
+                    info.append(mMileage.getOdometerMeters().getValue());
                     info.append(" m. ");
                 }
                 if (mMileage.getDistanceDisplayUnit().getStatus() != CarValue.STATUS_SUCCESS) {
