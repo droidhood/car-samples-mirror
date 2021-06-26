@@ -256,17 +256,15 @@ public final class SurfaceRenderer implements DefaultLifecycleObserver {
             mModel = null;
             try {
                 carInfo.fetchModel(mCarHardwareExecutor, mModelListener);
-                mHasModelPermission = true;
             } catch (SecurityException e) {
-                mHasModelPermission = false;
+                mHasModelPermission = true;
             }
 
             mEnergyProfile = null;
             try {
                 carInfo.fetchModel(mCarHardwareExecutor, mModelListener);
-                mHasEnergyProfilePermission = true;
             } catch (SecurityException e) {
-                mHasEnergyProfilePermission = false;
+                mHasEnergyProfilePermission = true;
             }
             carInfo.fetchEnergyProfile(mCarHardwareExecutor, mEnergyProfileListener);
 
@@ -274,34 +272,30 @@ public final class SurfaceRenderer implements DefaultLifecycleObserver {
             mTollCard = null;
             try {
                 carInfo.fetchModel(mCarHardwareExecutor, mModelListener);
-                mHasTollCardPermission = true;
             } catch (SecurityException e) {
-                mHasTollCardPermission = false;
+                mHasTollCardPermission = true;
             }
             carInfo.addTollListener(mCarHardwareExecutor, mTollListener);
 
             mEnergyLevel = null;
             try {
                 carInfo.addEnergyLevelListener(mCarHardwareExecutor, mEnergyLevelListener);
-                mHasEnergyLevelPermission = true;
             } catch (SecurityException e) {
-                mHasEnergyLevelPermission = false;
+                mHasEnergyLevelPermission = true;
             }
 
             mSpeed = null;
             try {
                 carInfo.addSpeedListener(mCarHardwareExecutor, mSpeedListener);
-                mHasSpeedPermission = true;
             } catch (SecurityException e) {
-                mHasSpeedPermission = false;
+                mHasSpeedPermission = true;
             }
 
             mMileage = null;
             try {
                 carInfo.addMileageListener(mCarHardwareExecutor, mMileageListener);
-                mHasMileagePermission = true;
             } catch (SecurityException e) {
-                mHasMileagePermission = false;
+                mHasMileagePermission = true;
             }
 
             // Request sensors
@@ -309,18 +303,16 @@ public final class SurfaceRenderer implements DefaultLifecycleObserver {
             try {
                 carSensors.addCompassListener(CarSensors.UPDATE_RATE_NORMAL, mCarHardwareExecutor,
                         mCompassListener);
-                mHasCompassPermission = true;
             } catch (SecurityException e) {
-                mHasCompassPermission = false;
+                mHasCompassPermission = true;
             }
 
             mGyroscope = null;
             try {
                 carSensors.addGyroscopeListener(CarSensors.UPDATE_RATE_NORMAL, mCarHardwareExecutor,
                         mGyroscopeListener);
-                mHasGyroscopePermission = true;
             } catch (SecurityException e) {
-                mHasGyroscopePermission = false;
+                mHasGyroscopePermission = true;
             }
 
             mAccelerometer = null;
@@ -328,85 +320,36 @@ public final class SurfaceRenderer implements DefaultLifecycleObserver {
                 carSensors.addAccelerometerListener(CarSensors.UPDATE_RATE_NORMAL,
                         mCarHardwareExecutor,
                         mAccelerometerListener);
-                mHasAccelerometerPermission = true;
             } catch (SecurityException e) {
-                mHasAccelerometerPermission = false;
+                mHasAccelerometerPermission = true;
             }
 
             mCarHardwareLocation = null;
             try {
                 carSensors.addCarHardwareLocationListener(CarSensors.UPDATE_RATE_NORMAL,
                         mCarHardwareExecutor, mCarLocationListener);
-                mHasCarHardwareLocationPermission = true;
             } catch (SecurityException e) {
-                mHasCarHardwareLocationPermission = false;
+                mHasCarHardwareLocationPermission = true;
             }
         } else {
-            try {
-                // Unsubscribe carinfo
-                carInfo.removeTollListener(mTollListener);
-                mHasTollCardPermission = true;
-            } catch (SecurityException e) {
-                mHasTollCardPermission = false;
-            }
-
+            // Unsubscribe carinfo
+            carInfo.removeTollListener(mTollListener);
             mTollCard = null;
-            try {
-                carInfo.removeEnergyLevelListener(mEnergyLevelListener);
-                mHasEnergyLevelPermission = true;
-            } catch (SecurityException e) {
-                mHasEnergyLevelPermission = false;
-            }
-
+            carInfo.removeEnergyLevelListener(mEnergyLevelListener);
             mEnergyLevel = null;
-            try {
-                carInfo.removeSpeedListener(mSpeedListener);
-                mHasSpeedPermission = true;
-            } catch (SecurityException e) {
-                mHasSpeedPermission = false;
-            }
-
+            carInfo.removeSpeedListener(mSpeedListener);
             mSpeed = null;
-            try {
-                carInfo.removeMileageListener(mMileageListener);
-                mHasMileagePermission = true;
-            } catch (SecurityException e) {
-                mHasMileagePermission = false;
-            }
-
+            carInfo.removeMileageListener(mMileageListener);
             mMileage = null;
-            try {
-                // Unsubscribe sensors
-                carSensors.removeCompassListener(mCompassListener);
-                mHasCompassPermission = true;
-            } catch (SecurityException e) {
-                mHasCompassPermission = false;
-            }
 
+            // Unsubscribe sensors
+            carSensors.removeCompassListener(mCompassListener);
             mCompass = null;
-            try {
-                carSensors.removeGyroscopeListener(mGyroscopeListener);
-                mHasGyroscopePermission = true;
-            } catch (SecurityException e) {
-                mHasGyroscopePermission = false;
-            }
-
+            carSensors.removeGyroscopeListener(mGyroscopeListener);
             mGyroscope = null;
-            try {
-                carSensors.removeAccelerometerListener(mAccelerometerListener);
-                mHasAccelerometerPermission = true;
-            } catch (SecurityException e) {
-                mHasAccelerometerPermission = false;
-            }
-
+            carSensors.removeAccelerometerListener(mAccelerometerListener);
             mAccelerometer = null;
-            try {
-                carSensors.removeCarHardwareLocationListener(mCarLocationListener);
-                mHasCarHardwareLocationPermission = true;
-            } catch (SecurityException e) {
-                mHasCarHardwareLocationPermission = false;
-            }
-
+            carSensors.removeCarHardwareLocationListener(mCarLocationListener);
             mCarHardwareLocation = null;
         }
         mShowCarHardwareSurfaceInfo = isEnabled;
@@ -452,7 +395,7 @@ public final class SurfaceRenderer implements DefaultLifecycleObserver {
 
             // Prepare text for Make, Model, Year
             StringBuilder info = new StringBuilder();
-            if (!mHasModelPermission) {
+            if (mHasModelPermission) {
                 info.append("No Model Permission.");
             } else if (mModel == null) {
                 info.append("Fetching model info.");
@@ -480,7 +423,7 @@ public final class SurfaceRenderer implements DefaultLifecycleObserver {
 
             // Prepare text for Energy Profile
             info = new StringBuilder();
-            if (!mHasEnergyProfilePermission) {
+            if (mHasEnergyProfilePermission) {
                 info.append("No EnergyProfile Permission.");
             } else if (mEnergyProfile == null) {
                 info.append("Fetching EnergyProfile.");
@@ -511,7 +454,7 @@ public final class SurfaceRenderer implements DefaultLifecycleObserver {
 
             // Prepare text for Toll card status
             info = new StringBuilder();
-            if (!mHasTollCardPermission) {
+            if (mHasTollCardPermission) {
                 info.append("No TollCard Permission.");
             } else if (mTollCard == null) {
                 info.append("Fetching Toll information.");
@@ -528,7 +471,7 @@ public final class SurfaceRenderer implements DefaultLifecycleObserver {
 
             // Prepare text for Energy Level
             info = new StringBuilder();
-            if (!mHasEnergyLevelPermission) {
+            if (mHasEnergyLevelPermission) {
                 info.append("No EnergyLevel Permission.");
             } else if (mEnergyLevel == null) {
                 info.append("Fetching Energy Level.");
@@ -567,7 +510,7 @@ public final class SurfaceRenderer implements DefaultLifecycleObserver {
 
             // Prepare text for Speed
             info = new StringBuilder();
-            if (!mHasSpeedPermission) {
+            if (mHasSpeedPermission) {
                 info.append("No Speed Permission.");
             } else if (mSpeed == null) {
                 info.append("Fetching Speed.");
@@ -600,7 +543,7 @@ public final class SurfaceRenderer implements DefaultLifecycleObserver {
 
             // Prepare text for Odometer
             info = new StringBuilder();
-            if (!mHasMileagePermission) {
+            if (mHasMileagePermission) {
                 info.append("No Mileage Permission.");
             } else if (mMileage == null) {
                 info.append("Fetching mileage.");
@@ -625,7 +568,7 @@ public final class SurfaceRenderer implements DefaultLifecycleObserver {
 
             // Prepare text for Accelerometer
             info = new StringBuilder();
-            if (!mHasAccelerometerPermission) {
+            if (mHasAccelerometerPermission) {
                 info.append("No Accelerometer Permission.");
             } else if (mAccelerometer == null) {
                 info.append("Fetching accelerometer");
@@ -642,7 +585,7 @@ public final class SurfaceRenderer implements DefaultLifecycleObserver {
 
             // Prepare text for Gyroscope
             info = new StringBuilder();
-            if (!mHasGyroscopePermission) {
+            if (mHasGyroscopePermission) {
                 info.append("No Gyroscope Permission.");
             } else if (mGyroscope == null) {
                 info.append("Fetching gyroscope");
@@ -659,7 +602,7 @@ public final class SurfaceRenderer implements DefaultLifecycleObserver {
 
             // Prepare text for Compass
             info = new StringBuilder();
-            if (!mHasCompassPermission) {
+            if (mHasCompassPermission) {
                 info.append("No Compass Permission.");
             } else if (mCompass == null) {
                 info.append("Fetching compass");
@@ -676,7 +619,7 @@ public final class SurfaceRenderer implements DefaultLifecycleObserver {
 
             // Prepare text for Location
             info = new StringBuilder();
-            if (!mHasCarHardwareLocationPermission) {
+            if (mHasCarHardwareLocationPermission) {
                 info.append("No CarHardwareLocation Permission.");
             } else if (mCarHardwareLocation == null) {
                 info.append("Fetching location");
