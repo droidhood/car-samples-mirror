@@ -106,7 +106,7 @@ public final class SurfaceRenderer implements DefaultLifecycleObserver {
                 @Override
                 public void onSurfaceAvailable(@NonNull SurfaceContainer surfaceContainer) {
                     synchronized (SurfaceRenderer.this) {
-                        Log.i(TAG, "Surface available " + surfaceContainer);
+                        Log.i(TAG, String.format("Surface available %s", surfaceContainer));
                         mSurface = surfaceContainer.getSurface();
                         renderFrame();
                     }
@@ -115,8 +115,11 @@ public final class SurfaceRenderer implements DefaultLifecycleObserver {
                 @Override
                 public void onVisibleAreaChanged(@NonNull Rect visibleArea) {
                     synchronized (SurfaceRenderer.this) {
-                        Log.i(TAG, "Visible area changed " + mSurface + ". stableArea: "
-                                + mStableArea + " visibleArea:" + visibleArea);
+                        Log.i(
+                                TAG,
+                                String.format(
+                                        "Visible area changed %s. stableArea:%s visibleArea:%s",
+                                        mSurface, mStableArea, visibleArea));
                         mVisibleArea = visibleArea;
                         renderFrame();
                     }
@@ -125,8 +128,11 @@ public final class SurfaceRenderer implements DefaultLifecycleObserver {
                 @Override
                 public void onStableAreaChanged(@NonNull Rect stableArea) {
                     synchronized (SurfaceRenderer.this) {
-                        Log.i(TAG, "Stable area changed " + mSurface + ". stableArea: "
-                                + mStableArea + " visibleArea:" + mVisibleArea);
+                        Log.i(
+                                TAG,
+                                String.format(
+                                        "Stable area changed %s. stable:%s inset:%s",
+                                        mSurface, stableArea, mVisibleArea));
                         mStableArea = stableArea;
                         renderFrame();
                     }
