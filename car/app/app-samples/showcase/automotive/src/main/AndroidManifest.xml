@@ -88,7 +88,6 @@
 
     <activity
         android:name="androidx.car.app.activity.CarAppActivity"
-        android:theme="@android:style/Theme.DeviceDefault.NoActionBar"
         android:exported="true"
         android:launchMode="singleTask"
         android:label="Showcase">
@@ -102,7 +101,6 @@
 
     <activity
         android:name="androidx.car.app.sample.showcase.automotive.DebugActivity"
-        android:theme="@android:style/Theme.DeviceDefault.NoActionBar"
         android:exported="true"
         android:launchMode="singleTask"
         android:label="Showcase - Debug">
