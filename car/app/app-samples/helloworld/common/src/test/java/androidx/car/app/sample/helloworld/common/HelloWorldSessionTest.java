@@ -50,7 +50,7 @@ public class HelloWorldSessionTest {
     public void onCreateScreen_returnsExpectedScreen() {
         HelloWorldService service = Robolectric.setupService(HelloWorldService.class);
         Session session = service.onCreateSession();
-        SessionController controller = new SessionController(session, mTestCarContext);
+        SessionController controller = SessionController.of(session, mTestCarContext);
 
         controller.create(new Intent().setComponent(
                 new ComponentName(mTestCarContext, HelloWorldService.class)));
