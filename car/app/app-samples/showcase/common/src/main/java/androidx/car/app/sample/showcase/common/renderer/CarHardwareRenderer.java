@@ -34,8 +34,10 @@ import androidx.car.app.hardware.info.CarInfo;
 import androidx.car.app.hardware.info.CarSensors;
 import androidx.car.app.hardware.info.Compass;
 import androidx.car.app.hardware.info.EnergyLevel;
+import androidx.car.app.hardware.info.EnergyProfile;
 import androidx.car.app.hardware.info.Gyroscope;
 import androidx.car.app.hardware.info.Mileage;
+import androidx.car.app.hardware.info.Model;
 import androidx.car.app.hardware.info.Speed;
 import androidx.car.app.hardware.info.TollCard;
 import androidx.core.content.ContextCompat;
@@ -47,13 +49,16 @@ import java.util.concurrent.Executor;
 public final class CarHardwareRenderer implements Renderer {
     private static final String TAG = "showcase";
 
-    private static final int ROW_SPACING = 10;
-    private static final int LEFT_MARGIN = 15;
+    private static final int VERTICAL_TEXT_MARGIN_FROM_TOP = 20;
 
     private final Executor mCarHardwareExecutor;
     private final Paint mCarInfoPaint = new Paint();
     private final CarContext mCarContext;
 
+    @Nullable
+    Model mModel;
+    @Nullable
+    EnergyProfile mEnergyProfile;
     @Nullable
     TollCard mTollCard;
     @Nullable
@@ -72,6 +77,8 @@ public final class CarHardwareRenderer implements Renderer {
     CarHardwareLocation mCarHardwareLocation;
     @Nullable
     private Runnable mRequestRenderRunnable;
+    private boolean mHasModelPermission;
+    private boolean mHasEnergyProfilePermission;
     private boolean mHasTollCardPermission;
     private boolean mHasEnergyLevelPermission;
     private boolean mHasSpeedPermission;
@@ -81,6 +88,20 @@ public final class CarHardwareRenderer implements Renderer {
     private boolean mHasCompassPermission;
     private boolean mHasCarHardwareLocationPermission;
 
+    private OnCarDataAvailableListener<Model> mModelListener = data -> {
+        synchronized (this) {
+            Log.i(TAG, "Received model information: " + data);
+            mModel = data;
+            requestRenderFrame();
+        }
+    };
+    private OnCarDataAvailableListener<EnergyProfile> mEnergyProfileListener = data -> {
+        synchronized (this) {
+            Log.i(TAG, "Received energy profile information: " + data);
+            mEnergyProfile = data;
+            requestRenderFrame();
+        }
+    };
     private OnCarDataAvailableListener<TollCard> mTollListener = data -> {
         synchronized (this) {
             Log.i(TAG, "Received toll information:" + data);
@@ -143,6 +164,7 @@ public final class CarHardwareRenderer implements Renderer {
         mCarInfoPaint.setColor(Color.BLACK);
         mCarInfoPaint.setAntiAlias(true);
         mCarInfoPaint.setStyle(Paint.Style.STROKE);
+        mCarInfoPaint.setTextAlign(Paint.Align.CENTER);
         mCarHardwareExecutor = ContextCompat.getMainExecutor(mCarContext);
     }
 
@@ -154,14 +176,33 @@ public final class CarHardwareRenderer implements Renderer {
         CarInfo carInfo = carHardwareManager.getCarInfo();
         CarSensors carSensors = carHardwareManager.getCarSensors();
 
+        // Request any single shot values.
+        mModel = null;
+        try {
+            carInfo.fetchModel(mCarHardwareExecutor, mModelListener);
+            mHasModelPermission = true;
+        } catch (SecurityException e) {
+            mHasModelPermission = false;
+        }
+
+        mEnergyProfile = null;
+        try {
+            carInfo.fetchModel(mCarHardwareExecutor, mModelListener);
+            mHasEnergyProfilePermission = true;
+        } catch (SecurityException e) {
+            mHasEnergyProfilePermission = false;
+        }
+        carInfo.fetchEnergyProfile(mCarHardwareExecutor, mEnergyProfileListener);
+
         // Request car info subscription items.
         mTollCard = null;
         try {
-            carInfo.addTollListener(mCarHardwareExecutor, mTollListener);
+            carInfo.fetchModel(mCarHardwareExecutor, mModelListener);
             mHasTollCardPermission = true;
         } catch (SecurityException e) {
             mHasTollCardPermission = false;
         }
+        carInfo.addTollListener(mCarHardwareExecutor, mTollListener);
 
         mEnergyLevel = null;
         try {
@@ -305,36 +346,90 @@ public final class CarHardwareRenderer implements Renderer {
     @Override
     public void renderFrame(@NonNull Canvas canvas, @Nullable Rect visibleArea,
             @Nullable Rect stableArea) {
-        if (stableArea != null) {
-            if (stableArea.isEmpty()) {
+        if (visibleArea != null) {
+            if (visibleArea.isEmpty()) {
                 // No inset set. The entire area is considered safe to draw.
-                stableArea.set(0, 0, canvas.getWidth() - 1, canvas.getHeight() - 1);
+                visibleArea.set(0, 0, canvas.getWidth() - 1, canvas.getHeight() - 1);
             }
 
-            int height = stableArea.height() / 8;
-            int updatedSize = height - ROW_SPACING;
-            mCarInfoPaint.setTextSize(updatedSize);
-
-            canvas.drawRect(stableArea, mCarInfoPaint);
-
             Paint.FontMetrics fm = mCarInfoPaint.getFontMetrics();
-            float verticalPos = stableArea.top - fm.ascent;
+            float height = fm.descent - fm.ascent;
+            float verticalPos = visibleArea.top + VERTICAL_TEXT_MARGIN_FROM_TOP;
+
+            // Prepare text for Make, Model, Year
+            StringBuilder info = new StringBuilder();
+            if (!mHasModelPermission) {
+                info.append("No Model Permission.");
+            } else if (mModel == null) {
+                info.append("Fetching model info.");
+            } else {
+                if (mModel.getManufacturer().getStatus() != CarValue.STATUS_SUCCESS) {
+                    info.append("Manufacturer unavailable, ");
+                } else {
+                    info.append(mModel.getManufacturer().getValue());
+                    info.append(",");
+                }
+                if (mModel.getName().getStatus() != CarValue.STATUS_SUCCESS) {
+                    info.append("Model unavailable, ");
+                } else {
+                    info.append(mModel.getName());
+                    info.append(",");
+                }
+                if (mModel.getYear().getStatus() != CarValue.STATUS_SUCCESS) {
+                    info.append("Year unavailable.");
+                } else {
+                    info.append(mModel.getYear());
+                }
+            }
+            canvas.drawText(info.toString(), visibleArea.centerX(), verticalPos, mCarInfoPaint);
+            verticalPos += height;
+
+            // Prepare text for Energy Profile
+            info = new StringBuilder();
+            if (!mHasEnergyProfilePermission) {
+                info.append("No EnergyProfile Permission.");
+            } else if (mEnergyProfile == null) {
+                info.append("Fetching EnergyProfile.");
+            } else {
+                if (mEnergyProfile.getFuelTypes().getStatus() != CarValue.STATUS_SUCCESS) {
+                    info.append("Fuel Types: Unavailable. ");
+                } else {
+                    info.append("Fuel Types: [");
+                    for (int fuelType : mEnergyProfile.getFuelTypes().getValue()) {
+                        info.append(fuelType);
+                        info.append(" ");
+                    }
+                    info.append("].");
+                }
+                if (mEnergyProfile.getEvConnectorTypes().getStatus() != CarValue.STATUS_SUCCESS) {
+                    info.append(" EV Connector Types: Unavailable. ");
+                } else {
+                    info.append("EV Connector Types:[");
+                    for (int connectorType : mEnergyProfile.getEvConnectorTypes().getValue()) {
+                        info.append(connectorType);
+                        info.append(" ");
+                    }
+                    info.append("]");
+                }
+            }
+            canvas.drawText(info.toString(), visibleArea.centerX(), verticalPos, mCarInfoPaint);
+            verticalPos += height;
 
             // Prepare text for Toll card status
-            StringBuilder info = new StringBuilder();
+            info = new StringBuilder();
             if (!mHasTollCardPermission) {
                 info.append("No TollCard Permission.");
             } else if (mTollCard == null) {
                 info.append("Fetching Toll information.");
             } else {
                 if (mTollCard.getCardState().getStatus() != CarValue.STATUS_SUCCESS) {
-                    info.append("Toll card state: N/A. ");
+                    info.append("Toll card state: Unavailable. ");
                 } else {
                     info.append("Toll card state: ");
                     info.append(mTollCard.getCardState().getValue());
                 }
             }
-            canvas.drawText(info.toString(), LEFT_MARGIN, verticalPos, mCarInfoPaint);
+            canvas.drawText(info.toString(), visibleArea.centerX(), verticalPos, mCarInfoPaint);
             verticalPos += height;
 
             // Prepare text for Energy Level
@@ -345,35 +440,35 @@ public final class CarHardwareRenderer implements Renderer {
                 info.append("Fetching Energy Level.");
             } else {
                 if (mEnergyLevel.getEnergyIsLow().getStatus() != CarValue.STATUS_SUCCESS) {
-                    info.append("Low energy: N/A. ");
+                    info.append("Low energy: Unavailable. ");
                 } else {
                     info.append("Low energy: ");
                     info.append(mEnergyLevel.getEnergyIsLow().getValue());
                     info.append(" ");
                 }
                 if (mEnergyLevel.getRangeRemainingMeters().getStatus() != CarValue.STATUS_SUCCESS) {
-                    info.append("Range: N/A. ");
+                    info.append("Range: Unavailable. ");
                 } else {
                     info.append("Range: ");
                     info.append(mEnergyLevel.getRangeRemainingMeters().getValue());
                     info.append(" m. ");
                 }
                 if (mEnergyLevel.getFuelPercent().getStatus() != CarValue.STATUS_SUCCESS) {
-                    info.append("Fuel: N/A. ");
+                    info.append("Fuel Percent: Unavailable. ");
                 } else {
-                    info.append("Fuel: ");
+                    info.append("Fuel Percent: ");
                     info.append(mEnergyLevel.getFuelPercent().getValue());
                     info.append("% ");
                 }
                 if (mEnergyLevel.getBatteryPercent().getStatus() != CarValue.STATUS_SUCCESS) {
-                    info.append("Battery: N/A. ");
+                    info.append("Battery Percent: Unavailable. ");
                 } else {
-                    info.append("Battery: ");
+                    info.append("Battery Percent: ");
                     info.append(mEnergyLevel.getBatteryPercent().getValue());
                     info.append("% ");
                 }
             }
-            canvas.drawText(info.toString(), LEFT_MARGIN, verticalPos, mCarInfoPaint);
+            canvas.drawText(info.toString(), visibleArea.centerX(), verticalPos, mCarInfoPaint);
             verticalPos += height;
 
             // Prepare text for Speed
@@ -385,28 +480,28 @@ public final class CarHardwareRenderer implements Renderer {
             } else {
                 if (mSpeed.getDisplaySpeedMetersPerSecond().getStatus()
                         != CarValue.STATUS_SUCCESS) {
-                    info.append("Display Speed: N/A. ");
+                    info.append("Display Speed: Unavailable. ");
                 } else {
                     info.append("Display Speed: ");
                     info.append(mSpeed.getDisplaySpeedMetersPerSecond().getValue());
                     info.append(" m/s. ");
                 }
                 if (mSpeed.getRawSpeedMetersPerSecond().getStatus() != CarValue.STATUS_SUCCESS) {
-                    info.append("Raw Speed: N/A. ");
+                    info.append("Raw Speed: Unavailable. ");
                 } else {
                     info.append("Raw Speed: ");
                     info.append(mSpeed.getRawSpeedMetersPerSecond().getValue());
                     info.append(" m/s. ");
                 }
                 if (mSpeed.getSpeedDisplayUnit().getStatus() != CarValue.STATUS_SUCCESS) {
-                    info.append("Unit: N/A.");
+                    info.append("Speed Display Unit: Unavailable.");
                 } else {
-                    info.append("Unit: ");
+                    info.append("Speed Display Unit: ");
                     info.append(mSpeed.getSpeedDisplayUnit().getValue());
                     info.append(" ");
                 }
             }
-            canvas.drawText(info.toString(), LEFT_MARGIN, verticalPos, mCarInfoPaint);
+            canvas.drawText(info.toString(), visibleArea.centerX(), verticalPos, mCarInfoPaint);
             verticalPos += height;
 
             // Prepare text for Odometer
@@ -417,21 +512,21 @@ public final class CarHardwareRenderer implements Renderer {
                 info.append("Fetching mileage.");
             } else {
                 if (mMileage.getOdometerMeters().getStatus() != CarValue.STATUS_SUCCESS) {
-                    info.append("Odometer: N/A. ");
+                    info.append("Odometer: Unavailable. ");
                 } else {
                     info.append("Odometer: ");
                     info.append(mMileage.getOdometerMeters().getValue());
                     info.append(" m. ");
                 }
                 if (mMileage.getDistanceDisplayUnit().getStatus() != CarValue.STATUS_SUCCESS) {
-                    info.append("Unit: N/A.");
+                    info.append("Mileage Display Unit: Unavailable.");
                 } else {
-                    info.append("Unit: ");
+                    info.append("Mileage Display Unit: ");
                     info.append(mMileage.getDistanceDisplayUnit().getValue());
                     info.append(" ");
                 }
             }
-            canvas.drawText(info.toString(), LEFT_MARGIN, verticalPos, mCarInfoPaint);
+            canvas.drawText(info.toString(), visibleArea.centerX(), verticalPos, mCarInfoPaint);
             verticalPos += height;
 
             // Prepare text for Accelerometer
@@ -442,13 +537,13 @@ public final class CarHardwareRenderer implements Renderer {
                 info.append("Fetching accelerometer");
             } else {
                 if (mAccelerometer.getForces().getStatus() != CarValue.STATUS_SUCCESS) {
-                    info.append("Accelerometer N/A.");
+                    info.append("Accelerometer unavailable.");
                 } else {
                     info.append("Accelerometer: ");
                     appendFloatList(info, mAccelerometer.getForces().getValue());
                 }
             }
-            canvas.drawText(info.toString(), LEFT_MARGIN, verticalPos, mCarInfoPaint);
+            canvas.drawText(info.toString(), visibleArea.centerX(), verticalPos, mCarInfoPaint);
             verticalPos += height;
 
             // Prepare text for Gyroscope
@@ -459,13 +554,13 @@ public final class CarHardwareRenderer implements Renderer {
                 info.append("Fetching gyroscope");
             } else {
                 if (mGyroscope.getRotations().getStatus() != CarValue.STATUS_SUCCESS) {
-                    info.append("Gyroscope N/A.");
+                    info.append("Gyroscope unavailable.");
                 } else {
                     info.append("Gyroscope: ");
                     appendFloatList(info, mGyroscope.getRotations().getValue());
                 }
             }
-            canvas.drawText(info.toString(), LEFT_MARGIN, verticalPos, mCarInfoPaint);
+            canvas.drawText(info.toString(), visibleArea.centerX(), verticalPos, mCarInfoPaint);
             verticalPos += height;
 
             // Prepare text for Compass
@@ -476,13 +571,13 @@ public final class CarHardwareRenderer implements Renderer {
                 info.append("Fetching compass");
             } else {
                 if (mCompass.getOrientations().getStatus() != CarValue.STATUS_SUCCESS) {
-                    info.append("Compass N/A.");
+                    info.append("Compass unavailable.");
                 } else {
                     info.append("Compass: ");
                     appendFloatList(info, mCompass.getOrientations().getValue());
                 }
             }
-            canvas.drawText(info.toString(), LEFT_MARGIN, verticalPos, mCarInfoPaint);
+            canvas.drawText(info.toString(), visibleArea.centerX(), verticalPos, mCarInfoPaint);
             verticalPos += height;
 
             // Prepare text for Location
@@ -493,13 +588,13 @@ public final class CarHardwareRenderer implements Renderer {
                 info.append("Fetching location");
             } else {
                 if (mCarHardwareLocation.getLocation().getStatus() != CarValue.STATUS_SUCCESS) {
-                    info.append("Car Hardware Location N/A");
+                    info.append("Car Hardware Location unavailable");
                 } else {
                     info.append("Car Hardware location: ");
                     info.append(mCarHardwareLocation.getLocation().getValue().toString());
                 }
             }
-            canvas.drawText(info.toString(), LEFT_MARGIN, verticalPos, mCarInfoPaint);
+            canvas.drawText(info.toString(), visibleArea.centerX(), verticalPos, mCarInfoPaint);
         }
     }
 
