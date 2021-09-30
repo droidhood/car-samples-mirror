@@ -26,13 +26,9 @@ import android.graphics.Paint.Align;
 import android.graphics.Paint.Style;
 import android.graphics.Rect;
 import android.graphics.RectF;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
 import android.util.Log;
 import android.view.Surface;
 
-import androidx.annotation.MainThread;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.car.app.AppManager;
@@ -56,9 +52,6 @@ public final class SurfaceRenderer implements DefaultLifecycleObserver {
 
     /** The scale factor to apply when initializing the background map. */
     private static final float MAP_ENLARGE_FACTOR = 5f;
-
-    /** Looper msg to trigger a frame rendering */
-    private static final int MSG_RENDER_FRAME = 1;
 
     @Nullable
     Surface mSurface;
@@ -114,9 +107,6 @@ public final class SurfaceRenderer implements DefaultLifecycleObserver {
                 public void onSurfaceAvailable(@NonNull SurfaceContainer surfaceContainer) {
                     synchronized (SurfaceRenderer.this) {
                         Log.i(TAG, "Surface available " + surfaceContainer);
-                        if (mSurface != null) {
-                            mSurface.release();
-                        }
                         mSurface = surfaceContainer.getSurface();
                         renderFrame();
                     }
@@ -146,10 +136,7 @@ public final class SurfaceRenderer implements DefaultLifecycleObserver {
                 public void onSurfaceDestroyed(@NonNull SurfaceContainer surfaceContainer) {
                     synchronized (SurfaceRenderer.this) {
                         Log.i(TAG, "Surface destroyed");
-                        if (mSurface != null) {
-                            mSurface.release();
-                            mSurface = null;
-                        }
+                        mSurface = null;
                     }
                 }
 
@@ -175,16 +162,6 @@ public final class SurfaceRenderer implements DefaultLifecycleObserver {
                     handleScale(focusX, focusY, scaleFactor);
                 }
             };
-
-    private Handler mHandler = new Handler(Looper.getMainLooper()) {
-        @Override
-        public void handleMessage(Message msg) {
-            switch (msg.what) {
-                case MSG_RENDER_FRAME:
-                    doRenderFrame();
-            }
-        }
-    };
 
     public SurfaceRenderer(@NonNull CarContext carContext, @NonNull Lifecycle lifecycle) {
         mCarContext = carContext;
@@ -273,11 +250,6 @@ public final class SurfaceRenderer implements DefaultLifecycleObserver {
     }
 
     void renderFrame() {
-        mHandler.sendEmptyMessage(MSG_RENDER_FRAME);
-    }
-
-    @MainThread
-    void doRenderFrame() {
         if (mSurface == null || !mSurface.isValid()) {
             // Surface is not available, or has been destroyed, skip this frame.
             return;
