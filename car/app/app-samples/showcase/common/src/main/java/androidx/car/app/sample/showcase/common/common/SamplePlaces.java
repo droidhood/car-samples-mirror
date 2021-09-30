@@ -143,6 +143,7 @@ public class SamplePlaces {
                         "Google Kirkland",
                         "747 6th St South, Kirkland, WA 98033",
                         "Tinted resource vector",
+                        "KIR",
                         "+14257395600",
                         location1,
                         new PlaceMarker.Builder()
@@ -164,6 +165,7 @@ public class SamplePlaces {
                         "Google Bellevue",
                         "1120 112th Ave NE, Bellevue, WA 98004",
                         "Image resource bitmap",
+                        "BVE",
                         "+14252301301",
                         location2,
                         new PlaceMarker.Builder()
@@ -183,6 +185,7 @@ public class SamplePlaces {
                         "Google South Lake Union",
                         "1021 Valley St, Seattle, WA 98109",
                         "Colored text marker",
+                        "SLU",
                         "+12065311800",
                         location3,
                         new PlaceMarker.Builder().setLabel("SLU").setColor(CarColor.RED).build()));
@@ -195,6 +198,7 @@ public class SamplePlaces {
                         "Google Seattle",
                         "601 N 34th St, Seattle, WA 98103",
                         "Image bitmap",
+                        "SEA",
                         "+12068761800",
                         location4,
                         new PlaceMarker.Builder()
@@ -216,9 +220,10 @@ public class SamplePlaces {
                         "Google Bothell",
                         "11831 North Creek Pkwy, Bothell, WA 98011",
                         "Text label",
+                        "BOT",
                         "n/a",
                         location5,
-                        new PlaceMarker.Builder().build()));
+                        new PlaceMarker.Builder().setLabel("BOT").build()));
 
         return places;
     }
