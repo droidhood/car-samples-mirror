@@ -48,13 +48,10 @@ import androidx.lifecycle.LifecycleOwner;
  */
 public final class PaneTemplateDemoScreen extends Screen implements DefaultLifecycleObserver {
     @Nullable
-    private IconCompat mPaneImage;
+    private IconCompat mImage;
 
     @Nullable
-    private IconCompat mRowLargeIcon;
-
-    @Nullable
-    private IconCompat mCommuteIcon;
+    private IconCompat mIcon;
 
     public PaneTemplateDemoScreen(@NonNull CarContext carContext) {
         super(carContext);
@@ -64,26 +61,15 @@ public final class PaneTemplateDemoScreen extends Screen implements DefaultLifec
     @Override
     public void onCreate(@NonNull LifecycleOwner owner) {
         Resources resources = getCarContext().getResources();
-        Bitmap bitmap = BitmapFactory.decodeResource(resources, R.drawable.patio);
-        mPaneImage = IconCompat.createWithBitmap(bitmap);
-        mRowLargeIcon = IconCompat.createWithResource(getCarContext(),
-                R.drawable.ic_fastfood_white_48dp);
-        mCommuteIcon = IconCompat.createWithResource(getCarContext(), R.drawable.ic_commute_24px);
+        Bitmap bitmap = BitmapFactory.decodeResource(resources, R.drawable.test_image_square);
+        mImage = IconCompat.createWithBitmap(bitmap);
+        mIcon = IconCompat.createWithResource(getCarContext(), R.drawable.ic_commute_24px);
     }
 
     @NonNull
     @Override
     public Template onGetTemplate() {
         Pane.Builder paneBuilder = new Pane.Builder();
-
-        // Add a row with a large image.
-        paneBuilder.addRow(
-                new Row.Builder()
-                        .setTitle("Row with a large image")
-                        .addText("Text text text")
-                        .addText("Text text text")
-                        .setImage(new CarIcon.Builder(mRowLargeIcon).build())
-                        .build());
 
         // Add a non-clickable rows.
         paneBuilder.addRow(
@@ -93,8 +79,13 @@ public final class PaneTemplateDemoScreen extends Screen implements DefaultLifec
                         .addText("Row text 2")
                         .build());
 
-        // Also set a large image outside of the rows.
-        paneBuilder.setImage(new CarIcon.Builder(mPaneImage).build());
+        // Add a row with a large image.
+        paneBuilder.addRow(
+                new Row.Builder()
+                        .setTitle("Row with a large image")
+                        .addText("Text text text")
+                        .setImage(new CarIcon.Builder(mImage).build(), Row.IMAGE_TYPE_LARGE)
+                        .build());
 
         Action.Builder primaryActionBuilder = new Action.Builder()
                 .setTitle("Search")
@@ -130,7 +121,7 @@ public final class PaneTemplateDemoScreen extends Screen implements DefaultLifec
                                         new Action.Builder()
                                                 .setTitle("Commute")
                                                 .setIcon(
-                                                        new CarIcon.Builder(mCommuteIcon)
+                                                        new CarIcon.Builder(mIcon)
                                                                 .setTint(CarColor.BLUE)
                                                                 .build())
                                                 .setOnClickListener(
