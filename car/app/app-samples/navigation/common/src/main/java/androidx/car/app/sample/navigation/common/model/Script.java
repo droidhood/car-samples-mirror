@@ -20,7 +20,6 @@ import android.os.Handler;
 import android.os.Looper;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
 import java.util.List;
 
@@ -35,7 +34,7 @@ public class Script {
     /** An interface for a block of code that processes an instruction. */
     public interface Processor {
         /** A block of code that processes an instruction. */
-        void process(@NonNull Instruction instruction, @Nullable Instruction nextInstruction);
+        void process(@NonNull Instruction instruction);
     }
 
     /** Executes the given list of instructions. */
@@ -65,12 +64,7 @@ public class Script {
             return;
         }
         Instruction instruction = mInstructions.get(mCurrentInstruction);
-        Instruction nextInstruction = null;
-        int nextPosition = mCurrentInstruction + 1;
-        if (nextPosition < mInstructions.size()) {
-            nextInstruction = mInstructions.get(nextPosition);
-        }
-        mProcessor.process(instruction, nextInstruction);
+        mProcessor.process(instruction);
         mCurrentInstruction++;
         mHandler.postDelayed(this::nextInstruction, instruction.getDurationMillis());
     }
