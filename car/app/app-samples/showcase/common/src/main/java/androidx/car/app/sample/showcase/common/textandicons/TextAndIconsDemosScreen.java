@@ -39,6 +39,15 @@ public final class TextAndIconsDemosScreen extends Screen {
 
         listBuilder.addItem(
                 new Row.Builder()
+                        .setTitle("Colored Text Demo")
+                        .setOnClickListener(
+                                () ->
+                                        getScreenManager()
+                                                .push(new ColoredTextDemoScreen(getCarContext())))
+                        .build());
+
+        listBuilder.addItem(
+                new Row.Builder()
                         .setTitle("Icons Demo")
                         .setOnClickListener(
                                 () -> getScreenManager().push(new IconsDemoScreen(getCarContext())))
