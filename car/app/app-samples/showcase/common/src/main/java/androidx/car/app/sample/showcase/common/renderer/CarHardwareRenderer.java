@@ -208,17 +208,13 @@ public final class CarHardwareRenderer implements Renderer {
             mHasMileagePermission = false;
         }
 
-        if (mCarContext.getPackageManager().hasSystemFeature(
-                FEATURE_AUTOMOTIVE)) {
-            mEvStatus = null;
-            try {
-                carInfo.addEvStatusListener(mCarHardwareExecutor, mEvStatusListener);
-                mHasEvStatusPermission = true;
-            } catch (SecurityException e) {
-                mHasEvStatusPermission = false;
-            }
+        mEvStatus = null;
+        try {
+            carInfo.addEvStatusListener(mCarHardwareExecutor, mEvStatusListener);
+            mHasEvStatusPermission = true;
+        } catch (SecurityException e) {
+            mHasEvStatusPermission = false;
         }
-
 
         // Request sensors
         mCompass = null;
@@ -311,15 +307,14 @@ public final class CarHardwareRenderer implements Renderer {
         }
         mCompass = null;
 
-        if (mCarContext.getPackageManager().hasSystemFeature(FEATURE_AUTOMOTIVE)) {
-            try {
-                carInfo.removeEvStatusListener(mEvStatusListener);
-                mHasEvStatusPermission = true;
-            } catch (SecurityException e) {
-                mHasEvStatusPermission = false;
-            }
-            mEvStatus = null;
+        try {
+            carInfo.removeEvStatusListener(mEvStatusListener);
+            mHasEvStatusPermission = true;
+        } catch (SecurityException e) {
+            mHasEvStatusPermission = false;
         }
+        mEvStatus = null;
+
 
         try {
             carSensors.removeGyroscopeListener(mGyroscopeListener);
@@ -432,9 +427,7 @@ public final class CarHardwareRenderer implements Renderer {
                 verticalPos += height;
             }
 
-            if (mCarContext.getCarAppApiLevel() >= CarAppApiLevels.LEVEL_4
-                        && mCarContext.getPackageManager().hasSystemFeature(
-                    FEATURE_AUTOMOTIVE)) {
+            if (mCarContext.getCarAppApiLevel() >= CarAppApiLevels.LEVEL_4) {
                 // Prepare text for EV status
                 info = new StringBuilder();
                 if (!mHasEvStatusPermission) {
