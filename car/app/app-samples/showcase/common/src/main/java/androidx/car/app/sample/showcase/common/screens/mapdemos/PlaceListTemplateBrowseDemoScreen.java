@@ -1,5 +1,5 @@
 /*
- * Copyright 2023 The Android Open Source Project
+ * Copyright (C) 2021 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,16 +14,19 @@
  * limitations under the License.
  */
 
-package androidx.car.app.sample.showcase.common.screens.mapdemos;
+package androidx.car.app.sample.showcase.common.templates;
 
 import static android.Manifest.permission.ACCESS_COARSE_LOCATION;
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 
 import android.content.pm.PackageManager;
 import android.location.Location;
+import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.HandlerThread;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.car.app.CarContext;
 import androidx.car.app.CarToast;
 import androidx.car.app.Screen;
@@ -34,13 +37,8 @@ import androidx.car.app.model.Place;
 import androidx.car.app.model.PlaceListMapTemplate;
 import androidx.car.app.model.Row;
 import androidx.car.app.model.Template;
-import androidx.car.app.sample.showcase.common.R;
-import androidx.core.location.LocationListenerCompat;
 import androidx.lifecycle.DefaultLifecycleObserver;
 import androidx.lifecycle.LifecycleOwner;
-
-import org.jspecify.annotations.NonNull;
-import org.jspecify.annotations.Nullable;
 
 /**
  * Creates a screen using the {@link PlaceListMapTemplate}.
@@ -52,11 +50,12 @@ public final class PlaceListTemplateBrowseDemoScreen extends Screen {
     private static final int LOCATION_UPDATE_MIN_INTERVAL_MILLIS = 1000;
     private static final int LOCATION_UPDATE_MIN_DISTANCE_METER = 1;
 
-    final LocationListenerCompat mLocationListener;
-    final HandlerThread mLocationUpdateHandlerThread = new HandlerThread("LocationThread");
+    final LocationListener mLocationListener;
+    final HandlerThread mLocationUpdateHandlerThread;
     boolean mHasPermissionLocation;
 
-    private @Nullable Location mCurrentLocation;
+    @Nullable
+    private Location mCurrentLocation;
 
     public PlaceListTemplateBrowseDemoScreen(@NonNull CarContext carContext) {
         super(carContext);
@@ -66,6 +65,7 @@ public final class PlaceListTemplateBrowseDemoScreen extends Screen {
                 || carContext.checkSelfPermission(ACCESS_COARSE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED;
 
+        mLocationUpdateHandlerThread = new HandlerThread("LocationThread");
         mLocationListener = location -> {
             mCurrentLocation = location;
             invalidate();
@@ -88,7 +88,7 @@ public final class PlaceListTemplateBrowseDemoScreen extends Screen {
                             mLocationUpdateHandlerThread.getLooper());
                 } else {
                     CarToast.makeText(carContext,
-                            getCarContext().getString(R.string.grant_location_permission_toast_msg),
+                            "Grant location Permission to see current location",
                             CarToast.LENGTH_LONG).show();
                 }
             }
@@ -102,19 +102,20 @@ public final class PlaceListTemplateBrowseDemoScreen extends Screen {
         });
     }
 
+    @NonNull
     @Override
-    public @NonNull Template onGetTemplate() {
+    public Template onGetTemplate() {
         PlaceListMapTemplate.Builder builder = new PlaceListMapTemplate.Builder()
                 .setItemList(new ItemList.Builder()
                         .addItem(new Row.Builder()
-                                .setTitle(getCarContext().getString(R.string.browse_places_title))
+                                .setTitle("Browse Places")
                                 .setBrowsable(true)
                                 .setOnClickListener(
                                         () -> getScreenManager().push(
                                                 new PlaceListTemplateDemoScreen(
                                                         getCarContext()))).build())
                         .build())
-                .setTitle(getCarContext().getString(R.string.place_list_template_demo_title))
+                .setTitle("Place List Template Demo")
                 .setHeaderAction(Action.BACK)
                 .setCurrentLocationEnabled(mHasPermissionLocation);
 
