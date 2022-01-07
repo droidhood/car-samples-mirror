@@ -17,6 +17,7 @@
 package androidx.car.app.sample.navigation.common.car;
 
 import static android.Manifest.permission.RECORD_AUDIO;
+import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 import static android.media.AudioAttributes.CONTENT_TYPE_MUSIC;
 import static android.media.AudioAttributes.USAGE_ASSISTANCE_NAVIGATION_GUIDANCE;
 import static android.media.AudioFormat.CHANNEL_OUT_MONO;
@@ -27,6 +28,7 @@ import static android.os.Build.VERSION.SDK_INT;
 import static androidx.car.app.media.CarAudioRecord.AUDIO_CONTENT_BUFFER_SIZE;
 import static androidx.car.app.media.CarAudioRecord.AUDIO_CONTENT_SAMPLING_RATE;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.media.AudioAttributes;
@@ -36,19 +38,18 @@ import android.media.AudioManager;
 import android.media.AudioTrack;
 import android.os.Build.VERSION_CODES;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresPermission;
 import androidx.car.app.CarContext;
 import androidx.car.app.CarToast;
 import androidx.car.app.media.CarAudioRecord;
-
-import org.jspecify.annotations.NonNull;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Arrays;
 import java.util.List;
 
 /** Manages recording the microphone and accessing the stored data from the microphone. */
@@ -66,10 +67,11 @@ public class MicrophoneRecorder {
      */
     public void record() {
         if (mCarContext.checkSelfPermission(RECORD_AUDIO)
-                != PackageManager.PERMISSION_GRANTED) {
+                != PackageManager.PERMISSION_GRANTED || mCarContext.checkSelfPermission(
+                WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             CarToast.makeText(mCarContext, "Grant mic permission on phone",
                     CarToast.LENGTH_LONG).show();
-            List<String> permissions = Collections.singletonList(RECORD_AUDIO);
+            List<String> permissions = Arrays.asList(RECORD_AUDIO, WRITE_EXTERNAL_STORAGE);
             mCarContext.requestPermissions(permissions, (grantedPermissions,
                     rejectedPermissions) -> {
                 if (grantedPermissions.contains(RECORD_AUDIO)) {
@@ -88,7 +90,7 @@ public class MicrophoneRecorder {
     }
 
     @RequiresPermission(RECORD_AUDIO)
-    private void play(AudioFocusRequest audioFocusRequest) {
+    private void play() {
         if (SDK_INT < VERSION_CODES.O) {
             return;
         }
@@ -129,11 +131,9 @@ public class MicrophoneRecorder {
             throw new IllegalStateException(e);
         }
         audioTrack.stop();
-        // Abandon the FocusRequest so that user's media can be resumed
-        mCarContext.getSystemService(AudioManager.class).abandonAudioFocusRequest(
-                audioFocusRequest);
     }
 
+    @SuppressLint("ClassVerificationFailure") // runtime check for < API 26
     @RequiresPermission(RECORD_AUDIO)
     private void doRecord(CarAudioRecord record) {
         if (SDK_INT < VERSION_CODES.O) {
@@ -194,7 +194,7 @@ public class MicrophoneRecorder {
             throw new IllegalStateException(e);
         }
         record.stopRecording();
-        play(audioFocusRequest);
+        play();
     }
 
     private void addHeader(OutputStream outputStream, int totalAudioLen) throws IOException {
