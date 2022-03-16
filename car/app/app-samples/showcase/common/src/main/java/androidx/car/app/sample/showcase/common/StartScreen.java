@@ -13,12 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package androidx.car.app.sample.showcase.common;
 
 import androidx.annotation.NonNull;
 import androidx.car.app.CarContext;
 import androidx.car.app.Screen;
-import androidx.car.app.constraints.ConstraintManager;
 import androidx.car.app.model.Action;
 import androidx.car.app.model.CarIcon;
 import androidx.car.app.model.ItemList;
@@ -29,13 +29,12 @@ import androidx.car.app.sample.showcase.common.misc.MiscDemoScreen;
 import androidx.car.app.sample.showcase.common.navigation.NavigationDemosScreen;
 import androidx.car.app.sample.showcase.common.templates.MiscTemplateDemosScreen;
 import androidx.car.app.sample.showcase.common.textandicons.TextAndIconsDemosScreen;
-import androidx.car.app.versioning.CarAppApiLevels;
 import androidx.core.graphics.drawable.IconCompat;
 
 /** The starting screen of the app. */
 public final class StartScreen extends Screen {
-    @NonNull
-    private final ShowcaseSession mShowcaseSession;
+
+    @NonNull private final ShowcaseSession mShowcaseSession;
 
     public StartScreen(@NonNull CarContext carContext, @NonNull ShowcaseSession showcaseSession) {
         super(carContext);
@@ -46,6 +45,7 @@ public final class StartScreen extends Screen {
     @Override
     public Template onGetTemplate() {
         ItemList.Builder listBuilder = new ItemList.Builder();
+
         listBuilder.addItem(
                 new Row.Builder()
                         .setTitle("Selectable Lists Demo")
@@ -56,6 +56,7 @@ public final class StartScreen extends Screen {
                                                         new SelectableListsDemoScreen(
                                                                 getCarContext())))
                         .build());
+
         listBuilder.addItem(
                 new Row.Builder()
                         .setTitle("Task Restriction Demo")
@@ -66,6 +67,7 @@ public final class StartScreen extends Screen {
                                                         new TaskRestrictionDemoScreen(
                                                                 1, getCarContext())))
                         .build());
+
         listBuilder.addItem(
                 new Row.Builder()
                         .setImage(
@@ -81,25 +83,17 @@ public final class StartScreen extends Screen {
                                         .push(new NavigationDemosScreen(getCarContext())))
                         .setBrowsable(true)
                         .build());
-        int listLimit = 6;
-        // Adjust the item limit according to the car constrains.
-        if (getCarContext().getCarAppApiLevel() > CarAppApiLevels.LEVEL_1) {
-            listLimit = getCarContext().getCarService(ConstraintManager.class).getContentLimit(
-                    ConstraintManager.CONTENT_LIMIT_TYPE_LIST);
-        }
-        int miscTemplateDemoScreenItemLimit = listLimit;
+
         listBuilder.addItem(
                 new Row.Builder()
                         .setTitle("Misc Templates Demos")
                         .setOnClickListener(
                                 () ->
                                         getScreenManager()
-                                                .push(new MiscTemplateDemosScreen(
-                                                        getCarContext(),
-                                                        0,
-                                                        miscTemplateDemoScreenItemLimit)))
+                                                .push(new MiscTemplateDemosScreen(getCarContext())))
                         .setBrowsable(true)
                         .build());
+
         listBuilder.addItem(
                 new Row.Builder()
                         .setTitle("Text and Icons Demos")
@@ -109,6 +103,7 @@ public final class StartScreen extends Screen {
                                                 .push(new TextAndIconsDemosScreen(getCarContext())))
                         .setBrowsable(true)
                         .build());
+
         listBuilder.addItem(
                 new Row.Builder()
                         .setTitle("Misc Demos")
@@ -119,6 +114,7 @@ public final class StartScreen extends Screen {
                                                         mShowcaseSession)))
                         .setBrowsable(true)
                         .build());
+
         return new ListTemplate.Builder()
                 .setSingleList(listBuilder.build())
                 .setTitle("Showcase Demos")
