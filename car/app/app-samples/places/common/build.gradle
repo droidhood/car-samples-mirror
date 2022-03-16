@@ -23,7 +23,6 @@ android {
     defaultConfig {
         minSdkVersion 23
     }
-    namespace "androidx.car.app.sample.places.common"
 }
 
 dependencies {
