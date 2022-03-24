@@ -105,7 +105,7 @@ public class MapTemplateDemoScreen extends Screen {
                                 .build());
 
         Header header = new Header.Builder()
-                .setStartHeaderAction(Action.BACK)
+                .setStartHeaderAction(Action.APP_ICON)
                 .addEndHeaderAction(new Action.Builder()
                         .setIcon(
                                 new CarIcon.Builder(
