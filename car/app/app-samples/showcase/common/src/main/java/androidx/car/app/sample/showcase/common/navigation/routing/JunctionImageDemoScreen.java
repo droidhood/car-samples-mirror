@@ -51,7 +51,7 @@ public final class JunctionImageDemoScreen extends Screen implements DefaultLife
                                                         R.drawable.junction_image))
                                                 .build())
                                 .build())
-                .setDestinationTravelEstimate(RoutingDemoModels.getTravelEstimate(carContext))
+                .setDestinationTravelEstimate(RoutingDemoModels.getTravelEstimate())
                 .setActionStrip(RoutingDemoModels.getActionStrip(getCarContext(), this::finish))
                 .build();
     }
