@@ -44,7 +44,7 @@ public final class NavigatingDemoScreen extends Screen implements DefaultLifecyc
                                         Distance.create(200, Distance.UNIT_METERS))
                                 .setNextStep(RoutingDemoModels.getNextStep(carContext))
                                 .build())
-                .setDestinationTravelEstimate(RoutingDemoModels.getTravelEstimate(carContext))
+                .setDestinationTravelEstimate(RoutingDemoModels.getTravelEstimate())
                 .setActionStrip(RoutingDemoModels.getActionStrip(getCarContext(), this::finish))
                 .setMapActionStrip(RoutingDemoModels.getMapActionStrip(getCarContext()))
                 .setBackgroundColor(CarColor.SECONDARY)
