@@ -32,7 +32,6 @@ import androidx.car.app.model.ActionStrip;
 import androidx.car.app.model.CarColor;
 import androidx.car.app.model.CarIcon;
 import androidx.car.app.model.CarIconSpan;
-import androidx.car.app.model.CarText;
 import androidx.car.app.model.DateTimeWithZone;
 import androidx.car.app.model.Distance;
 import androidx.car.app.model.OnClickListener;
@@ -136,9 +135,9 @@ public abstract class RoutingDemoModels {
                         new Action.Builder()
                                 .setOnClickListener(
                                         () -> CarToast.makeText(
-                                                        carContext,
-                                                        "Bug reported!",
-                                                        CarToast.LENGTH_SHORT)
+                                                carContext,
+                                                "Bug reported!",
+                                                CarToast.LENGTH_SHORT)
                                                 .show())
                                 .setIcon(
                                         new CarIcon.Builder(
@@ -167,9 +166,9 @@ public abstract class RoutingDemoModels {
                         new Action.Builder()
                                 .setOnClickListener(
                                         () -> CarToast.makeText(
-                                                        carContext,
-                                                        "Zoomed in",
-                                                        CarToast.LENGTH_SHORT)
+                                                carContext,
+                                                "Zoomed in",
+                                                CarToast.LENGTH_SHORT)
                                                 .show())
                                 .setIcon(
                                         new CarIcon.Builder(
@@ -182,9 +181,9 @@ public abstract class RoutingDemoModels {
                         new Action.Builder()
                                 .setOnClickListener(
                                         () -> CarToast.makeText(
-                                                        carContext,
-                                                        "Zoomed out",
-                                                        CarToast.LENGTH_SHORT)
+                                                carContext,
+                                                "Zoomed out",
+                                                CarToast.LENGTH_SHORT)
                                                 .show())
                                 .setIcon(
                                         new CarIcon.Builder(
@@ -199,7 +198,7 @@ public abstract class RoutingDemoModels {
 
     /** Returns the {@link TravelEstimate} with time and distance information. */
     @NonNull
-    public static TravelEstimate getTravelEstimate(@NonNull CarContext carContext) {
+    public static TravelEstimate getTravelEstimate() {
         // Calculate the time to destination from the current time.
         long nowUtcMillis = System.currentTimeMillis();
         long timeToDestinationMillis = TimeUnit.HOURS.toMillis(1) + TimeUnit.MINUTES.toMillis(55);
@@ -215,12 +214,6 @@ public abstract class RoutingDemoModels {
                 .setRemainingTimeSeconds(TimeUnit.MILLISECONDS.toSeconds(timeToDestinationMillis))
                 .setRemainingTimeColor(CarColor.YELLOW)
                 .setRemainingDistanceColor(CarColor.RED)
-                .setTripText(CarText.create("Pick Up Alice"))
-                .setTripIcon(new CarIcon.Builder(
-                        IconCompat.createWithResource(
-                                carContext,
-                                R.drawable.ic_face_24px))
-                        .build())
                 .build();
     }
 
