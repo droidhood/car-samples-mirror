@@ -292,13 +292,13 @@ public final class NotificationDemoScreen extends Screen implements DefaultLifec
     private String getImportanceString() {
         switch (mImportance) {
             case NotificationManager.IMPORTANCE_HIGH:
-                return getCarContext().getString(R.string.high_importance);
+                return "High";
             case NotificationManager.IMPORTANCE_DEFAULT:
-                return getCarContext().getString(R.string.default_importance);
+                return "Default";
             case NotificationManager.IMPORTANCE_LOW:
-                return getCarContext().getString(R.string.low_importance);
+                return "Low";
             default:
-                return getCarContext().getString(R.string.unknown_importance);
+                return "Unknown";
         }
     }
 
