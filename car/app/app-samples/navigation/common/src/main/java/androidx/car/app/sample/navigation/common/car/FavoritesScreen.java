@@ -30,7 +30,6 @@ import androidx.car.app.model.ActionStrip;
 import androidx.car.app.model.CarLocation;
 import androidx.car.app.model.Distance;
 import androidx.car.app.model.DistanceSpan;
-import androidx.car.app.model.Header;
 import androidx.car.app.model.ItemList;
 import androidx.car.app.model.Metadata;
 import androidx.car.app.model.Place;
@@ -92,15 +91,11 @@ public final class FavoritesScreen extends Screen {
                             .build());
         }
 
-        Header header = new Header.Builder()
-                .setStartHeaderAction(Action.BACK)
-                .setTitle(getCarContext().getString(R.string.app_name))
-                .build();
-
         return new PlaceListNavigationTemplate.Builder()
                 .setItemList(listBuilder.build())
+                .setTitle(getCarContext().getString(R.string.app_name))
                 .setActionStrip(new ActionStrip.Builder().addAction(mSettingsAction).build())
-                .setHeader(header)
+                .setHeaderAction(Action.BACK)
                 .build();
     }
 
