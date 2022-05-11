@@ -121,9 +121,7 @@ public final class StartScreen extends Screen {
                         .build());
         return new ListTemplate.Builder()
                 .setSingleList(listBuilder.build())
-                .setTitle(getCarContext().getString(R.string.showcase_demos_title) + " ("
-                        + getCarContext().getString(R.string.cal_api_level_prefix,
-                        getCarContext().getCarAppApiLevel()) + ")")
+                .setTitle(getCarContext().getString(R.string.showcase_demos_title))
                 .setHeaderAction(Action.APP_ICON)
                 .build();
     }
