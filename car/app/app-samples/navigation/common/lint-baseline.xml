@@ -7,7 +7,9 @@
         errorLine1="                    new NotificationChannel(CHANNEL_ID, name, NotificationManager.IMPORTANCE_HIGH);"
         errorLine2="                    ~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/main/java/androidx/car/app/sample/navigation/common/car/NavigationCarAppService.java"/>
+            file="src/main/java/androidx/car/app/sample/navigation/common/car/NavigationCarAppService.java"
+            line="103"
+            column="21"/>
     </issue>
 
     <issue
@@ -16,7 +18,9 @@
         errorLine1="            notificationManager.createNotificationChannel(serviceChannel);"
         errorLine2="                                ~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/main/java/androidx/car/app/sample/navigation/common/car/NavigationCarAppService.java"/>
+            file="src/main/java/androidx/car/app/sample/navigation/common/car/NavigationCarAppService.java"
+            line="104"
+            column="33"/>
     </issue>
 
     <issue
@@ -25,7 +29,9 @@
         errorLine1="                new AudioFocusRequest.Builder(AudioManager.AUDIOFOCUS_GAIN_TRANSIENT_MAY_DUCK)"
         errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/main/java/androidx/car/app/sample/navigation/common/nav/NavigationService.java"/>
+            file="src/main/java/androidx/car/app/sample/navigation/common/nav/NavigationService.java"
+            line="461"
+            column="17"/>
     </issue>
 
     <issue
@@ -34,7 +40,9 @@
         errorLine1="                        .setAudioAttributes(audioAttributes)"
         errorLine2="                         ~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/main/java/androidx/car/app/sample/navigation/common/nav/NavigationService.java"/>
+            file="src/main/java/androidx/car/app/sample/navigation/common/nav/NavigationService.java"
+            line="462"
+            column="26"/>
     </issue>
 
     <issue
@@ -43,7 +51,9 @@
         errorLine1="                        .build();"
         errorLine2="                         ~~~~~">
         <location
-            file="src/main/java/androidx/car/app/sample/navigation/common/nav/NavigationService.java"/>
+            file="src/main/java/androidx/car/app/sample/navigation/common/nav/NavigationService.java"
+            line="463"
+            column="26"/>
     </issue>
 
     <issue
@@ -52,7 +62,9 @@
         errorLine1="                        audioManager.abandonAudioFocusRequest(request);"
         errorLine2="                                     ~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/main/java/androidx/car/app/sample/navigation/common/nav/NavigationService.java"/>
+            file="src/main/java/androidx/car/app/sample/navigation/common/nav/NavigationService.java"
+            line="476"
+            column="38"/>
     </issue>
 
     <issue
@@ -61,7 +73,9 @@
         errorLine1="        if (audioManager.requestAudioFocus(request) != AUDIOFOCUS_REQUEST_GRANTED) {"
         errorLine2="                         ~~~~~~~~~~~~~~~~~">
         <location
-            file="src/main/java/androidx/car/app/sample/navigation/common/nav/NavigationService.java"/>
+            file="src/main/java/androidx/car/app/sample/navigation/common/nav/NavigationService.java"
+            line="481"
+            column="26"/>
     </issue>
 
     <issue
@@ -70,7 +84,9 @@
         errorLine1="            audioManager.abandonAudioFocusRequest(request);"
         errorLine2="                         ~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/main/java/androidx/car/app/sample/navigation/common/nav/NavigationService.java"/>
+            file="src/main/java/androidx/car/app/sample/navigation/common/nav/NavigationService.java"
+            line="498"
+            column="26"/>
     </issue>
 
     <issue
@@ -79,7 +95,9 @@
         errorLine1="                    new NotificationChannel(CHANNEL_ID, name, NotificationManager.IMPORTANCE_HIGH);"
         errorLine2="                    ~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/main/java/androidx/car/app/sample/navigation/common/nav/NavigationService.java"/>
+            file="src/main/java/androidx/car/app/sample/navigation/common/nav/NavigationService.java"
+            line="514"
+            column="21"/>
     </issue>
 
     <issue
@@ -88,7 +106,9 @@
         errorLine1="            mNotificationManager.createNotificationChannel(serviceChannel);"
         errorLine2="                                 ~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/main/java/androidx/car/app/sample/navigation/common/nav/NavigationService.java"/>
+            file="src/main/java/androidx/car/app/sample/navigation/common/nav/NavigationService.java"
+            line="515"
+            column="34"/>
     </issue>
 
 </issues>
