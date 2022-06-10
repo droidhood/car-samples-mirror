@@ -39,6 +39,13 @@ public final class HelloWorldService extends CarAppService {
         // Exported services must have an empty public constructor.
     }
 
+    @NonNull
+    @Override
+    @SuppressWarnings("deprecation")
+    public Session onCreateSession() {
+        return onCreateSession(SessionInfo.DEFAULT_SESSION_INFO);
+    }
+
     @Override
     @NonNull
     public Session onCreateSession(@NonNull SessionInfo sessionInfo) {
