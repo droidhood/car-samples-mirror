@@ -37,6 +37,13 @@ import androidx.car.app.validation.HostValidator;
  * Cars Library developer guide</a>.
  */
 public class PlacesCarAppService extends CarAppService {
+    @NonNull
+    @Override
+    @SuppressWarnings("deprecation")
+    public Session onCreateSession() {
+        return onCreateSession(SessionInfo.DEFAULT_SESSION_INFO);
+    }
+
     @Override
     @NonNull
     public Session onCreateSession(@NonNull SessionInfo sessionInfo) {
