@@ -18,11 +18,12 @@ package androidx.car.app.sample.showcase.common.screens;
 
 import static androidx.car.app.model.Action.BACK;
 
+import androidx.annotation.NonNull;
 import androidx.car.app.CarContext;
 import androidx.car.app.Screen;
 import androidx.car.app.model.Action;
+import androidx.car.app.model.ActionStrip;
 import androidx.car.app.model.CarIcon;
-import androidx.car.app.model.Header;
 import androidx.car.app.model.Item;
 import androidx.car.app.model.ItemList;
 import androidx.car.app.model.ListTemplate;
@@ -33,10 +34,7 @@ import androidx.car.app.model.Template;
 import androidx.car.app.sample.showcase.common.R;
 import androidx.car.app.sample.showcase.common.audio.VoiceInteraction;
 import androidx.car.app.sample.showcase.common.screens.userinteractions.RequestPermissionMenuDemoScreen;
-import androidx.car.app.sample.showcase.common.screens.userinteractions.TaskOverflowDemoScreen;
 import androidx.core.graphics.drawable.IconCompat;
-
-import org.jspecify.annotations.NonNull;
 
 /** A screen demonstrating User Interactions */
 public final class UserInteractionsDemoScreen extends Screen {
@@ -50,8 +48,9 @@ public final class UserInteractionsDemoScreen extends Screen {
         this.mStep = step;
     }
 
+    @NonNull
     @Override
-    public @NonNull Template onGetTemplate() {
+    public Template onGetTemplate() {
 
         // Last step must either be a PaneTemplate, MessageTemplate or NavigationTemplate.
         if (mStep == MAX_STEPS_ALLOWED) {
@@ -70,16 +69,18 @@ public final class UserInteractionsDemoScreen extends Screen {
 
         return new ListTemplate.Builder()
                 .setSingleList(builder.build())
-                .setHeader(new Header.Builder()
-                        .setTitle(getCarContext().getString(R.string.user_interactions_demo_title))
-                        .setStartHeaderAction(BACK)
-                        .addEndHeaderAction(new Action.Builder()
-                                .setTitle(getCarContext().getString(
-                                        R.string.home_caps_action_title))
-                                .setOnClickListener(
-                                        () -> getScreenManager().popToRoot())
+                .setTitle(getCarContext().getString(R.string.user_interactions_demo_title))
+                .setHeaderAction(BACK)
+                .setActionStrip(
+                        new ActionStrip.Builder()
+                                .addAction(
+                                        new Action.Builder()
+                                                .setTitle(getCarContext().getString(
+                                                        R.string.home_caps_action_title))
+                                                .setOnClickListener(
+                                                        () -> getScreenManager().popToRoot())
+                                                .build())
                                 .build())
-                        .build())
                 .build();
 
     }
@@ -103,40 +104,21 @@ public final class UserInteractionsDemoScreen extends Screen {
      * Returns the row for TaskRestriction Demo
      */
     private Item buildRowForTaskRestrictionDemo() {
-        boolean isInOverflow = mStep >= MAX_STEPS_ALLOWED;
-        String title = isInOverflow ? getCarContext().getString(
-                R.string.application_overflow_title) :
-                getCarContext().getString(R.string.task_step_of_title, mStep,
-                        MAX_STEPS_ALLOWED);
-        String subTitle = isInOverflow
-                ?
-                getCarContext().getString(R.string.task_step_of_title, mStep,
-                        MAX_STEPS_ALLOWED) :
-                getCarContext().getString(R.string.task_step_of_text);
         return new Row.Builder()
-                .setTitle(title)
-                .addText(subTitle)
+                .setTitle(getCarContext().getString(R.string.task_step_of_title, mStep,
+                        MAX_STEPS_ALLOWED))
+                .addText(getCarContext().getString(R.string.task_step_of_text))
                 .setImage(new CarIcon.Builder(
                         IconCompat.createWithResource(
                                 getCarContext(), R.drawable.baseline_task_24))
                         .build(), Row.IMAGE_TYPE_ICON)
                 .setOnClickListener(
-                        () -> {
-                            if (mStep < MAX_STEPS_ALLOWED) {
+                        () ->
                                 getScreenManager()
                                         .pushForResult(
                                                 new UserInteractionsDemoScreen(
                                                         mStep + 1, getCarContext()),
-                                                result -> mIsBackOperation = true);
-                            } else {
-                                getScreenManager()
-                                        .pushForResult(
-                                                new TaskOverflowDemoScreen(
-                                                        getCarContext()),
-                                                result -> mIsBackOperation = true);
-                            }
-                        }
-                )
+                                                result -> mIsBackOperation = true))
                 .build();
     }
 
@@ -183,9 +165,7 @@ public final class UserInteractionsDemoScreen extends Screen {
 
         return new MessageTemplate.Builder(
                 getCarContext().getString(R.string.task_limit_reached_msg))
-                .setHeader(new Header.Builder().setTitle(getCarContext()
-                                .getString(R.string.latest_feature_title))
-                        .setStartHeaderAction(Action.BACK).build())
+                .setHeaderAction(BACK)
                 .addAction(
                         new Action.Builder()
                                 .setTitle(getCarContext().getString(
