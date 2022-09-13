@@ -16,8 +16,6 @@
 
 package androidx.car.app.sample.showcase.common.screens.templatelayouts.gridtemplates;
 
-import static androidx.car.app.model.Action.BACK;
-
 import static java.util.concurrent.TimeUnit.SECONDS;
 
 import android.annotation.SuppressLint;
@@ -34,14 +32,15 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 
+import androidx.annotation.NonNull;
 import androidx.car.app.CarContext;
 import androidx.car.app.CarToast;
 import androidx.car.app.Screen;
+import androidx.car.app.model.Action;
 import androidx.car.app.model.CarColor;
 import androidx.car.app.model.CarIcon;
 import androidx.car.app.model.GridItem;
 import androidx.car.app.model.GridTemplate;
-import androidx.car.app.model.Header;
 import androidx.car.app.model.ItemList;
 import androidx.car.app.model.Template;
 import androidx.car.app.notification.CarAppExtender;
@@ -51,12 +50,9 @@ import androidx.car.app.sample.showcase.common.R;
 import androidx.car.app.sample.showcase.common.ShowcaseService;
 import androidx.core.app.NotificationChannelCompat;
 import androidx.core.app.NotificationCompat;
-import androidx.core.content.ContextCompat;
 import androidx.core.graphics.drawable.IconCompat;
 import androidx.lifecycle.DefaultLifecycleObserver;
 import androidx.lifecycle.LifecycleOwner;
-
-import org.jspecify.annotations.NonNull;
 
 /** A simple screen that demonstrates how to use notifications in a car app. */
 public final class NotificationDemoScreen extends Screen implements DefaultLifecycleObserver {
@@ -112,8 +108,9 @@ public final class NotificationDemoScreen extends Screen implements DefaultLifec
         unregisterBroadcastReceiver();
     }
 
+    @NonNull
     @Override
-    public @NonNull Template onGetTemplate() {
+    public Template onGetTemplate() {
         ItemList.Builder listBuilder = new ItemList.Builder();
 
         // Send a single notification with the settings configured by other buttons.
@@ -183,10 +180,8 @@ public final class NotificationDemoScreen extends Screen implements DefaultLifec
 
         return new GridTemplate.Builder()
                 .setSingleList(listBuilder.build())
-                .setHeader(new Header.Builder()
-                        .setTitle(getCarContext().getString(R.string.notification_demo))
-                        .setStartHeaderAction(BACK)
-                        .build())
+                .setTitle(getCarContext().getString(R.string.notification_demo))
+                .setHeaderAction(Action.BACK)
                 .build();
     }
 
@@ -262,7 +257,7 @@ public final class NotificationDemoScreen extends Screen implements DefaultLifec
                                 .setContentText(text)
                                 .setContentIntent(
                                         CarPendingIntent.getCarApp(getCarContext(), 0,
-                                                new Intent().setComponent(
+                                                new Intent(Intent.ACTION_VIEW).setComponent(
                                                         new ComponentName(getCarContext(),
                                                                 ShowcaseService.class)), 0))
                                 .setColor(CarColor.PRIMARY)
@@ -336,8 +331,7 @@ public final class NotificationDemoScreen extends Screen implements DefaultLifec
         filter.addAction(INTENT_ACTION_PRIMARY_PHONE);
         filter.addAction(INTENT_ACTION_SECONDARY_PHONE);
 
-        ContextCompat.registerReceiver(getCarContext(), mBroadcastReceiver, filter,
-                ContextCompat.RECEIVER_NOT_EXPORTED);
+        getCarContext().registerReceiver(mBroadcastReceiver, filter);
     }
 
     private void unregisterBroadcastReceiver() {

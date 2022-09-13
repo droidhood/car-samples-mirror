@@ -18,26 +18,18 @@ package androidx.car.app.sample.showcase.common.screens.templatelayouts;
 
 import static androidx.car.app.model.Action.BACK;
 
+import androidx.annotation.NonNull;
 import androidx.car.app.CarContext;
 import androidx.car.app.Screen;
-import androidx.car.app.model.Action;
-import androidx.car.app.model.Header;
 import androidx.car.app.model.ItemList;
 import androidx.car.app.model.ListTemplate;
 import androidx.car.app.model.Row;
 import androidx.car.app.model.Template;
-import androidx.car.app.navigation.model.MapWithContentTemplate;
 import androidx.car.app.sample.showcase.common.R;
 import androidx.car.app.sample.showcase.common.screens.templatelayouts.listtemplates.ContentProviderIconsDemoScreen;
-import androidx.car.app.sample.showcase.common.screens.templatelayouts.listtemplates.EmptyListDemoScreen;
 import androidx.car.app.sample.showcase.common.screens.templatelayouts.listtemplates.RadioButtonListDemoScreen;
-import androidx.car.app.sample.showcase.common.screens.templatelayouts.listtemplates.RowEndImageAndActionsDemo;
-import androidx.car.app.sample.showcase.common.screens.templatelayouts.listtemplates.SecondaryActionsAndDecorationDemoScreen;
 import androidx.car.app.sample.showcase.common.screens.templatelayouts.listtemplates.TextAndIconsDemosScreen;
 import androidx.car.app.sample.showcase.common.screens.templatelayouts.listtemplates.ToggleButtonListDemoScreen;
-import androidx.car.app.versioning.CarAppApiLevels;
-
-import org.jspecify.annotations.NonNull;
 
 /**
  * Creates a screen that demonstrates usage of the full screen {@link ListTemplate} to display a
@@ -49,15 +41,9 @@ public final class ListTemplateDemoScreen extends Screen {
         super(carContext);
     }
 
+    @NonNull
     @Override
-    public @NonNull Template onGetTemplate() {
-        return buildListTemplate();
-    }
-
-    /**
-     * Helper method to build the ListTemplate.
-     */
-    private ListTemplate buildListTemplate() {
+    public Template onGetTemplate() {
         ItemList.Builder listBuilder = new ItemList.Builder();
         listBuilder.addItem(buildRowForTemplate(new RadioButtonListDemoScreen(getCarContext()),
                 R.string.radio_button_list_demo_title));
@@ -67,40 +53,10 @@ public final class ListTemplateDemoScreen extends Screen {
                 R.string.text_icons_demo_title));
         listBuilder.addItem(buildRowForTemplate(new ContentProviderIconsDemoScreen(getCarContext()),
                 R.string.content_provider_icons_demo_title));
-        if (getCarContext().getCarAppApiLevel() >= CarAppApiLevels.LEVEL_6) {
-            listBuilder.addItem(buildRowForTemplate(
-                    new SecondaryActionsAndDecorationDemoScreen(getCarContext()),
-                    R.string.secondary_actions_decoration_button_demo_title));
-        }
-
-        if (getCarContext().getCarAppApiLevel() >= CarAppApiLevels.LEVEL_8) {
-            listBuilder.addItem(buildRowForTemplate(
-                    new RowEndImageAndActionsDemo(getCarContext()),
-                    R.string.row_end_image_and_actions_demo_title));
-        }
-
-        // ========================================================================
-        // WARNING: 6 demos have been added above, which is the max list size for some users/devs.
-        // Demos added below may be truncated from the list in certain regions.
-        // ========================================================================
-
-        listBuilder.addItem(buildRowForTemplate(
-                new EmptyListDemoScreen(getCarContext()),
-                R.string.empty_list_demo_title));
-
-        Action mapXAction = new Action.Builder()
-                .setTitle("Map+X this!")
-                .setOnClickListener(
-                        () -> getScreenManager().push(new MapListDemoScreen(getCarContext())))
-                .build();
-
         return new ListTemplate.Builder()
                 .setSingleList(listBuilder.build())
-                .setHeader(new Header.Builder()
-                        .setTitle(getCarContext().getString(R.string.list_template_demo_title))
-                        .setStartHeaderAction(BACK)
-                        .addEndHeaderAction(mapXAction)
-                        .build())
+                .setTitle(getCarContext().getString(R.string.list_template_demo_title))
+                .setHeaderAction(BACK)
                 .build();
     }
 
@@ -110,24 +66,5 @@ public final class ListTemplateDemoScreen extends Screen {
                 .setOnClickListener(() -> getScreenManager().push(screen))
                 .setBrowsable(true)
                 .build();
-    }
-
-    /**
-     * A new screen that displays the MapWithContentTemplate
-     * containing the exact same ListTemplate.
-     */
-    private class MapListDemoScreen extends Screen {
-        protected MapListDemoScreen(@NonNull CarContext carContext) {
-            super(carContext);
-        }
-
-        @Override
-        public @NonNull Template onGetTemplate() {
-            ListTemplate innerTemplate = ListTemplateDemoScreen.this.buildListTemplate();
-
-            return new MapWithContentTemplate.Builder()
-                    .setContentTemplate(innerTemplate)
-                    .build();
-        }
     }
 }

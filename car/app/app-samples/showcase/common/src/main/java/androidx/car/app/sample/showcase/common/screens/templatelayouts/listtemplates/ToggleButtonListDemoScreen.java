@@ -17,25 +17,24 @@
 package androidx.car.app.sample.showcase.common.screens.templatelayouts.listtemplates;
 
 import static androidx.car.app.CarToast.LENGTH_LONG;
+import static androidx.car.app.model.Action.BACK;
 import static androidx.car.app.model.CarColor.GREEN;
 
+import androidx.annotation.NonNull;
 import androidx.car.app.CarContext;
 import androidx.car.app.CarToast;
 import androidx.car.app.Screen;
 import androidx.car.app.model.Action;
+import androidx.car.app.model.ActionStrip;
 import androidx.car.app.model.CarIcon;
-import androidx.car.app.model.Header;
 import androidx.car.app.model.ItemList;
 import androidx.car.app.model.ListTemplate;
 import androidx.car.app.model.OnClickListener;
 import androidx.car.app.model.Row;
 import androidx.car.app.model.Template;
 import androidx.car.app.model.Toggle;
-import androidx.car.app.navigation.model.MapWithContentTemplate;
 import androidx.car.app.sample.showcase.common.R;
 import androidx.core.graphics.drawable.IconCompat;
-
-import org.jspecify.annotations.NonNull;
 
 /** A screen demonstrating selectable lists. */
 public final class ToggleButtonListDemoScreen extends Screen {
@@ -50,15 +49,9 @@ public final class ToggleButtonListDemoScreen extends Screen {
     private int mImageType = Row.IMAGE_TYPE_ICON;
     private boolean mSetTintToVector;
 
+    @NonNull
     @Override
-    public @NonNull Template onGetTemplate() {
-        return buildListTemplate();
-    }
-
-    /**
-     * Helper method to build the ListTemplate.
-     */
-    private ListTemplate buildListTemplate() {
+    public Template onGetTemplate() {
         Toggle mToggleForVector = new Toggle.Builder((checked) -> {
             mSetTintToVector = !mSetTintToVector;
             invalidate();
@@ -97,19 +90,20 @@ public final class ToggleButtonListDemoScreen extends Screen {
                 R.string.image_test_text, null, buildCarIconForImageTest(),
                 buildOnClickListenerForImageTest(), mImageType));
 
-        Action mapXAction = new Action.Builder()
-                .setTitle("Map+X this!")
-                .setOnClickListener(
-                        () -> getScreenManager().push(new MapToggleDemoScreen(getCarContext())))
-                .build();
-
         return new ListTemplate.Builder()
                 .setSingleList(builder.build())
-                .setHeader(new Header.Builder()
-                        .setTitle(getCarContext().getString(R.string.toggle_button_demo_title))
-                        .setStartHeaderAction(Action.BACK)
-                        .addEndHeaderAction(mapXAction)
-                        .build())
+                .setTitle(getCarContext().getString(R.string.toggle_button_demo_title))
+                .setHeaderAction(BACK)
+                .setActionStrip(
+                        new ActionStrip.Builder()
+                                .addAction(
+                                        new Action.Builder()
+                                                .setTitle(getCarContext().getString(
+                                                        R.string.home_caps_action_title))
+                                                .setOnClickListener(
+                                                        () -> getScreenManager().popToRoot())
+                                                .build())
+                                .build())
                 .build();
     }
 
@@ -173,24 +167,5 @@ public final class ToggleButtonListDemoScreen extends Screen {
         if (onClickListener != null) rowBuilder.setOnClickListener(onClickListener);
 
         return rowBuilder.build();
-    }
-
-    /**
-     * A new screen that displays the MapWithContentTemplate
-     * containing the exact same ListTemplate with Toggles.
-     */
-    private class MapToggleDemoScreen extends Screen {
-        protected MapToggleDemoScreen(@NonNull CarContext carContext) {
-            super(carContext);
-        }
-
-        @Override
-        public @NonNull Template onGetTemplate() {
-            ListTemplate innerTemplate = ToggleButtonListDemoScreen.this.buildListTemplate();
-
-            return new MapWithContentTemplate.Builder()
-                    .setContentTemplate(innerTemplate)
-                    .build();
-        }
     }
 }

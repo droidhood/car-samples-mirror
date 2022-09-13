@@ -18,9 +18,9 @@ package androidx.car.app.sample.showcase.common.screens.templatelayouts;
 
 import static androidx.car.app.model.Action.BACK;
 
+import androidx.annotation.NonNull;
 import androidx.car.app.CarContext;
 import androidx.car.app.Screen;
-import androidx.car.app.model.Header;
 import androidx.car.app.model.ItemList;
 import androidx.car.app.model.ListTemplate;
 import androidx.car.app.model.Row;
@@ -29,8 +29,6 @@ import androidx.car.app.sample.showcase.common.R;
 import androidx.car.app.sample.showcase.common.screens.templatelayouts.messagetemplates.LongMessageTemplateDemoScreen;
 import androidx.car.app.sample.showcase.common.screens.templatelayouts.messagetemplates.ShortMessageTemplateDemoScreen;
 import androidx.lifecycle.DefaultLifecycleObserver;
-
-import org.jspecify.annotations.NonNull;
 
 /**
  * Creates a screen that demonstrates usage of the full screen {@link ListTemplate} to display a
@@ -43,8 +41,9 @@ public final class MessageTemplateDemoScreen extends Screen implements DefaultLi
         getLifecycle().addObserver(this);
     }
 
+    @NonNull
     @Override
-    public @NonNull Template onGetTemplate() {
+    public Template onGetTemplate() {
         ItemList.Builder listBuilder = new ItemList.Builder();
 
         listBuilder.addItem(buildRowForTemplate(new ShortMessageTemplateDemoScreen(getCarContext()),
@@ -53,10 +52,8 @@ public final class MessageTemplateDemoScreen extends Screen implements DefaultLi
                 R.string.long_msg_template_demo_title));
         return new ListTemplate.Builder()
                 .setSingleList(listBuilder.build())
-                .setHeader(new Header.Builder()
-                        .setTitle(getCarContext().getString(R.string.msg_template_demo_title))
-                        .setStartHeaderAction(BACK)
-                        .build())
+                .setTitle(getCarContext().getString(R.string.msg_template_demo_title))
+                .setHeaderAction(BACK)
                 .build();
     }
 
