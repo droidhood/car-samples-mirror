@@ -16,14 +16,16 @@
 
 package androidx.car.app.sample.showcase.common.screens.templatelayouts.listtemplates;
 
+import static androidx.car.app.model.Action.BACK;
+
 import android.net.Uri;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.car.app.CarContext;
 import androidx.car.app.HostInfo;
 import androidx.car.app.Screen;
-import androidx.car.app.model.Action;
 import androidx.car.app.model.CarIcon;
-import androidx.car.app.model.Header;
 import androidx.car.app.model.ItemList;
 import androidx.car.app.model.ListTemplate;
 import androidx.car.app.model.Row;
@@ -31,16 +33,14 @@ import androidx.car.app.model.Template;
 import androidx.car.app.sample.showcase.common.R;
 import androidx.core.graphics.drawable.IconCompat;
 
-import org.jspecify.annotations.NonNull;
-import org.jspecify.annotations.Nullable;
-
 /** Creates a screen that demonstrate the image loading in the library using a content provider. */
 public final class ContentProviderIconsDemoScreen extends Screen {
     private static final int[] ICON_DRAWABLES = {
             R.drawable.arrow_right_turn, R.drawable.arrow_straight, R.drawable.ic_i5,
             R.drawable.ic_520
     };
-    private final @Nullable String mHostPackageName;
+    @Nullable
+    private final String mHostPackageName;
 
     public ContentProviderIconsDemoScreen(@NonNull CarContext carContext) {
         super(carContext);
@@ -49,8 +49,9 @@ public final class ContentProviderIconsDemoScreen extends Screen {
         mHostPackageName = hostInfo == null ? null : hostInfo.getPackageName();
     }
 
+    @NonNull
     @Override
-    public @NonNull Template onGetTemplate() {
+    public Template onGetTemplate() {
         ItemList.Builder listBuilder = new ItemList.Builder();
 
         String hostPackageName = mHostPackageName;
@@ -79,11 +80,8 @@ public final class ContentProviderIconsDemoScreen extends Screen {
 
         return new ListTemplate.Builder()
                 .setSingleList(listBuilder.build())
-                .setHeader(new Header.Builder()
-                        .setTitle(getCarContext()
-                                .getString(R.string.content_provider_icons_demo_title))
-                        .setStartHeaderAction(Action.BACK)
-                        .build())
+                .setTitle(getCarContext().getString(R.string.content_provider_icons_demo_title))
+                .setHeaderAction(BACK)
                 .build();
     }
 }

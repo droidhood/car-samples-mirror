@@ -23,38 +23,39 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.car.app.CarContext;
 import androidx.car.app.CarToast;
 import androidx.car.app.Screen;
 import androidx.car.app.constraints.ConstraintManager;
 import androidx.car.app.model.Action;
+import androidx.car.app.model.ActionStrip;
 import androidx.car.app.model.CarColor;
 import androidx.car.app.model.CarIcon;
-import androidx.car.app.model.Header;
 import androidx.car.app.model.Pane;
 import androidx.car.app.model.PaneTemplate;
 import androidx.car.app.model.Row;
 import androidx.car.app.model.Template;
-import androidx.car.app.navigation.model.MapWithContentTemplate;
 import androidx.car.app.sample.showcase.common.R;
 import androidx.car.app.versioning.CarAppApiLevels;
 import androidx.core.graphics.drawable.IconCompat;
 import androidx.lifecycle.DefaultLifecycleObserver;
 import androidx.lifecycle.LifecycleOwner;
 
-import org.jspecify.annotations.NonNull;
-import org.jspecify.annotations.Nullable;
-
 /**
  * Creates a screen that demonstrates usage of the full screen {@link PaneTemplate} to display a
  * details screen.
  */
 public final class PaneTemplateDemoScreen extends Screen implements DefaultLifecycleObserver {
-    private @Nullable IconCompat mPaneImage;
+    @Nullable
+    private IconCompat mPaneImage;
 
-    private @Nullable IconCompat mRowLargeIcon;
+    @Nullable
+    private IconCompat mRowLargeIcon;
 
-    private @Nullable IconCompat mCommuteIcon;
+    @Nullable
+    private IconCompat mCommuteIcon;
 
     public PaneTemplateDemoScreen(@NonNull CarContext carContext) {
         super(carContext);
@@ -92,15 +93,9 @@ public final class PaneTemplateDemoScreen extends Screen implements DefaultLifec
         }
     }
 
+    @NonNull
     @Override
-    public @NonNull Template onGetTemplate() {
-        return buildPaneTemplate();
-    }
-
-    /**
-     * Helper method to build the PaneTemplate.
-     */
-    private PaneTemplate buildPaneTemplate() {
+    public Template onGetTemplate() {
         int listLimit = getCarContext().getCarService(ConstraintManager.class).getContentLimit(
                 ConstraintManager.CONTENT_LIMIT_TYPE_PANE);
 
@@ -139,41 +134,27 @@ public final class PaneTemplateDemoScreen extends Screen implements DefaultLifec
                                                 .show())
                                 .build());
 
-        Action mapXAction = new Action.Builder()
-                .setTitle("Map+X this!")
-                .setIcon(
-                        new CarIcon.Builder(mCommuteIcon)
-                                .setTint(CarColor.BLUE)
-                                .build())
-                .setOnClickListener(
-                        () -> getScreenManager().push(new MapPaneDemoScreen(getCarContext())))
-                .build();
-
         return new PaneTemplate.Builder(paneBuilder.build())
-                .setHeader(new Header.Builder()
-                        .setTitle(getCarContext().getString(R.string.pane_template_demo_title))
-                        .setStartHeaderAction(Action.BACK)
-                        .addEndHeaderAction(mapXAction)
-                        .build())
+                .setHeaderAction(Action.BACK)
+                .setActionStrip(
+                        new ActionStrip.Builder()
+                                .addAction(new Action.Builder()
+                                        .setTitle(getCarContext().getString(
+                                                R.string.commute_action_title))
+                                        .setIcon(
+                                                new CarIcon.Builder(mCommuteIcon)
+                                                        .setTint(CarColor.BLUE)
+                                                        .build())
+                                        .setOnClickListener(
+                                                () -> CarToast.makeText(
+                                                                getCarContext(),
+                                                                getCarContext().getString(
+                                                                        R.string.commute_toast_msg),
+                                                                LENGTH_SHORT)
+                                                        .show())
+                                        .build())
+                                .build())
+                .setTitle(getCarContext().getString(R.string.pane_template_demo_title))
                 .build();
-    }
-
-    /**
-     * A new screen that displays the MapWithContentTemplate
-     * containing the exact same PaneTemplate.
-     */
-    private class MapPaneDemoScreen extends Screen {
-        protected MapPaneDemoScreen(@NonNull CarContext carContext) {
-            super(carContext);
-        }
-
-        @Override
-        public @NonNull Template onGetTemplate() {
-            PaneTemplate innerTemplate = PaneTemplateDemoScreen.this.buildPaneTemplate();
-
-            return new MapWithContentTemplate.Builder()
-                    .setContentTemplate(innerTemplate)
-                    .build();
-        }
     }
 }
