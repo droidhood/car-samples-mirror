@@ -19,6 +19,8 @@ package androidx.car.app.sample.showcase.common.screens.settings;
 import android.util.Log;
 
 import androidx.annotation.GuardedBy;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.car.app.CarContext;
 import androidx.car.app.Screen;
 import androidx.car.app.hardware.CarHardwareManager;
@@ -26,10 +28,8 @@ import androidx.car.app.hardware.common.CarValue;
 import androidx.car.app.hardware.common.OnCarDataAvailableListener;
 import androidx.car.app.hardware.info.CarInfo;
 import androidx.car.app.hardware.info.EnergyProfile;
-import androidx.car.app.hardware.info.ExteriorDimensions;
 import androidx.car.app.hardware.info.Model;
 import androidx.car.app.model.Action;
-import androidx.car.app.model.Header;
 import androidx.car.app.model.Pane;
 import androidx.car.app.model.PaneTemplate;
 import androidx.car.app.model.Row;
@@ -40,10 +40,6 @@ import androidx.lifecycle.DefaultLifecycleObserver;
 import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleOwner;
 
-import org.jspecify.annotations.NonNull;
-import org.jspecify.annotations.Nullable;
-
-import java.util.Arrays;
 import java.util.concurrent.Executor;
 
 /**
@@ -56,7 +52,6 @@ public final class CarHardwareInfoScreen extends Screen {
     // Package private for inner class reference
     boolean mHasModelPermission;
     boolean mHasEnergyProfilePermission;
-    boolean mHasExteriorDimensionsPermission;
     final Executor mCarHardwareExecutor;
 
     /**
@@ -65,8 +60,9 @@ public final class CarHardwareInfoScreen extends Screen {
      * <p>It is requested asynchronously and can be {@code null} until the response is
      * received.
      */
+    @Nullable
     @GuardedBy("this")
-    @Nullable Model mModel;
+    Model mModel;
 
     /**
      * Value fetched from CarHardwareManager containing what type of fuel/ports the car has.
@@ -74,11 +70,9 @@ public final class CarHardwareInfoScreen extends Screen {
      * <p>It is requested asynchronously and can be {@code null} until the response is
      * received.
      */
+    @Nullable
     @GuardedBy("this")
-    @Nullable EnergyProfile mEnergyProfile;
-
-    @GuardedBy("this")
-    @Nullable ExteriorDimensions mExteriorDimensions;
+    EnergyProfile mEnergyProfile;
 
     OnCarDataAvailableListener<Model> mModelListener = data -> {
         synchronized (this) {
@@ -92,14 +86,6 @@ public final class CarHardwareInfoScreen extends Screen {
         synchronized (this) {
             Log.i(TAG, "Received energy profile information: " + data);
             mEnergyProfile = data;
-            invalidate();
-        }
-    };
-
-    OnCarDataAvailableListener<ExteriorDimensions> mExteriorDimensionsListener = data -> {
-        synchronized (this) {
-            Log.i(TAG, "Received exterior dimensions: " + data);
-            mExteriorDimensions = data;
             invalidate();
         }
     };
@@ -134,23 +120,15 @@ public final class CarHardwareInfoScreen extends Screen {
                     } catch (SecurityException e) {
                         mHasEnergyProfilePermission = false;
                     }
-
-                    mExteriorDimensions = null;
-                    try {
-                        carInfo.fetchExteriorDimensions(mCarHardwareExecutor,
-                                mExteriorDimensionsListener);
-                        mHasExteriorDimensionsPermission = true;
-                    } catch (SecurityException e) {
-                        mHasExteriorDimensionsPermission = false;
-                    }
                 }
             }
 
         });
     }
 
+    @NonNull
     @Override
-    public @NonNull Template onGetTemplate() {
+    public Template onGetTemplate() {
         Pane.Builder paneBuilder = new Pane.Builder();
         if (allInfoAvailable()) {
             Row.Builder modelRowBuilder = new Row.Builder()
@@ -225,19 +203,12 @@ public final class CarHardwareInfoScreen extends Screen {
                 }
             }
             paneBuilder.addRow(energyProfileRowBuilder.build());
-
-            synchronized (this) {
-                paneBuilder.addRow(buildExteriorDimensionsRow(mExteriorDimensions,
-                        mHasExteriorDimensionsPermission));
-            }
         } else {
             paneBuilder.setLoading(true);
         }
         return new PaneTemplate.Builder(paneBuilder.build())
-                .setHeader(new Header.Builder()
-                        .setStartHeaderAction(Action.BACK)
-                        .setTitle(getCarContext().getString(R.string.car_hardware_info))
-                        .build())
+                .setHeaderAction(Action.BACK)
+                .setTitle(getCarContext().getString(R.string.car_hardware_info))
                 .build();
     }
 
@@ -249,14 +220,11 @@ public final class CarHardwareInfoScreen extends Screen {
             if (mHasEnergyProfilePermission && mEnergyProfile == null) {
                 return false;
             }
-            if (mHasExteriorDimensionsPermission && mExteriorDimensions == null) {
-                return false;
-            }
         }
         return true;
     }
 
-    private static String fuelTypeAsString(int fuelType) {
+    private String fuelTypeAsString(int fuelType) {
         switch (fuelType) {
             case EnergyProfile.FUEL_TYPE_UNLEADED:
                 return "UNLEADED";
@@ -288,7 +256,7 @@ public final class CarHardwareInfoScreen extends Screen {
         }
     }
 
-    private static String evConnectorAsString(int evConnectorType) {
+    private String evConnectorAsString(int evConnectorType) {
         switch (evConnectorType) {
             case EnergyProfile.EVCONNECTOR_TYPE_J1772:
                 return "J1772";
@@ -318,44 +286,5 @@ public final class CarHardwareInfoScreen extends Screen {
             default:
                 return "UNKNOWN";
         }
-    }
-
-    private static Row buildExteriorDimensionsRow(
-            @Nullable ExteriorDimensions exteriorDimensions, boolean hasPermissions) {
-        Row.Builder builder = new Row.Builder().setTitle("Exterior dimensions");
-        if (!hasPermissions) {
-            builder.addText("Permissions not granted. This vehicle property requires CAR_INFO");
-            return builder.build();
-        }
-
-        if (exteriorDimensions == null) {
-            builder.addText("Pending callback from vehicle fetch request");
-            return builder.build();
-        }
-
-        CarValue<Integer[]> carValue = exteriorDimensions.getExteriorDimensions();
-        if (carValue.getStatus() != CarValue.STATUS_SUCCESS) {
-            builder.addText("Fetch failed because the vehicle hasn't implemented this field");
-            return builder.build();
-        }
-
-        Integer[] dimensionsArray = carValue.getValue();
-        if (dimensionsArray == null || dimensionsArray.length != 8) {
-            builder.addText("Fetch succeeded, but the reply was not an int array of length 8: "
-                    + Arrays.toString(dimensionsArray));
-            return builder.build();
-        }
-
-        builder.addText("Height: " + dimensionsArray[ExteriorDimensions.HEIGHT_INDEX]
-                + ", Length: " + dimensionsArray[ExteriorDimensions.LENGTH_INDEX]
-                + ", Width: " + dimensionsArray[ExteriorDimensions.WIDTH_INDEX]
-                + ", Width + mirrors: "
-                + dimensionsArray[ExteriorDimensions.WIDTH_INCLUDING_MIRRORS_INDEX]);
-        builder.addText("Wheel base: " + dimensionsArray[ExteriorDimensions.WHEEL_BASE_INDEX]
-                + ", Front width: " + dimensionsArray[ExteriorDimensions.TRACK_WIDTH_FRONT_INDEX]
-                + ", Rear width: " + dimensionsArray[ExteriorDimensions.TRACK_WIDTH_REAR_INDEX]
-                + ", Turning radius: "
-                + dimensionsArray[ExteriorDimensions.CURB_TO_CURB_TURNING_RADIUS_INDEX]);
-        return builder.build();
     }
 }

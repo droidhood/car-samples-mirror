@@ -17,17 +17,17 @@
 package androidx.car.app.sample.showcase.common.screens.settings;
 
 import static androidx.car.app.CarToast.LENGTH_LONG;
+import static androidx.car.app.model.Action.BACK;
 import static androidx.car.app.sample.showcase.common.screens.settings.LoadingScreen.loadingScreenTemplate;
 
 import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
 
+import androidx.annotation.NonNull;
 import androidx.car.app.CarContext;
 import androidx.car.app.CarToast;
 import androidx.car.app.Screen;
-import androidx.car.app.model.Action;
-import androidx.car.app.model.Header;
 import androidx.car.app.model.ItemList;
 import androidx.car.app.model.ListTemplate;
 import androidx.car.app.model.ParkedOnlyOnClickListener;
@@ -37,8 +37,6 @@ import androidx.car.app.sample.showcase.common.R;
 import androidx.car.app.sample.showcase.common.ShowcaseService;
 import androidx.lifecycle.DefaultLifecycleObserver;
 import androidx.lifecycle.LifecycleOwner;
-
-import org.jspecify.annotations.NonNull;
 
 /** A screen demonstrating selectable lists. */
 public final class ParkedVsDrivingDemoScreen extends Screen implements DefaultLifecycleObserver {
@@ -72,8 +70,9 @@ public final class ParkedVsDrivingDemoScreen extends Screen implements DefaultLi
         }
     }
 
+    @NonNull
     @Override
-    public @NonNull Template onGetTemplate() {
+    public Template onGetTemplate() {
 
         if (!mIsFinishedLoading && mShouldLoadScreens) {
             return loadingScreenTemplate(getCarContext());
@@ -91,33 +90,14 @@ public final class ParkedVsDrivingDemoScreen extends Screen implements DefaultLi
                         .addText(getCarContext().getString(R.string.parked_only_text))
                         .build());
 
-        // Add a few rows with long subtext
-        for (int rowIndex = 1; rowIndex < 5; rowIndex++) {
-            listBuilder.addItem(
-                    buildRowForTemplate(
-                            R.string.other_row_title_prefix,
-                            rowIndex,
-                            R.string.long_line_text));
-        }
-
         return new ListTemplate.Builder()
                 .setSingleList(listBuilder.build())
-                .setHeader(new Header.Builder()
-                        .setTitle(getCarContext().getString(R.string.parking_vs_driving_demo_title))
-                        .setStartHeaderAction(Action.BACK)
-                        .build())
+                .setTitle(getCarContext().getString(R.string.parking_vs_driving_demo_title))
+                .setHeaderAction(BACK)
                 .build();
     }
 
     private void onClick(String text) {
         CarToast.makeText(getCarContext(), text, LENGTH_LONG).show();
-    }
-
-    private Row buildRowForTemplate(int title, int index, int subText) {
-        String rowTitle = getCarContext().getString(title) + " " + (index + 1);
-        return new Row.Builder()
-                .setTitle(rowTitle)
-                .addText(getCarContext().getString(subText))
-                .build();
     }
 }
