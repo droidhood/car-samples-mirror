@@ -32,6 +32,8 @@ import android.os.IBinder;
 import android.os.Looper;
 import android.os.Message;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.car.app.notification.CarAppExtender;
 import androidx.car.app.notification.CarNotificationManager;
 import androidx.car.app.notification.CarPendingIntent;
@@ -40,9 +42,6 @@ import androidx.car.app.sample.showcase.common.ShowcaseService;
 import androidx.core.app.NotificationChannelCompat;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
-
-import org.jspecify.annotations.NonNull;
-import org.jspecify.annotations.Nullable;
 
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
@@ -94,8 +93,9 @@ public final class NavigationNotificationService extends Service {
         mHandler.removeMessages(MSG_SEND_NOTIFICATION);
     }
 
+    @Nullable
     @Override
-    public @Nullable IBinder onBind(@NonNull Intent intent) {
+    public IBinder onBind(@NonNull Intent intent) {
         return null;
     }
 
@@ -236,8 +236,10 @@ public final class NavigationNotificationService extends Service {
      * A container class that encapsulates the direction information to use in the notifications.
      */
     static final class DirectionInfo {
-        final @NonNull String mTitle;
-        final @NonNull String mDistance;
+        @NonNull
+        final String mTitle;
+        @NonNull
+        final String mDistance;
         final int mIcon;
         final boolean mOnlyAlertOnce;
 
