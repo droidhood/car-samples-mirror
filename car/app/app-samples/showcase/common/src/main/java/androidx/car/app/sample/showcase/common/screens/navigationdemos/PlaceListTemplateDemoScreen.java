@@ -20,31 +20,26 @@ import androidx.annotation.NonNull;
 import androidx.car.app.CarContext;
 import androidx.car.app.Screen;
 import androidx.car.app.model.Action;
-import androidx.car.app.model.ActionStrip;
+import androidx.car.app.model.PlaceListMapTemplate;
 import androidx.car.app.model.Template;
-import androidx.car.app.navigation.model.NavigationTemplate;
 import androidx.car.app.sample.showcase.common.R;
+import androidx.car.app.sample.showcase.common.common.SamplePlaces;
 
-/** Simple demo of how to present a navigation screen with only a map. */
-public final class NavigationMapOnlyScreen extends Screen {
+/** Creates a screen using the {@link PlaceListMapTemplate} */
+public final class PlaceListTemplateDemoScreen extends Screen {
+    private final SamplePlaces mPlaces = SamplePlaces.create(this);
 
-    public NavigationMapOnlyScreen(@NonNull CarContext carContext) {
+    public PlaceListTemplateDemoScreen(@NonNull CarContext carContext) {
         super(carContext);
     }
 
     @NonNull
     @Override
     public Template onGetTemplate() {
-        ActionStrip actionStrip =
-                new ActionStrip.Builder()
-                        .addAction(
-                                new Action.Builder()
-                                        .setTitle(getCarContext().getString(
-                                                R.string.back_caps_action_title))
-                                        .setOnClickListener(this::finish)
-                                        .build())
-                        .build();
-
-        return new NavigationTemplate.Builder().setActionStrip(actionStrip).build();
+        return new PlaceListMapTemplate.Builder()
+                .setItemList(mPlaces.getPlaceList())
+                .setTitle(getCarContext().getString(R.string.place_list_template_demo_title))
+                .setHeaderAction(Action.BACK)
+                .build();
     }
 }

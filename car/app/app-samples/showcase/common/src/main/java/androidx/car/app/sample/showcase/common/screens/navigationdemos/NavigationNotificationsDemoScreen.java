@@ -22,17 +22,15 @@ import android.content.Intent;
 import android.os.Build.VERSION;
 import android.os.Build.VERSION_CODES;
 
+import androidx.annotation.NonNull;
 import androidx.car.app.CarContext;
 import androidx.car.app.Screen;
 import androidx.car.app.model.Action;
-import androidx.car.app.model.Header;
 import androidx.car.app.model.ItemList;
 import androidx.car.app.model.ListTemplate;
 import androidx.car.app.model.Row;
 import androidx.car.app.model.Template;
 import androidx.car.app.sample.showcase.common.R;
-
-import org.jspecify.annotations.NonNull;
 
 /** A simple screen that demonstrates how to use navigation notifications in a car app. */
 public final class NavigationNotificationsDemoScreen extends Screen {
@@ -43,9 +41,10 @@ public final class NavigationNotificationsDemoScreen extends Screen {
 
     // Suppressing 'ObsoleteSdkInt' as this code is shared between APKs with different min SDK
     // levels
-    @SuppressLint("ObsoleteSdkInt")
+    @SuppressLint({"ObsoleteSdkInt", "ClassVerificationFailure"})
+    @NonNull
     @Override
-    public @NonNull Template onGetTemplate() {
+    public Template onGetTemplate() {
         ItemList.Builder listBuilder = new ItemList.Builder();
 
         listBuilder.addItem(
@@ -80,10 +79,8 @@ public final class NavigationNotificationsDemoScreen extends Screen {
 
         return new ListTemplate.Builder()
                 .setSingleList(listBuilder.build())
-                .setHeader(new Header.Builder()
-                        .setTitle(getCarContext().getString(R.string.nav_notification_demo_title))
-                        .setStartHeaderAction(Action.BACK)
-                        .build())
+                .setTitle(getCarContext().getString(R.string.nav_notification_demo_title))
+                .setHeaderAction(Action.BACK)
                 .build();
     }
 }
