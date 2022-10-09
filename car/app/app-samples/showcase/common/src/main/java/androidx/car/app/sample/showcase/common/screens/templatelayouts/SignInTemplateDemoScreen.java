@@ -56,9 +56,7 @@ public class SignInTemplateDemoScreen extends Screen {
     private final Action mQRCodeSignInAction;
     // package private to avoid synthetic accessor
     State mState = State.USERNAME;
-    @Nullable
     String mLastErrorMessage; // last displayed error message
-    @Nullable
     String mErrorMessage;
 
     @Nullable
@@ -160,7 +158,7 @@ public class SignInTemplateDemoScreen extends Screen {
 
                     // Invalidate the template (and hence possibly update the error message) only
                     // if clearing up the error string, or if the error is changing.
-                    if ((mLastErrorMessage != null && !mLastErrorMessage.isEmpty())
+                    if (!mLastErrorMessage.isEmpty()
                             && (mErrorMessage.isEmpty()
                             || !mLastErrorMessage.equals(mErrorMessage))) {
                         invalidate();
