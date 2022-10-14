@@ -32,7 +32,8 @@ android {
             // Enables code shrinking, obfuscation, and optimization.
             minifyEnabled true
             proguardFiles getDefaultProguardFile(
-                    'proguard-android-optimize.txt')
+                    'proguard-android-optimize.txt'),
+                    'proguard-rules.pro'
         }
     }
     namespace "androidx.car.app.sample.navigation"
