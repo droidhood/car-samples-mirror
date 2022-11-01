@@ -37,12 +37,6 @@
   <uses-permission android:name="androidx.car.app.ACCESS_SURFACE"/>
   <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
 
-  <!-- SDK 33 onwards, apps require this permission to send any notifications to the system -->
-  <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
-
-  <!-- For the Microphone Recording demos. -->
-  <uses-permission android:name="android.permission.RECORD_AUDIO" />
-
   <!-- Various required feature settings for an automotive app. -->
   <uses-feature
       android:name="android.hardware.type.automotive"
@@ -62,14 +56,17 @@
 
   <application
     android:label="@string/app_name"
-    android:icon="@drawable/ic_launcher">
+    android:icon="@drawable/ic_launcher"
+    android:extractNativeLibs="false">
 
     <meta-data
         android:name="com.android.automotive"
-        android:resource="@xml/automotive_app_desc"/>
+        android:resource="@xml/automotive_app_desc"
+        tools:ignore="MetadataTagInsideApplicationTag" />
 
     <meta-data android:name="androidx.car.app.minCarApiLevel"
-        android:value="1"/>
+        android:value="1"
+        tools:ignore="MetadataTagInsideApplicationTag" />
 
     <service
         android:name="androidx.car.app.sample.navigation.common.car.NavigationCarAppService"
@@ -90,7 +87,6 @@
 
     <activity
         android:name="androidx.car.app.activity.CarAppActivity"
-        android:configChanges="uiMode"
         android:theme="@android:style/Theme.DeviceDefault.NoActionBar"
         android:exported="true"
         android:launchMode="singleTask"
