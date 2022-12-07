@@ -18,12 +18,15 @@ package androidx.car.app.sample.showcase.common.screens.templatelayouts.tabtempl
 
 import static androidx.car.app.model.Action.APP_ICON;
 
+import android.annotation.SuppressLint;
+import android.text.TextUtils;
+
+import androidx.annotation.NonNull;
 import androidx.car.app.CarContext;
 import androidx.car.app.CarToast;
 import androidx.car.app.Screen;
 import androidx.car.app.model.CarIcon;
 import androidx.car.app.model.ItemList;
-import androidx.car.app.model.ListTemplate;
 import androidx.car.app.model.Row;
 import androidx.car.app.model.SearchTemplate;
 import androidx.car.app.model.Tab;
@@ -33,8 +36,6 @@ import androidx.car.app.model.Template;
 import androidx.car.app.sample.showcase.common.R;
 import androidx.core.graphics.drawable.IconCompat;
 
-import org.jspecify.annotations.NonNull;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -43,8 +44,14 @@ import java.util.Map;
  * state.
  */
 public final class TabTemplateLoadingDemoScreen extends Screen {
-    private static final String LOADING_ID = "Loading";
-    private static final String SEARCH_ID = "Search";
+    private static final int[] sTitleResIds = new int[]{
+            R.string.tab_title_message, R.string.tab_title_search
+    };
+
+    private static final int[] sIconResIds = new int[]{
+            R.drawable.ic_explore_white_24dp,
+            R.drawable.ic_face_24px
+    };
 
     private final Map<String, Tab> mTabs;
     private TabTemplate.Builder mTabTemplateBuilder;
@@ -55,9 +62,11 @@ public final class TabTemplateLoadingDemoScreen extends Screen {
         mTabs = new HashMap<>();
     }
 
+    @NonNull
     @Override
-    public @NonNull Template onGetTemplate() {
+    public Template onGetTemplate() {
         mTabTemplateBuilder = new TabTemplate.Builder(new TabTemplate.TabCallback() {
+            @SuppressLint("SyntheticAccessor")
             @Override
             public void onTabSelected(@NonNull String tabContentId) {
                 mActiveContentId = tabContentId;
@@ -68,46 +77,38 @@ public final class TabTemplateLoadingDemoScreen extends Screen {
 
         mTabs.clear();
 
-        Tab loadingTab =
-                new Tab.Builder()
-                        .setTitle(getCarContext().getString(R.string.tab_title_loading))
-                        .setIcon(new CarIcon.Builder(IconCompat.createWithResource(getCarContext(),
-                                R.drawable.ic_explore_white_24dp)).build())
-                        .setContentId(LOADING_ID)
-                        .build();
-        mTabTemplateBuilder.addTab(loadingTab);
+        for (int i = 0; i < 2; i++) {
+            String contentId = String.valueOf(i);
 
-        Tab otherTab =
-                new Tab.Builder()
-                        .setTitle(getCarContext().getString(R.string.tab_title_search))
-                        .setIcon(new CarIcon.Builder(IconCompat.createWithResource(getCarContext(),
-                                R.drawable.ic_face_24px)).build())
-                        .setContentId(SEARCH_ID)
-                        .build();
-        mTabTemplateBuilder.addTab(otherTab);
+            Tab.Builder tabBuilder = new Tab.Builder()
+                    .setTitle(getCarContext().getString(sTitleResIds[i]))
+                    .setIcon(new CarIcon.Builder(IconCompat.createWithResource(getCarContext(),
+                            sIconResIds[i])).build())
+                    .setContentId(contentId);
+            if (TextUtils.isEmpty(mActiveContentId) && i == 0) {
+                tabBuilder.setActive(true);
+            } else if (TextUtils.equals(mActiveContentId, contentId)) {
+                tabBuilder.setActive(true);
+            } else {
+                tabBuilder.setActive(false);
+            }
 
-        if (mActiveContentId == null) {
-            mActiveContentId = LOADING_ID;
+            Tab tab = tabBuilder.build();
+            mTabs.put(tab.getContentId(), tab);
+            mTabTemplateBuilder.addTab(tab);
+
+            if (tab.isActive()) {
+                if (i == 0) {
+                    mTabTemplateBuilder.setLoading(true);
+                } else {
+                    mTabTemplateBuilder.setTabContents(createSearchTab());
+                }
+            }
         }
-
-        Template contentTemplate;
-        switch (mActiveContentId) {
-            case LOADING_ID:
-                contentTemplate = new ListTemplate.Builder().setLoading(true).build();
-                break;
-            case SEARCH_ID:
-                contentTemplate = createSearchTemplate();
-                break;
-            default:
-                throw new IllegalStateException("What happened?!");
-        }
-
-        return mTabTemplateBuilder.setTabContents(
-                new TabContents.Builder(contentTemplate).build()).setActiveTabContentId(
-                mActiveContentId).build();
+        return mTabTemplateBuilder.build();
     }
 
-    private Template createSearchTemplate() {
+    private TabContents createSearchTab() {
         ItemList.Builder listBuilder = new ItemList.Builder();
         for (int i = 1; i <= 6; ++i) {
             listBuilder.addItem(
@@ -130,7 +131,7 @@ public final class TabTemplateLoadingDemoScreen extends Screen {
                 .setItemList(listBuilder.build())
                 .setShowKeyboardByDefault(true)
                 .build();
-        return searchTemplate;
+        return new TabContents.Builder(searchTemplate).build();
     }
 
 }
