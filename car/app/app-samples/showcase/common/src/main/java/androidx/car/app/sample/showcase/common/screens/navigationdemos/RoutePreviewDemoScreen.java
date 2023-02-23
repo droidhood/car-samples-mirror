@@ -91,26 +91,19 @@ public final class RoutePreviewDemoScreen extends Screen {
         }
     }
 
-    private Row createRow(int index, Action action) {
+    private Row createRow(int index) {
         CarText route = createRouteText(index);
         String titleText = "Via NE " + (index + 4) + "th Street";
 
         return new Row.Builder()
                 .setTitle(route)
                 .addText(titleText)
-                .addAction(action)
                 .build();
     }
 
     @NonNull
     @Override
     public Template onGetTemplate() {
-        Action action = new Action.Builder()
-                .setIcon(buildCarIconWithResources(R.drawable.outline_info_24))
-                .setOnClickListener(() -> CarToast.makeText(getCarContext(),
-                        R.string.secondary_action_toast, LENGTH_LONG).show())
-                .build();
-
         // Adjust the item limit according to the car constrains.
         mItemLimit = getCarContext().getCarService(ConstraintManager.class).getContentLimit(
                 ConstraintManager.CONTENT_LIMIT_TYPE_ROUTE_LIST);
@@ -120,7 +113,7 @@ public final class RoutePreviewDemoScreen extends Screen {
                 .setOnItemsVisibilityChangedListener(this::onRoutesVisible);
 
         for (int i = 0; i < mItemLimit; i++) {
-            itemListBuilder.addItem(createRow(i, action));
+            itemListBuilder.addItem(createRow(i));
         }
 
         // Set text variants for the navigate action text.
@@ -197,13 +190,5 @@ public final class RoutePreviewDemoScreen extends Screen {
                                 + ": [" + startIndex + "," + endIndex + "]",
                         LENGTH_LONG)
                 .show();
-    }
-
-    private CarIcon buildCarIconWithResources(int imageId) {
-        return new CarIcon.Builder(
-                IconCompat.createWithResource(
-                        getCarContext(),
-                        imageId))
-                .build();
     }
 }
