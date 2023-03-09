@@ -26,7 +26,6 @@ import androidx.car.app.CarContext;
 import androidx.car.app.CarToast;
 import androidx.car.app.Screen;
 import androidx.car.app.model.Action;
-import androidx.car.app.model.CarColor;
 import androidx.car.app.model.CarIcon;
 import androidx.car.app.model.GridItem;
 import androidx.car.app.model.GridTemplate;
@@ -143,7 +142,6 @@ public final class TabTemplateDemoScreen extends Screen {
         }
         return new ListTemplate.Builder()
                 .setSingleList(listBuilder.build())
-                .addAction(createFabBackAction())
                 .build();
     }
 
@@ -164,7 +162,6 @@ public final class TabTemplateDemoScreen extends Screen {
         }
         return new GridTemplate.Builder()
                 .setSingleList(listBuilder.build())
-                .addAction(createFabBackAction())
                 .build();
     }
 
@@ -200,15 +197,6 @@ public final class TabTemplateDemoScreen extends Screen {
         }
         return new PaneTemplate.Builder(paneBuilder.build())
                 .build();
-    }
-
-    private Action createFabBackAction() {
-        Action action = new Action.Builder()
-                .setIcon(CarIcon.BACK)
-                .setBackgroundColor(CarColor.BLUE)
-                .setOnClickListener(() -> getScreenManager().pop())
-                .build();
-        return action;
     }
 
 }
