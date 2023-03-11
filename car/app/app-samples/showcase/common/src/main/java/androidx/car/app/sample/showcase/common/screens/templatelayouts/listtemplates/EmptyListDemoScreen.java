@@ -18,15 +18,13 @@ package androidx.car.app.sample.showcase.common.screens.templatelayouts.listtemp
 
 import static androidx.car.app.model.Action.BACK;
 
+import androidx.annotation.NonNull;
 import androidx.car.app.CarContext;
 import androidx.car.app.Screen;
-import androidx.car.app.model.Header;
 import androidx.car.app.model.ItemList;
 import androidx.car.app.model.ListTemplate;
 import androidx.car.app.model.Template;
 import androidx.car.app.sample.showcase.common.R;
-
-import org.jspecify.annotations.NonNull;
 
 /** A screen demonstrating empty lists */
 public class EmptyListDemoScreen extends Screen {
@@ -34,8 +32,9 @@ public class EmptyListDemoScreen extends Screen {
         super(carContext);
     }
 
+    @NonNull
     @Override
-    public @NonNull Template onGetTemplate() {
+    public Template onGetTemplate() {
         return new ListTemplate.Builder()
                 .setSingleList(
                         new ItemList.Builder()
@@ -44,7 +43,7 @@ public class EmptyListDemoScreen extends Screen {
                                 )
                                 .build()
                 )
-                .setHeader(new Header.Builder().setStartHeaderAction(BACK).build())
+                .setHeaderAction(BACK)
                 .build();
     }
 }
