@@ -16,6 +16,7 @@
 
 package androidx.car.app.sample.showcase.common.screens.navigationdemos;
 
+import androidx.annotation.NonNull;
 import androidx.car.app.CarContext;
 import androidx.car.app.Screen;
 import androidx.car.app.model.CarColor;
@@ -27,19 +28,15 @@ import androidx.car.app.sample.showcase.common.R;
 import androidx.core.graphics.drawable.IconCompat;
 import androidx.lifecycle.DefaultLifecycleObserver;
 
-import org.jspecify.annotations.NonNull;
-
 /** A screen that shows the navigation template in arrived state. */
 public final class ArrivedDemoScreen extends Screen implements DefaultLifecycleObserver {
-    private final RoutingDemoModelFactory mRoutingDemoModelFactory;
-
     public ArrivedDemoScreen(@NonNull CarContext carContext) {
         super(carContext);
-        mRoutingDemoModelFactory = new RoutingDemoModelFactory(carContext);
     }
 
+    @NonNull
     @Override
-    public @NonNull Template onGetTemplate() {
+    public Template onGetTemplate() {
         return new NavigationTemplate.Builder()
                 .setNavigationInfo(
                         new MessageInfo.Builder(
@@ -52,7 +49,7 @@ public final class ArrivedDemoScreen extends Screen implements DefaultLifecycleO
                                                         R.drawable.ic_place_white_24dp))
                                                 .build())
                                 .build())
-                .setActionStrip(mRoutingDemoModelFactory.getActionStrip(this::finish))
+                .setActionStrip(RoutingDemoModels.getActionStrip(getCarContext(), this::finish))
                 .setBackgroundColor(CarColor.SECONDARY)
                 .build();
     }
