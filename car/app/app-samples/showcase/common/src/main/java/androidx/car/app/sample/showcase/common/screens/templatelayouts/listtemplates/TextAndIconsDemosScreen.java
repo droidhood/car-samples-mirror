@@ -29,7 +29,6 @@ import androidx.car.app.CarContext;
 import androidx.car.app.Screen;
 import androidx.car.app.model.CarColor;
 import androidx.car.app.model.CarIcon;
-import androidx.car.app.model.Header;
 import androidx.car.app.model.ItemList;
 import androidx.car.app.model.ListTemplate;
 import androidx.car.app.model.Row;
@@ -76,10 +75,8 @@ public final class TextAndIconsDemosScreen extends Screen {
 
         return new ListTemplate.Builder()
                 .setSingleList(listBuilder.build())
-                .setHeader(new Header.Builder()
-                    .setTitle(getCarContext().getString(R.string.text_icons_demo_title))
-                    .setStartHeaderAction(BACK)
-                    .build())
+                .setTitle(getCarContext().getString(R.string.text_icons_demo_title))
+                .setHeaderAction(BACK)
                 .build();
 
     }
