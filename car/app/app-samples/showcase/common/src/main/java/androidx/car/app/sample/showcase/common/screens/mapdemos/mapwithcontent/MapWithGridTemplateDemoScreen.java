@@ -28,7 +28,6 @@ import androidx.car.app.model.ActionStrip;
 import androidx.car.app.model.CarIcon;
 import androidx.car.app.model.GridItem;
 import androidx.car.app.model.GridTemplate;
-import androidx.car.app.model.Header;
 import androidx.car.app.model.ItemList;
 import androidx.car.app.model.Template;
 import androidx.car.app.navigation.model.MapWithContentTemplate;
@@ -55,10 +54,8 @@ public class MapWithGridTemplateDemoScreen extends Screen {
 
         GridTemplate gridTemplate = new GridTemplate.Builder()
                 .setSingleList(gridItemListBuilder.build())
-                .setHeader(new Header.Builder()
-                        .setStartHeaderAction(Action.BACK)
-                        .setTitle("Report?")
-                        .build())
+                .setHeaderAction(Action.BACK)
+                .setTitle("Report?")
                 .build();
 
 

@@ -21,7 +21,6 @@ import static androidx.car.app.model.Action.BACK;
 import androidx.annotation.NonNull;
 import androidx.car.app.CarContext;
 import androidx.car.app.Screen;
-import androidx.car.app.model.Header;
 import androidx.car.app.model.ItemList;
 import androidx.car.app.model.ListTemplate;
 import androidx.car.app.model.Row;
@@ -64,10 +63,8 @@ public final class MapDemosScreen extends Screen {
 
         return new ListTemplate.Builder()
                 .setSingleList(listBuilder.build())
-                .setHeader(new Header.Builder()
-                        .setTitle(getCarContext().getString(R.string.map_demos_title))
-                        .setStartHeaderAction(BACK)
-                        .build())
+                .setTitle(getCarContext().getString(R.string.map_demos_title))
+                .setHeaderAction(BACK)
                 .build();
     }
 
