@@ -28,26 +28,25 @@ import androidx.lifecycle.DefaultLifecycleObserver;
 
 /** A screen that shows the navigation template in routing state. */
 public final class NavigatingDemoScreen extends Screen implements DefaultLifecycleObserver {
-    private final RoutingDemoModelFactory mRoutingDemoModelFactory;
     public NavigatingDemoScreen(@NonNull CarContext carContext) {
         super(carContext);
-        mRoutingDemoModelFactory = new RoutingDemoModelFactory(carContext);
     }
 
     @NonNull
     @Override
     public Template onGetTemplate() {
+        CarContext carContext = getCarContext();
         return new NavigationTemplate.Builder()
                 .setNavigationInfo(
                         new RoutingInfo.Builder()
                                 .setCurrentStep(
-                                        mRoutingDemoModelFactory.getCurrentStep(),
+                                        RoutingDemoModels.getCurrentStep(carContext),
                                         Distance.create(200, Distance.UNIT_METERS))
-                                .setNextStep(mRoutingDemoModelFactory.getNextStep())
+                                .setNextStep(RoutingDemoModels.getNextStep(carContext))
                                 .build())
-                .setDestinationTravelEstimate(mRoutingDemoModelFactory.getTravelEstimate())
-                .setActionStrip(mRoutingDemoModelFactory.getActionStrip(this::finish))
-                .setMapActionStrip(mRoutingDemoModelFactory.getMapActionStrip())
+                .setDestinationTravelEstimate(RoutingDemoModels.getTravelEstimate(carContext))
+                .setActionStrip(RoutingDemoModels.getActionStrip(getCarContext(), this::finish))
+                .setMapActionStrip(RoutingDemoModels.getMapActionStrip(getCarContext()))
                 .setBackgroundColor(CarColor.SECONDARY)
                 .build();
     }

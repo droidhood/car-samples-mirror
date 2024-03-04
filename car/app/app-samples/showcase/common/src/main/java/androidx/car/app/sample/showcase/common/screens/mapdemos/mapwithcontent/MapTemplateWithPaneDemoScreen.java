@@ -40,7 +40,7 @@ import androidx.car.app.model.Template;
 import androidx.car.app.navigation.model.MapController;
 import androidx.car.app.navigation.model.MapTemplate;
 import androidx.car.app.sample.showcase.common.R;
-import androidx.car.app.sample.showcase.common.screens.navigationdemos.RoutingDemoModelFactory;
+import androidx.car.app.sample.showcase.common.screens.navigationdemos.RoutingDemoModels;
 import androidx.car.app.versioning.CarAppApiLevels;
 import androidx.core.graphics.drawable.IconCompat;
 
@@ -55,7 +55,6 @@ public class MapTemplateWithPaneDemoScreen extends Screen {
     private static final int LIST_LIMIT = 4;
 
     private boolean mIsFavorite;
-    private final RoutingDemoModelFactory mRoutingDemoModelFactory;
 
     public MapTemplateWithPaneDemoScreen(@NonNull CarContext carContext) {
         super(carContext);
@@ -64,7 +63,6 @@ public class MapTemplateWithPaneDemoScreen extends Screen {
         mPaneImage = IconCompat.createWithBitmap(bitmap);
         mRowLargeIcon = IconCompat.createWithResource(getCarContext(),
                 R.drawable.ic_fastfood_white_48dp);
-        mRoutingDemoModelFactory = new RoutingDemoModelFactory(carContext);
     }
 
     @NonNull
@@ -147,7 +145,7 @@ public class MapTemplateWithPaneDemoScreen extends Screen {
 
 
         MapController mapController = new MapController.Builder()
-                .setMapActionStrip(mRoutingDemoModelFactory.getMapActionStrip())
+                .setMapActionStrip(RoutingDemoModels.getMapActionStrip(getCarContext()))
                 .build();
 
         ActionStrip actionStrip = new ActionStrip.Builder()

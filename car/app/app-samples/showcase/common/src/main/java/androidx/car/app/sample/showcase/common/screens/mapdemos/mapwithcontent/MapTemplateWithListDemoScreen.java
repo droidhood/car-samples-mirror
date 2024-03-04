@@ -37,7 +37,7 @@ import androidx.car.app.model.Template;
 import androidx.car.app.navigation.model.MapController;
 import androidx.car.app.navigation.model.MapTemplate;
 import androidx.car.app.sample.showcase.common.R;
-import androidx.car.app.sample.showcase.common.screens.navigationdemos.RoutingDemoModelFactory;
+import androidx.car.app.sample.showcase.common.screens.navigationdemos.RoutingDemoModels;
 import androidx.car.app.versioning.CarAppApiLevels;
 import androidx.core.graphics.drawable.IconCompat;
 
@@ -45,11 +45,9 @@ import androidx.core.graphics.drawable.IconCompat;
 public class MapTemplateWithListDemoScreen extends Screen {
     private static final int MAX_LIST_ITEMS = 100;
     private boolean mIsFavorite;
-    private final RoutingDemoModelFactory mRoutingDemoModelFactory;
 
     public MapTemplateWithListDemoScreen(@NonNull CarContext carContext) {
         super(carContext);
-        mRoutingDemoModelFactory = new RoutingDemoModelFactory(carContext);
     }
 
     @NonNull
@@ -109,7 +107,7 @@ public class MapTemplateWithListDemoScreen extends Screen {
 
 
         MapController mapController = new MapController.Builder()
-                .setMapActionStrip(mRoutingDemoModelFactory.getMapActionStrip())
+                .setMapActionStrip(RoutingDemoModels.getMapActionStrip(getCarContext()))
                 .build();
 
         ActionStrip actionStrip = new ActionStrip.Builder()
