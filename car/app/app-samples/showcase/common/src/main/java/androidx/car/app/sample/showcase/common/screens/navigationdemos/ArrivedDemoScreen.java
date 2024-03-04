@@ -30,11 +30,8 @@ import androidx.lifecycle.DefaultLifecycleObserver;
 
 /** A screen that shows the navigation template in arrived state. */
 public final class ArrivedDemoScreen extends Screen implements DefaultLifecycleObserver {
-    private final RoutingDemoModelFactory mRoutingDemoModelFactory;
-
     public ArrivedDemoScreen(@NonNull CarContext carContext) {
         super(carContext);
-        mRoutingDemoModelFactory = new RoutingDemoModelFactory(carContext);
     }
 
     @NonNull
@@ -52,7 +49,7 @@ public final class ArrivedDemoScreen extends Screen implements DefaultLifecycleO
                                                         R.drawable.ic_place_white_24dp))
                                                 .build())
                                 .build())
-                .setActionStrip(mRoutingDemoModelFactory.getActionStrip(this::finish))
+                .setActionStrip(RoutingDemoModels.getActionStrip(getCarContext(), this::finish))
                 .setBackgroundColor(CarColor.SECONDARY)
                 .build();
     }
