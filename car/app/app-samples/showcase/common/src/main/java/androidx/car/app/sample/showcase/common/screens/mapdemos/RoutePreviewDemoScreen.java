@@ -36,22 +36,20 @@ import androidx.car.app.model.Row;
 import androidx.car.app.model.Template;
 import androidx.car.app.navigation.model.RoutePreviewNavigationTemplate;
 import androidx.car.app.sample.showcase.common.R;
-import androidx.car.app.sample.showcase.common.screens.navigationdemos.RoutingDemoModelFactory;
+import androidx.car.app.sample.showcase.common.screens.navigationdemos.RoutingDemoModels;
 import androidx.core.graphics.drawable.IconCompat;
 
 import java.util.concurrent.TimeUnit;
 
 /** Creates a screen using the {@link RoutePreviewNavigationTemplate} */
 public final class RoutePreviewDemoScreen extends Screen {
+    public RoutePreviewDemoScreen(@NonNull CarContext carContext) {
+        super(carContext);
+    }
+
     private boolean mIsFavorite;
 
     private int mItemLimit;
-    private final RoutingDemoModelFactory mRoutingDemoModelFactory;
-
-    public RoutePreviewDemoScreen(@NonNull CarContext carContext) {
-        super(carContext);
-        mRoutingDemoModelFactory = new RoutingDemoModelFactory(carContext);
-    }
 
     private CarText createRouteText(int index) {
         switch (index) {
@@ -175,7 +173,7 @@ public final class RoutePreviewDemoScreen extends Screen {
                                 .setTitle(navigateActionText)
                                 .setOnClickListener(this::onNavigate)
                                 .build())
-                .setMapActionStrip(mRoutingDemoModelFactory.getMapActionStrip())
+                .setMapActionStrip(RoutingDemoModels.getMapActionStrip(getCarContext()))
                 .setHeader(header)
                 .build();
     }
