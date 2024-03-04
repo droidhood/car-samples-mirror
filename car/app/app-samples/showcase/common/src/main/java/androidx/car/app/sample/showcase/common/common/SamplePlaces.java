@@ -25,7 +25,6 @@ import android.location.Location;
 import android.text.SpannableString;
 import android.text.Spanned;
 
-import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 import androidx.car.app.CarContext;
 import androidx.car.app.Screen;
@@ -158,20 +157,25 @@ public class SamplePlaces {
                         location4,
                         new PlaceMarker.Builder()
                                 .setIcon(
-                                        createCarIconWithBitmap(carContext, R.drawable.banana),
-                                        PlaceMarker.TYPE_IMAGE
-                                )
+                                        new CarIcon.Builder(
+                                                IconCompat.createWithBitmap(
+                                                        BitmapFactory.decodeResource(
+                                                                carContext.getResources(),
+                                                                R.drawable.banana)))
+                                                .build(),
+                                        PlaceMarker.TYPE_IMAGE)
                                 .build()));
 
         Location location5 = new Location(SamplePlaces.class.getSimpleName());
         location5.setLatitude(37.422014);
         location5.setLongitude(-122.084776);
         SpannableString title5 = new SpannableString("  Googleplex");
-        title5.setSpan(
-                CarIconSpan.create(
-                        createCarIconWithBitmap(carContext, R.drawable.ic_hi),
-                        CarIconSpan.ALIGN_CENTER
-                ),
+        title5.setSpan(CarIconSpan.create(new CarIcon.Builder(
+                        IconCompat.createWithBitmap(
+                                BitmapFactory.decodeResource(
+                                        carContext.getResources(),
+                                        R.drawable.ic_hi)))
+                        .build(), CarIconSpan.ALIGN_CENTER),
                 0,
                 1,
                 Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
@@ -185,10 +189,12 @@ public class SamplePlaces {
                         location5,
                         new PlaceMarker.Builder()
                                 .setIcon(
-                                        createCarIconWithBitmap(
-                                                carContext,
-                                                R.drawable.test_image_square
-                                        ),
+                                        new CarIcon.Builder(
+                                                IconCompat.createWithBitmap(
+                                                        BitmapFactory.decodeResource(
+                                                                carContext.getResources(),
+                                                                R.drawable.test_image_square)))
+                                                .build(),
                                         PlaceMarker.TYPE_IMAGE)
                                 .build()));
 
@@ -278,11 +284,12 @@ public class SamplePlaces {
                     1,
                     Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
             if (index == 4) {
-                description.setSpan(
-                        CarIconSpan.create(
-                                createCarIconWithBitmap(carContext, R.drawable.ic_hi),
-                                CarIconSpan.ALIGN_CENTER
-                        ),
+                description.setSpan(CarIconSpan.create(new CarIcon.Builder(
+                                IconCompat.createWithBitmap(
+                                        BitmapFactory.decodeResource(
+                                                carContext.getResources(),
+                                                R.drawable.ic_hi)))
+                                .build(), CarIconSpan.ALIGN_CENTER),
                         5,
                         6,
                         Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
@@ -321,14 +328,5 @@ public class SamplePlaces {
         mDemoScreen
                 .getScreenManager()
                 .push(PlaceDetailsScreen.create(mDemoScreen.getCarContext(), place));
-    }
-
-    private static CarIcon createCarIconWithBitmap(CarContext carContext,
-            @DrawableRes int drawable) {
-        return new CarIcon.Builder(
-                IconCompat.createWithBitmap(
-                        BitmapFactory.decodeResource(carContext.getResources(), drawable)
-                )
-        ).build();
     }
 }
