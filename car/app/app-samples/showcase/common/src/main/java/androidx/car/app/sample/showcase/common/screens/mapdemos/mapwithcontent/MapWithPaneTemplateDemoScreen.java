@@ -24,6 +24,8 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.car.app.CarContext;
 import androidx.car.app.CarToast;
 import androidx.car.app.Screen;
@@ -43,14 +45,13 @@ import androidx.car.app.sample.showcase.common.screens.navigationdemos.RoutingDe
 import androidx.car.app.versioning.CarAppApiLevels;
 import androidx.core.graphics.drawable.IconCompat;
 
-import org.jspecify.annotations.NonNull;
-import org.jspecify.annotations.Nullable;
-
 /** Simple demo of how to present a map template with a pane. */
 public class MapWithPaneTemplateDemoScreen extends Screen {
-    private final @Nullable IconCompat mPaneImage;
+    @Nullable
+    private final IconCompat mPaneImage;
 
-    private final @Nullable IconCompat mRowLargeIcon;
+    @Nullable
+    private final IconCompat mRowLargeIcon;
 
     private static final int LIST_LIMIT = 4;
 
@@ -67,8 +68,9 @@ public class MapWithPaneTemplateDemoScreen extends Screen {
         mRoutingDemoModelFactory = new RoutingDemoModelFactory(carContext);
     }
 
+    @NonNull
     @Override
-    public @NonNull Template onGetTemplate() {
+    public Template onGetTemplate() {
         Pane.Builder paneBuilder = new Pane.Builder();
 
         paneBuilder.addRow(createRowWithExcessivelyLargeContent());
