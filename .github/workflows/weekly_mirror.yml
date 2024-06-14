@@ -25,23 +25,27 @@ jobs:
 
     - name: Get current date
       id: date
-      run: echo "date=$(date -u +"%Y-%m-%d")" >> $GITHUB_ENV
+      run: echo "date=$(date -u +"%Y-%m-%d-%H%M%S")" >> $GITHUB_ENV
     
+    - name: Create new branch
+      run: |
+        git checkout -b update-samples-${{ env.date }}
+
     - name: Commit changes
       run: |
-        git checkout -b update-samples
         git add .
-        git commit -m "Update samples - ${{ env.date }}"
-    
+        git commit -m "Update samples - ${{ env.date }}" || echo "No changes to commit"
+
     - name: Push changes
       run: |
-        git push --set-upstream origin update-samples
-    
+        git push --set-upstream origin update-samples-${{ env.date }}
+
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v4
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
-        branch: update-samples
+        branch: update-samples-${{ env.date }}
+        base: main
         title: "Weekly Update: ${{ env.date }}"
         body: "This PR contains the weekly update from https://android.googlesource.com/platform/frameworks/support/+archive/refs/heads/androidx-main/car/app/app-samples"
         labels: 'auto-generated'
