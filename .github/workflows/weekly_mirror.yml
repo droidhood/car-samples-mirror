@@ -45,7 +45,6 @@ jobs:
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         branch: update-samples-${{ env.date }}
-        base: main
         title: "Weekly Update: ${{ env.date }}"
         body: "This PR contains the weekly update from https://android.googlesource.com/platform/frameworks/support/+archive/refs/heads/androidx-main/car/app/app-samples"
         labels: 'auto-generated'
