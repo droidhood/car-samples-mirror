@@ -1,4 +1,4 @@
-name: Weekly mirror for AOSP car app samples
+name: mirror-AOSP-car-samples
 
 on:
   schedule:
@@ -39,6 +39,7 @@ jobs:
         base: ${{ steps.get_branch.outputs.branch }}
         branch: update-samples-${{ env.date }}
         title: "Weekly Update: ${{ env.date }}"
-        body: "This PR contains the weekly update from https://android.googlesource.com/platform/frameworks/support/+archive/refs/heads/androidx-main/car/app/app-samples"
+        body: "This PR contains the weekly update from https://android.googlesource.com/platform/frameworks/support/+/refs/heads/androidx-main/car/app/app-samples"
         labels: 'auto-generated'
         branch-sufix: timestamp
+        delete-branch: true
