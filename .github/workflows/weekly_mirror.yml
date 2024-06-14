@@ -72,8 +72,7 @@ jobs:
       uses: peter-evans/create-pull-request@v6
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
-        base: update-samples-${{ env.date }}
-        branch: task/mirror-${{ github.run_id }}
+        branch: update-samples-${{ env.date }}
         title: "Weekly Update: ${{ env.date }}"
         body: "This PR contains the weekly update from https://android.googlesource.com/platform/frameworks/support/+archive/refs/heads/androidx-main/car/app/app-samples"
         labels: 'auto-generated'
