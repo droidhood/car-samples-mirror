@@ -53,20 +53,6 @@ jobs:
       run: echo "date=$(date -u +"%Y-%m-%d")" >> $GITHUB_ENV
 =======
       run: echo "date=$(date -u +"%Y-%m-%d-%H%M%S")" >> $GITHUB_ENV
->>>>>>> ca371e4f (Attempt to fix action)
-    
-    - name: Create new branch
-      run: |
-        git checkout -b update-samples-${{ env.date }}
-
-    - name: Commit changes
-      run: |
-        git add .
-        git commit -m "Update samples - ${{ env.date }}" || echo "No changes to commit"
-
-    - name: Push changes
-      run: |
-        git push --set-upstream origin update-samples-${{ env.date }}
 
     - name: Get branch name
       id: get_branch
