@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 name: mirror-AOSP-car-samples
+=======
+name: Weekly mirror for AOSP car app samples
+>>>>>>> b21575e7 (Add weekly action)
 
 on:
   schedule:
@@ -25,6 +29,7 @@ jobs:
 
     - name: Get current date
       id: date
+<<<<<<< HEAD
       run: echo "date=$(date -u +"%Y-%m-%d-%H%M%S")" >> $GITHUB_ENV
 
     - name: Get branch name
@@ -43,3 +48,25 @@ jobs:
         labels: 'auto-generated'
         branch-sufix: timestamp
         delete-branch: true
+=======
+      run: echo "date=$(date -u +"%Y-%m-%d")" >> $GITHUB_ENV
+    
+    - name: Commit changes
+      run: |
+        git checkout -b update-samples
+        git add .
+        git commit -m "Update samples - ${{ env.date }}"
+    
+    - name: Push changes
+      run: |
+        git push --set-upstream origin update-samples
+    
+    - name: Create Pull Request
+      uses: peter-evans/create-pull-request@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        branch: update-samples
+        title: "Weekly Update: ${{ env.date }}"
+        body: "This PR contains the weekly update from https://android.googlesource.com/platform/frameworks/support/+archive/refs/heads/androidx-main/car/app/app-samples"
+        labels: 'auto-generated'
+>>>>>>> b21575e7 (Add weekly action)
