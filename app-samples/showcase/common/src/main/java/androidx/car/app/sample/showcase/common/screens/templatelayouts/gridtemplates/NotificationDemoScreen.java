@@ -34,6 +34,10 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 
+<<<<<<< HEAD
+=======
+import androidx.annotation.NonNull;
+>>>>>>> 7365d9da ([create-pull-request] automated change)
 import androidx.car.app.CarContext;
 import androidx.car.app.CarToast;
 import androidx.car.app.Screen;
@@ -55,8 +59,11 @@ import androidx.core.graphics.drawable.IconCompat;
 import androidx.lifecycle.DefaultLifecycleObserver;
 import androidx.lifecycle.LifecycleOwner;
 
+<<<<<<< HEAD
 import org.jspecify.annotations.NonNull;
 
+=======
+>>>>>>> 7365d9da ([create-pull-request] automated change)
 /** A simple screen that demonstrates how to use notifications in a car app. */
 public final class NotificationDemoScreen extends Screen implements DefaultLifecycleObserver {
 
@@ -111,8 +118,14 @@ public final class NotificationDemoScreen extends Screen implements DefaultLifec
         unregisterBroadcastReceiver();
     }
 
+<<<<<<< HEAD
     @Override
     public @NonNull Template onGetTemplate() {
+=======
+    @NonNull
+    @Override
+    public Template onGetTemplate() {
+>>>>>>> 7365d9da ([create-pull-request] automated change)
         ItemList.Builder listBuilder = new ItemList.Builder();
 
         // Send a single notification with the settings configured by other buttons.

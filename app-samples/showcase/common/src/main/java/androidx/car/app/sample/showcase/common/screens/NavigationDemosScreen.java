@@ -16,6 +16,10 @@
 
 package androidx.car.app.sample.showcase.common.screens;
 
+<<<<<<< HEAD
+=======
+import androidx.annotation.NonNull;
+>>>>>>> 7365d9da ([create-pull-request] automated change)
 import androidx.car.app.CarContext;
 import androidx.car.app.Screen;
 import androidx.car.app.ScreenManager;
@@ -29,8 +33,11 @@ import androidx.car.app.sample.showcase.common.screens.navigationdemos.Navigatio
 import androidx.car.app.sample.showcase.common.screens.navigationdemos.NavigationNotificationsDemoScreen;
 import androidx.car.app.sample.showcase.common.screens.paging.PagedListTemplate;
 
+<<<<<<< HEAD
 import org.jspecify.annotations.NonNull;
 
+=======
+>>>>>>> 7365d9da ([create-pull-request] automated change)
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,12 +50,23 @@ public final class NavigationDemosScreen extends PagedListTemplate.RowList {
     }
 
     /** Creates a screen with navigation demos */
+<<<<<<< HEAD
     public static @NonNull Screen createScreen(@NonNull CarContext carContext) {
         return new PagedListTemplate(new NavigationDemosScreen(carContext), carContext);
     }
 
     @Override
     protected @NonNull List<Row> getRows(@NonNull ScreenManager screenManager) {
+=======
+    @NonNull
+    public static Screen createScreen(@NonNull CarContext carContext) {
+        return new PagedListTemplate(new NavigationDemosScreen(carContext), carContext);
+    }
+
+    @NonNull
+    @Override
+    protected List<Row> getRows(@NonNull ScreenManager screenManager) {
+>>>>>>> 7365d9da ([create-pull-request] automated change)
         List<Row> screenList = new ArrayList<>();
 
         screenList.add(createRow(
@@ -89,8 +107,14 @@ public final class NavigationDemosScreen extends PagedListTemplate.RowList {
         return screenList;
     }
 
+<<<<<<< HEAD
     @Override
     protected @NonNull String getTemplateTitle() {
+=======
+    @NonNull
+    @Override
+    protected String getTemplateTitle() {
+>>>>>>> 7365d9da ([create-pull-request] automated change)
         return mCarContext.getString(R.string.nav_demos_title);
     }
 

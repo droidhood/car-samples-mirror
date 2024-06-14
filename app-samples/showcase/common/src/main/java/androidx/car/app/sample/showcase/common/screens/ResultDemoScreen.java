@@ -20,6 +20,10 @@ import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Intent;
 
+<<<<<<< HEAD
+=======
+import androidx.annotation.NonNull;
+>>>>>>> 7365d9da ([create-pull-request] automated change)
 import androidx.car.app.CarContext;
 import androidx.car.app.Screen;
 import androidx.car.app.model.Action;
@@ -28,8 +32,11 @@ import androidx.car.app.model.MessageTemplate;
 import androidx.car.app.model.Template;
 import androidx.car.app.sample.showcase.common.R;
 
+<<<<<<< HEAD
 import org.jspecify.annotations.NonNull;
 
+=======
+>>>>>>> 7365d9da ([create-pull-request] automated change)
 /**
  * A screen to demo the use of {@link CarContext#setCarAppResult(int, android.content.Intent)}
  */
@@ -38,8 +45,14 @@ public class ResultDemoScreen extends Screen {
         super(carContext);
     }
 
+<<<<<<< HEAD
     @Override
     public @NonNull Template onGetTemplate() {
+=======
+    @NonNull
+    @Override
+    public Template onGetTemplate() {
+>>>>>>> 7365d9da ([create-pull-request] automated change)
         ComponentName callingComponent = getCarContext().getCallingComponent();
         if (callingComponent == null) {
             return new MessageTemplate.Builder(

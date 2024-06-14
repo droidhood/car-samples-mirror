@@ -19,8 +19,13 @@ package androidx.car.app.sample.showcase.common.renderer;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 
+<<<<<<< HEAD
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
+=======
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+>>>>>>> 7365d9da ([create-pull-request] automated change)
 
 /** A renderer for use on templates with a surface. */
 public interface Renderer {

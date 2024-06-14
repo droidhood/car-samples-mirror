@@ -20,6 +20,10 @@ import static androidx.car.app.CarToast.LENGTH_LONG;
 import static androidx.car.app.model.Action.BACK;
 import static androidx.car.app.model.Action.FLAG_PRIMARY;
 
+<<<<<<< HEAD
+=======
+import androidx.annotation.NonNull;
+>>>>>>> 7365d9da ([create-pull-request] automated change)
 import androidx.car.app.CarContext;
 import androidx.car.app.CarToast;
 import androidx.car.app.Screen;
@@ -34,16 +38,25 @@ import androidx.car.app.model.Template;
 import androidx.car.app.sample.showcase.common.R;
 import androidx.car.app.versioning.CarAppApiLevels;
 
+<<<<<<< HEAD
 import org.jspecify.annotations.NonNull;
 
+=======
+>>>>>>> 7365d9da ([create-pull-request] automated change)
 /** A screen that demonstrates the long message template. */
 public class LongMessageTemplateDemoScreen extends Screen {
     public LongMessageTemplateDemoScreen(@NonNull CarContext carContext) {
         super(carContext);
     }
 
+<<<<<<< HEAD
     @Override
     public @NonNull Template onGetTemplate() {
+=======
+    @NonNull
+    @Override
+    public Template onGetTemplate() {
+>>>>>>> 7365d9da ([create-pull-request] automated change)
         if (getCarContext().getCarAppApiLevel() < CarAppApiLevels.LEVEL_2) {
             return new MessageTemplate.Builder(
                     getCarContext().getString(R.string.long_msg_template_not_supported_text))

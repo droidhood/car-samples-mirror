@@ -18,6 +18,10 @@ package androidx.car.app.sample.showcase.common.screens.templatelayouts.listtemp
 
 import static androidx.car.app.CarToast.LENGTH_LONG;
 
+<<<<<<< HEAD
+=======
+import androidx.annotation.NonNull;
+>>>>>>> 7365d9da ([create-pull-request] automated change)
 import androidx.car.app.CarContext;
 import androidx.car.app.CarToast;
 import androidx.car.app.Screen;
@@ -32,8 +36,11 @@ import androidx.car.app.model.Template;
 import androidx.car.app.sample.showcase.common.R;
 import androidx.core.graphics.drawable.IconCompat;
 
+<<<<<<< HEAD
 import org.jspecify.annotations.NonNull;
 
+=======
+>>>>>>> 7365d9da ([create-pull-request] automated change)
 /** A screen demonstrating lists with secondary actions and numeric decorations. */
 @RequiresCarApi(6)
 public class SecondaryActionsAndDecorationDemoScreen extends Screen {
@@ -41,8 +48,14 @@ public class SecondaryActionsAndDecorationDemoScreen extends Screen {
         super(carContext);
     }
 
+<<<<<<< HEAD
     @Override
     public @NonNull Template onGetTemplate() {
+=======
+    @NonNull
+    @Override
+    public Template onGetTemplate() {
+>>>>>>> 7365d9da ([create-pull-request] automated change)
         Action action = new Action.Builder()
                 .setIcon(buildCarIconWithResources(R.drawable.baseline_question_mark_24))
                 .setOnClickListener(() -> CarToast.makeText(getCarContext(),
@@ -58,11 +71,14 @@ public class SecondaryActionsAndDecorationDemoScreen extends Screen {
                 12,
                 action));
 
+<<<<<<< HEAD
         listBuilder.addItem(buildRowForTemplate(
                 R.string.secondary_actions_decoration_test_title_long,
                 9,
                 action));
 
+=======
+>>>>>>> 7365d9da ([create-pull-request] automated change)
         return new ListTemplate.Builder()
                 .setSingleList(listBuilder.build())
                 .setHeader(new Header.Builder()

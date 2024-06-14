@@ -27,6 +27,10 @@ import static android.os.Build.VERSION.SDK_INT;
 import static androidx.car.app.media.CarAudioRecord.AUDIO_CONTENT_BUFFER_SIZE;
 import static androidx.car.app.media.CarAudioRecord.AUDIO_CONTENT_SAMPLING_RATE;
 
+<<<<<<< HEAD
+=======
+import android.annotation.SuppressLint;
+>>>>>>> 7365d9da ([create-pull-request] automated change)
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.media.AudioAttributes;
@@ -86,6 +90,10 @@ public class MicrophoneRecorder {
         recordingThread.start();
     }
 
+<<<<<<< HEAD
+=======
+    @SuppressLint("ClassVerificationFailure") // runtime check for < API 26
+>>>>>>> 7365d9da ([create-pull-request] automated change)
     @RequiresPermission(RECORD_AUDIO)
     private void play(AudioFocusRequest audioFocusRequest) {
         if (SDK_INT < VERSION_CODES.O) {
@@ -133,6 +141,10 @@ public class MicrophoneRecorder {
                 audioFocusRequest);
     }
 
+<<<<<<< HEAD
+=======
+    @SuppressLint("ClassVerificationFailure") // runtime check for < API 26
+>>>>>>> 7365d9da ([create-pull-request] automated change)
     @RequiresPermission(RECORD_AUDIO)
     private void doRecord(CarAudioRecord record) {
         if (SDK_INT < VERSION_CODES.O) {

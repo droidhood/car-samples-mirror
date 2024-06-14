@@ -19,6 +19,11 @@ package androidx.car.app.sample.showcase.common.screens.settings;
 import android.util.Log;
 
 import androidx.annotation.GuardedBy;
+<<<<<<< HEAD
+=======
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+>>>>>>> 7365d9da ([create-pull-request] automated change)
 import androidx.car.app.CarContext;
 import androidx.car.app.Screen;
 import androidx.car.app.hardware.CarHardwareManager;
@@ -40,9 +45,12 @@ import androidx.lifecycle.DefaultLifecycleObserver;
 import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleOwner;
 
+<<<<<<< HEAD
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
 
+=======
+>>>>>>> 7365d9da ([create-pull-request] automated change)
 import java.util.Arrays;
 import java.util.concurrent.Executor;
 
@@ -65,8 +73,14 @@ public final class CarHardwareInfoScreen extends Screen {
      * <p>It is requested asynchronously and can be {@code null} until the response is
      * received.
      */
+<<<<<<< HEAD
     @GuardedBy("this")
     @Nullable Model mModel;
+=======
+    @Nullable
+    @GuardedBy("this")
+    Model mModel;
+>>>>>>> 7365d9da ([create-pull-request] automated change)
 
     /**
      * Value fetched from CarHardwareManager containing what type of fuel/ports the car has.
@@ -74,11 +88,21 @@ public final class CarHardwareInfoScreen extends Screen {
      * <p>It is requested asynchronously and can be {@code null} until the response is
      * received.
      */
+<<<<<<< HEAD
     @GuardedBy("this")
     @Nullable EnergyProfile mEnergyProfile;
 
     @GuardedBy("this")
     @Nullable ExteriorDimensions mExteriorDimensions;
+=======
+    @Nullable
+    @GuardedBy("this")
+    EnergyProfile mEnergyProfile;
+
+    @Nullable
+    @GuardedBy("this")
+    ExteriorDimensions mExteriorDimensions;
+>>>>>>> 7365d9da ([create-pull-request] automated change)
 
     OnCarDataAvailableListener<Model> mModelListener = data -> {
         synchronized (this) {
@@ -149,8 +173,14 @@ public final class CarHardwareInfoScreen extends Screen {
         });
     }
 
+<<<<<<< HEAD
     @Override
     public @NonNull Template onGetTemplate() {
+=======
+    @NonNull
+    @Override
+    public Template onGetTemplate() {
+>>>>>>> 7365d9da ([create-pull-request] automated change)
         Pane.Builder paneBuilder = new Pane.Builder();
         if (allInfoAvailable()) {
             Row.Builder modelRowBuilder = new Row.Builder()

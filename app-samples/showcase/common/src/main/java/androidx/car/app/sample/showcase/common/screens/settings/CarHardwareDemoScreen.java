@@ -16,6 +16,10 @@
 
 package androidx.car.app.sample.showcase.common.screens.settings;
 
+<<<<<<< HEAD
+=======
+import androidx.annotation.NonNull;
+>>>>>>> 7365d9da ([create-pull-request] automated change)
 import androidx.car.app.CarContext;
 import androidx.car.app.Screen;
 import androidx.car.app.model.Action;
@@ -31,8 +35,11 @@ import androidx.lifecycle.DefaultLifecycleObserver;
 import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleOwner;
 
+<<<<<<< HEAD
 import org.jspecify.annotations.NonNull;
 
+=======
+>>>>>>> 7365d9da ([create-pull-request] automated change)
 /** Simple demo of how access car hardware information. */
 public final class CarHardwareDemoScreen extends Screen {
 
@@ -46,7 +53,12 @@ public final class CarHardwareDemoScreen extends Screen {
         Lifecycle lifecycle = getLifecycle();
         lifecycle.addObserver(new DefaultLifecycleObserver() {
 
+<<<<<<< HEAD
             final @NonNull ShowcaseSession mShowcaseSession = showcaseSession;
+=======
+            @NonNull
+            final ShowcaseSession mShowcaseSession = showcaseSession;
+>>>>>>> 7365d9da ([create-pull-request] automated change)
 
             @Override
             public void onResume(@NonNull LifecycleOwner owner) {
@@ -64,8 +76,14 @@ public final class CarHardwareDemoScreen extends Screen {
         });
     }
 
+<<<<<<< HEAD
     @Override
     public @NonNull Template onGetTemplate() {
+=======
+    @NonNull
+    @Override
+    public Template onGetTemplate() {
+>>>>>>> 7365d9da ([create-pull-request] automated change)
         ActionStrip actionStrip =
                 new ActionStrip.Builder()
                         // Add a Button to show the CarHardware info screen

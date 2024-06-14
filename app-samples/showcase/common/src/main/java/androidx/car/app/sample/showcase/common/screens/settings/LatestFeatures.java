@@ -23,6 +23,10 @@ import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
 
+<<<<<<< HEAD
+=======
+import androidx.annotation.NonNull;
+>>>>>>> 7365d9da ([create-pull-request] automated change)
 import androidx.car.app.CarContext;
 import androidx.car.app.Screen;
 import androidx.car.app.model.Action;
@@ -34,8 +38,11 @@ import androidx.car.app.sample.showcase.common.ShowcaseService;
 import androidx.lifecycle.DefaultLifecycleObserver;
 import androidx.lifecycle.LifecycleOwner;
 
+<<<<<<< HEAD
 import org.jspecify.annotations.NonNull;
 
+=======
+>>>>>>> 7365d9da ([create-pull-request] automated change)
 /** A screen that demonstrates the message template. */
 public class LatestFeatures extends Screen implements DefaultLifecycleObserver {
 
@@ -67,8 +74,14 @@ public class LatestFeatures extends Screen implements DefaultLifecycleObserver {
         }
     }
 
+<<<<<<< HEAD
     @Override
     public @NonNull Template onGetTemplate() {
+=======
+    @NonNull
+    @Override
+    public Template onGetTemplate() {
+>>>>>>> 7365d9da ([create-pull-request] automated change)
         if (!mIsFinishedLoading && mShouldLoadScreens) {
             return loadingScreenTemplate(getCarContext());
         } else {

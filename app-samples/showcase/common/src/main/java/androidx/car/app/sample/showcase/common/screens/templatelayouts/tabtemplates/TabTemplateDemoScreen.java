@@ -20,6 +20,10 @@ import static androidx.car.app.model.Action.APP_ICON;
 
 import android.text.TextUtils;
 
+<<<<<<< HEAD
+=======
+import androidx.annotation.NonNull;
+>>>>>>> 7365d9da ([create-pull-request] automated change)
 import androidx.car.app.CarContext;
 import androidx.car.app.CarToast;
 import androidx.car.app.Screen;
@@ -41,8 +45,11 @@ import androidx.car.app.model.Template;
 import androidx.car.app.sample.showcase.common.R;
 import androidx.core.graphics.drawable.IconCompat;
 
+<<<<<<< HEAD
 import org.jspecify.annotations.NonNull;
 
+=======
+>>>>>>> 7365d9da ([create-pull-request] automated change)
 import java.util.HashMap;
 import java.util.Map;
 
@@ -77,8 +84,14 @@ public final class TabTemplateDemoScreen extends Screen {
         mActiveContentId = null;
     }
 
+<<<<<<< HEAD
     @Override
     public @NonNull Template onGetTemplate() {
+=======
+    @NonNull
+    @Override
+    public Template onGetTemplate() {
+>>>>>>> 7365d9da ([create-pull-request] automated change)
         mTabTemplateBuilder = new TabTemplate.Builder(new TabTemplate.TabCallback() {
             @Override
             public void onTabSelected(@NonNull String tabContentId) {

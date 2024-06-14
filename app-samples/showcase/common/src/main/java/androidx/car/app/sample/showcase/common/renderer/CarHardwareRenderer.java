@@ -24,6 +24,11 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.util.Log;
 
+<<<<<<< HEAD
+=======
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+>>>>>>> 7365d9da ([create-pull-request] automated change)
 import androidx.annotation.OptIn;
 import androidx.car.app.CarContext;
 import androidx.car.app.annotations.ExperimentalCarApi;
@@ -45,9 +50,12 @@ import androidx.car.app.sample.showcase.common.R;
 import androidx.car.app.versioning.CarAppApiLevels;
 import androidx.core.content.ContextCompat;
 
+<<<<<<< HEAD
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
 
+=======
+>>>>>>> 7365d9da ([create-pull-request] automated change)
 import java.util.List;
 import java.util.concurrent.Executor;
 
@@ -65,6 +73,7 @@ public final class CarHardwareRenderer implements Renderer {
     private final Paint mCarInfoPaint = new Paint();
     private final CarContext mCarContext;
 
+<<<<<<< HEAD
     @Nullable TollCard mTollCard;
     @Nullable EnergyLevel mEnergyLevel;
     @Nullable Speed mSpeed;
@@ -75,6 +84,28 @@ public final class CarHardwareRenderer implements Renderer {
     @Nullable Compass mCompass;
     @Nullable CarHardwareLocation mCarHardwareLocation;
     private @Nullable Runnable mRequestRenderRunnable;
+=======
+    @Nullable
+    TollCard mTollCard;
+    @Nullable
+    EnergyLevel mEnergyLevel;
+    @Nullable
+    Speed mSpeed;
+    @Nullable
+    Mileage mMileage;
+    @Nullable
+    EvStatus mEvStatus;
+    @Nullable
+    Accelerometer mAccelerometer;
+    @Nullable
+    Gyroscope mGyroscope;
+    @Nullable
+    Compass mCompass;
+    @Nullable
+    CarHardwareLocation mCarHardwareLocation;
+    @Nullable
+    private Runnable mRequestRenderRunnable;
+>>>>>>> 7365d9da ([create-pull-request] automated change)
     private final OnCarDataAvailableListener<TollCard> mTollListener = data -> {
         synchronized (this) {
             Log.i(TAG, "Received toll information:" + data);
@@ -423,7 +454,11 @@ public final class CarHardwareRenderer implements Renderer {
                 } else {
                     info.append(
                             generateCarValueText(mCarContext.getString(R.string.odometer),
+<<<<<<< HEAD
                                     mMileage.getOdometerInKilometers(), " km. "));
+=======
+                                    mMileage.getOdometerMeters(), " m. "));
+>>>>>>> 7365d9da ([create-pull-request] automated change)
                     info.append(
                             generateCarValueText(mCarContext.getString(R.string.unit),
                                     mMileage.getDistanceDisplayUnit(), ". "));

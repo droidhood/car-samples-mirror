@@ -18,6 +18,10 @@ package androidx.car.app.sample.showcase.common.screens.templatelayouts;
 
 import static androidx.car.app.model.Action.BACK;
 
+<<<<<<< HEAD
+=======
+import androidx.annotation.NonNull;
+>>>>>>> 7365d9da ([create-pull-request] automated change)
 import androidx.car.app.CarContext;
 import androidx.car.app.Screen;
 import androidx.car.app.model.Header;
@@ -35,8 +39,11 @@ import androidx.car.app.sample.showcase.common.screens.templatelayouts.listtempl
 import androidx.car.app.sample.showcase.common.screens.templatelayouts.listtemplates.ToggleButtonListDemoScreen;
 import androidx.car.app.versioning.CarAppApiLevels;
 
+<<<<<<< HEAD
 import org.jspecify.annotations.NonNull;
 
+=======
+>>>>>>> 7365d9da ([create-pull-request] automated change)
 /**
  * Creates a screen that demonstrates usage of the full screen {@link ListTemplate} to display a
  * full-screen list.
@@ -47,8 +54,14 @@ public final class ListTemplateDemoScreen extends Screen {
         super(carContext);
     }
 
+<<<<<<< HEAD
     @Override
     public @NonNull Template onGetTemplate() {
+=======
+    @NonNull
+    @Override
+    public Template onGetTemplate() {
+>>>>>>> 7365d9da ([create-pull-request] automated change)
         ItemList.Builder listBuilder = new ItemList.Builder();
         listBuilder.addItem(buildRowForTemplate(new RadioButtonListDemoScreen(getCarContext()),
                 R.string.radio_button_list_demo_title));

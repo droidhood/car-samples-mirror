@@ -23,6 +23,10 @@ import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
 
+<<<<<<< HEAD
+=======
+import androidx.annotation.NonNull;
+>>>>>>> 7365d9da ([create-pull-request] automated change)
 import androidx.car.app.CarContext;
 import androidx.car.app.CarToast;
 import androidx.car.app.Screen;
@@ -38,8 +42,11 @@ import androidx.car.app.sample.showcase.common.ShowcaseService;
 import androidx.lifecycle.DefaultLifecycleObserver;
 import androidx.lifecycle.LifecycleOwner;
 
+<<<<<<< HEAD
 import org.jspecify.annotations.NonNull;
 
+=======
+>>>>>>> 7365d9da ([create-pull-request] automated change)
 /** A screen demonstrating selectable lists. */
 public final class ParkedVsDrivingDemoScreen extends Screen implements DefaultLifecycleObserver {
 
@@ -72,8 +79,14 @@ public final class ParkedVsDrivingDemoScreen extends Screen implements DefaultLi
         }
     }
 
+<<<<<<< HEAD
     @Override
     public @NonNull Template onGetTemplate() {
+=======
+    @NonNull
+    @Override
+    public Template onGetTemplate() {
+>>>>>>> 7365d9da ([create-pull-request] automated change)
 
         if (!mIsFinishedLoading && mShouldLoadScreens) {
             return loadingScreenTemplate(getCarContext());

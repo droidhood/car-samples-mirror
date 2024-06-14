@@ -27,6 +27,10 @@ import static android.os.Build.VERSION.SDK_INT;
 import static androidx.car.app.media.CarAudioRecord.AUDIO_CONTENT_BUFFER_SIZE;
 import static androidx.car.app.media.CarAudioRecord.AUDIO_CONTENT_SAMPLING_RATE;
 
+<<<<<<< HEAD
+=======
+import android.annotation.SuppressLint;
+>>>>>>> 7365d9da ([create-pull-request] automated change)
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.media.AudioAttributes;
@@ -37,6 +41,10 @@ import android.media.AudioTrack;
 import android.os.Build.VERSION_CODES;
 import android.util.Log;
 
+<<<<<<< HEAD
+=======
+import androidx.annotation.NonNull;
+>>>>>>> 7365d9da ([create-pull-request] automated change)
 import androidx.annotation.RequiresApi;
 import androidx.annotation.RequiresPermission;
 import androidx.car.app.CarContext;
@@ -44,8 +52,11 @@ import androidx.car.app.CarToast;
 import androidx.car.app.media.CarAudioRecord;
 import androidx.car.app.utils.LogTags;
 
+<<<<<<< HEAD
 import org.jspecify.annotations.NonNull;
 
+=======
+>>>>>>> 7365d9da ([create-pull-request] automated change)
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -68,6 +79,10 @@ public class VoiceInteraction {
      * Starts recording the car microphone, then plays it back.
      */
     @RequiresPermission(RECORD_AUDIO)
+<<<<<<< HEAD
+=======
+    @SuppressLint("ClassVerificationFailure") // runtime check for < API 26
+>>>>>>> 7365d9da ([create-pull-request] automated change)
     public void voiceInteractionDemo() {
         // Some of the functions for recording require API level 26, so verify that first
         if (SDK_INT < VERSION_CODES.O) {
@@ -89,9 +104,17 @@ public class VoiceInteraction {
     /**
      * Create thread which executes the record and the playback functions
      */
+<<<<<<< HEAD
     @RequiresApi(api = VERSION_CODES.O)
     @RequiresPermission(RECORD_AUDIO)
     public @NonNull Thread createRecordingThread() {
+=======
+    @NonNull
+    @RequiresApi(api = VERSION_CODES.O)
+    @RequiresPermission(RECORD_AUDIO)
+    @SuppressLint("ClassVerificationFailure") // runtime check for < API 26
+    public Thread createRecordingThread() {
+>>>>>>> 7365d9da ([create-pull-request] automated change)
         Thread recordingThread = new Thread(
                 () -> {
                     // Request audio focus
@@ -180,6 +203,10 @@ public class VoiceInteraction {
     }
 
     @RequiresApi(api = VERSION_CODES.O)
+<<<<<<< HEAD
+=======
+    @SuppressLint("ClassVerificationFailure") // runtime check for < API 26
+>>>>>>> 7365d9da ([create-pull-request] automated change)
     @RequiresPermission(RECORD_AUDIO)
     private void recordAudio(CarAudioRecord record) {
 

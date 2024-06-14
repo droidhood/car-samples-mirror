@@ -16,6 +16,10 @@
 
 package androidx.car.app.sample.showcase.common.screens.navigationdemos;
 
+<<<<<<< HEAD
+=======
+import androidx.annotation.NonNull;
+>>>>>>> 7365d9da ([create-pull-request] automated change)
 import androidx.car.app.CarContext;
 import androidx.car.app.Screen;
 import androidx.car.app.model.CarColor;
@@ -25,8 +29,11 @@ import androidx.car.app.navigation.model.NavigationTemplate;
 import androidx.car.app.navigation.model.RoutingInfo;
 import androidx.lifecycle.DefaultLifecycleObserver;
 
+<<<<<<< HEAD
 import org.jspecify.annotations.NonNull;
 
+=======
+>>>>>>> 7365d9da ([create-pull-request] automated change)
 /** A screen that shows the navigation template in routing state. */
 public final class NavigatingDemoScreen extends Screen implements DefaultLifecycleObserver {
     private final RoutingDemoModelFactory mRoutingDemoModelFactory;
@@ -35,8 +42,14 @@ public final class NavigatingDemoScreen extends Screen implements DefaultLifecyc
         mRoutingDemoModelFactory = new RoutingDemoModelFactory(carContext);
     }
 
+<<<<<<< HEAD
     @Override
     public @NonNull Template onGetTemplate() {
+=======
+    @NonNull
+    @Override
+    public Template onGetTemplate() {
+>>>>>>> 7365d9da ([create-pull-request] automated change)
         return new NavigationTemplate.Builder()
                 .setNavigationInfo(
                         new RoutingInfo.Builder()

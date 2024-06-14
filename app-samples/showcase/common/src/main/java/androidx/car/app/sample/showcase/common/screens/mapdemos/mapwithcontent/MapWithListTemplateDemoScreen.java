@@ -19,6 +19,10 @@ package androidx.car.app.sample.showcase.common.screens.mapdemos.mapwithcontent;
 import static androidx.car.app.CarToast.LENGTH_LONG;
 import static androidx.car.app.CarToast.LENGTH_SHORT;
 
+<<<<<<< HEAD
+=======
+import androidx.annotation.NonNull;
+>>>>>>> 7365d9da ([create-pull-request] automated change)
 import androidx.car.app.CarContext;
 import androidx.car.app.CarToast;
 import androidx.car.app.Screen;
@@ -41,8 +45,11 @@ import androidx.car.app.sample.showcase.common.screens.navigationdemos.RoutingDe
 import androidx.car.app.versioning.CarAppApiLevels;
 import androidx.core.graphics.drawable.IconCompat;
 
+<<<<<<< HEAD
 import org.jspecify.annotations.NonNull;
 
+=======
+>>>>>>> 7365d9da ([create-pull-request] automated change)
 /** Simple demo of how to present a map template with a list. */
 public class MapWithListTemplateDemoScreen extends Screen {
     private static final int MAX_LIST_ITEMS = 100;
@@ -54,8 +61,14 @@ public class MapWithListTemplateDemoScreen extends Screen {
         mRoutingDemoModelFactory = new RoutingDemoModelFactory(carContext);
     }
 
+<<<<<<< HEAD
     @Override
     public @NonNull Template onGetTemplate() {
+=======
+    @NonNull
+    @Override
+    public Template onGetTemplate() {
+>>>>>>> 7365d9da ([create-pull-request] automated change)
         ItemList.Builder listBuilder = new ItemList.Builder();
         listBuilder.addItem(createRowWithParkedOnlyContent());
         listBuilder.addItem(createRowWithSecondaryAction(2));

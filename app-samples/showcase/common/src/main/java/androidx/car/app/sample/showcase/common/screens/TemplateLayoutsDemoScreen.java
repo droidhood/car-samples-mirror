@@ -18,6 +18,10 @@ package androidx.car.app.sample.showcase.common.screens;
 
 import static androidx.car.app.model.Action.BACK;
 
+<<<<<<< HEAD
+=======
+import androidx.annotation.NonNull;
+>>>>>>> 7365d9da ([create-pull-request] automated change)
 import androidx.car.app.CarContext;
 import androidx.car.app.Screen;
 import androidx.car.app.constraints.ConstraintManager;
@@ -33,13 +37,19 @@ import androidx.car.app.sample.showcase.common.screens.templatelayouts.ListTempl
 import androidx.car.app.sample.showcase.common.screens.templatelayouts.MessageTemplateDemoScreen;
 import androidx.car.app.sample.showcase.common.screens.templatelayouts.PaneTemplateDemoScreen;
 import androidx.car.app.sample.showcase.common.screens.templatelayouts.SearchTemplateDemoScreen;
+<<<<<<< HEAD
 import androidx.car.app.sample.showcase.common.screens.templatelayouts.SectionedItemTemplateDemoScreen;
+=======
+>>>>>>> 7365d9da ([create-pull-request] automated change)
 import androidx.car.app.sample.showcase.common.screens.templatelayouts.SignInTemplateDemoScreen;
 import androidx.car.app.sample.showcase.common.screens.templatelayouts.TabTemplateLayoutsDemoScreen;
 import androidx.car.app.versioning.CarAppApiLevels;
 
+<<<<<<< HEAD
 import org.jspecify.annotations.NonNull;
 
+=======
+>>>>>>> 7365d9da ([create-pull-request] automated change)
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,6 +64,7 @@ public final class TemplateLayoutsDemoScreen extends Screen {
         mPage = 0;
     }
 
+<<<<<<< HEAD
     @Override
     public @NonNull Template onGetTemplate() {
         List<Row> screenList = new ArrayList<>();
@@ -61,6 +72,12 @@ public final class TemplateLayoutsDemoScreen extends Screen {
             screenList.add(buildRowForTemplate(new SectionedItemTemplateDemoScreen(getCarContext()),
                     R.string.sectioned_item_template_demo_title));
         }
+=======
+    @NonNull
+    @Override
+    public Template onGetTemplate() {
+        List<Row> screenList = new ArrayList<>();
+>>>>>>> 7365d9da ([create-pull-request] automated change)
         screenList.add(buildRowForTemplate(new ListTemplateDemoScreen(getCarContext()),
                 R.string.list_template_demo_title));
         screenList.add(buildRowForTemplate(new GridTemplateMenuDemoScreen(getCarContext()),

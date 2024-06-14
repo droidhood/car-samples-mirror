@@ -24,10 +24,16 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.ParcelFileDescriptor;
 
+<<<<<<< HEAD
 import androidx.core.content.FileProvider;
 
 import org.jspecify.annotations.NonNull;
 
+=======
+import androidx.annotation.NonNull;
+import androidx.core.content.FileProvider;
+
+>>>>>>> 7365d9da ([create-pull-request] automated change)
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -42,7 +48,12 @@ public class DelayedFileProvider extends FileProvider {
     private static final long MAX_DELAY_MILLIS = 3000;
 
     /** Creates a file from the given resource id and returns the URI for it. */
+<<<<<<< HEAD
     public static @NonNull Uri getUriForResource(@NonNull Context context,
+=======
+    @NonNull
+    public static Uri getUriForResource(@NonNull Context context,
+>>>>>>> 7365d9da ([create-pull-request] automated change)
             @NonNull String hostPackageName, int resId) {
         File resourceFile =
                 new File(context.getFilesDir().getAbsolutePath(), RESOURCE_DIR + "/" + resId);
@@ -67,7 +78,12 @@ public class DelayedFileProvider extends FileProvider {
     }
 
     @Override
+<<<<<<< HEAD
     public @NonNull ParcelFileDescriptor openFile(@NonNull Uri uri, @NonNull String mode)
+=======
+    @NonNull
+    public ParcelFileDescriptor openFile(@NonNull Uri uri, @NonNull String mode)
+>>>>>>> 7365d9da ([create-pull-request] automated change)
             throws FileNotFoundException {
         try {
             // Wait for a random period between the minimum and maximum delay.

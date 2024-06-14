@@ -16,6 +16,10 @@
 
 package androidx.car.app.sample.showcase.common.screens.mapdemos;
 
+<<<<<<< HEAD
+=======
+import androidx.annotation.NonNull;
+>>>>>>> 7365d9da ([create-pull-request] automated change)
 import androidx.car.app.CarContext;
 import androidx.car.app.Screen;
 import androidx.car.app.model.Action;
@@ -24,8 +28,11 @@ import androidx.car.app.model.Template;
 import androidx.car.app.sample.showcase.common.R;
 import androidx.car.app.sample.showcase.common.common.SamplePlaces;
 
+<<<<<<< HEAD
 import org.jspecify.annotations.NonNull;
 
+=======
+>>>>>>> 7365d9da ([create-pull-request] automated change)
 /** Creates a screen using the {@link PlaceListMapTemplate} */
 public final class PlaceListTemplateDemoScreen extends Screen {
     private final SamplePlaces mPlaces = SamplePlaces.create(this);
@@ -34,8 +41,14 @@ public final class PlaceListTemplateDemoScreen extends Screen {
         super(carContext);
     }
 
+<<<<<<< HEAD
     @Override
     public @NonNull Template onGetTemplate() {
+=======
+    @NonNull
+    @Override
+    public Template onGetTemplate() {
+>>>>>>> 7365d9da ([create-pull-request] automated change)
         return new PlaceListMapTemplate.Builder()
                 .setItemList(mPlaces.getPlaceList(/* randomOrder =*/ false))
                 .setTitle(getCarContext().getString(R.string.place_list_template_demo_title))

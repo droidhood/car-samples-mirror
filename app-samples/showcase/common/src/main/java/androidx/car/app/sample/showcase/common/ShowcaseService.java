@@ -19,13 +19,20 @@ package androidx.car.app.sample.showcase.common;
 import android.content.pm.ApplicationInfo;
 import android.net.Uri;
 
+<<<<<<< HEAD
+=======
+import androidx.annotation.NonNull;
+>>>>>>> 7365d9da ([create-pull-request] automated change)
 import androidx.car.app.CarAppService;
 import androidx.car.app.Session;
 import androidx.car.app.SessionInfo;
 import androidx.car.app.validation.HostValidator;
 
+<<<<<<< HEAD
 import org.jspecify.annotations.NonNull;
 
+=======
+>>>>>>> 7365d9da ([create-pull-request] automated change)
 /**
  * Entry point for the showcase app.
  *
@@ -47,6 +54,7 @@ public final class ShowcaseService extends CarAppService {
             "androidx.car.app.sample.showcase.INTENT_ACTION_NAV_NOTIFICATION_OPEN_APP";
 
     /** Creates a deep link URI with the given deep link action. */
+<<<<<<< HEAD
     public static @NonNull Uri createDeepLinkUri(@NonNull String deepLinkAction) {
         return Uri.fromParts(ShowcaseSession.URI_SCHEME, ShowcaseSession.URI_HOST, deepLinkAction);
     }
@@ -58,6 +66,22 @@ public final class ShowcaseService extends CarAppService {
 
     @Override
     public @NonNull HostValidator createHostValidator() {
+=======
+    @NonNull
+    public static Uri createDeepLinkUri(@NonNull String deepLinkAction) {
+        return Uri.fromParts(ShowcaseSession.URI_SCHEME, ShowcaseSession.URI_HOST, deepLinkAction);
+    }
+
+    @NonNull
+    @Override
+    public Session onCreateSession(@NonNull SessionInfo sessionInfo) {
+        return new ShowcaseSession();
+    }
+
+    @NonNull
+    @Override
+    public HostValidator createHostValidator() {
+>>>>>>> 7365d9da ([create-pull-request] automated change)
         if ((getApplicationInfo().flags & ApplicationInfo.FLAG_DEBUGGABLE) != 0) {
             return HostValidator.ALLOW_ALL_HOSTS_VALIDATOR;
         } else {

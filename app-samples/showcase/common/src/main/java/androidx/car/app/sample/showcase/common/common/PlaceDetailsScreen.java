@@ -21,6 +21,10 @@ import static androidx.car.app.CarToast.LENGTH_LONG;
 import android.content.Intent;
 import android.net.Uri;
 
+<<<<<<< HEAD
+=======
+import androidx.annotation.NonNull;
+>>>>>>> 7365d9da ([create-pull-request] automated change)
 import androidx.car.app.CarContext;
 import androidx.car.app.CarToast;
 import androidx.car.app.HostException;
@@ -34,8 +38,11 @@ import androidx.car.app.model.Row;
 import androidx.car.app.model.Template;
 import androidx.car.app.sample.showcase.common.R;
 
+<<<<<<< HEAD
 import org.jspecify.annotations.NonNull;
 
+=======
+>>>>>>> 7365d9da ([create-pull-request] automated change)
 /** A screen that displays the details of a place. */
 public class PlaceDetailsScreen extends Screen {
     private final PlaceInfo mPlace;
@@ -46,13 +53,24 @@ public class PlaceDetailsScreen extends Screen {
     }
 
     /** Creates an instance of {@link PlaceDetailsScreen}. */
+<<<<<<< HEAD
     public static @NonNull PlaceDetailsScreen create(
+=======
+    @NonNull
+    public static PlaceDetailsScreen create(
+>>>>>>> 7365d9da ([create-pull-request] automated change)
             @NonNull CarContext carContext, @NonNull PlaceInfo place) {
         return new PlaceDetailsScreen(carContext, place);
     }
 
+<<<<<<< HEAD
     @Override
     public @NonNull Template onGetTemplate() {
+=======
+    @NonNull
+    @Override
+    public Template onGetTemplate() {
+>>>>>>> 7365d9da ([create-pull-request] automated change)
         Pane.Builder paneBuilder =
                 new Pane.Builder()
                         .addAction(
@@ -79,7 +97,11 @@ public class PlaceDetailsScreen extends Screen {
 
         return new PaneTemplate.Builder(paneBuilder.build())
                 .setHeader(new Header.Builder()
+<<<<<<< HEAD
                         .setTitle(mPlace.title.toString())
+=======
+                        .setTitle(mPlace.title)
+>>>>>>> 7365d9da ([create-pull-request] automated change)
                         .setStartHeaderAction(Action.BACK)
                         .build())
                 .build();

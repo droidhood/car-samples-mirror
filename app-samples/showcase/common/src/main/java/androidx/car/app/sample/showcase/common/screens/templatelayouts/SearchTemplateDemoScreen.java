@@ -18,6 +18,10 @@ package androidx.car.app.sample.showcase.common.screens.templatelayouts;
 
 import static androidx.car.app.CarToast.LENGTH_LONG;
 
+<<<<<<< HEAD
+=======
+import androidx.annotation.NonNull;
+>>>>>>> 7365d9da ([create-pull-request] automated change)
 import androidx.car.app.CarContext;
 import androidx.car.app.CarToast;
 import androidx.car.app.Screen;
@@ -30,8 +34,11 @@ import androidx.car.app.model.SearchTemplate.SearchCallback;
 import androidx.car.app.model.Template;
 import androidx.car.app.sample.showcase.common.R;
 
+<<<<<<< HEAD
 import org.jspecify.annotations.NonNull;
 
+=======
+>>>>>>> 7365d9da ([create-pull-request] automated change)
 /** A screen that demonstrates the search template. */
 public class SearchTemplateDemoScreen extends Screen {
 
@@ -39,8 +46,14 @@ public class SearchTemplateDemoScreen extends Screen {
         super(carContext);
     }
 
+<<<<<<< HEAD
     @Override
     public @NonNull Template onGetTemplate() {
+=======
+    @NonNull
+    @Override
+    public Template onGetTemplate() {
+>>>>>>> 7365d9da ([create-pull-request] automated change)
         ItemList.Builder listBuilder = new ItemList.Builder();
         for (int i = 1; i <= 6; ++i) {
             listBuilder.addItem(

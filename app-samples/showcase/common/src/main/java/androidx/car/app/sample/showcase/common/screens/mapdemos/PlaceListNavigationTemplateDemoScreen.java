@@ -21,6 +21,10 @@ import static androidx.car.app.CarToast.LENGTH_SHORT;
 import android.os.Handler;
 import android.os.Looper;
 
+<<<<<<< HEAD
+=======
+import androidx.annotation.NonNull;
+>>>>>>> 7365d9da ([create-pull-request] automated change)
 import androidx.car.app.CarContext;
 import androidx.car.app.CarToast;
 import androidx.car.app.Screen;
@@ -38,8 +42,11 @@ import androidx.car.app.sample.showcase.common.common.SamplePlaces;
 import androidx.car.app.sample.showcase.common.screens.navigationdemos.RoutingDemoModelFactory;
 import androidx.core.graphics.drawable.IconCompat;
 
+<<<<<<< HEAD
 import org.jspecify.annotations.NonNull;
 
+=======
+>>>>>>> 7365d9da ([create-pull-request] automated change)
 /** Creates a screen using the new {@link MapWithContentTemplate} */
 public final class PlaceListNavigationTemplateDemoScreen extends Screen {
     private static final int NUMBER_OF_REFRESHES = 10;
@@ -58,8 +65,14 @@ public final class PlaceListNavigationTemplateDemoScreen extends Screen {
         mRoutingDemoModelFactory = new RoutingDemoModelFactory(carContext);
     }
 
+<<<<<<< HEAD
     @Override
     public @NonNull Template onGetTemplate() {
+=======
+    @NonNull
+    @Override
+    public Template onGetTemplate() {
+>>>>>>> 7365d9da ([create-pull-request] automated change)
         boolean isAppDrivenRefreshEnabled = this.getCarContext().getCarService(
                 ConstraintManager.class).isAppDrivenRefreshEnabled();
 

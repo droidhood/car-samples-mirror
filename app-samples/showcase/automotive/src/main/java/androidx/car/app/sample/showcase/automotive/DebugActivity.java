@@ -22,11 +22,18 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
 
+<<<<<<< HEAD
 import androidx.car.app.activity.CarAppActivity;
 import androidx.car.app.sample.showcase.R;
 
 import org.jspecify.annotations.Nullable;
 
+=======
+import androidx.annotation.Nullable;
+import androidx.car.app.activity.CarAppActivity;
+import androidx.car.app.sample.showcase.R;
+
+>>>>>>> 7365d9da ([create-pull-request] automated change)
 /**
  * Demo activity, used to showcase the use of
  * {@link Activity#startActivityForResult(Intent, int, Bundle)} to receive results from a Car App.

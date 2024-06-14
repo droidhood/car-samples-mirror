@@ -19,8 +19,12 @@ package androidx.car.app.sample.showcase.common.screens.templatelayouts;
 import android.os.Bundle;
 
 import androidx.activity.ComponentActivity;
+<<<<<<< HEAD
 
 import org.jspecify.annotations.Nullable;
+=======
+import androidx.annotation.Nullable;
+>>>>>>> 7365d9da ([create-pull-request] automated change)
 
 /**
  * An activity for use by the car app library to perform actions such as requesting permissions.

@@ -21,6 +21,10 @@ import static androidx.car.app.CarToast.LENGTH_SHORT;
 
 import android.text.SpannableString;
 
+<<<<<<< HEAD
+=======
+import androidx.annotation.NonNull;
+>>>>>>> 7365d9da ([create-pull-request] automated change)
 import androidx.car.app.CarContext;
 import androidx.car.app.CarToast;
 import androidx.car.app.Screen;
@@ -40,8 +44,11 @@ import androidx.car.app.sample.showcase.common.R;
 import androidx.car.app.sample.showcase.common.screens.navigationdemos.RoutingDemoModelFactory;
 import androidx.core.graphics.drawable.IconCompat;
 
+<<<<<<< HEAD
 import org.jspecify.annotations.NonNull;
 
+=======
+>>>>>>> 7365d9da ([create-pull-request] automated change)
 import java.util.concurrent.TimeUnit;
 
 /** Creates a screen using the new {@link MapWithContentTemplate} */
@@ -108,8 +115,14 @@ public final class RoutePreviewDemoScreen extends Screen {
                 .build();
     }
 
+<<<<<<< HEAD
     @Override
     public @NonNull Template onGetTemplate() {
+=======
+    @NonNull
+    @Override
+    public Template onGetTemplate() {
+>>>>>>> 7365d9da ([create-pull-request] automated change)
         // Adjust the item limit according to the car constrains.
         mItemLimit = getCarContext().getCarService(ConstraintManager.class).getContentLimit(
                 ConstraintManager.CONTENT_LIMIT_TYPE_ROUTE_LIST);

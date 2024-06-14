@@ -22,6 +22,10 @@ import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
 
+<<<<<<< HEAD
+=======
+import androidx.annotation.NonNull;
+>>>>>>> 7365d9da ([create-pull-request] automated change)
 import androidx.car.app.CarContext;
 import androidx.car.app.Screen;
 import androidx.car.app.constraints.ConstraintManager;
@@ -36,8 +40,11 @@ import androidx.car.app.sample.showcase.common.ShowcaseService;
 import androidx.lifecycle.DefaultLifecycleObserver;
 import androidx.lifecycle.LifecycleOwner;
 
+<<<<<<< HEAD
 import org.jspecify.annotations.NonNull;
 
+=======
+>>>>>>> 7365d9da ([create-pull-request] automated change)
 /**
  * A {@link Screen} that shows examples on how to query for various content limits via the
  * {@lnk ConstraintManager} API.
@@ -73,8 +80,14 @@ public class ContentLimitsDemoScreen extends Screen implements DefaultLifecycleO
         }
     }
 
+<<<<<<< HEAD
     @Override
     public @NonNull Template onGetTemplate() {
+=======
+    @NonNull
+    @Override
+    public Template onGetTemplate() {
+>>>>>>> 7365d9da ([create-pull-request] automated change)
 
         if (!mIsFinishedLoading && mShouldLoadScreens) {
             return loadingScreenTemplate(getCarContext());

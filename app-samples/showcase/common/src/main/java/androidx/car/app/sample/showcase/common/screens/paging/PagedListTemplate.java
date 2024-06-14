@@ -16,6 +16,10 @@
 
 package androidx.car.app.sample.showcase.common.screens.paging;
 
+<<<<<<< HEAD
+=======
+import androidx.annotation.NonNull;
+>>>>>>> 7365d9da ([create-pull-request] automated change)
 import androidx.car.app.CarContext;
 import androidx.car.app.Screen;
 import androidx.car.app.ScreenManager;
@@ -28,8 +32,11 @@ import androidx.car.app.model.Row;
 import androidx.car.app.model.Template;
 import androidx.car.app.sample.showcase.common.R;
 
+<<<<<<< HEAD
 import org.jspecify.annotations.NonNull;
 
+=======
+>>>>>>> 7365d9da ([create-pull-request] automated change)
 import java.util.List;
 
 /**
@@ -53,8 +60,14 @@ public class PagedListTemplate extends Screen {
         mPage = page;
     }
 
+<<<<<<< HEAD
     @Override
     public @NonNull Template onGetTemplate() {
+=======
+    @NonNull
+    @Override
+    public Template onGetTemplate() {
+>>>>>>> 7365d9da ([create-pull-request] automated change)
         ItemList.Builder listBuilder = new ItemList.Builder();
 
         int listLimit = getCarContext().getCarService(ConstraintManager.class).getContentLimit(
@@ -105,8 +118,16 @@ public class PagedListTemplate extends Screen {
 
     /** A list of rows, used to populate a {@link PagedListTemplate} */
     public abstract static class RowList {
+<<<<<<< HEAD
         protected abstract @NonNull List<Row> getRows(@NonNull ScreenManager screenManager);
 
         protected abstract @NonNull String getTemplateTitle();
+=======
+        @NonNull
+        protected abstract List<Row> getRows(@NonNull ScreenManager screenManager);
+
+        @NonNull
+        protected abstract String getTemplateTitle();
+>>>>>>> 7365d9da ([create-pull-request] automated change)
     }
 }

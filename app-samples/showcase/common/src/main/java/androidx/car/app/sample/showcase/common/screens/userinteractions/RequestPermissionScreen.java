@@ -26,6 +26,10 @@ import android.location.LocationManager;
 import android.provider.Settings;
 import android.util.Log;
 
+<<<<<<< HEAD
+=======
+import androidx.annotation.NonNull;
+>>>>>>> 7365d9da ([create-pull-request] automated change)
 import androidx.car.app.CarAppPermission;
 import androidx.car.app.CarContext;
 import androidx.car.app.CarToast;
@@ -41,8 +45,11 @@ import androidx.car.app.model.Template;
 import androidx.car.app.sample.showcase.common.R;
 import androidx.core.location.LocationManagerCompat;
 
+<<<<<<< HEAD
 import org.jspecify.annotations.NonNull;
 
+=======
+>>>>>>> 7365d9da ([create-pull-request] automated change)
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -88,8 +95,14 @@ public class RequestPermissionScreen extends Screen {
         this.mPreSeedMode = preSeedMode;
     }
 
+<<<<<<< HEAD
     @Override
     public @NonNull Template onGetTemplate() {
+=======
+    @NonNull
+    @Override
+    public Template onGetTemplate() {
+>>>>>>> 7365d9da ([create-pull-request] automated change)
         Action headerAction = mPreSeedMode ? Action.APP_ICON : Action.BACK;
 
         List<String> permissions;
