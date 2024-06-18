@@ -26,17 +26,25 @@ android {
 apply plugin: 'com.android.application'
 
 android {
+<<<<<<< HEAD
     compileSdk 33
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+    compileSdk 34
+>>>>>>> 5e8ebec6 ([create-pull-request] automated change)
 
     defaultConfig {
         applicationId "androidx.car.app.sample.showcase"
         minSdkVersion 29
 <<<<<<< HEAD
+<<<<<<< HEAD
         targetSdkVersion 34
 =======
         targetSdkVersion 33
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+        targetSdkVersion 34
+>>>>>>> 5e8ebec6 ([create-pull-request] automated change)
         // Increment this to generate signed builds for uploading to Playstore
         // Make sure this is different from the showcase-mobile version
         versionCode 113
@@ -62,9 +70,14 @@ android {
         jvmTarget = libs.versions.java.get()
 =======
     compileOptions {
+<<<<<<< HEAD
         targetCompatibility = JavaVersion.VERSION_1_8
         sourceCompatibility = JavaVersion.VERSION_1_8
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+        targetCompatibility = JavaVersion.VERSION_19
+        sourceCompatibility = JavaVersion.VERSION_19
+>>>>>>> 5e8ebec6 ([create-pull-request] automated change)
     }
 
     testOptions.unitTests.includeAndroidResources true
@@ -73,12 +86,16 @@ android {
 
 dependencies {
 <<<<<<< HEAD
+<<<<<<< HEAD
     implementation libs.androidx.app.automotive
     implementation project(":showcase:common")
     implementation libs.androidx.core.ktx
     api libs.jspecify
 =======
     implementation "androidx.car.app:app-automotive:1.3.0-beta01"
+=======
+    implementation "androidx.car.app:app-automotive:1.4.0"
+>>>>>>> 5e8ebec6 ([create-pull-request] automated change)
     implementation project(":showcase:common")
 >>>>>>> 7365d9da ([create-pull-request] automated change)
 }

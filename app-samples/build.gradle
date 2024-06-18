@@ -30,11 +30,10 @@ plugins {
 
     repositories {
         google()
-        jcenter()
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.0.4'
+        classpath 'com.android.tools.build:gradle:8.4.2'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -50,9 +49,12 @@ allprojects {
     repositories {
         google()
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
         jcenter()
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+>>>>>>> 5e8ebec6 ([create-pull-request] automated change)
         mavenCentral()
     }
 }
