@@ -15,6 +15,7 @@
  */
 
 apply plugin: 'com.android.application'
+apply plugin: 'org.jetbrains.kotlin.android'
 
 android {
     compileSdk 34
@@ -40,8 +41,8 @@ android {
     }
 
     compileOptions {
-        targetCompatibility = JavaVersion.VERSION_19
-        sourceCompatibility = JavaVersion.VERSION_19
+        targetCompatibility = JavaVersion.VERSION_17
+        sourceCompatibility = JavaVersion.VERSION_17
     }
 
     testOptions.unitTests.includeAndroidResources true
@@ -49,6 +50,7 @@ android {
 }
 
 dependencies {
-    implementation "androidx.car.app:app-projected:1.4.0"
+    implementation "androidx.car.app:app-projected:1.7.0-alpha02"
     implementation project(":showcase:common")
+    implementation 'androidx.core:core-ktx:1.13.1'
 }
