@@ -429,6 +429,7 @@
   <string name="showcase_demos_title">Showcase Demos</string>
   <string name="template_layouts_demo_title">Template Layout Demos</string>
   <string name="grid_template_menu_demo_title">Grid Template Demos</string>
+  <string name="bug_screen_title">Bug Header Demo</string>
 
   <!-- User Interactions Screen -->
   <string name="voice_access_demo_title">Voice Access Demo Screen</string>

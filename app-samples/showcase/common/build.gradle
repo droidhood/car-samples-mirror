@@ -32,6 +32,9 @@ android {
         sourceCompatibility = JavaVersion.VERSION_17
     }
     namespace "androidx.car.app.sample.showcase.common"
+    kotlinOptions {
+        jvmTarget = '17'
+    }
 }
 
 dependencies {
