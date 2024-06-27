@@ -15,10 +15,15 @@
  */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 plugins {
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.android.application)
 }
+=======
+apply plugin: 'com.android.application'
+apply plugin: 'org.jetbrains.kotlin.android'
+>>>>>>> de798aa7 (Adjust java version)
 
 android {
     compileSdk 34
@@ -77,6 +82,9 @@ android {
     }
 >>>>>>> 7365d9da ([create-pull-request] automated change)
     namespace "androidx.car.app.sample.navigation"
+    kotlinOptions {
+        jvmTarget = '17'
+    }
 }
 
 dependencies {
@@ -84,6 +92,7 @@ dependencies {
 <<<<<<< HEAD
     implementation libs.androidx.app.automotive
     implementation project(":navigation:common")
+<<<<<<< HEAD
     implementation libs.androidx.core.ktx
 =======
     implementation "androidx.car.app:app-automotive:1.3.0-beta01"
@@ -92,4 +101,7 @@ dependencies {
 >>>>>>> 5e8ebec6 ([create-pull-request] automated change)
     implementation project(":navigation:common")
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+    implementation 'androidx.core:core-ktx:1.13.1'
+>>>>>>> de798aa7 (Adjust java version)
 }
