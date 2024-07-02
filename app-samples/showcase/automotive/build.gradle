@@ -14,8 +14,10 @@
  * limitations under the License.
  */
 
-apply plugin: 'com.android.application'
-apply plugin: 'org.jetbrains.kotlin.android'
+plugins {
+    alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.android.application)
+}
 
 android {
     compileSdk 34
@@ -40,9 +42,12 @@ android {
         }
     }
 
-    compileOptions {
-        targetCompatibility = JavaVersion.VERSION_17
-        sourceCompatibility = JavaVersion.VERSION_17
+    java.toolchain {
+        languageVersion.set(JavaLanguageVersion.of(libs.versions.java.get()))
+    }
+
+    kotlinOptions {
+        jvmTarget = libs.versions.java.get()
     }
 
     testOptions.unitTests.includeAndroidResources true
@@ -50,7 +55,7 @@ android {
 }
 
 dependencies {
-    implementation "androidx.car.app:app-automotive:1.7.0-alpha02"
+    implementation libs.androidx.app.automotive
     implementation project(":showcase:common")
-    implementation 'androidx.core:core-ktx:1.13.1'
+    implementation libs.androidx.core.ktx
 }
