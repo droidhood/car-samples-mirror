@@ -15,6 +15,9 @@
  */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 49407ba0 ([create-pull-request] automated change)
 pluginManagement {
     repositories {
         google()
@@ -23,8 +26,11 @@ pluginManagement {
     }
 }
 
+<<<<<<< HEAD
 =======
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+>>>>>>> 49407ba0 ([create-pull-request] automated change)
 rootProject.name='car_app_samples'
 include ':navigation:automotive'
 include ':navigation:common'

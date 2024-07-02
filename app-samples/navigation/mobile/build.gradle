@@ -15,10 +15,14 @@
  */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 49407ba0 ([create-pull-request] automated change)
 plugins {
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.android.application)
 }
+<<<<<<< HEAD
 
 android {
     compileSdk 34
@@ -29,15 +33,24 @@ apply plugin: 'org.jetbrains.kotlin.android'
 android {
     compileSdk 33
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+
+android {
+    compileSdk 34
+>>>>>>> 49407ba0 ([create-pull-request] automated change)
 
     defaultConfig {
         applicationId "androidx.car.app.sample.navigation"
         minSdkVersion 23
 <<<<<<< HEAD
+<<<<<<< HEAD
         targetSdkVersion 34
 =======
         targetSdkVersion 33
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+        targetSdkVersion 34
+>>>>>>> 49407ba0 ([create-pull-request] automated change)
         // Increment this to generate signed builds for uploading to Playstore
         // Make sure this is different from the navigation-automotive version
         versionCode 114
@@ -55,6 +68,7 @@ android {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     java.toolchain {
         languageVersion.set(JavaLanguageVersion.of(libs.versions.java.get()))
     }
@@ -70,12 +84,21 @@ android {
     }
 >>>>>>> 7365d9da ([create-pull-request] automated change)
     namespace "androidx.car.app.sample.navigation"
-    kotlinOptions {
-        jvmTarget = '17'
+=======
+    java.toolchain {
+        languageVersion.set(JavaLanguageVersion.of(libs.versions.java.get()))
     }
+
+>>>>>>> 49407ba0 ([create-pull-request] automated change)
+    kotlinOptions {
+        jvmTarget = libs.versions.java.get()
+    }
+
+    namespace "androidx.car.app.sample.navigation"
 }
 
 dependencies {
+<<<<<<< HEAD
 <<<<<<< HEAD
     implementation libs.androidx.app.projected
     implementation project(":navigation:common")
@@ -88,4 +111,9 @@ dependencies {
 =======
     implementation 'androidx.core:core-ktx:1.13.1'
 >>>>>>> de798aa7 (Adjust java version)
+=======
+    implementation libs.androidx.app.projected
+    implementation project(":navigation:common")
+    implementation libs.androidx.core.ktx
+>>>>>>> 49407ba0 ([create-pull-request] automated change)
 }

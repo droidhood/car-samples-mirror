@@ -16,14 +16,20 @@
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 49407ba0 ([create-pull-request] automated change)
 plugins {
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.android.application)
 }
+<<<<<<< HEAD
 =======
 apply plugin: 'com.android.application'
 apply plugin: 'org.jetbrains.kotlin.android'
 >>>>>>> de798aa7 (Adjust java version)
+=======
+>>>>>>> 49407ba0 ([create-pull-request] automated change)
 
 android {
     compileSdk 34
@@ -67,12 +73,16 @@ android {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 49407ba0 ([create-pull-request] automated change)
     java.toolchain {
         languageVersion.set(JavaLanguageVersion.of(libs.versions.java.get()))
     }
 
     kotlinOptions {
         jvmTarget = libs.versions.java.get()
+<<<<<<< HEAD
 =======
     compileOptions {
 <<<<<<< HEAD
@@ -88,6 +98,8 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
         sourceCompatibility = JavaVersion.VERSION_17
 >>>>>>> de798aa7 (Adjust java version)
+=======
+>>>>>>> 49407ba0 ([create-pull-request] automated change)
     }
 
     testOptions.unitTests.includeAndroidResources true
@@ -95,6 +107,7 @@ android {
 }
 
 dependencies {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -114,4 +127,9 @@ dependencies {
     implementation project(":showcase:common")
     implementation 'androidx.core:core-ktx:1.13.1'
 >>>>>>> de798aa7 (Adjust java version)
+=======
+    implementation libs.androidx.app.projected
+    implementation project(":showcase:common")
+    implementation libs.androidx.core.ktx
+>>>>>>> 49407ba0 ([create-pull-request] automated change)
 }

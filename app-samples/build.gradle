@@ -16,6 +16,7 @@
 
 buildscript {
 <<<<<<< HEAD
+<<<<<<< HEAD
     repositories {
         google()
         mavenCentral()
@@ -31,18 +32,25 @@ plugins {
     ext {
         kotlin_version = '2.0.0'
     }
+=======
+>>>>>>> 49407ba0 ([create-pull-request] automated change)
     repositories {
         google()
         mavenCentral()
+        gradlePluginPortal()
     }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:8.4.2'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+}
 
+<<<<<<< HEAD
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+plugins {
+    alias libs.plugins.android.application apply false
+    alias libs.plugins.android.library apply false
+>>>>>>> 49407ba0 ([create-pull-request] automated change)
 }
 
 allprojects {

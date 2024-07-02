@@ -16,14 +16,20 @@
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 49407ba0 ([create-pull-request] automated change)
 plugins {
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.android.library)
 }
+<<<<<<< HEAD
 =======
 apply plugin: 'com.android.library'
 apply plugin: 'org.jetbrains.kotlin.android'
 >>>>>>> de798aa7 (Adjust java version)
+=======
+>>>>>>> 49407ba0 ([create-pull-request] automated change)
 
 android {
     compileSdk 34
@@ -50,6 +56,7 @@ android {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     java.toolchain {
         languageVersion.set(JavaLanguageVersion.of(libs.versions.java.get()))
     }
@@ -64,16 +71,30 @@ android {
         sourceCompatibility = JavaVersion.VERSION_17
     }
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+    java.toolchain {
+        languageVersion.set(JavaLanguageVersion.of(libs.versions.java.get()))
+    }
+
+    kotlinOptions {
+        jvmTarget = libs.versions.java.get()
+    }
+
+>>>>>>> 49407ba0 ([create-pull-request] automated change)
     namespace "androidx.car.app.sample.showcase.common"
 }
 
 dependencies {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 49407ba0 ([create-pull-request] automated change)
     implementation libs.androidx.core
     implementation(libs.androidx.car.app)
     implementation libs.androidx.annotation.experimental
     implementation libs.androidx.core.ktx
+<<<<<<< HEAD
     api libs.jspecify
 =======
     implementation "androidx.core:core:1.6.0-alpha01"
@@ -89,4 +110,6 @@ dependencies {
 =======
     implementation 'androidx.core:core-ktx:1.13.1'
 >>>>>>> de798aa7 (Adjust java version)
+=======
+>>>>>>> 49407ba0 ([create-pull-request] automated change)
 }
