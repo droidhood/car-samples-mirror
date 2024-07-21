@@ -28,10 +28,14 @@
   <uses-sdk
       android:minSdkVersion="23"
 <<<<<<< HEAD
+<<<<<<< HEAD
       android:targetSdkVersion="34" />
 =======
       android:targetSdkVersion="33" />
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+      android:targetSdkVersion="34" />
+>>>>>>> dcc836be ([create-pull-request] automated change)
 
   <uses-permission android:name="android.permission.INTERNET"/>
   <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
