@@ -25,6 +25,7 @@ import androidx.car.app.model.ItemList;
 import androidx.car.app.model.ListTemplate;
 import androidx.car.app.model.Row;
 import androidx.car.app.model.Template;
+import androidx.car.app.sample.showcase.common.screens.BugHeaderDemoScreen;
 import androidx.car.app.sample.showcase.common.screens.MapDemosScreen;
 import androidx.car.app.sample.showcase.common.screens.NavigationDemosScreen;
 import androidx.car.app.sample.showcase.common.screens.SettingsScreen;
@@ -46,6 +47,9 @@ public final class StartScreen extends Screen {
     @Override
     public Template onGetTemplate() {
         ItemList.Builder listBuilder = new ItemList.Builder();
+
+        listBuilder.addItem(createRowForScreen(R.string.bug_screen_title,
+                new BugHeaderDemoScreen(getCarContext())));
 
         listBuilder.addItem(createRowForScreen(R.string.template_layouts_demo_title,
                 new TemplateLayoutsDemoScreen(getCarContext())));
