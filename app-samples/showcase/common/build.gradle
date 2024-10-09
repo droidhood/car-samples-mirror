@@ -38,6 +38,9 @@ android {
     }
 
     namespace "androidx.car.app.sample.showcase.common"
+    kotlinOptions {
+        jvmTarget = '17'
+    }
 }
 
 dependencies {
