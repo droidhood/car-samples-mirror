@@ -17,9 +17,12 @@
 package androidx.car.app.sample.showcase.common.screens.settings;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import androidx.annotation.NonNull;
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 import androidx.car.app.CarContext;
 import androidx.car.app.Screen;
 import androidx.car.app.model.Action;
@@ -36,10 +39,15 @@ import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleOwner;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import org.jspecify.annotations.NonNull;
 
 =======
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+import org.jspecify.annotations.NonNull;
+
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 /** Simple demo of how access car hardware information. */
 public final class CarHardwareDemoScreen extends Screen {
 
@@ -54,11 +62,15 @@ public final class CarHardwareDemoScreen extends Screen {
         lifecycle.addObserver(new DefaultLifecycleObserver() {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
             final @NonNull ShowcaseSession mShowcaseSession = showcaseSession;
 =======
             @NonNull
             final ShowcaseSession mShowcaseSession = showcaseSession;
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+            final @NonNull ShowcaseSession mShowcaseSession = showcaseSession;
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 
             @Override
             public void onResume(@NonNull LifecycleOwner owner) {
@@ -77,6 +89,7 @@ public final class CarHardwareDemoScreen extends Screen {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     @Override
     public @NonNull Template onGetTemplate() {
 =======
@@ -84,6 +97,10 @@ public final class CarHardwareDemoScreen extends Screen {
     @Override
     public Template onGetTemplate() {
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+    @Override
+    public @NonNull Template onGetTemplate() {
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
         ActionStrip actionStrip =
                 new ActionStrip.Builder()
                         // Add a Button to show the CarHardware info screen

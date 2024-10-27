@@ -17,9 +17,12 @@
 package androidx.car.app.sample.showcase.common.screens.userinteractions;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import androidx.annotation.NonNull;
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 import androidx.car.app.CarContext;
 import androidx.car.app.Screen;
 import androidx.car.app.constraints.ConstraintManager;
@@ -38,10 +41,15 @@ import androidx.car.app.sample.showcase.common.screens.templatelayouts.SearchTem
 import androidx.car.app.sample.showcase.common.screens.templatelayouts.SignInTemplateDemoScreen;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import org.jspecify.annotations.NonNull;
 
 =======
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+import org.jspecify.annotations.NonNull;
+
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 /** A screen demonstrating Task Overflow for the different templates */
 public class TaskOverflowDemoScreen extends Screen {
 
@@ -95,6 +103,7 @@ public class TaskOverflowDemoScreen extends Screen {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     @Override
     public @NonNull Template onGetTemplate() {
 =======
@@ -102,6 +111,10 @@ public class TaskOverflowDemoScreen extends Screen {
     @Override
     public Template onGetTemplate() {
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+    @Override
+    public @NonNull Template onGetTemplate() {
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
         int listLimit = getCarContext().getCarService(ConstraintManager.class).getContentLimit(
                 ConstraintManager.CONTENT_LIMIT_TYPE_LIST);
         if (listLimit >= 6) {

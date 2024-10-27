@@ -26,10 +26,13 @@ import android.os.Handler;
 import android.os.Looper;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 import androidx.car.app.CarContext;
 import androidx.car.app.CarToast;
 import androidx.car.app.Screen;
@@ -49,17 +52,24 @@ import androidx.lifecycle.DefaultLifecycleObserver;
 import androidx.lifecycle.LifecycleOwner;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
 
 =======
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+import org.jspecify.annotations.NonNull;
+import org.jspecify.annotations.Nullable;
+
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 /** Creates a screen that demonstrates usage of the full screen {@link GridTemplate}. */
 public final class GridTemplateDemoScreen extends Screen implements DefaultLifecycleObserver {
     private static final int MAX_GRID_ITEMS = 100;
     private static final int LOADING_TIME_MILLIS = 2000;
     private final Handler mHandler = new Handler(Looper.getMainLooper());
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     private @Nullable IconCompat mImage;
     private @Nullable IconCompat mIcon;
@@ -69,6 +79,10 @@ public final class GridTemplateDemoScreen extends Screen implements DefaultLifec
     @Nullable
     private IconCompat mIcon;
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+    private @Nullable IconCompat mImage;
+    private @Nullable IconCompat mIcon;
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
     private boolean mIsFourthItemLoading;
     private boolean mThirdItemToggleState;
     private boolean mFourthItemToggleState;
@@ -169,6 +183,7 @@ public final class GridTemplateDemoScreen extends Screen implements DefaultLifec
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     @Override
     public @NonNull Template onGetTemplate() {
 =======
@@ -176,6 +191,10 @@ public final class GridTemplateDemoScreen extends Screen implements DefaultLifec
     @Override
     public Template onGetTemplate() {
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+    @Override
+    public @NonNull Template onGetTemplate() {
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
         int itemLimit = 6;
         // Adjust the item limit according to the car constrains.
         if (getCarContext().getCarAppApiLevel() > CarAppApiLevels.LEVEL_1) {

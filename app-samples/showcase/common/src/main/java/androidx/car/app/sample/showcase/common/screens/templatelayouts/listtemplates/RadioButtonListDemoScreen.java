@@ -19,9 +19,12 @@ package androidx.car.app.sample.showcase.common.screens.templatelayouts.listtemp
 import static androidx.car.app.CarToast.LENGTH_LONG;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import androidx.annotation.NonNull;
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 import androidx.car.app.CarContext;
 import androidx.car.app.CarToast;
 import androidx.car.app.Screen;
@@ -37,10 +40,15 @@ import androidx.car.app.sample.showcase.common.R;
 import androidx.core.graphics.drawable.IconCompat;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import org.jspecify.annotations.NonNull;
 
 =======
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+import org.jspecify.annotations.NonNull;
+
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 /** A screen demonstrating selectable lists. */
 public final class RadioButtonListDemoScreen extends Screen {
 
@@ -51,6 +59,7 @@ public final class RadioButtonListDemoScreen extends Screen {
     private boolean mIsEnabled = true;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     @Override
     public @NonNull Template onGetTemplate() {
 =======
@@ -58,6 +67,10 @@ public final class RadioButtonListDemoScreen extends Screen {
     @Override
     public Template onGetTemplate() {
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+    @Override
+    public @NonNull Template onGetTemplate() {
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
         ListTemplate.Builder templateBuilder = new ListTemplate.Builder();
         ItemList radioList =
                 new ItemList.Builder()

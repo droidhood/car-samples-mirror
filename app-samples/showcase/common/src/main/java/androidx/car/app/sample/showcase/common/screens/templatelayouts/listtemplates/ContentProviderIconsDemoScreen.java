@@ -19,10 +19,13 @@ package androidx.car.app.sample.showcase.common.screens.templatelayouts.listtemp
 import android.net.Uri;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 import androidx.car.app.CarContext;
 import androidx.car.app.HostInfo;
 import androidx.car.app.Screen;
@@ -37,11 +40,17 @@ import androidx.car.app.sample.showcase.common.R;
 import androidx.core.graphics.drawable.IconCompat;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
 
 =======
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+import org.jspecify.annotations.NonNull;
+import org.jspecify.annotations.Nullable;
+
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 /** Creates a screen that demonstrate the image loading in the library using a content provider. */
 public final class ContentProviderIconsDemoScreen extends Screen {
     private static final int[] ICON_DRAWABLES = {
@@ -49,11 +58,15 @@ public final class ContentProviderIconsDemoScreen extends Screen {
             R.drawable.ic_520
     };
 <<<<<<< HEAD
+<<<<<<< HEAD
     private final @Nullable String mHostPackageName;
 =======
     @Nullable
     private final String mHostPackageName;
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+    private final @Nullable String mHostPackageName;
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 
     public ContentProviderIconsDemoScreen(@NonNull CarContext carContext) {
         super(carContext);
@@ -63,6 +76,7 @@ public final class ContentProviderIconsDemoScreen extends Screen {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     @Override
     public @NonNull Template onGetTemplate() {
 =======
@@ -70,6 +84,10 @@ public final class ContentProviderIconsDemoScreen extends Screen {
     @Override
     public Template onGetTemplate() {
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+    @Override
+    public @NonNull Template onGetTemplate() {
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
         ItemList.Builder listBuilder = new ItemList.Builder();
 
         String hostPackageName = mHostPackageName;

@@ -22,9 +22,12 @@ import static androidx.car.app.model.Action.BACK;
 import android.content.Context;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import androidx.annotation.NonNull;
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 import androidx.car.app.CarContext;
 import androidx.car.app.CarToast;
 import androidx.car.app.Screen;
@@ -43,21 +46,30 @@ import androidx.car.app.sample.showcase.common.screens.settings.LatestFeatures;
 import androidx.car.app.sample.showcase.common.screens.settings.ParkedVsDrivingDemoScreen;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import org.jspecify.annotations.NonNull;
 
 =======
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+import org.jspecify.annotations.NonNull;
+
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 /** A screen demonstrating selectable lists. */
 public final class SettingsScreen extends Screen {
 
     private boolean mLoadingToggleState;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     private final @NonNull ShowcaseSession mShowcaseSession;
 =======
     @NonNull
     private final ShowcaseSession mShowcaseSession;
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+    private final @NonNull ShowcaseSession mShowcaseSession;
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 
     public SettingsScreen(@NonNull CarContext carContext,
             @NonNull ShowcaseSession showcaseSession) {
@@ -66,6 +78,7 @@ public final class SettingsScreen extends Screen {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     @Override
     public @NonNull Template onGetTemplate() {
 =======
@@ -73,6 +86,10 @@ public final class SettingsScreen extends Screen {
     @Override
     public Template onGetTemplate() {
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+    @Override
+    public @NonNull Template onGetTemplate() {
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
         Toggle mLoadingToggle = new Toggle.Builder((checked) -> {
             if (checked) {
                 makeCarToast(R.string.loading_toggle_enabled);

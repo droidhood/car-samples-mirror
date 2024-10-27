@@ -23,9 +23,12 @@ import android.os.Build.VERSION;
 import android.os.Build.VERSION_CODES;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import androidx.annotation.NonNull;
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 import androidx.car.app.CarContext;
 import androidx.car.app.Screen;
 import androidx.car.app.model.Action;
@@ -37,10 +40,15 @@ import androidx.car.app.model.Template;
 import androidx.car.app.sample.showcase.common.R;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import org.jspecify.annotations.NonNull;
 
 =======
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+import org.jspecify.annotations.NonNull;
+
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 /** A simple screen that demonstrates how to use navigation notifications in a car app. */
 public final class NavigationNotificationsDemoScreen extends Screen {
 
@@ -56,10 +64,13 @@ public final class NavigationNotificationsDemoScreen extends Screen {
     public @NonNull Template onGetTemplate() {
 =======
     @SuppressLint({"ObsoleteSdkInt", "ClassVerificationFailure"})
-    @NonNull
     @Override
+<<<<<<< HEAD
     public Template onGetTemplate() {
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+    public @NonNull Template onGetTemplate() {
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
         ItemList.Builder listBuilder = new ItemList.Builder();
 
         listBuilder.addItem(

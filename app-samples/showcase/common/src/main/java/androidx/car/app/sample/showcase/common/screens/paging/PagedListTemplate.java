@@ -17,9 +17,12 @@
 package androidx.car.app.sample.showcase.common.screens.paging;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import androidx.annotation.NonNull;
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 import androidx.car.app.CarContext;
 import androidx.car.app.Screen;
 import androidx.car.app.ScreenManager;
@@ -33,10 +36,15 @@ import androidx.car.app.model.Template;
 import androidx.car.app.sample.showcase.common.R;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import org.jspecify.annotations.NonNull;
 
 =======
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+import org.jspecify.annotations.NonNull;
+
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 import java.util.List;
 
 /**
@@ -61,6 +69,7 @@ public class PagedListTemplate extends Screen {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     @Override
     public @NonNull Template onGetTemplate() {
 =======
@@ -68,6 +77,10 @@ public class PagedListTemplate extends Screen {
     @Override
     public Template onGetTemplate() {
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+    @Override
+    public @NonNull Template onGetTemplate() {
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
         ItemList.Builder listBuilder = new ItemList.Builder();
 
         int listLimit = getCarContext().getCarService(ConstraintManager.class).getContentLimit(
@@ -119,6 +132,7 @@ public class PagedListTemplate extends Screen {
     /** A list of rows, used to populate a {@link PagedListTemplate} */
     public abstract static class RowList {
 <<<<<<< HEAD
+<<<<<<< HEAD
         protected abstract @NonNull List<Row> getRows(@NonNull ScreenManager screenManager);
 
         protected abstract @NonNull String getTemplateTitle();
@@ -129,5 +143,10 @@ public class PagedListTemplate extends Screen {
         @NonNull
         protected abstract String getTemplateTitle();
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+        protected abstract @NonNull List<Row> getRows(@NonNull ScreenManager screenManager);
+
+        protected abstract @NonNull String getTemplateTitle();
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
     }
 }

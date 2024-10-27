@@ -26,10 +26,13 @@ import android.text.SpannableStringBuilder;
 
 import androidx.activity.OnBackPressedCallback;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 import androidx.car.app.CarContext;
 import androidx.car.app.CarToast;
 import androidx.car.app.Screen;
@@ -56,11 +59,17 @@ import androidx.core.graphics.drawable.IconCompat;
 import kotlin.Unit;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
 
 =======
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+import org.jspecify.annotations.NonNull;
+import org.jspecify.annotations.Nullable;
+
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 /** A screen that demonstrates the sign-in template. */
 public class SignInTemplateDemoScreen extends Screen {
     private static final String EMAIL_REGEXP = "^(.+)@(.+)$";
@@ -72,6 +81,7 @@ public class SignInTemplateDemoScreen extends Screen {
     private final Action mQRCodeSignInAction;
     // package private to avoid synthetic accessor
     State mState = State.USERNAME;
+<<<<<<< HEAD
 <<<<<<< HEAD
     @Nullable String mLastErrorMessage; // last displayed error message
     @Nullable String mErrorMessage;
@@ -86,6 +96,12 @@ public class SignInTemplateDemoScreen extends Screen {
     @Nullable
     String mUsername;
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+    @Nullable String mLastErrorMessage; // last displayed error message
+    @Nullable String mErrorMessage;
+
+    @Nullable String mUsername;
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 
     public SignInTemplateDemoScreen(@NonNull CarContext carContext) {
         super(carContext);
@@ -146,6 +162,7 @@ public class SignInTemplateDemoScreen extends Screen {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     @Override
     public @NonNull Template onGetTemplate() {
 =======
@@ -153,6 +170,10 @@ public class SignInTemplateDemoScreen extends Screen {
     @Override
     public Template onGetTemplate() {
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+    @Override
+    public @NonNull Template onGetTemplate() {
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
         if (getCarContext().getCarAppApiLevel() < CarAppApiLevels.LEVEL_2) {
             return new MessageTemplate.Builder(
                     getCarContext().getString(R.string.sign_in_template_not_supported_text))

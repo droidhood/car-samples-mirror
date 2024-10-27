@@ -20,10 +20,13 @@ import android.util.Log;
 
 import androidx.annotation.GuardedBy;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 import androidx.car.app.CarContext;
 import androidx.car.app.Screen;
 import androidx.car.app.hardware.CarHardwareManager;
@@ -46,11 +49,17 @@ import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleOwner;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
 
 =======
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+import org.jspecify.annotations.NonNull;
+import org.jspecify.annotations.Nullable;
+
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 import java.util.Arrays;
 import java.util.concurrent.Executor;
 
@@ -74,6 +83,7 @@ public final class CarHardwareInfoScreen extends Screen {
      * received.
      */
 <<<<<<< HEAD
+<<<<<<< HEAD
     @GuardedBy("this")
     @Nullable Model mModel;
 =======
@@ -81,6 +91,10 @@ public final class CarHardwareInfoScreen extends Screen {
     @GuardedBy("this")
     Model mModel;
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+    @GuardedBy("this")
+    @Nullable Model mModel;
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 
     /**
      * Value fetched from CarHardwareManager containing what type of fuel/ports the car has.
@@ -89,6 +103,7 @@ public final class CarHardwareInfoScreen extends Screen {
      * received.
      */
 <<<<<<< HEAD
+<<<<<<< HEAD
     @GuardedBy("this")
     @Nullable EnergyProfile mEnergyProfile;
 
@@ -96,13 +111,18 @@ public final class CarHardwareInfoScreen extends Screen {
     @Nullable ExteriorDimensions mExteriorDimensions;
 =======
     @Nullable
+=======
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
     @GuardedBy("this")
-    EnergyProfile mEnergyProfile;
+    @Nullable EnergyProfile mEnergyProfile;
 
-    @Nullable
     @GuardedBy("this")
+<<<<<<< HEAD
     ExteriorDimensions mExteriorDimensions;
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+    @Nullable ExteriorDimensions mExteriorDimensions;
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 
     OnCarDataAvailableListener<Model> mModelListener = data -> {
         synchronized (this) {
@@ -174,6 +194,7 @@ public final class CarHardwareInfoScreen extends Screen {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     @Override
     public @NonNull Template onGetTemplate() {
 =======
@@ -181,6 +202,10 @@ public final class CarHardwareInfoScreen extends Screen {
     @Override
     public Template onGetTemplate() {
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+    @Override
+    public @NonNull Template onGetTemplate() {
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
         Pane.Builder paneBuilder = new Pane.Builder();
         if (allInfoAvailable()) {
             Row.Builder modelRowBuilder = new Row.Builder()

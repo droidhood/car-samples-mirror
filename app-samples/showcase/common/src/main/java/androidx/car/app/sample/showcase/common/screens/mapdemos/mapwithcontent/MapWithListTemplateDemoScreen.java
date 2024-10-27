@@ -20,9 +20,12 @@ import static androidx.car.app.CarToast.LENGTH_LONG;
 import static androidx.car.app.CarToast.LENGTH_SHORT;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import androidx.annotation.NonNull;
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 import androidx.car.app.CarContext;
 import androidx.car.app.CarToast;
 import androidx.car.app.Screen;
@@ -46,10 +49,15 @@ import androidx.car.app.versioning.CarAppApiLevels;
 import androidx.core.graphics.drawable.IconCompat;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import org.jspecify.annotations.NonNull;
 
 =======
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+import org.jspecify.annotations.NonNull;
+
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 /** Simple demo of how to present a map template with a list. */
 public class MapWithListTemplateDemoScreen extends Screen {
     private static final int MAX_LIST_ITEMS = 100;
@@ -62,6 +70,7 @@ public class MapWithListTemplateDemoScreen extends Screen {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     @Override
     public @NonNull Template onGetTemplate() {
 =======
@@ -69,6 +78,10 @@ public class MapWithListTemplateDemoScreen extends Screen {
     @Override
     public Template onGetTemplate() {
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+    @Override
+    public @NonNull Template onGetTemplate() {
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
         ItemList.Builder listBuilder = new ItemList.Builder();
         listBuilder.addItem(createRowWithParkedOnlyContent());
         listBuilder.addItem(createRowWithSecondaryAction(2));

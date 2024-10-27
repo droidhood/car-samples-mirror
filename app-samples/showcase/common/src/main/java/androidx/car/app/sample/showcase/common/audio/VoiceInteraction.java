@@ -42,9 +42,12 @@ import android.os.Build.VERSION_CODES;
 import android.util.Log;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import androidx.annotation.NonNull;
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 import androidx.annotation.RequiresApi;
 import androidx.annotation.RequiresPermission;
 import androidx.car.app.CarContext;
@@ -53,10 +56,15 @@ import androidx.car.app.media.CarAudioRecord;
 import androidx.car.app.utils.LogTags;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import org.jspecify.annotations.NonNull;
 
 =======
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+import org.jspecify.annotations.NonNull;
+
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -105,6 +113,7 @@ public class VoiceInteraction {
      * Create thread which executes the record and the playback functions
      */
 <<<<<<< HEAD
+<<<<<<< HEAD
     @RequiresApi(api = VERSION_CODES.O)
     @RequiresPermission(RECORD_AUDIO)
     public @NonNull Thread createRecordingThread() {
@@ -115,6 +124,12 @@ public class VoiceInteraction {
     @SuppressLint("ClassVerificationFailure") // runtime check for < API 26
     public Thread createRecordingThread() {
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+    @RequiresApi(api = VERSION_CODES.O)
+    @RequiresPermission(RECORD_AUDIO)
+    @SuppressLint("ClassVerificationFailure") // runtime check for < API 26
+    public @NonNull Thread createRecordingThread() {
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
         Thread recordingThread = new Thread(
                 () -> {
                     // Request audio focus

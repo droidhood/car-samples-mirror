@@ -17,9 +17,12 @@
 package androidx.car.app.sample.showcase.common.screens.templatelayouts.listtemplates;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import androidx.annotation.NonNull;
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 import androidx.car.app.CarContext;
 import androidx.car.app.Screen;
 import androidx.car.app.model.Action;
@@ -32,9 +35,13 @@ import androidx.car.app.model.Template;
 import androidx.car.app.sample.showcase.common.R;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import org.jspecify.annotations.NonNull;
 =======
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+import org.jspecify.annotations.NonNull;
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 
 /** A screen demonstrating lists with sectioned item list */
 public class SectionedItemListDemoScreen extends Screen {
@@ -43,6 +50,7 @@ public class SectionedItemListDemoScreen extends Screen {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     @Override
     public @NonNull Template onGetTemplate() {
 =======
@@ -50,6 +58,10 @@ public class SectionedItemListDemoScreen extends Screen {
     @Override
     public Template onGetTemplate() {
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+    @Override
+    public @NonNull Template onGetTemplate() {
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 
         ItemList.Builder listBuilderOne = new ItemList.Builder();
         listBuilderOne.addItem(buildRowForTemplate(R.string.sectioned_item_list_subtext));

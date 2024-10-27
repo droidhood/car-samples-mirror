@@ -23,12 +23,17 @@ import android.graphics.Rect;
 import android.util.Log;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
 =======
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+import org.jspecify.annotations.NonNull;
+import org.jspecify.annotations.Nullable;
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 
 /** Simple renderer for the surface templates. */
 public final class DefaultRenderer implements Renderer {

@@ -19,9 +19,12 @@ package androidx.car.app.sample.showcase.common.screens;
 import static androidx.car.app.model.Action.BACK;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import androidx.annotation.NonNull;
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 import androidx.car.app.CarContext;
 import androidx.car.app.Screen;
 import androidx.car.app.model.Action;
@@ -41,10 +44,15 @@ import androidx.car.app.sample.showcase.common.screens.userinteractions.TaskOver
 import androidx.core.graphics.drawable.IconCompat;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import org.jspecify.annotations.NonNull;
 
 =======
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+import org.jspecify.annotations.NonNull;
+
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 /** A screen demonstrating User Interactions */
 public final class UserInteractionsDemoScreen extends Screen {
     private static final int MAX_STEPS_ALLOWED = 4;
@@ -58,6 +66,7 @@ public final class UserInteractionsDemoScreen extends Screen {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     @Override
     public @NonNull Template onGetTemplate() {
 =======
@@ -65,6 +74,10 @@ public final class UserInteractionsDemoScreen extends Screen {
     @Override
     public Template onGetTemplate() {
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+    @Override
+    public @NonNull Template onGetTemplate() {
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 
         // Last step must either be a PaneTemplate, MessageTemplate or NavigationTemplate.
         if (mStep == MAX_STEPS_ALLOWED) {

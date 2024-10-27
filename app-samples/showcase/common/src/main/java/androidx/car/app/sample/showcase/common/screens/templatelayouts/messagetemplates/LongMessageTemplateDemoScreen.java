@@ -21,9 +21,12 @@ import static androidx.car.app.model.Action.BACK;
 import static androidx.car.app.model.Action.FLAG_PRIMARY;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import androidx.annotation.NonNull;
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 import androidx.car.app.CarContext;
 import androidx.car.app.CarToast;
 import androidx.car.app.Screen;
@@ -39,16 +42,22 @@ import androidx.car.app.sample.showcase.common.R;
 import androidx.car.app.versioning.CarAppApiLevels;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import org.jspecify.annotations.NonNull;
 
 =======
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+import org.jspecify.annotations.NonNull;
+
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 /** A screen that demonstrates the long message template. */
 public class LongMessageTemplateDemoScreen extends Screen {
     public LongMessageTemplateDemoScreen(@NonNull CarContext carContext) {
         super(carContext);
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     @Override
     public @NonNull Template onGetTemplate() {
@@ -57,6 +66,10 @@ public class LongMessageTemplateDemoScreen extends Screen {
     @Override
     public Template onGetTemplate() {
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+    @Override
+    public @NonNull Template onGetTemplate() {
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
         if (getCarContext().getCarAppApiLevel() < CarAppApiLevels.LEVEL_2) {
             return new MessageTemplate.Builder(
                     getCarContext().getString(R.string.long_msg_template_not_supported_text))

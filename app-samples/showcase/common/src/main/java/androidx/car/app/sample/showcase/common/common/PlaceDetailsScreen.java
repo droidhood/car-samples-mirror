@@ -22,9 +22,12 @@ import android.content.Intent;
 import android.net.Uri;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import androidx.annotation.NonNull;
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 import androidx.car.app.CarContext;
 import androidx.car.app.CarToast;
 import androidx.car.app.HostException;
@@ -39,10 +42,15 @@ import androidx.car.app.model.Template;
 import androidx.car.app.sample.showcase.common.R;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import org.jspecify.annotations.NonNull;
 
 =======
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+import org.jspecify.annotations.NonNull;
+
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 /** A screen that displays the details of a place. */
 public class PlaceDetailsScreen extends Screen {
     private final PlaceInfo mPlace;
@@ -54,15 +62,20 @@ public class PlaceDetailsScreen extends Screen {
 
     /** Creates an instance of {@link PlaceDetailsScreen}. */
 <<<<<<< HEAD
+<<<<<<< HEAD
     public static @NonNull PlaceDetailsScreen create(
 =======
     @NonNull
     public static PlaceDetailsScreen create(
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+    public static @NonNull PlaceDetailsScreen create(
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
             @NonNull CarContext carContext, @NonNull PlaceInfo place) {
         return new PlaceDetailsScreen(carContext, place);
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     @Override
     public @NonNull Template onGetTemplate() {
@@ -71,6 +84,10 @@ public class PlaceDetailsScreen extends Screen {
     @Override
     public Template onGetTemplate() {
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+    @Override
+    public @NonNull Template onGetTemplate() {
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
         Pane.Builder paneBuilder =
                 new Pane.Builder()
                         .addAction(

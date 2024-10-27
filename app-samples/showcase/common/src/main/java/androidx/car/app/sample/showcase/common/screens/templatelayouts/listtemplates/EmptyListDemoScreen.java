@@ -19,9 +19,12 @@ package androidx.car.app.sample.showcase.common.screens.templatelayouts.listtemp
 import static androidx.car.app.model.Action.BACK;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import androidx.annotation.NonNull;
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 import androidx.car.app.CarContext;
 import androidx.car.app.Screen;
 import androidx.car.app.model.Header;
@@ -31,16 +34,22 @@ import androidx.car.app.model.Template;
 import androidx.car.app.sample.showcase.common.R;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import org.jspecify.annotations.NonNull;
 
 =======
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+import org.jspecify.annotations.NonNull;
+
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 /** A screen demonstrating empty lists */
 public class EmptyListDemoScreen extends Screen {
     public EmptyListDemoScreen(@NonNull CarContext carContext) {
         super(carContext);
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     @Override
     public @NonNull Template onGetTemplate() {
@@ -49,6 +58,10 @@ public class EmptyListDemoScreen extends Screen {
     @Override
     public Template onGetTemplate() {
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+    @Override
+    public @NonNull Template onGetTemplate() {
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
         return new ListTemplate.Builder()
                 .setSingleList(
                         new ItemList.Builder()

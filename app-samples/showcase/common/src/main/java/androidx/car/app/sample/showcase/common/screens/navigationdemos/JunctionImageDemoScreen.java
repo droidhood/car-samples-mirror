@@ -17,9 +17,12 @@
 package androidx.car.app.sample.showcase.common.screens.navigationdemos;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import androidx.annotation.NonNull;
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 import androidx.car.app.CarContext;
 import androidx.car.app.Screen;
 import androidx.car.app.model.CarIcon;
@@ -32,10 +35,15 @@ import androidx.core.graphics.drawable.IconCompat;
 import androidx.lifecycle.DefaultLifecycleObserver;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import org.jspecify.annotations.NonNull;
 
 =======
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+import org.jspecify.annotations.NonNull;
+
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 /** A screen that shows the navigation template in routing state showing a junction image. */
 public final class JunctionImageDemoScreen extends Screen implements DefaultLifecycleObserver {
     private final RoutingDemoModelFactory mRoutingDemoModelFactory;
@@ -45,6 +53,7 @@ public final class JunctionImageDemoScreen extends Screen implements DefaultLife
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     @Override
     public @NonNull Template onGetTemplate() {
 =======
@@ -52,6 +61,10 @@ public final class JunctionImageDemoScreen extends Screen implements DefaultLife
     @Override
     public Template onGetTemplate() {
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+    @Override
+    public @NonNull Template onGetTemplate() {
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
         CarContext carContext = getCarContext();
         return new NavigationTemplate.Builder()
                 .setNavigationInfo(

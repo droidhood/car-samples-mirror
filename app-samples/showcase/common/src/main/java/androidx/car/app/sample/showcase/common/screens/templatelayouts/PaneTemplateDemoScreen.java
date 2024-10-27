@@ -24,10 +24,13 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 import androidx.car.app.CarContext;
 import androidx.car.app.CarToast;
 import androidx.car.app.Screen;
@@ -47,16 +50,23 @@ import androidx.lifecycle.DefaultLifecycleObserver;
 import androidx.lifecycle.LifecycleOwner;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
 
 =======
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+import org.jspecify.annotations.NonNull;
+import org.jspecify.annotations.Nullable;
+
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 /**
  * Creates a screen that demonstrates usage of the full screen {@link PaneTemplate} to display a
  * details screen.
  */
 public final class PaneTemplateDemoScreen extends Screen implements DefaultLifecycleObserver {
+<<<<<<< HEAD
 <<<<<<< HEAD
     private @Nullable IconCompat mPaneImage;
 
@@ -66,13 +76,19 @@ public final class PaneTemplateDemoScreen extends Screen implements DefaultLifec
 =======
     @Nullable
     private IconCompat mPaneImage;
+=======
+    private @Nullable IconCompat mPaneImage;
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 
-    @Nullable
-    private IconCompat mRowLargeIcon;
+    private @Nullable IconCompat mRowLargeIcon;
 
+<<<<<<< HEAD
     @Nullable
     private IconCompat mCommuteIcon;
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+    private @Nullable IconCompat mCommuteIcon;
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 
     public PaneTemplateDemoScreen(@NonNull CarContext carContext) {
         super(carContext);
@@ -111,6 +127,7 @@ public final class PaneTemplateDemoScreen extends Screen implements DefaultLifec
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     @Override
     public @NonNull Template onGetTemplate() {
 =======
@@ -118,6 +135,10 @@ public final class PaneTemplateDemoScreen extends Screen implements DefaultLifec
     @Override
     public Template onGetTemplate() {
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+    @Override
+    public @NonNull Template onGetTemplate() {
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
         int listLimit = getCarContext().getCarService(ConstraintManager.class).getContentLimit(
                 ConstraintManager.CONTENT_LIMIT_TYPE_PANE);
 

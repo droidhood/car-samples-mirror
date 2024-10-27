@@ -19,9 +19,12 @@ package androidx.car.app.sample.showcase.common.screens.userinteractions;
 import android.content.Context;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import androidx.annotation.NonNull;
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 import androidx.car.app.CarContext;
 import androidx.car.app.Screen;
 import androidx.car.app.model.Action;
@@ -32,16 +35,22 @@ import androidx.car.app.sample.showcase.common.R;
 import androidx.car.app.sample.showcase.common.ShowcaseService;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import org.jspecify.annotations.NonNull;
 
 =======
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+import org.jspecify.annotations.NonNull;
+
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 /** A screen that demonstrates exiting the app and pre-seeding it with a request for permissions */
 public class PreSeedPermissionScreen extends Screen {
     public PreSeedPermissionScreen(@NonNull CarContext carContext) {
         super(carContext);
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     @Override
     public @NonNull Template onGetTemplate() {
@@ -50,6 +59,10 @@ public class PreSeedPermissionScreen extends Screen {
     @Override
     public Template onGetTemplate() {
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+    @Override
+    public @NonNull Template onGetTemplate() {
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
         return new MessageTemplate.Builder(getCarContext().getString(R.string.finish_app_msg))
                 .setHeader(new Header.Builder().setStartHeaderAction(Action.BACK)
                         .setTitle(getCarContext().getString(R.string.preseed_permission_app_title))

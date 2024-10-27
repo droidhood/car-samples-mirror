@@ -17,9 +17,12 @@
 package androidx.car.app.sample.showcase.common.screens.userinteractions;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import androidx.annotation.NonNull;
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 import androidx.car.app.CarContext;
 import androidx.car.app.Screen;
 import androidx.car.app.model.Action;
@@ -32,10 +35,15 @@ import androidx.car.app.sample.showcase.common.R;
 import androidx.lifecycle.DefaultLifecycleObserver;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import org.jspecify.annotations.NonNull;
 
 =======
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+import org.jspecify.annotations.NonNull;
+
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 /** Screen to list different permission demos */
 public final class RequestPermissionMenuDemoScreen extends Screen
         implements DefaultLifecycleObserver {
@@ -46,6 +54,7 @@ public final class RequestPermissionMenuDemoScreen extends Screen
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     @Override
     public @NonNull Template onGetTemplate() {
 =======
@@ -53,6 +62,10 @@ public final class RequestPermissionMenuDemoScreen extends Screen
     @Override
     public Template onGetTemplate() {
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+    @Override
+    public @NonNull Template onGetTemplate() {
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
         ItemList.Builder listBuilder = new ItemList.Builder();
 
         listBuilder.addItem(

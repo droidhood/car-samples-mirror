@@ -17,9 +17,12 @@
 package androidx.car.app.sample.showcase.common.screens.settings;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import androidx.annotation.NonNull;
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 import androidx.car.app.CarContext;
 import androidx.car.app.model.Action;
 import androidx.car.app.model.Header;
@@ -28,10 +31,15 @@ import androidx.car.app.model.Template;
 import androidx.car.app.sample.showcase.common.R;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import org.jspecify.annotations.NonNull;
 
 =======
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+import org.jspecify.annotations.NonNull;
+
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 /** A class that provides a sample template for a loading screen */
 public abstract class LoadingScreen {
 
@@ -42,11 +50,15 @@ public abstract class LoadingScreen {
     * Returns a sample template to be used for loading a screen
     */
 <<<<<<< HEAD
+<<<<<<< HEAD
     public static @NonNull Template loadingScreenTemplate(@NonNull CarContext carContext) {
 =======
     @NonNull
     public static Template loadingScreenTemplate(@NonNull CarContext carContext) {
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+    public static @NonNull Template loadingScreenTemplate(@NonNull CarContext carContext) {
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
         return new MessageTemplate.Builder(
                 carContext.getString(R.string.loading_screen))
                 .setLoading(true)

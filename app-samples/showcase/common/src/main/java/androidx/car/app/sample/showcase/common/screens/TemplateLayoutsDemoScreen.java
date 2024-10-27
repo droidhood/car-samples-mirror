@@ -19,9 +19,12 @@ package androidx.car.app.sample.showcase.common.screens;
 import static androidx.car.app.model.Action.BACK;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import androidx.annotation.NonNull;
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 import androidx.car.app.CarContext;
 import androidx.car.app.Screen;
 import androidx.car.app.constraints.ConstraintManager;
@@ -46,10 +49,15 @@ import androidx.car.app.sample.showcase.common.screens.templatelayouts.TabTempla
 import androidx.car.app.versioning.CarAppApiLevels;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import org.jspecify.annotations.NonNull;
 
 =======
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+import org.jspecify.annotations.NonNull;
+
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 import java.util.ArrayList;
 import java.util.List;
 
@@ -65,6 +73,7 @@ public final class TemplateLayoutsDemoScreen extends Screen {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     @Override
     public @NonNull Template onGetTemplate() {
         List<Row> screenList = new ArrayList<>();
@@ -74,8 +83,10 @@ public final class TemplateLayoutsDemoScreen extends Screen {
         }
 =======
     @NonNull
+=======
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
     @Override
-    public Template onGetTemplate() {
+    public @NonNull Template onGetTemplate() {
         List<Row> screenList = new ArrayList<>();
 >>>>>>> 7365d9da ([create-pull-request] automated change)
         screenList.add(buildRowForTemplate(new ListTemplateDemoScreen(getCarContext()),

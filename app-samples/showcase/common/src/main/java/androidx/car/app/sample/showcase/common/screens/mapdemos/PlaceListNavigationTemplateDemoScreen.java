@@ -22,9 +22,12 @@ import android.os.Handler;
 import android.os.Looper;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import androidx.annotation.NonNull;
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 import androidx.car.app.CarContext;
 import androidx.car.app.CarToast;
 import androidx.car.app.Screen;
@@ -43,10 +46,15 @@ import androidx.car.app.sample.showcase.common.screens.navigationdemos.RoutingDe
 import androidx.core.graphics.drawable.IconCompat;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import org.jspecify.annotations.NonNull;
 
 =======
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+import org.jspecify.annotations.NonNull;
+
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 /** Creates a screen using the new {@link MapWithContentTemplate} */
 public final class PlaceListNavigationTemplateDemoScreen extends Screen {
     private static final int NUMBER_OF_REFRESHES = 10;
@@ -66,6 +74,7 @@ public final class PlaceListNavigationTemplateDemoScreen extends Screen {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     @Override
     public @NonNull Template onGetTemplate() {
 =======
@@ -73,6 +82,10 @@ public final class PlaceListNavigationTemplateDemoScreen extends Screen {
     @Override
     public Template onGetTemplate() {
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+    @Override
+    public @NonNull Template onGetTemplate() {
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
         boolean isAppDrivenRefreshEnabled = this.getCarContext().getCarService(
                 ConstraintManager.class).isAppDrivenRefreshEnabled();
 

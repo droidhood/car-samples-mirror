@@ -33,10 +33,13 @@ import android.os.Looper;
 import android.os.Message;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 import androidx.car.app.notification.CarAppExtender;
 import androidx.car.app.notification.CarNotificationManager;
 import androidx.car.app.notification.CarPendingIntent;
@@ -47,11 +50,17 @@ import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
 
 =======
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+import org.jspecify.annotations.NonNull;
+import org.jspecify.annotations.Nullable;
+
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 
@@ -103,6 +112,7 @@ public final class NavigationNotificationService extends Service {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     @Override
     public @Nullable IBinder onBind(@NonNull Intent intent) {
 =======
@@ -110,6 +120,10 @@ public final class NavigationNotificationService extends Service {
     @Override
     public IBinder onBind(@NonNull Intent intent) {
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+    @Override
+    public @Nullable IBinder onBind(@NonNull Intent intent) {
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
         return null;
     }
 
@@ -251,6 +265,7 @@ public final class NavigationNotificationService extends Service {
      */
     static final class DirectionInfo {
 <<<<<<< HEAD
+<<<<<<< HEAD
         final @NonNull String mTitle;
         final @NonNull String mDistance;
 =======
@@ -259,6 +274,10 @@ public final class NavigationNotificationService extends Service {
         @NonNull
         final String mDistance;
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+        final @NonNull String mTitle;
+        final @NonNull String mDistance;
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
         final int mIcon;
         final boolean mOnlyAlertOnce;
 

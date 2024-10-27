@@ -23,6 +23,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import androidx.car.app.activity.CarAppActivity;
 import androidx.car.app.sample.showcase.R;
 
@@ -34,6 +35,13 @@ import androidx.car.app.activity.CarAppActivity;
 import androidx.car.app.sample.showcase.R;
 
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+import androidx.car.app.activity.CarAppActivity;
+import androidx.car.app.sample.showcase.R;
+
+import org.jspecify.annotations.Nullable;
+
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 /**
  * Demo activity, used to showcase the use of
  * {@link Activity#startActivityForResult(Intent, int, Bundle)} to receive results from a Car App.

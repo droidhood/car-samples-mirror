@@ -19,9 +19,12 @@ package androidx.car.app.sample.showcase.common.screens.mapdemos;
 import static androidx.car.app.model.Action.BACK;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import androidx.annotation.NonNull;
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 import androidx.car.app.CarContext;
 import androidx.car.app.Screen;
 import androidx.car.app.model.Header;
@@ -38,10 +41,15 @@ import androidx.car.app.sample.showcase.common.screens.mapdemos.mapwithcontent.M
 import androidx.car.app.versioning.CarAppApiLevels;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import org.jspecify.annotations.NonNull;
 
 =======
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+import org.jspecify.annotations.NonNull;
+
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,6 +60,7 @@ public final class MapWithContentDemoScreen extends Screen {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     @Override
     public @NonNull Template onGetTemplate() {
 =======
@@ -59,6 +68,10 @@ public final class MapWithContentDemoScreen extends Screen {
     @Override
     public Template onGetTemplate() {
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+    @Override
+    public @NonNull Template onGetTemplate() {
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
         List<Row> screenList = new ArrayList<>();
         if (getCarContext().getCarAppApiLevel() >= CarAppApiLevels.LEVEL_7) {
             screenList.add(buildRowForTemplate(new MapWithMessageTemplateDemoScreen(

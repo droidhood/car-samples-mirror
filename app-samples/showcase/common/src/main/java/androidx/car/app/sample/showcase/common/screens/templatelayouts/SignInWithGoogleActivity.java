@@ -20,11 +20,16 @@ import android.os.Bundle;
 
 import androidx.activity.ComponentActivity;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 import org.jspecify.annotations.Nullable;
 =======
 import androidx.annotation.Nullable;
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+
+import org.jspecify.annotations.Nullable;
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 
 /**
  * An activity for use by the car app library to perform actions such as requesting permissions.

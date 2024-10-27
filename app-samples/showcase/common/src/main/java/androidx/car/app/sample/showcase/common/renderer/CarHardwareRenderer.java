@@ -25,10 +25,13 @@ import android.graphics.Rect;
 import android.util.Log;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 import androidx.annotation.OptIn;
 import androidx.car.app.CarContext;
 import androidx.car.app.annotations.ExperimentalCarApi;
@@ -51,11 +54,17 @@ import androidx.car.app.versioning.CarAppApiLevels;
 import androidx.core.content.ContextCompat;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
 
 =======
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+import org.jspecify.annotations.NonNull;
+import org.jspecify.annotations.Nullable;
+
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 import java.util.List;
 import java.util.concurrent.Executor;
 
@@ -74,6 +83,9 @@ public final class CarHardwareRenderer implements Renderer {
     private final CarContext mCarContext;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
     @Nullable TollCard mTollCard;
     @Nullable EnergyLevel mEnergyLevel;
     @Nullable Speed mSpeed;
@@ -84,6 +96,7 @@ public final class CarHardwareRenderer implements Renderer {
     @Nullable Compass mCompass;
     @Nullable CarHardwareLocation mCarHardwareLocation;
     private @Nullable Runnable mRequestRenderRunnable;
+<<<<<<< HEAD
 =======
     @Nullable
     TollCard mTollCard;
@@ -106,6 +119,8 @@ public final class CarHardwareRenderer implements Renderer {
     @Nullable
     private Runnable mRequestRenderRunnable;
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
     private final OnCarDataAvailableListener<TollCard> mTollListener = data -> {
         synchronized (this) {
             Log.i(TAG, "Received toll information:" + data);

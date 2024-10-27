@@ -19,9 +19,12 @@ package androidx.car.app.sample.showcase.common.screens.mapdemos.mapwithcontent;
 import android.content.res.TypedArray;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import androidx.annotation.NonNull;
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 import androidx.car.app.CarContext;
 import androidx.car.app.CarToast;
 import androidx.car.app.Screen;
@@ -41,10 +44,15 @@ import androidx.car.app.sample.showcase.common.screens.navigationdemos.RoutingDe
 import androidx.core.graphics.drawable.IconCompat;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import org.jspecify.annotations.NonNull;
 
 =======
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+import org.jspecify.annotations.NonNull;
+
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 /** Simple demo of how to present a map template with a list. */
 public class MapWithMessageTemplateDemoScreen extends Screen {
     TypedArray mTypedArray =
@@ -62,6 +70,7 @@ public class MapWithMessageTemplateDemoScreen extends Screen {
     @ExperimentalCarApi
     @RequiresCarApi(7)
 <<<<<<< HEAD
+<<<<<<< HEAD
     @Override
     public @NonNull Template onGetTemplate() {
 =======
@@ -69,6 +78,10 @@ public class MapWithMessageTemplateDemoScreen extends Screen {
     @Override
     public Template onGetTemplate() {
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+    @Override
+    public @NonNull Template onGetTemplate() {
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 
         MessageTemplate messageTemplate = new MessageTemplate.Builder("Continue to Google "
                 + "Kirkland Urban WA 98101?")

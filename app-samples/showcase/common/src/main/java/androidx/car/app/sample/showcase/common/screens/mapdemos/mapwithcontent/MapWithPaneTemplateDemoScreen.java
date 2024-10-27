@@ -25,10 +25,13 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 import androidx.car.app.CarContext;
 import androidx.car.app.CarToast;
 import androidx.car.app.Screen;
@@ -49,6 +52,7 @@ import androidx.car.app.versioning.CarAppApiLevels;
 import androidx.core.graphics.drawable.IconCompat;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
 
@@ -58,14 +62,22 @@ public class MapWithPaneTemplateDemoScreen extends Screen {
 
     private final @Nullable IconCompat mRowLargeIcon;
 =======
+=======
+import org.jspecify.annotations.NonNull;
+import org.jspecify.annotations.Nullable;
+
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 /** Simple demo of how to present a map template with a pane. */
 public class MapWithPaneTemplateDemoScreen extends Screen {
-    @Nullable
-    private final IconCompat mPaneImage;
+    private final @Nullable IconCompat mPaneImage;
 
+<<<<<<< HEAD
     @Nullable
     private final IconCompat mRowLargeIcon;
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+    private final @Nullable IconCompat mRowLargeIcon;
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 
     private static final int LIST_LIMIT = 4;
 
@@ -83,6 +95,7 @@ public class MapWithPaneTemplateDemoScreen extends Screen {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     @Override
     public @NonNull Template onGetTemplate() {
 =======
@@ -90,6 +103,10 @@ public class MapWithPaneTemplateDemoScreen extends Screen {
     @Override
     public Template onGetTemplate() {
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+    @Override
+    public @NonNull Template onGetTemplate() {
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
         Pane.Builder paneBuilder = new Pane.Builder();
 
         paneBuilder.addRow(createRowWithExcessivelyLargeContent());

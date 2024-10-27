@@ -25,10 +25,13 @@ import android.location.LocationManager;
 import android.os.HandlerThread;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 import androidx.car.app.CarContext;
 import androidx.car.app.CarToast;
 import androidx.car.app.Screen;
@@ -45,11 +48,17 @@ import androidx.lifecycle.DefaultLifecycleObserver;
 import androidx.lifecycle.LifecycleOwner;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
 
 =======
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+import org.jspecify.annotations.NonNull;
+import org.jspecify.annotations.Nullable;
+
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 /**
  * Creates a screen using the {@link PlaceListMapTemplate}.
  *
@@ -65,11 +74,15 @@ public final class PlaceListTemplateBrowseDemoScreen extends Screen {
     boolean mHasPermissionLocation;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     private @Nullable Location mCurrentLocation;
 =======
     @Nullable
     private Location mCurrentLocation;
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+    private @Nullable Location mCurrentLocation;
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 
     public PlaceListTemplateBrowseDemoScreen(@NonNull CarContext carContext) {
         super(carContext);
@@ -116,6 +129,7 @@ public final class PlaceListTemplateBrowseDemoScreen extends Screen {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     @Override
     public @NonNull Template onGetTemplate() {
 =======
@@ -123,6 +137,10 @@ public final class PlaceListTemplateBrowseDemoScreen extends Screen {
     @Override
     public Template onGetTemplate() {
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+    @Override
+    public @NonNull Template onGetTemplate() {
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
         PlaceListMapTemplate.Builder builder = new PlaceListMapTemplate.Builder()
                 .setItemList(new ItemList.Builder()
                         .addItem(new Row.Builder()

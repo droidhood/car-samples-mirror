@@ -25,10 +25,13 @@ import android.net.Uri;
 import android.util.Log;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 import androidx.car.app.CarContext;
 import androidx.car.app.Screen;
 import androidx.car.app.ScreenManager;
@@ -45,16 +48,23 @@ import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleOwner;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
 
 =======
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+import org.jspecify.annotations.NonNull;
+import org.jspecify.annotations.Nullable;
+
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 /** Session class for the Showcase sample app. */
 public class ShowcaseSession extends Session implements DefaultLifecycleObserver {
     static final String URI_SCHEME = "samples";
     static final String URI_HOST = "showcase";
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     private @Nullable SurfaceController mSurfaceController;
 
@@ -63,11 +73,17 @@ public class ShowcaseSession extends Session implements DefaultLifecycleObserver
 =======
     @Nullable
     private SurfaceController mSurfaceController;
+=======
+    private @Nullable SurfaceController mSurfaceController;
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 
-    @NonNull
     @Override
+<<<<<<< HEAD
     public Screen onCreateScreen(@NonNull Intent intent) {
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+    public @NonNull Screen onCreateScreen(@NonNull Intent intent) {
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
         Lifecycle lifecycle = getLifecycle();
         lifecycle.addObserver(this);
         mSurfaceController = new SurfaceController(getCarContext(), lifecycle);

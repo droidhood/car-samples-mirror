@@ -27,9 +27,12 @@ import android.graphics.BitmapFactory;
 import android.text.SpannableStringBuilder;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import androidx.annotation.NonNull;
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 import androidx.annotation.StringRes;
 import androidx.car.app.CarContext;
 import androidx.car.app.Screen;
@@ -46,10 +49,15 @@ import androidx.car.app.sample.showcase.common.common.SpannableStringBuilderAnno
 import androidx.core.graphics.drawable.IconCompat;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import org.jspecify.annotations.NonNull;
 
 =======
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+import org.jspecify.annotations.NonNull;
+
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 /** Creates a screen that shows different types of texts and icons. */
 public final class TextAndIconsDemosScreen extends Screen {
 
@@ -61,6 +69,7 @@ public final class TextAndIconsDemosScreen extends Screen {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     @Override
     public @NonNull Template onGetTemplate() {
 =======
@@ -68,6 +77,10 @@ public final class TextAndIconsDemosScreen extends Screen {
     @Override
     public Template onGetTemplate() {
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+    @Override
+    public @NonNull Template onGetTemplate() {
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
         ItemList.Builder listBuilder = new ItemList.Builder();
 
         listBuilder.addItem(buildRowForTemplate(R.string.title_with_app_icon_row_title,

@@ -23,10 +23,13 @@ import android.util.Log;
 import android.view.Surface;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 import androidx.car.app.AppManager;
 import androidx.car.app.CarContext;
 import androidx.car.app.SurfaceCallback;
@@ -36,16 +39,23 @@ import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleOwner;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
 
 =======
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+import org.jspecify.annotations.NonNull;
+import org.jspecify.annotations.Nullable;
+
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 /** A very simple implementation of a renderer for the app's background surface. */
 public final class SurfaceController implements DefaultLifecycleObserver {
     private static final String TAG = "showcase";
 
     private final DefaultRenderer mDefaultRenderer;
+<<<<<<< HEAD
 <<<<<<< HEAD
     private @Nullable Renderer mOverrideRenderer;
 
@@ -64,6 +74,14 @@ public final class SurfaceController implements DefaultLifecycleObserver {
     @Nullable
     Rect mStableArea;
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+    private @Nullable Renderer mOverrideRenderer;
+
+    private final CarContext mCarContext;
+    @Nullable Surface mSurface;
+    @Nullable Rect mVisibleArea;
+    @Nullable Rect mStableArea;
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
     private final SurfaceCallback mSurfaceCallback =
             new SurfaceCallback() {
                 @Override

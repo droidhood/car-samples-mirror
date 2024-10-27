@@ -20,19 +20,27 @@ import android.content.pm.ApplicationInfo;
 import android.net.Uri;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import androidx.annotation.NonNull;
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 import androidx.car.app.CarAppService;
 import androidx.car.app.Session;
 import androidx.car.app.SessionInfo;
 import androidx.car.app.validation.HostValidator;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import org.jspecify.annotations.NonNull;
 
 =======
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+import org.jspecify.annotations.NonNull;
+
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 /**
  * Entry point for the showcase app.
  *
@@ -55,6 +63,7 @@ public final class ShowcaseService extends CarAppService {
 
     /** Creates a deep link URI with the given deep link action. */
 <<<<<<< HEAD
+<<<<<<< HEAD
     public static @NonNull Uri createDeepLinkUri(@NonNull String deepLinkAction) {
         return Uri.fromParts(ShowcaseSession.URI_SCHEME, ShowcaseSession.URI_HOST, deepLinkAction);
     }
@@ -69,19 +78,24 @@ public final class ShowcaseService extends CarAppService {
 =======
     @NonNull
     public static Uri createDeepLinkUri(@NonNull String deepLinkAction) {
+=======
+    public static @NonNull Uri createDeepLinkUri(@NonNull String deepLinkAction) {
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
         return Uri.fromParts(ShowcaseSession.URI_SCHEME, ShowcaseSession.URI_HOST, deepLinkAction);
     }
 
-    @NonNull
     @Override
-    public Session onCreateSession(@NonNull SessionInfo sessionInfo) {
+    public @NonNull Session onCreateSession(@NonNull SessionInfo sessionInfo) {
         return new ShowcaseSession();
     }
 
-    @NonNull
     @Override
+<<<<<<< HEAD
     public HostValidator createHostValidator() {
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+    public @NonNull HostValidator createHostValidator() {
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
         if ((getApplicationInfo().flags & ApplicationInfo.FLAG_DEBUGGABLE) != 0) {
             return HostValidator.ALLOW_ALL_HOSTS_VALIDATOR;
         } else {

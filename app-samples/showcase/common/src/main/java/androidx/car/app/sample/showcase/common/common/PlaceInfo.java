@@ -19,6 +19,7 @@ package androidx.car.app.sample.showcase.common.common;
 import android.location.Location;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import androidx.car.app.model.PlaceMarker;
 
 import org.jspecify.annotations.NonNull;
@@ -28,6 +29,12 @@ import androidx.annotation.NonNull;
 import androidx.car.app.model.PlaceMarker;
 
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+import androidx.car.app.model.PlaceMarker;
+
+import org.jspecify.annotations.NonNull;
+
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 /** Simple data model representing a place. */
 public class PlaceInfo {
     public final CharSequence title;

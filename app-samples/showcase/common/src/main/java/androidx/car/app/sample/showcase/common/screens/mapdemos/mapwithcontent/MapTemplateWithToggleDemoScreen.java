@@ -17,9 +17,12 @@
 package androidx.car.app.sample.showcase.common.screens.mapdemos.mapwithcontent;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import androidx.annotation.NonNull;
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 import androidx.car.app.CarContext;
 import androidx.car.app.Screen;
 import androidx.car.app.annotations.RequiresCarApi;
@@ -36,10 +39,15 @@ import androidx.car.app.sample.showcase.common.R;
 import androidx.core.graphics.drawable.IconCompat;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import org.jspecify.annotations.NonNull;
 
 =======
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+import org.jspecify.annotations.NonNull;
+
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 /** Simple demo of how to present a map template with a list. */
 @RequiresCarApi(6)
 public class MapTemplateWithToggleDemoScreen extends Screen {
@@ -53,6 +61,7 @@ public class MapTemplateWithToggleDemoScreen extends Screen {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     @Override
     public @NonNull Template onGetTemplate() {
 =======
@@ -60,6 +69,10 @@ public class MapTemplateWithToggleDemoScreen extends Screen {
     @Override
     public Template onGetTemplate() {
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+    @Override
+    public @NonNull Template onGetTemplate() {
+>>>>>>> ff0f88fd ([create-pull-request] automated change)
 
         Toggle mToggleForTolls = new Toggle.Builder((checked) -> {
             mAvoidTolls = !mAvoidTolls;
