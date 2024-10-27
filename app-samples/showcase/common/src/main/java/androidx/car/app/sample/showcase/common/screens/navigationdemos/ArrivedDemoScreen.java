@@ -38,9 +38,8 @@ public final class ArrivedDemoScreen extends Screen implements DefaultLifecycleO
         mRoutingDemoModelFactory = new RoutingDemoModelFactory(carContext);
     }
 
-    @NonNull
     @Override
-    public Template onGetTemplate() {
+    public @NonNull Template onGetTemplate() {
         return new NavigationTemplate.Builder()
                 .setNavigationInfo(
                         new MessageInfo.Builder(
