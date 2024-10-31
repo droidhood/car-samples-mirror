@@ -186,7 +186,7 @@
     <string name="no_gyroscope_permission" msgid="665293140266771569">"Гироскопко уруксат жок."</string>
     <string name="no_compass_permission" msgid="5162304489577567125">"Компаска уруксат жок."</string>
     <string name="no_car_hardware_location" msgid="3505517472938045093">"CarHardwareLocation уруксаты жок."</string>
-    <string name="fetch_toll_info" msgid="6864627977128179834">"Акылуу жолдор тууралуу маалымат алынууда."</string>
+    <string name="fetch_toll_info" msgid="6864627977128179834">"Акы алынуучу жолдор тууралуу маалымат алынууда."</string>
     <string name="fetch_energy_level" msgid="1773415471137542832">"Энергиянын деңгээли алынууда."</string>
     <string name="fetch_speed" msgid="7333830984597189627">"Ылдамдык алынууда."</string>
     <string name="fetch_mileage" msgid="7490131687788025123">"Километраж алынууда."</string>
