@@ -115,10 +115,14 @@ public class PlaceDetailsScreen extends Screen {
         return new PaneTemplate.Builder(paneBuilder.build())
                 .setHeader(new Header.Builder()
 <<<<<<< HEAD
+<<<<<<< HEAD
                         .setTitle(mPlace.title.toString())
 =======
                         .setTitle(mPlace.title)
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+                        .setTitle(mPlace.title.toString())
+>>>>>>> 4604b4a9 ([create-pull-request] automated change)
                         .setStartHeaderAction(Action.BACK)
                         .build())
                 .build();
