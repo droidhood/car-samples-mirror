@@ -79,7 +79,7 @@ public class PlaceDetailsScreen extends Screen {
 
         return new PaneTemplate.Builder(paneBuilder.build())
                 .setHeader(new Header.Builder()
-                        .setTitle(mPlace.title)
+                        .setTitle(mPlace.title.toString())
                         .setStartHeaderAction(Action.BACK)
                         .build())
                 .build();
