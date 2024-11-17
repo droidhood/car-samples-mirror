@@ -85,13 +85,19 @@ public class SecondaryActionsAndDecorationDemoScreen extends Screen {
                 action));
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 0530db87 ([create-pull-request] automated change)
         listBuilder.addItem(buildRowForTemplate(
                 R.string.secondary_actions_decoration_test_title_long,
                 9,
                 action));
 
+<<<<<<< HEAD
 =======
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+>>>>>>> 0530db87 ([create-pull-request] automated change)
         return new ListTemplate.Builder()
                 .setSingleList(listBuilder.build())
                 .setHeader(new Header.Builder()

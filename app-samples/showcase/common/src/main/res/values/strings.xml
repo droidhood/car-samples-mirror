@@ -418,9 +418,13 @@
   <string name="decoration_test_title">Decoration Test</string>
   <string name="secondary_actions_decoration_test_title">Secondary Actions and Decoration</string>
 <<<<<<< HEAD
+<<<<<<< HEAD
   <string name="secondary_actions_decoration_test_title_long">Row with Secondary Actions and Decoration with a really long title</string>
 =======
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+  <string name="secondary_actions_decoration_test_title_long">Row with Secondary Actions and Decoration with a really long title</string>
+>>>>>>> 0530db87 ([create-pull-request] automated change)
   <string name="secondary_actions_decoration_test_subtitle">The row can also be selected</string>
   <string name="secondary_action_toast">Secondary Action is selected</string>
   <string name="row_primary_action_toast">Row primary action is selected</string>
