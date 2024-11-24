@@ -329,9 +329,14 @@
     <string name="decoration_test_title" msgid="8450127046762442244">"Test dekorácie"</string>
     <string name="secondary_actions_decoration_test_title" msgid="6282873404859209490">"Sekundárne akcie a dekorácia"</string>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <string name="secondary_actions_decoration_test_title_long" msgid="3700606949229899169">"Riadok so sekundárnymi akciami a dekoráciou s veľmi dlhým názvom"</string>
 =======
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+    <!-- no translation found for secondary_actions_decoration_test_title_long (3700606949229899169) -->
+    <skip />
+>>>>>>> 0d65d2ea ([create-pull-request] automated change)
     <string name="secondary_actions_decoration_test_subtitle" msgid="155884606592724532">"Môžete vybrať aj daný riadok"</string>
     <string name="secondary_action_toast" msgid="5076434693504006565">"Bola vybraná sekundárna akcia"</string>
     <string name="row_primary_action_toast" msgid="756516694751965204">"Bola vybraná primárna akcia riadka"</string>
