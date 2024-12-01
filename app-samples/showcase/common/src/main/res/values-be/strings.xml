@@ -346,6 +346,7 @@
     <string name="secondary_actions_decoration_test_title" msgid="6282873404859209490">"Другасныя дзеянні і аздабленне"</string>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     <string name="secondary_actions_decoration_test_title_long" msgid="3700606949229899169">"Радок з другаснымі дзеяннямі і аздабленнем з вельмі доўгай назвай"</string>
 =======
 >>>>>>> 7365d9da ([create-pull-request] automated change)
@@ -353,6 +354,9 @@
     <!-- no translation found for secondary_actions_decoration_test_title_long (3700606949229899169) -->
     <skip />
 >>>>>>> 0d65d2ea ([create-pull-request] automated change)
+=======
+    <string name="secondary_actions_decoration_test_title_long" msgid="3700606949229899169">"Радок з другаснымі дзеяннямі і аздабленнем з вельмі доўгай назвай"</string>
+>>>>>>> 41163348 ([create-pull-request] automated change)
     <string name="secondary_actions_decoration_test_subtitle" msgid="155884606592724532">"Таксама можна выбраць радок"</string>
     <string name="secondary_action_toast" msgid="5076434693504006565">"Выбрана другаснае дзеянне"</string>
     <string name="row_primary_action_toast" msgid="756516694751965204">"Выбрана галоўнае дзеянне для радка"</string>

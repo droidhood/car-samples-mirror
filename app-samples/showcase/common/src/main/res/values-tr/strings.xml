@@ -330,6 +330,7 @@
     <string name="secondary_actions_decoration_test_title" msgid="6282873404859209490">"İkincil İşlemler ve Süsleme"</string>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     <string name="secondary_actions_decoration_test_title_long" msgid="3700606949229899169">"Çok uzun bir başlığa sahip İkincil İşlemler ve Süsleme içeren satır"</string>
 =======
 >>>>>>> 7365d9da ([create-pull-request] automated change)
@@ -337,6 +338,9 @@
     <!-- no translation found for secondary_actions_decoration_test_title_long (3700606949229899169) -->
     <skip />
 >>>>>>> 0d65d2ea ([create-pull-request] automated change)
+=======
+    <string name="secondary_actions_decoration_test_title_long" msgid="3700606949229899169">"Çok uzun bir başlığa sahip İkincil İşlemler ve Süsleme içeren satır"</string>
+>>>>>>> 41163348 ([create-pull-request] automated change)
     <string name="secondary_actions_decoration_test_subtitle" msgid="155884606592724532">"Satır da seçilebilir"</string>
     <string name="secondary_action_toast" msgid="5076434693504006565">"İkincil işlem seçildi"</string>
     <string name="row_primary_action_toast" msgid="756516694751965204">"Satırdaki birincil işlem seçildi"</string>

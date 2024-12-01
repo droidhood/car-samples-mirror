@@ -330,6 +330,7 @@
     <string name="secondary_actions_decoration_test_title" msgid="6282873404859209490">"Antriniai veiksmai ir dekoracijos"</string>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     <string name="secondary_actions_decoration_test_title_long" msgid="3700606949229899169">"Eilutė su antriniais veiksmais ir dekoracijomis su tikrai ilgu pavadinimu"</string>
 =======
 >>>>>>> 7365d9da ([create-pull-request] automated change)
@@ -337,6 +338,9 @@
     <!-- no translation found for secondary_actions_decoration_test_title_long (3700606949229899169) -->
     <skip />
 >>>>>>> 0d65d2ea ([create-pull-request] automated change)
+=======
+    <string name="secondary_actions_decoration_test_title_long" msgid="3700606949229899169">"Eilutė su antriniais veiksmais ir dekoracijomis su tikrai ilgu pavadinimu"</string>
+>>>>>>> 41163348 ([create-pull-request] automated change)
     <string name="secondary_actions_decoration_test_subtitle" msgid="155884606592724532">"Taip pat galima pasirinkti eilutę"</string>
     <string name="secondary_action_toast" msgid="5076434693504006565">"Pasirinktas antrinis veiksmas"</string>
     <string name="row_primary_action_toast" msgid="756516694751965204">"Pasirinktas pagrindinis eilutės veiksmas"</string>
