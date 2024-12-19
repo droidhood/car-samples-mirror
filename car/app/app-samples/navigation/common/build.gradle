@@ -22,7 +22,6 @@
  * modifying its settings.
  */
 import androidx.build.LibraryType
-import androidx.build.Publish
 
 plugins {
     id("AndroidXPlugin")
@@ -46,6 +45,7 @@ dependencies {
 }
 
 androidx {
-    type = LibraryType.SAMPLES
-    publish = Publish.NONE
+    type = LibraryType.TEST_APPLICATION
+    // TODO: b/326456246
+    optOutJSpecify = true
 }
