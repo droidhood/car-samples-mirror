@@ -28,9 +28,12 @@ import static androidx.car.app.media.CarAudioRecord.AUDIO_CONTENT_BUFFER_SIZE;
 import static androidx.car.app.media.CarAudioRecord.AUDIO_CONTENT_SAMPLING_RATE;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import android.annotation.SuppressLint;
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+>>>>>>> d7bc053e ([create-pull-request] automated change)
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.media.AudioAttributes;
@@ -88,9 +91,12 @@ public class VoiceInteraction {
      */
     @RequiresPermission(RECORD_AUDIO)
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     @SuppressLint("ClassVerificationFailure") // runtime check for < API 26
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+>>>>>>> d7bc053e ([create-pull-request] automated change)
     public void voiceInteractionDemo() {
         // Some of the functions for recording require API level 26, so verify that first
         if (SDK_INT < VERSION_CODES.O) {
@@ -127,7 +133,6 @@ public class VoiceInteraction {
 =======
     @RequiresApi(api = VERSION_CODES.O)
     @RequiresPermission(RECORD_AUDIO)
-    @SuppressLint("ClassVerificationFailure") // runtime check for < API 26
     public @NonNull Thread createRecordingThread() {
 >>>>>>> ff0f88fd ([create-pull-request] automated change)
         Thread recordingThread = new Thread(
@@ -219,9 +224,12 @@ public class VoiceInteraction {
 
     @RequiresApi(api = VERSION_CODES.O)
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     @SuppressLint("ClassVerificationFailure") // runtime check for < API 26
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+>>>>>>> d7bc053e ([create-pull-request] automated change)
     @RequiresPermission(RECORD_AUDIO)
     private void recordAudio(CarAudioRecord record) {
 
