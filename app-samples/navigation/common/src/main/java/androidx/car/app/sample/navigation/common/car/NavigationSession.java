@@ -1,9 +1,13 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Copyright (C) 2025 The Android Open Source Project
 =======
  * Copyright (C) 2021 The Android Open Source Project
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+ * Copyright (C) 2025 The Android Open Source Project
+>>>>>>> a36fe5cd ([create-pull-request] automated change)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -42,9 +46,12 @@ import androidx.car.app.Screen;
 import androidx.car.app.ScreenManager;
 import androidx.car.app.Session;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import androidx.car.app.SessionInfo;
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+>>>>>>> a36fe5cd ([create-pull-request] automated change)
 import androidx.car.app.model.Action;
 import androidx.car.app.model.CarIcon;
 import androidx.car.app.model.Distance;
@@ -186,6 +193,7 @@ class NavigationSession extends Session implements NavigationScreen.Listener {
             };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     NavigationSession() {
             Lifecycle lifecycle = getLifecycle();
             lifecycle.addObserver(mLifeCycleObserver);
@@ -196,6 +204,11 @@ class NavigationSession extends Session implements NavigationScreen.Listener {
             lifecycle.addObserver(mLifeCycleObserver);
         }
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+    NavigationSession() {
+            Lifecycle lifecycle = getLifecycle();
+            lifecycle.addObserver(mLifeCycleObserver);
+>>>>>>> a36fe5cd ([create-pull-request] automated change)
     }
 
     @Override

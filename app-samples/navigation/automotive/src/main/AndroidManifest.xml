@@ -59,9 +59,12 @@
     <service
         android:name="androidx.car.app.sample.navigation.common.car.NavigationCarAppService"
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
         android:foregroundServiceType="location"
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+>>>>>>> a36fe5cd ([create-pull-request] automated change)
         android:exported="true">
 
       <intent-filter>
