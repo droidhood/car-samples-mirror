@@ -294,14 +294,20 @@
   <string name="short_msg_template_demo_title">Short Message Template Demo</string>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 8934d314 ([create-pull-request] automated change)
   <!-- SectionedItemTemplateDemo -->
   <string name="sectioned_item_template_demo_title">Sectioned Item Template Demo</string>
   <string name="sectioned_item_template_radio_button_section_title">Radio Button Section</string>
   <string name="sectioned_item_template_toggle_section_title">Toggle Section</string>
   <string name="sectioned_item_template_lots_of_rows_section_title">Lots of Rows Section</string>
 
+<<<<<<< HEAD
 =======
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+>>>>>>> 8934d314 ([create-pull-request] automated change)
   <!-- PaneTemplateDemoScreen -->
   <string name="pane_template_demo_title">Pane Template Demo</string>
 

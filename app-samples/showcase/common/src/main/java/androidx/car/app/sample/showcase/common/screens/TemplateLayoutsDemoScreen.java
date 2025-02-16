@@ -41,9 +41,13 @@ import androidx.car.app.sample.showcase.common.screens.templatelayouts.MessageTe
 import androidx.car.app.sample.showcase.common.screens.templatelayouts.PaneTemplateDemoScreen;
 import androidx.car.app.sample.showcase.common.screens.templatelayouts.SearchTemplateDemoScreen;
 <<<<<<< HEAD
+<<<<<<< HEAD
 import androidx.car.app.sample.showcase.common.screens.templatelayouts.SectionedItemTemplateDemoScreen;
 =======
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+import androidx.car.app.sample.showcase.common.screens.templatelayouts.SectionedItemTemplateDemoScreen;
+>>>>>>> 8934d314 ([create-pull-request] automated change)
 import androidx.car.app.sample.showcase.common.screens.templatelayouts.SignInTemplateDemoScreen;
 import androidx.car.app.sample.showcase.common.screens.templatelayouts.TabTemplateLayoutsDemoScreen;
 import androidx.car.app.versioning.CarAppApiLevels;
@@ -81,6 +85,7 @@ public final class TemplateLayoutsDemoScreen extends Screen {
             screenList.add(buildRowForTemplate(new SectionedItemTemplateDemoScreen(getCarContext()),
                     R.string.sectioned_item_template_demo_title));
         }
+<<<<<<< HEAD
 =======
     @NonNull
 =======
@@ -89,6 +94,8 @@ public final class TemplateLayoutsDemoScreen extends Screen {
     public @NonNull Template onGetTemplate() {
         List<Row> screenList = new ArrayList<>();
 >>>>>>> 7365d9da ([create-pull-request] automated change)
+=======
+>>>>>>> 8934d314 ([create-pull-request] automated change)
         screenList.add(buildRowForTemplate(new ListTemplateDemoScreen(getCarContext()),
                 R.string.list_template_demo_title));
         screenList.add(buildRowForTemplate(new GridTemplateMenuDemoScreen(getCarContext()),
