@@ -8,6 +8,7 @@ androidx-core = "1.13.1"
 androidx-car = "1.7.0-beta01"
 androidx-constraintlayout = "2.1.4"
 core-ktx = "1.13.1"
+jspecify = "1.0.0"
 
 [libraries]
 androidx-car-app = { module = "androidx.car.app:app", version.ref = "androidx-car" }
@@ -18,6 +19,7 @@ androidx-constraintlayout = { module = "androidx.constraintlayout:constraintlayo
 androidx-core = { module = "androidx.core:core", version.ref = "androidx-core" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
 gradle = { module = "com.android.tools.build:gradle", version.ref = "gradle" }
+jspecify = { module = "org.jspecify:jspecify", version.ref = "jspecify" }
 
 
 [plugins]
