@@ -58,4 +58,5 @@ dependencies {
     implementation libs.androidx.app.projected
     implementation project(":showcase:common")
     implementation libs.androidx.core.ktx
+    api libs.jspecify
 }

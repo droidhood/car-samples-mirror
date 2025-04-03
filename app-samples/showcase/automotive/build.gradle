@@ -58,4 +58,5 @@ dependencies {
     implementation libs.androidx.app.automotive
     implementation project(":showcase:common")
     implementation libs.androidx.core.ktx
+    api libs.jspecify
 }
