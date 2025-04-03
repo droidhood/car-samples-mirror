@@ -115,6 +115,7 @@ dependencies {
     implementation project(":showcase:common")
     implementation libs.androidx.core.ktx
     api libs.jspecify
+<<<<<<< HEAD
 =======
     implementation "androidx.car.app:app-automotive:1.3.0-beta01"
 =======
@@ -132,4 +133,6 @@ dependencies {
     implementation project(":showcase:common")
     implementation libs.androidx.core.ktx
 >>>>>>> 49407ba0 ([create-pull-request] automated change)
+=======
+>>>>>>> e61c4059 (Fix jspecify missing lib)
 }

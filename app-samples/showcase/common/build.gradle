@@ -95,6 +95,7 @@ dependencies {
     implementation libs.androidx.annotation.experimental
     implementation libs.androidx.core.ktx
 <<<<<<< HEAD
+<<<<<<< HEAD
     api libs.jspecify
 =======
     implementation "androidx.core:core:1.6.0-alpha01"
@@ -112,4 +113,7 @@ dependencies {
 >>>>>>> de798aa7 (Adjust java version)
 =======
 >>>>>>> 49407ba0 ([create-pull-request] automated change)
+=======
+    api libs.jspecify
+>>>>>>> e61c4059 (Fix jspecify missing lib)
 }
