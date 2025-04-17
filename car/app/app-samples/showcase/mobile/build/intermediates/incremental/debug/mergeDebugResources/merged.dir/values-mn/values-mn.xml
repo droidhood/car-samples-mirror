@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string msgid="2084026313768299185" name="accelerometer">"Хурдатгал хэмжигч"</string>
+    <string msgid="4899660585470647578" name="accept_action_title">"Зөвшөөрөх"</string>
+    <string msgid="2846223398214158872" name="additional_data_text">"Шинэчлэлтүүдийг арын үйл ажиллагаанд хийхийг зөвшөөрдөг."</string>
+    <string msgid="3546689652240300617" name="additional_data_title">"Нэмэлт өгөгдөл"</string>
+    <string msgid="5755100726890686184" name="additional_text">"Манай "<annotation link="terms_of_service">"үйлчилгээний нөхцөлийг"</annotation>" хянана уу"</string>
+    <string msgid="9010635942573581302" name="address">"Хаяг"</string>
+    <string msgid="5568380708832805374" name="alert_timeout_toast_msg">"Сэрэмжлүүлэг завсарлалаа!"</string>
+    <string msgid="7534936683349723423" name="app_icon_title">"Аппын дүрс тэмдэг"</string>
+    <string msgid="7429415605726615529" name="application_overflow_subtitle1">"Цэнэглэх үедээ дараах загварыг туршина уу"</string>
+    <string msgid="4385123036846369714" name="application_overflow_subtitle2">"зогсоолд байснаас жолоодох төлөв рүү сэлгэсэн тээврийн хэрэгсэл"</string>
+    <string msgid="396427940886169325" name="application_overflow_title">"Аппликэйшний илүү ашиглалтыг баталгаажуулагч"</string>
+    <string msgid="6708013121387053838" name="arrived_demo_title">"Ирсэн демо"</string>
+    <string msgid="9132265698563096988" name="arrived_exclamation_msg">"Ирсэн!"</string>
+    <string msgid="8232883866013711974" name="avoid_ferries_row_title">"Гаталга онгоцноос зайлсхийх"</string>
+    <string msgid="4711913426200490304" name="avoid_highways_row_title">"Хурдны замаас зайлсхийх"</string>
+    <string msgid="5194057244144831024" name="avoid_tolls_row_title">"Хураамжийн цэгээс зайлсхийх"</string>
+    <string msgid="6392829425035919422" name="back_caps_action_title">"БУЦАХ"</string>
+    <string msgid="2183623637331546820" name="battery">"Батарей"</string>
+    <string msgid="7246005909846715898" name="browse_places_title">"Газруудыг үзэх"</string>
+    <string msgid="2487119172744644317" name="bug_reported_toast_msg">"Алдааг мэдээлсэн!"</string>
+    <string msgid="6218977436905001611" name="call_action_title">"Залгах"</string>
+    <string msgid="881409763997275156" name="call_notification_answer_action">"Хариулах"</string>
+    <string msgid="8793775615905189152" name="call_notification_answer_video_action">"Видео"</string>
+    <string msgid="3229508546291798546" name="call_notification_decline_action">"Татгалзах"</string>
+    <string msgid="2659457946726154263" name="call_notification_hang_up_action">"Таслах"</string>
+    <string msgid="6107532579223922871" name="call_notification_incoming_text">"Ирсэн дуудлага"</string>
+    <string msgid="8623827134497363134" name="call_notification_ongoing_text">"Дуудлага хийгдэж байна"</string>
+    <string msgid="59049573811482460" name="call_notification_screening_text">"Ирсэн дуудлагыг харуулж байна"</string>
+    <string msgid="1149738685397349236" name="cancel_action_title">"Цуцлах"</string>
+    <string msgid="1374986823057959608" name="cancel_reservation_title">"Захиалга цуцлах дэлгэц"</string>
+    <string msgid="3679106197233262689" name="car_hardware_demo_title">"Машины техник хангамжийн демо"</string>
+    <string msgid="1244783247616395012" name="car_hardware_info">"Машины техник хангамжийн мэдээлэл"</string>
+    <string msgid="5826128477363068617" name="car_hardware_location">"Машины техник хангамжийн байршил"</string>
+    <string msgid="4783851267093259949" name="category_title">"Ангилал"</string>
+    <string msgid="957766225794389167" name="changes_selection_to_index_toast_msg_prefix">"Сонголтыг индекс болгож өөрчилсөн"</string>
+    <string msgid="906023941445896399" name="checked_action_title">"Сонгосон"</string>
+    <string msgid="9068303427922069941" name="clicked_row_prefix">"Товшсон мөр"</string>
+    <string msgid="2661907510124308560" name="close_action_title">"Хаах"</string>
+    <string msgid="1822427636476178993" name="color_demo">"Өнгөний демо"</string>
+    <string msgid="5173288934252528929" name="colored_secondary_row_title">"Өнгөтэй хоёрдогч текст"</string>
+    <string msgid="2585755255290185096" name="commute_action_title">"Ажил, гэрийн хоорондох зай"</string>
+    <string msgid="4112684360647638688" name="commute_toast_msg">"Ажил, гэрийн хоорондох зайн товчлуурыг дарсан"</string>
+    <string msgid="7037367764762441245" name="compass">"Луужин"</string>
+    <string msgid="5726880972110281095" name="content_limits">"Контентын хязгаар"</string>
+    <string msgid="3207211638386727610" name="content_limits_demo_title">"Контентын хязгаарын демо"</string>
+    <string msgid="5708602618664311097" name="content_provider_icons_demo_title">"Контентын үйлчилгээ үзүүлэгчийн дүрс тэмдгийн демо"</string>
+    <string msgid="5172258139245088080" name="continue_route">"Маршрут руу үргэлжлүүлэх"</string>
+    <string msgid="6231797535084469163" name="continue_start_nav">"Навигацыг эхлүүлэхээр үргэлжлүүлэх"</string>
+    <string msgid="8450127046762442244" name="decoration_test_title">"Чимэглэлийн туршилт"</string>
+    <string msgid="6347996298832939989" name="default_importance">"Өгөгдмөл"</string>
+    <string msgid="3145707439707628311" name="dial">"Залгах"</string>
+    <string msgid="3003225080532928046" name="disable_all_rows">"Бүх мөрийг идэвхгүй болгох"</string>
+    <string msgid="9161318805331348165" name="display_speed">"Дэлгэцийн хурд"</string>
+    <string msgid="7205549445477319606" name="email_hint">"Имэйл"</string>
+    <string msgid="5989013634820902455" name="empty_list_demo_title">"Хоосон жагсаалтын демо"</string>
+    <string msgid="5331395517560728138" name="empty_list_message">"Жагсаалт хоосон байна"</string>
+    <string msgid="7274285275711872091" name="enable_all_rows">"Бүх мөрийг идэвхжүүлэх"</string>
+    <string msgid="8181862247222797044" name="enable_location_action_title">"Байршлыг идэвхжүүлэх"</string>
+    <string msgid="472752487966156897" name="enable_location_permission_on_device_msg">"Байршлын зөвшөөрлийг төхөөрөмжид идэвхжүүлэх"</string>
+    <string msgid="5082615523959139121" name="enable_location_permission_on_phone_msg">"Утасны дэлгэц дээр байршлыг идэвхжүүлэх"</string>
+    <string msgid="81415433590192158" name="energy_profile">"Эрчим хүчний профайл"</string>
+    <string msgid="2277845607662494696" name="ev_connected">"EV цэнэглэх портыг холбосон"</string>
+    <string msgid="735458637011996125" name="ev_connector_types">"EV холбогчийн төрлүүд"</string>
+    <string msgid="4916704450914519643" name="ev_open">"EV цэнэглэх портыг нээх"</string>
+    <string msgid="8631503055894800688" name="example_1_text">"Энэ текст "<annotation color="red">"улаан"</annotation>" өнгөтэй байна"</string>
+    <string msgid="1359373957397219102" name="example_2_text">"Энэ текст "<annotation color="green">"ногоон"</annotation>" өнгөтэй байна"</string>
+    <string msgid="2409207170762049673" name="example_3_text">"Энэ текст "<annotation color="blue">"цэнхэр"</annotation>" өнгөтэй байна"</string>
+    <string msgid="9055989886645433000" name="example_4_text">"Энэ текст "<annotation color="yellow">"шар"</annotation>" өнгөтэй байна"</string>
+    <string msgid="8828804968749423500" name="example_5_text">"Энэ текст үндсэн өнгө ашигладаг"</string>
+    <string msgid="7991523168517599600" name="example_6_text">"Энэ текст хоёрдогч өнгийг ашиглаж байна"</string>
+    <string msgid="530257630320010494" name="example_title">"Жишээ %d"</string>
+    <string msgid="9086586388884500731" name="exit_action_title">"Гарах"</string>
+    <string msgid="1471602619507306261" name="fail_start_dialer">"Залгагчийг эхлүүлж чадсангүй"</string>
+    <string msgid="6921321606009212189" name="fail_start_nav">"Навигацыг эхлүүлж чадсангүй"</string>
+    <string msgid="522064494016370117" name="favorite_toast_msg">"Дуртай!"</string>
+    <string msgid="697750041126810911" name="fetch_accelerometer">"Хурдатгал хэмжигчийг дуудаж байна."</string>
+    <string msgid="7316188117590056717" name="fetch_compass">"Луужинг дуудаж байна."</string>
+    <string msgid="1773415471137542832" name="fetch_energy_level">"Эрчим хүчний түвшнийг дуудаж байна."</string>
+    <string msgid="2798910410830567052" name="fetch_ev_status">"EV-н төлөвийг дуудаж байна."</string>
+    <string msgid="7153155318827188539" name="fetch_gyroscope">"Гироскопыг дуудаж байна."</string>
+    <string msgid="5015066922035852615" name="fetch_location">"Байршлыг дуудаж байна."</string>
+    <string msgid="7490131687788025123" name="fetch_mileage">"Явсан зайг дуудаж байна."</string>
+    <string msgid="7333830984597189627" name="fetch_speed">"Хурдыг дуудаж байна."</string>
+    <string msgid="6864627977128179834" name="fetch_toll_info">"Хураамжийн мэдээллийг дуудаж байна."</string>
+    <string msgid="295284272719956932" name="fifth_item">"Тав дахь зүйлд урт гарчиг тохируулсан байна"</string>
+    <string msgid="1627599668504718594" name="fifth_item_checked_toast_msg">"Тав дахь зүйлийг сонгосон"</string>
+    <string msgid="8223819062053448384" name="finish_app_demo_title">"Демог дараагийн удаа ажиллуулах үед Зөвшөөрлийн дэлгэцийг урьдчилан бэлтгэнэ"</string>
+    <string msgid="8354334557053141891" name="finish_app_msg">"Энэ нь аппыг дуусгаж, таныг үүнийг буцаах үед зөвшөөрлийн дэлгэцийг урьдчилан бэлтгэнэ"</string>
+    <string msgid="9013328479438745074" name="finish_app_title">"Аппын демог дуусгах"</string>
+    <string msgid="6648055806656590336" name="first_line_text">"Текстийн эхний мөр"</string>
+    <string msgid="3887390298628338716" name="first_row_text">"Текст текст текст"</string>
+    <string msgid="219428344573165351" name="first_row_title">"Том зураг болон урт текст урт текст урт текст урт текст урт текст бүхий мөр"</string>
+    <string msgid="1153409687260543158" name="fourth_item">"Дөрөв дэх зүйл"</string>
+    <string msgid="4253578650127250651" name="fuel">"Шатахуун"</string>
+    <string msgid="6811375173343218212" name="fuel_types">"Шатахууны төрөл"</string>
+    <string msgid="1203313937444666161" name="gas_station">"Шатахуун түгээх станц"</string>
+    <string msgid="2301747728609198718" name="go_straight">"Чигээрээ явах"</string>
+    <string msgid="6556259799319701727" name="google_sign_in">"Google-д нэвтрэх"</string>
+    <string msgid="4033140828804350723" name="grant_access_action_title">"Хандалтыг зөвшөөрөх"</string>
+    <string msgid="268046297444808010" name="grant_location_permission_toast_msg">"Одоогийн байршлыг харахын тулд байршлын зөвшөөрлийг олгоно уу"</string>
+    <string msgid="1350116012893549206" name="grid_limit">"Хүснэгтийн хязгаар"</string>
+    <string msgid="6159115661928982245" name="grid_template_demo_title">"Хүснэгтийн загварын демо"</string>
+    <string msgid="7096285873490705119" name="grid_template_menu_demo_title">"Тор бүхий загвартай демо"</string>
+    <string msgid="3428075828014504651" name="gyroscope">"Гироскоп"</string>
+    <string msgid="5009120714837304882" name="high_importance">"Их"</string>
+    <string msgid="4853167242566949502" name="home_caps_action_title">"НҮҮР ХУУДАС"</string>
+    <string msgid="6956152104754594971" name="hov_friendly">"Их ачаа тээвэрлэгчид ээлтэй"</string>
+    <string msgid="8487026131229541244" name="icon_title_prefix">"Дүрс тэмдэг"</string>
+    <string msgid="4082976685262307357" name="icons_demo_title">"Дүрс тэмдгийн демо"</string>
+    <string msgid="6264812093895530445" name="image_test_text">"Зургийн өөрчлөлтийг зөвшөөрдөг"</string>
+    <string msgid="8273863429801477547" name="image_test_title">"Зургийн туршилт"</string>
+    <string msgid="3180661817432720076" name="images_unknown_host_error">"Зургийг тодорхойгүй хостод үзүүлэх боломжгүй"</string>
+    <string msgid="9034862997821839831" name="importance_title">"Ач холбогдол"</string>
+    <string msgid="5261362663718987167" name="invalid_email_error_msg">"Хэрэглэгчийн нэр нь хүчинтэй имэйл хаяг байх ёстой"</string>
+    <string msgid="8238905276326976425" name="invalid_length_error_msg">"Хэрэглэгчийн нэр хамгийн багадаа %s тэмдэгтийн урттай байх ёстой"</string>
+    <string msgid="1090359893902674610" name="invalid_password_error_msg">"Буруу нууц үг"</string>
+    <string msgid="3302979708776502314" name="junction_image_demo_title">"Junction-н зургийн демо"</string>
+    <string msgid="965700021568970725" name="just_row_title">"Зөвхөн гарчиг"</string>
+    <string msgid="6843008350392721502" name="latest_feature_details">"Машины хяналтын самбар!"</string>
+    <string msgid="7929405790070777460" name="latest_feature_title">"Хамгийн сүүийн үеийн онцлогууд"</string>
+    <string msgid="310625272281710983" name="less_busy">"Арай хөдөлгөөн багатай"</string>
+    <string msgid="3023536401535417286" name="list_limit">"Жагсаалтын хязгаар"</string>
+    <string msgid="1740208242737246151" name="list_template_demo_title">"Жагсаалтын загварын демо"</string>
+    <string msgid="8933049915126088142" name="loading_demo_row_title">"Ачаалж дууслаа!"</string>
+    <string msgid="1086529475809143517" name="loading_demo_title">"Демог ачаалж байна"</string>
+    <string msgid="4771507490730308794" name="loading_screen">"Дэлгэцийг ачаалж байна"</string>
+    <string msgid="7689738885077382673" name="loading_toggle_disabled">"Ачаалахыг идэвхгүй болгосон"</string>
+    <string msgid="8828072732804454994" name="loading_toggle_enabled">"Ачаалахыг идэвхжүүлсэн"</string>
+    <string msgid="4801052291684791371" name="location_1_description">"Өнгө оруулсан нөөцийн вектор"</string>
+    <string msgid="3331356135359047166" name="location_2_description">"Зургийн нөөцийн растер"</string>
+    <string msgid="3982142774088944850" name="location_3_description">"Өнгөтэй текстийн тэмдэглэгээ"</string>
+    <string msgid="6560365445044381911" name="location_4_description">"Зургийн растер"</string>
+    <string msgid="2779911545316756419" name="location_description_text_label">"Текстийн шошго"</string>
+    <string msgid="8082962600953333087" name="long_line_text">"Энэ дэд текстийг хязгаарлалтгүй горимд бүрэн үзүүлэх боломжтой (ж.нь зогсоолын горим, хязгаартай бага хурдны горим). Гэхдээ энэ нь хязгаартай горимд байх үед зөвхөн хоёр мөрийг тасална (ж.нь автомашин жолоодох горим). Туршилтын зорилгоор энэ дэд текст нь супер супер супер супер супер урт байна"</string>
+    <string msgid="1793748562161438131" name="long_msg_template_demo_title">"Урт мессежийн загварын демо"</string>
+    <string msgid="3641559637317672505" name="long_msg_template_not_supported_text">"Таны хост Урт мессежийн загварыг дэмждэггүй"</string>
+    <string msgid="8600719470226274925" name="long_msg_template_not_supported_title">"Тохиромжгүй хост"</string>
+    <string msgid="4737969235741057506" name="long_route">"Урт маршрут"</string>
+    <string msgid="3462774027012877028" name="low_energy">"Бага эрчим хүч"</string>
+    <string msgid="4721161314404294033" name="low_importance">"Бага"</string>
+    <string msgid="4978995415869838056" name="manufacturer_unavailable">"Үйлдвэрлэгч боломжгүй"</string>
+    <string msgid="2169766615521476592" name="map_demos_title">"Газрын зургийн демонууд"</string>
+    <string msgid="1473810899303903185" name="map_template_list_demo_title">"Жагсаалтын демотой газрын зургийн загвар"</string>
+    <string msgid="4849450903277412004" name="map_template_pane_demo_title">"Хэсгийн демотой газрын зургийн загвар"</string>
+    <string msgid="6510798293640092611" name="map_template_toggle_demo_title">"Асаах/унтраах газрын зургийн загвар"</string>
+    <string msgid="1032610482145018739" name="map_with_content_demo_title">"Контентын демонуудтай газрын зураг"</string>
+    <string msgid="688667167861193192" name="map_with_grid_demo_title">"Хүснэгтийн загварын демотой газрын зураг"</string>
+    <string msgid="7007078234918054436" name="map_with_message_demo_title">"Мессежийн загварын демотой газрын зураг"</string>
+    <string msgid="7399959062407349380" name="misc_demo_title">"Холимог демо"</string>
+    <string msgid="6077169010255928114" name="misc_templates_demos_title">"Холимог загварын демо"</string>
+    <string msgid="494224423025683030" name="model_info">"Загварын мэдээлэл"</string>
+    <string msgid="4075463010215406573" name="model_unavailable">"Загвар боломжгүй"</string>
+    <string msgid="1039516575011403837" name="more_action_title">"Бусад"</string>
+    <string msgid="5938288138225509885" name="more_toast_msg">"Бусдыг товшсон"</string>
+    <string msgid="2275291617716161409" name="msg_template_demo_text">"Мессеж энд ирнэ.\nХоёр дахь мөрд бусад текст бий."</string>
+    <string msgid="3895210951340409473" name="msg_template_demo_title">"Мессежийн загварын демо"</string>
+    <string msgid="72781206086461004" name="nav_demos_title">"Навигацын демо"</string>
+    <string msgid="344985380763975398" name="nav_map_template_demo_title">"Зөвхөн газрын зураг бүхий навигацын загварын демо"</string>
+    <string msgid="4448683262984308442" name="nav_notification_demo_title">"Навигацын мэдэгдлийн демо"</string>
+    <string msgid="6696525973145493908" name="nav_requested_toast_msg">"Навигацын хүсэлт тавьсан"</string>
+    <string msgid="8215835368932160866" name="nav_template_demos_title">"Навигацын загварын демо"</string>
+    <string msgid="2713090390373996139" name="navigate">"Навигац хийх"</string>
+    <string msgid="7454579665387386476" name="navigating_demo_title">"Навигацын демо"</string>
+    <string msgid="3331130131492672264" name="navigation_alert_subtitle">"10 минутын өмнө мэдээлсэн"</string>
+    <string msgid="8306554249264200848" name="navigation_alert_title">"Хурд хэмжигч байсаар байна уу?"</string>
+    <string msgid="2204136858798832382" name="needs_access_msg_prefix">"Апп дараах зөвшөөрлүүдэд хандах шаардлагатай:\n"</string>
+    <string msgid="896914448469117234" name="no_accelerometer_permission">"Хурдатгал хэмжигчийн зөвшөөрөл байхгүй."</string>
+    <string msgid="1452124604210014010" name="no_action_title">"Үгүй"</string>
+    <string msgid="6165492423831023809" name="no_action_toast_msg">"Үгүй товчлуурыг дарсан!"</string>
+    <string msgid="3505517472938045093" name="no_car_hardware_location">"CarHardwareLocation-н зөвшөөрөл байхгүй."</string>
+    <string msgid="5162304489577567125" name="no_compass_permission">"Луужингийн зөвшөөрөл байхгүй."</string>
+    <string msgid="1684773185095107825" name="no_energy_level_permission">"EnergyLevel-н зөвшөөрөл байхгүй."</string>
+    <string msgid="4662285713731308888" name="no_energy_profile_permission">"Эрчим хүчний профайлын зөвшөөрөл байхгүй"</string>
+    <string msgid="933075402821938973" name="no_ev_status_permission">"EV-н төлөвийн зөвшөөрөл байхгүй."</string>
+    <string msgid="665293140266771569" name="no_gyroscope_permission">"Гироскопын зөвшөөрөл байхгүй."</string>
+    <string msgid="4074779840599589847" name="no_mileage_permission">"Явсан зайн зөвшөөрөл байхгүй."</string>
+    <string msgid="5333629877014978947" name="no_model_permission">"Загварын зөвшөөрөл байхгүй"</string>
+    <string msgid="5812532480922675390" name="no_speed_permission">"Хурдны зөвшөөрөл байхгүй."</string>
+    <string msgid="6789073114449712090" name="no_toll_card_permission">"TollCard-н зөвшөөрөл байхгүй."</string>
+    <string msgid="8999757911111188784" name="non_actionable">"Үйлдэл хийх боломжгүй"</string>
+    <string msgid="6831181108681007428" name="not_favorite_toast_msg">"Дуртай биш!"</string>
+    <string msgid="7498800528148447270" name="not_started_for_result_msg">"Энэ апп илэрцээс эхлээгүй"</string>
+    <string msgid="1819496937832036387" name="notification_demo">"Мэдэгдлийн демо"</string>
+    <string msgid="5076051497316030274" name="notification_template_demo_title">"Мэдэгдлийн загварын демо"</string>
+    <string msgid="5507590705935298176" name="notification_title">"Мэдэгдэл"</string>
+    <string msgid="3925174645651546591" name="odometer">"Одометр"</string>
+    <string msgid="8669201170189204848" name="off_action_title">"Унтраалттай"</string>
+    <string msgid="7128494973966098611" name="ok_action_title">"OK"</string>
+    <string msgid="4129601573763429611" name="on_action_title">"Асаалттай"</string>
+    <string msgid="4957996003270280496" name="ongoing_title">"Үргэлжилж байгаа"</string>
+    <string msgid="7221252541651471199" name="option_1_title">"Сонголт 1"</string>
+    <string msgid="1905146448697963818" name="option_2_title">"Сонголт 2"</string>
+    <string msgid="6319268250436119258" name="option_3_title">"Сонголт 3"</string>
+    <string msgid="947641896184637026" name="option_row_radio_icon_colored_text_title">"Радио товчлуур болон, дүрс тэмдэг, өнгөтэй тексттэй мөр"</string>
+    <string msgid="3304229002524317977" name="option_row_radio_icon_title">"Радио товчлуур болон дүрс тэмдэгтэй мөр"</string>
+    <string msgid="5978617101267398181" name="option_row_radio_title">"Радио товчлууртай мөр"</string>
+    <string msgid="1168121856107932984" name="options_action_title">"Сонголт"</string>
+    <string msgid="2146223786877557730" name="options_toast_msg">"Сонголтын товчлуурыг дарсан"</string>
+    <string msgid="7510279447493169945" name="other_row_text">"Мөрийн текст"</string>
+    <string msgid="4702355788835253197" name="other_row_title_prefix">"Мөрийн гарчиг"</string>
+    <string msgid="7525619456883627939" name="package_not_found_error_msg">"Багц олдсонгүй."</string>
+    <string msgid="981518409516855230" name="pane_limit">"Хэсгийн хязгаар"</string>
+    <string msgid="7804292600060341608" name="pane_template_demo_title">"Хэсгийн загварын демо"</string>
+    <string msgid="8720610556452272916" name="parked_only_text">"Зөвхөн зогсоолд тавих үеийн бусад текст."</string>
+    <string msgid="3190603222397552672" name="parked_only_title">"Зөвхөн зогсоолд тавих үеийн гарчиг"</string>
+    <string msgid="2532422265890824446" name="parked_toast_msg">"Зогсоолд тавих үеийн үйлдэл"</string>
+    <string msgid="3367862800135053111" name="parking_vs_driving_demo_title">"Зогсоолын болон Жолоодлогын демогийн ялгаа"</string>
+    <string msgid="2869107073860012864" name="password_hint">"нууц үг"</string>
+    <string msgid="9105788349198243508" name="password_sign_in_instruction_prefix">"Хэрэглэгчийн нэр"</string>
+    <string msgid="6140337431619481015" name="perm_coarse_location">"Тодорхойгүй байршилд хандах"</string>
+    <string msgid="6074759942301565943" name="perm_coarse_location_desc">"Тодорхойгүй байршилд хандах зөвшөөрөл"</string>
+    <string msgid="5438874642600304118" name="perm_fine_location">"Нарийвчилсан байршилд хандах"</string>
+    <string msgid="3549183883787912516" name="perm_fine_location_desc">"Нарийвчилсан байршилд хандах зөвшөөрөл"</string>
+    <string msgid="3834918337351876270" name="perm_group">"Зөвшөөрлийн бүлэг"</string>
+    <string msgid="7348847631139139024" name="perm_group_description">"Showcase аппын зөвшөөрлийн бүлэг"</string>
+    <string msgid="2758340693260523493" name="perm_record_audio">"Аудио бичихэд хандах"</string>
+    <string msgid="8038648467605928912" name="perm_record_audio_desc">"Аудио бичихэд хандах зөвшөөрөл"</string>
+    <string msgid="2348556088141992714" name="permissions_granted_msg">"Бүх зөвшөөрлийг олгосон. Зөвшөөрлийг Тохиргооноос сэргээнэ үү."</string>
+    <string msgid="2504766809811627577" name="phone">"Утас"</string>
+    <string msgid="3599815596923367256" name="phone_screen_permission_msg">"Утасны дэлгэц дээр зөвшөөрөл олгоно уу"</string>
+    <string msgid="2288691296234360441" name="pin_sign_in_instruction">"Энэ ПИН-г утсан дээрээ бичнэ үү"</string>
+    <string msgid="6785181191763056582" name="place_list_limit">"Газрын жагсаалтын хязгаар"</string>
+    <string msgid="8019588508812955290" name="place_list_nav_template_demo_title">"Газрын жагсаалтын навигацын загварын демо"</string>
+    <string msgid="2054022985455460469" name="place_list_template_demo_title">"Газрын жагсаалтын загварын демо"</string>
+    <string msgid="3385912074130977032" name="png_bitmap_title">"bitmap хэлбэрээр илгээгдсэн PNG"</string>
+    <string msgid="7437083018336747544" name="png_res_title">"PNG, нөөцөөр илгээсэн"</string>
+    <string msgid="5007078308762725207" name="pop_to_marker">"Холимог демо руу үсрэх тэмдэглэгээ"</string>
+    <string msgid="4288884615669751608" name="pop_to_prefix">"Дараах руу үсрэх"</string>
+    <string msgid="2078277386355064198" name="pop_to_root">"Үндсэн хандалт руу үсрэх"</string>
+    <string msgid="3924696281273379455" name="pop_to_title">"PopTo демо"</string>
+    <string msgid="182847662545676962" name="preseed_permission_app_title">"Аппын демог урьдчилан бэлтгэх зөвшөөрөл"</string>
+    <string msgid="5476541421753978071" name="preseed_permission_demo_title">"Демог дараагийн удаа ажиллуулах үед Зөвшөөрлийн дэлгэцийг урьдчилан бэлтгэнэ"</string>
+    <string msgid="7042003552215710683" name="primary_action_title">"Үндсэн"</string>
+    <string msgid="7153771322662005447" name="primary_toast_msg">"Үндсэн товчлуурыг товшсон"</string>
+    <string msgid="7586815688292506743" name="provider_sign_in_instruction">"Google-н нэвтрэлтээ дуусгахын тулд энэ товчлуурыг ашиглана уу"</string>
+    <string msgid="2433062141810168976" name="push_stack">"Өрөлтөд цааш түлхэх"</string>
+    <string msgid="5487041647280777397" name="qr_code">"QR код"</string>
+    <string msgid="8137070561006464518" name="qr_code_sign_in_title">"Нэвтрэхийн тулд QR кодыг скан хийнэ үү"</string>
+    <string msgid="9082264324855338774" name="radio_button_list_demo_title">"Радио товчлуурын жагсаалт бүхий демо"</string>
+    <string msgid="8744960568263400641" name="range">"Муж"</string>
+    <string msgid="7295910214088983967" name="raw_speed">"Raw-н хурд"</string>
+    <string msgid="3674260822403151377" name="refresh_action_title">"Сэргээх"</string>
+    <string msgid="6730366705938402668" name="reject_action_title">"Татгалзах"</string>
+    <string msgid="4796486779527427017" name="request_permission_menu_demo_title">"Зөвшөөрлийн демогийн хүсэлт тавих"</string>
+    <string msgid="7456426341142412300" name="request_permissions_title">"Хүсэлтийн зөвшөөрлийн демо"</string>
+    <string msgid="5351791879153568211" name="required_permissions_title">"Шаардлагатай зөвшөөрлүүд"</string>
+    <string msgid="6334213670275547875" name="reservation_cancelled_msg">"Захиалгыг цуцалсан"</string>
+    <string msgid="3900525190662148290" name="result_demo_title">"Илэрцийн демо"</string>
+    <string msgid="505793441615134116" name="route_list_limit">"Маршрутын жагсаалтын хязгаар"</string>
+    <string msgid="4599699012716426514" name="route_options_demo_title">"Маршрутын сонголтууд"</string>
+    <string msgid="7878704357953167555" name="route_preview_template_demo_title">"Маршрутыг урьдчилан үзэх загварын демо"</string>
+    <string msgid="7799772149932075357" name="routes_title">"Маршрут"</string>
+    <string msgid="756516694751965204" name="row_primary_action_toast">"Мөрийн үндсэн үйлдлийг сонгосон"</string>
+    <string msgid="135167694047524905" name="row_text_icons_demo_title">"Текст болон дүрс тэмдэгтэй мөрийн демо"</string>
+    <string msgid="3198566660454251007" name="rows_demo_title">"Мөрийн демо"</string>
+    <string msgid="5085372891301576306" name="sample_additional_list">"Сонгох боломжтой жагсаалтын жишээ"</string>
+    <string msgid="3483459674263446335" name="search_action_title">"Хайх"</string>
+    <string msgid="978495498991026792" name="search_hint">"Эндээс хайх"</string>
+    <string msgid="1770474418958318114" name="search_template_demo_title">"Хайлтын загварын демо"</string>
+    <string msgid="7826530065407699347" name="search_toast_msg">"Хайх товчлуурыг дарсан"</string>
+    <string msgid="5245792503030812493" name="second_item">"Хоёр дахь зүйл"</string>
+    <string msgid="7210054709419608215" name="second_item_toast_msg">"Хоёр дахь зүйлийг товшсон"</string>
+    <string msgid="38664490158836864" name="second_line_text">"Текстийн хоёр дахь мөр"</string>
+    <string msgid="5076434693504006565" name="secondary_action_toast">"Хоёрдогч үйлдлийг сонгосон"</string>
+    <string msgid="3710817648501132309" name="secondary_actions_decoration_button_demo_title">"Хоёрдогч үйлдэл ба чимэглэлийн демо"</string>
+    <string msgid="155884606592724532" name="secondary_actions_decoration_test_subtitle">"Мөрийг мөн сонгож болно"</string>
+    <string msgid="6282873404859209490" name="secondary_actions_decoration_test_title">"Хоёрдогч үйлдлүүд ба чимэглэл"</string>
+    <string msgid="3700606949229899169" name="secondary_actions_decoration_test_title_long">"Хоёрдогч үйлдлүүд, маш урт нэртэй чимэглэлийн мөр"</string>
+    <string msgid="6985282813402073703" name="secondary_actions_test_subtitle">"Зөвхөн хоёрдогч үйлдлийг сонгох боломжтой"</string>
+    <string msgid="3664453747553733613" name="secondary_actions_test_title">"Хоёрдогч үйлдлийн тест"</string>
+    <string msgid="1236735461225007729" name="sectioned_item_list_demo_title">"Хэсэгчилсэн зүйлийн жагсаалтын демо"</string>
+    <string msgid="6594204350307263338" name="sectioned_item_list_one_title">"1-р жагсаалт"</string>
+    <string msgid="2963927693547537519" name="sectioned_item_list_subtext">"Жагсаалт тус бүрийн доорх дэд текст"</string>
+    <string msgid="4941545381743022833" name="sectioned_item_list_two_title">"2-р жагсаалт"</string>
+    <string msgid="8377594346379786774" name="sectioned_item_template_demo_title">"Хэсэгчилсэн зүйлийн загварын демо"</string>
+    <string msgid="1501401956386938735" name="sectioned_item_template_lots_of_rows_section_title">"Олон мөрийн хэсэг"</string>
+    <string msgid="1014325865070733609" name="sectioned_item_template_radio_button_section_title">"Радио товчийн хэсэг"</string>
+    <string msgid="3197227971733559949" name="sectioned_item_template_toggle_section_title">"Асаах/унтраах хэсэг"</string>
+    <string msgid="5492658731113129386" name="selectable_lists_demo_title">"Сонгох боломжтой жагсаалтын демо"</string>
+    <string msgid="3149189677200086656" name="selected_route_toast_msg">"Сонгосон маршрут"</string>
+    <string msgid="4731688444696028193" name="send_notification_title">"Мэдэгдэл илгээх"</string>
+    <string msgid="8616900063253887861" name="settings_action_title">"Тохиргоо"</string>
+    <string msgid="7697794473002342727" name="settings_toast_msg">"Тохиргоог товшсон"</string>
+    <string msgid="6798738013668580714" name="short_msg_template_demo_title">"Богино мессеж бүхий загвартай демо"</string>
+    <string msgid="4831864276538141265" name="short_route">"Товч маршрут"</string>
+    <string msgid="1542092687878113304" name="showcase_demos_title">"Showcase-н демо"</string>
+    <string msgid="8423984266325680606" name="sign_in_complete_text">"Та нэвтэрлээ!"</string>
+    <string msgid="8919868148773983428" name="sign_in_complete_title">"Нэвтрэлт дууссан"</string>
+    <string msgid="9044850228284294762" name="sign_in_instructions">"Мандат үнэмлэхээ оруулна уу"</string>
+    <string msgid="6052035424941410249" name="sign_in_template_demo_title">"Нэвтрэх загварын демо"</string>
+    <string msgid="7184733753948837646" name="sign_in_template_not_supported_text">"Таны хост Нэвтрэх загварыг дэмждэггүй"</string>
+    <string msgid="4892883228898541764" name="sign_in_template_not_supported_title">"Тохиромжгүй хост"</string>
+    <string msgid="4551967308262681703" name="sign_in_title">"Нэвтрэх"</string>
+    <string msgid="8043752000786977249" name="sign_in_with_google_title">"Google-р нэвтрэх"</string>
+    <string msgid="5720947549233124775" name="sign_in_with_google_toast_msg">"Google-р нэвтрэх эндээс эхэлнэ"</string>
+    <string msgid="1653943000866713010" name="sign_out_action_title">"Гарах"</string>
+    <string msgid="3880321601391343607" name="sixth_item">"Зургаа дахь зүйлд урт гарчиг тохируулсан байна"</string>
+    <string msgid="6117028866385793707" name="sixth_item_toast_msg">"Зургаа дахь зүйлийг товшсон"</string>
+    <string msgid="4009872495806318260" name="some_additional_text">"Зарим нэмэлт текст"</string>
+    <string msgid="2208831088632818681" name="start_notification_title">"Мэдэгдлийг эхлүүлэх"</string>
+    <string msgid="8699668027543530460" name="start_notifications_title">"Мэдэгдлүүдийг эхлүүлэх"</string>
+    <string msgid="4225260243713833974" name="started_for_result_msg">"Энэ аппыг %s-н илэрцэд дуудсан. Дуудлага хийгч рүү буцааж илгээхийн тулд илэрцийг сонгоно уу"</string>
+    <string msgid="6277540029070332960" name="status_bar_notification_info_overflow">"999+"</string>
+    <string msgid="1187619482795416314" name="stop_action_title">"Зогсоох"</string>
+    <string msgid="3709643750540881176" name="stop_notification_title">"Мэдэгдлийг зогсоох"</string>
+    <string msgid="3703892710275206239" name="stop_notifications_title">"Мэдэгдлүүдийг зогсоох"</string>
+    <string msgid="7587839101813629975" name="tab_template_demo_title">"Табын загварын демо"</string>
+    <string msgid="6529681462424538165" name="tab_template_layouts_demo_title">"Табын загварын демонууд"</string>
+    <string msgid="4638051615030345574" name="tab_template_loading_demo_title">"Табын загварыг ачаалах демо"</string>
+    <string msgid="6907466201298082309" name="tab_template_no_tabs_demo_title">"Табын загварын ямар ч табуудын демо байхгүй"</string>
+    <string msgid="5268168907976325154" name="tab_title_grid">"Табын урт нэртэй хүснэгтэн таб"</string>
+    <string msgid="5104962518489668123" name="tab_title_list">"Табын жагсаалт"</string>
+    <string msgid="5385807479734490989" name="tab_title_loading">"Табыг ачаалж байна"</string>
+    <string msgid="5266710951630087246" name="tab_title_message">"Мессежийн таб"</string>
+    <string msgid="2520606145526537263" name="tab_title_pane">"Хэсгийн таб"</string>
+    <string msgid="1892925693146631173" name="tab_title_search">"Хайлтын таб"</string>
+    <string msgid="3804796387195842741" name="take_520">"520 маршрутыг авах"</string>
+    <string msgid="545061986612431190" name="task_content_allowed">"Өөр загварт зочилж, машин нь втомашин жолоодох горимд байгаа эсэхийг баталгаажуулна уу"</string>
+    <string msgid="7162842196382260992" name="task_limit_reached_msg">"Энэ нь алхмын тооны хязгаараас хэтрүүлэх бөгөөд таныг шинэ дэлгэцэд аваачна."</string>
+    <string msgid="2212084350718766941" name="task_restriction_demo_title">"Ажлын хязгаарлалтын демо"</string>
+    <string msgid="4646729781462227219" name="task_step_of_text">"Үргэлжлүүлэхийн тулд товшино уу"</string>
+    <string msgid="2791717962535723839" name="task_step_of_title">"Ажлын %2$d-н %1$d-р алхам"</string>
+    <string msgid="788249269446087847" name="template_layouts_demo_title">"Загварын бүдүүвч бүхий демо"</string>
+    <string msgid="8732943920672143201" name="text_icons_demo_title">"Текст болон дүрс тэмдгийн демо"</string>
+    <string msgid="334088179008716411" name="third_item">"Гурав дахь зүйл"</string>
+    <string msgid="3022450599567347361" name="third_item_checked_toast_msg">"Гурав дахь зүйлийг сонгосон"</string>
+    <string msgid="7163710562670220163" name="throw_action_title">"Шидэх"</string>
+    <string msgid="3991742709199357049" name="title_prefix">"Нэр"</string>
+    <string msgid="6294250714820740520" name="title_with_app_icon_row_title">"Аппын дүрс тэмдэгтэй гарчиг"</string>
+    <string msgid="3813134904602875778" name="title_with_res_id_image_row_title">"Нөөцийн ID-ны зурагтай гарчиг"</string>
+    <string msgid="8945114692653524102" name="title_with_secondary_lines_row_text_1">"Err and err and err again, but less and less and less."</string>
+    <string msgid="1017734603405251531" name="title_with_secondary_lines_row_text_2">"- Пит Хейн"</string>
+    <string msgid="7769408881272549837" name="title_with_secondary_lines_row_title">"Олон хоёрдогч текстийн мөртэй гарчиг"</string>
+    <string msgid="6109092343637263755" name="title_with_svg_image_row_title">"SVG зурагтай гарчиг"</string>
+    <string msgid="3179103600967398928" name="toggle_button_demo_title">"Асаах товчийн демо"</string>
+    <string msgid="8366040658408451664" name="toggle_test_disabled">"Асаах/Унтраах туршилтыг идэвхгүй болгосон"</string>
+    <string msgid="982370904182034076" name="toggle_test_enabled">"Асаах/Унтраах туршилтыг идэвхжүүлсэн"</string>
+    <string msgid="5914741538328669668" name="toggle_test_first_toggle_text">"Асаах/Унтраах туршилтыг идэвхжүүлэхийн тулд үүнийг тэмдэглэнэ үү"</string>
+    <string msgid="3635022201072117680" name="toggle_test_first_toggle_title">"Асаах/Унтраах туршилтыг идэвхжүүлэх"</string>
+    <string msgid="1813071017415876745" name="toggle_test_second_toggle_text">"Төлөвтэй өөрчлөлтийг зөвшөөрнө"</string>
+    <string msgid="1083594617400613969" name="toggle_test_second_toggle_title">"Асаах/Унтраах туршилт"</string>
+    <string msgid="8107217216013312857" name="toggle_test_text">"Төлөвтэй өөрчлөлтийг зөвшөөрнө"</string>
+    <string msgid="924485265152862631" name="toggle_test_title">"Асаах/Унтраах туршилт"</string>
+    <string msgid="4430544885695162226" name="toll_card_state">"Хураамжийн картын төлөв"</string>
+    <string msgid="5134365408383171144" name="travel_est_trip_text">"Алисыг тосож авах"</string>
+    <string msgid="3396166539208366382" name="triggered_toast_msg">"Идэвхжүүлсэн"</string>
+    <string msgid="7384500054249311718" name="try_anyway_action_title">"Ямартай ч оролдох"</string>
+    <string msgid="4710562732720109969" name="turn_right">"Баруун эргэх"</string>
+    <string msgid="3636401138255192934" name="unavailable">"Боломжгүй"</string>
+    <string msgid="802503415474307811" name="unchecked_action_title">"Сонгоогүй"</string>
+    <string msgid="7697521583928135171" name="unit">"Хэмжих нэгж"</string>
+    <string msgid="909001735933359216" name="unknown_importance">"Тодорхойгүй"</string>
+    <string msgid="7850893299484337431" name="use_pin">"ПИН ашиглах"</string>
+    <string msgid="1356952319161314986" name="user_interactions_demo_title">"Хэрэглэгчийн харилцан үйлдлүүд"</string>
+    <string msgid="874591632279039146" name="vector_no_tint_title">"Зурах боломжтой өнгө оруулаагүй вектор"</string>
+    <string msgid="1301305340033556819" name="vector_toggle_details">"Өнгө нэмж/хасах товч"</string>
+    <string msgid="4890094482708376219" name="vector_with_app_theme_attr_title">"Аппын загвар атрибутын өнгийг ашигласан зурах боломжтой вектор"</string>
+    <string msgid="1022346419829696827" name="vector_with_tint_title">"Зурах боломжтой өнгө оруулсан вектор"</string>
+    <string msgid="7065558153736024203" name="visible_routes_toast_msg">"Харагдаж буй маршрут"</string>
+    <string msgid="3825223890895361496" name="voice_access_demo_title">"Voice Access-н демо дэлгэц"</string>
+    <string msgid="994338773299644607" name="year_unavailable">"Боломжгүй жил"</string>
+    <string msgid="5507096013762092189" name="yes_action_title">"Тийм"</string>
+    <string msgid="6216215197177241247" name="yes_action_toast_msg">"Тийм товчлуурыг дарсан!"</string>
+    <string msgid="8915301497303842649" name="zoomed_in_toast_msg">"Томруулсан"</string>
+    <string msgid="6260981223227212493" name="zoomed_out_toast_msg">"Жижигрүүлсэн"</string>
+</resources>

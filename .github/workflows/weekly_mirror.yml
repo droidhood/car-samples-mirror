@@ -1,0 +1,65 @@
+name: mirror-AOSP-car-samples
+
+on:
+  schedule:
+    - cron: '0 0 * * 0'  # Runs every Sunday at midnight
+  workflow_dispatch:  # Allows the workflow to be run manually
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: '0'
+
+    - name: Set up Git
+      run: |
+        git config --global user.name 'github-actions[bot]'
+        git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+
+    - name: Install git-filter-repo
+      run: |
+        sudo apt-get update
+        sudo apt install git-filter-repo
+
+    - name: Run the script
+      run: |
+        chmod +x scripts/*
+        scripts/get_changes.sh
+        scripts/process_samples.sh
+
+    - name: Get current date
+      id: date
+      run: echo "date=$(date -u +"%Y-%m-%d-%H%M%S")" >> $GITHUB_ENV
+
+    - name: Get branch name
+      id: get_branch
+      shell: bash
+      run: |
+        echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+
+    - name: Check for commits
+      id: check_commits
+      run: |
+        COMMIT_DIFF=$(git log --oneline origin/main..HEAD)
+        if [ -z "$COMMIT_DIFF" ]; then
+          echo "No commits between branches found"
+          echo "has_commits=false" >> $GITHUB_OUTPUT
+        else
+          echo "Found commits between branches"
+          echo "has_commits=true" >> $GITHUB_OUTPUT
+        fi
+
+    - name: Create Pull Request
+      if: steps.check_commits.outputs.has_commits == 'true'
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        gh pr create \
+          --title "Weekly Update: ${{ env.date }}" \
+          --body "This PR contains the weekly update from https://android.googlesource.com/platform/frameworks/support/+/refs/heads/androidx-main/car/app/app-samples" \
+          --base origin/main \
+          --head ${{ steps.get_branch.outputs.branch }}
