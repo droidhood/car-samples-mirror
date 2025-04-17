@@ -1,0 +1,394 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/mobile/src/main/AndroidManifest.xml:17:1-93:12
+INJECTED from /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/mobile/src/main/AndroidManifest.xml:17:1-93:12
+INJECTED from /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/mobile/src/main/AndroidManifest.xml:17:1-93:12
+INJECTED from /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/mobile/src/main/AndroidManifest.xml:17:1-93:12
+MERGED from [:showcase:common] /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/common/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:17:1-47:12
+MERGED from [androidx.car.app:app-projected:1.7.0-beta01] /Users/narko/.gradle/caches/8.10/transforms/6f3457a46f3195b9ef185c4fd9c79a01/transformed/app-projected-1.7.0-beta01/AndroidManifest.xml:17:1-37:12
+MERGED from [androidx.car.app:app:1.7.0-beta01] /Users/narko/.gradle/caches/8.10/transforms/ca23afc590aafe8362c632c28d1b9165/transformed/app-1.7.0-beta01/AndroidManifest.xml:17:1-41:12
+MERGED from [androidx.activity:activity:1.2.0] /Users/narko/.gradle/caches/8.10/transforms/75cbcd1e9c1a7db3b3e6be62859bb773/transformed/activity-1.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.media:media:1.6.0] /Users/narko/.gradle/caches/8.10/transforms/731f0aed45c9486aa0785d80ee92ad5a/transformed/media-1.6.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.core:core:1.13.1] /Users/narko/.gradle/caches/8.10/transforms/e6106630f63a52e63b7a2877a2d563fa/transformed/core-1.13.1/AndroidManifest.xml:17:1-30:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.6.2] /Users/narko/.gradle/caches/8.10/transforms/b83b47fdb01605987dd58983ff92adc9/transformed/lifecycle-livedata-core-2.6.2/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.6.2] /Users/narko/.gradle/caches/8.10/transforms/aa4d3349a61477bf54ecd16006702b54/transformed/lifecycle-viewmodel-2.6.2/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.savedstate:savedstate:1.2.1] /Users/narko/.gradle/caches/8.10/transforms/d5836b1d81dac45c506ddc29a5826739/transformed/savedstate-1.2.1/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.6.2] /Users/narko/.gradle/caches/8.10/transforms/80f46f10d92af788e0e0030bd2d25dde/transformed/lifecycle-runtime-2.6.2/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.6.2] /Users/narko/.gradle/caches/8.10/transforms/4d58143c3db66ed86ab29840bcd1d368/transformed/lifecycle-viewmodel-savedstate-2.6.2/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.core:core-ktx:1.13.1] /Users/narko/.gradle/caches/8.10/transforms/b10c882c0bd385d704b7bf780f1473b3/transformed/core-ktx-1.13.1/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.annotation:annotation-experimental:1.4.1] /Users/narko/.gradle/caches/8.10/transforms/57ebd5c3573cfb1c2bab35ab52a3c42d/transformed/annotation-experimental-1.4.1/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/narko/.gradle/caches/8.10/transforms/d80d77fe8d89e46a7fc8af50730470f3/transformed/interpolator-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/narko/.gradle/caches/8.10/transforms/a080864163013ccaeed30c62a147f357/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:17:1-27:12
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.0] /Users/narko/.gradle/caches/8.10/transforms/325dd23874201d71c6c7f402aff5dd3d/transformed/profileinstaller-1.3.0/AndroidManifest.xml:17:1-55:12
+MERGED from [androidx.startup:startup-runtime:1.1.1] /Users/narko/.gradle/caches/8.10/transforms/d613b3435520b808d575e64933c46067/transformed/startup-runtime-1.1.1/AndroidManifest.xml:17:1-33:12
+MERGED from [androidx.tracing:tracing:1.0.0] /Users/narko/.gradle/caches/8.10/transforms/3fe6f9737cf17ffcc04ba01dc6fd8aaa/transformed/tracing-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.arch.core:core-runtime:2.2.0] /Users/narko/.gradle/caches/8.10/transforms/e8bc6007665ebd76a168825e8abd603e/transformed/core-runtime-2.2.0/AndroidManifest.xml:17:1-22:12
+	package
+		INJECTED from /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/mobile/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/mobile/src/main/AndroidManifest.xml
+	xmlns:tools
+		ADDED from /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/mobile/src/main/AndroidManifest.xml:19:5-51
+	android:versionCode
+		INJECTED from /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/mobile/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/mobile/src/main/AndroidManifest.xml:18:5-63
+uses-permission#android.permission.INTERNET
+ADDED from /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/mobile/src/main/AndroidManifest.xml:21:3-64
+	android:name
+		ADDED from /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/mobile/src/main/AndroidManifest.xml:21:20-62
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/mobile/src/main/AndroidManifest.xml:22:3-76
+	android:name
+		ADDED from /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/mobile/src/main/AndroidManifest.xml:22:20-74
+uses-permission#android.permission.FOREGROUND_SERVICE
+ADDED from /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/mobile/src/main/AndroidManifest.xml:23:3-74
+	android:name
+		ADDED from /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/mobile/src/main/AndroidManifest.xml:23:20-72
+uses-permission#android.permission.FOREGROUND_SERVICE_LOCATION
+ADDED from /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/mobile/src/main/AndroidManifest.xml:24:3-83
+	android:name
+		ADDED from /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/mobile/src/main/AndroidManifest.xml:24:20-81
+uses-permission#androidx.car.app.MAP_TEMPLATES
+ADDED from /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/mobile/src/main/AndroidManifest.xml:27:3-67
+	android:name
+		ADDED from /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/mobile/src/main/AndroidManifest.xml:27:20-65
+uses-permission#androidx.car.app.NAVIGATION_TEMPLATES
+ADDED from /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/mobile/src/main/AndroidManifest.xml:30:3-74
+	android:name
+		ADDED from /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/mobile/src/main/AndroidManifest.xml:30:20-72
+uses-permission#androidx.car.app.ACCESS_SURFACE
+ADDED from /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/mobile/src/main/AndroidManifest.xml:31:3-68
+	android:name
+		ADDED from /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/mobile/src/main/AndroidManifest.xml:31:20-66
+uses-permission#android.permission.POST_NOTIFICATIONS
+ADDED from /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/mobile/src/main/AndroidManifest.xml:34:3-75
+	android:name
+		ADDED from /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/mobile/src/main/AndroidManifest.xml:34:20-72
+uses-permission#android.permission.ACCESS_FINE_LOCATION
+ADDED from /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/mobile/src/main/AndroidManifest.xml:37:3-76
+MERGED from [:showcase:common] /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/common/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:27:5-31:71
+MERGED from [:showcase:common] /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/common/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:27:5-31:71
+	android:label
+		ADDED from [:showcase:common] /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/common/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:30:9-51
+	android:permissionGroup
+		ADDED from [:showcase:common] /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/common/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:31:9-68
+	android:description
+		ADDED from [:showcase:common] /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/common/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:29:9-62
+	android:name
+		ADDED from /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/mobile/src/main/AndroidManifest.xml:37:20-74
+uses-permission#android.permission.ACCESS_COARSE_LOCATION
+ADDED from /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/mobile/src/main/AndroidManifest.xml:38:3-78
+MERGED from [:showcase:common] /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/common/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:32:5-36:71
+MERGED from [:showcase:common] /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/common/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:32:5-36:71
+	android:label
+		ADDED from [:showcase:common] /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/common/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:35:9-53
+	android:permissionGroup
+		ADDED from [:showcase:common] /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/common/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:36:9-68
+	android:description
+		ADDED from [:showcase:common] /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/common/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:34:9-64
+	android:name
+		ADDED from /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/mobile/src/main/AndroidManifest.xml:38:20-76
+uses-permission#com.google.android.gms.permission.CAR_MILEAGE
+ADDED from /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/mobile/src/main/AndroidManifest.xml:39:3-82
+	android:name
+		ADDED from /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/mobile/src/main/AndroidManifest.xml:39:20-80
+uses-permission#com.google.android.gms.permission.CAR_SPEED
+ADDED from /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/mobile/src/main/AndroidManifest.xml:40:3-80
+	android:name
+		ADDED from /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/mobile/src/main/AndroidManifest.xml:40:20-78
+uses-permission#com.google.android.gms.permission.CAR_FUEL
+ADDED from /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/mobile/src/main/AndroidManifest.xml:41:3-79
+	android:name
+		ADDED from /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/mobile/src/main/AndroidManifest.xml:41:20-77
+application
+ADDED from /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/mobile/src/main/AndroidManifest.xml:43:3-92:17
+INJECTED from /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/mobile/src/main/AndroidManifest.xml:43:3-92:17
+MERGED from [:showcase:common] /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/common/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:43:5-45:19
+MERGED from [:showcase:common] /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/common/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:43:5-45:19
+MERGED from [androidx.car.app:app-projected:1.7.0-beta01] /Users/narko/.gradle/caches/8.10/transforms/6f3457a46f3195b9ef185c4fd9c79a01/transformed/app-projected-1.7.0-beta01/AndroidManifest.xml:23:5-35:19
+MERGED from [androidx.car.app:app-projected:1.7.0-beta01] /Users/narko/.gradle/caches/8.10/transforms/6f3457a46f3195b9ef185c4fd9c79a01/transformed/app-projected-1.7.0-beta01/AndroidManifest.xml:23:5-35:19
+MERGED from [androidx.car.app:app:1.7.0-beta01] /Users/narko/.gradle/caches/8.10/transforms/ca23afc590aafe8362c632c28d1b9165/transformed/app-1.7.0-beta01/AndroidManifest.xml:30:5-39:19
+MERGED from [androidx.car.app:app:1.7.0-beta01] /Users/narko/.gradle/caches/8.10/transforms/ca23afc590aafe8362c632c28d1b9165/transformed/app-1.7.0-beta01/AndroidManifest.xml:30:5-39:19
+MERGED from [androidx.core:core:1.13.1] /Users/narko/.gradle/caches/8.10/transforms/e6106630f63a52e63b7a2877a2d563fa/transformed/core-1.13.1/AndroidManifest.xml:28:5-89
+MERGED from [androidx.core:core:1.13.1] /Users/narko/.gradle/caches/8.10/transforms/e6106630f63a52e63b7a2877a2d563fa/transformed/core-1.13.1/AndroidManifest.xml:28:5-89
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/narko/.gradle/caches/8.10/transforms/a080864163013ccaeed30c62a147f357/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/narko/.gradle/caches/8.10/transforms/a080864163013ccaeed30c62a147f357/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.0] /Users/narko/.gradle/caches/8.10/transforms/325dd23874201d71c6c7f402aff5dd3d/transformed/profileinstaller-1.3.0/AndroidManifest.xml:23:5-53:19
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.0] /Users/narko/.gradle/caches/8.10/transforms/325dd23874201d71c6c7f402aff5dd3d/transformed/profileinstaller-1.3.0/AndroidManifest.xml:23:5-53:19
+MERGED from [androidx.startup:startup-runtime:1.1.1] /Users/narko/.gradle/caches/8.10/transforms/d613b3435520b808d575e64933c46067/transformed/startup-runtime-1.1.1/AndroidManifest.xml:25:5-31:19
+MERGED from [androidx.startup:startup-runtime:1.1.1] /Users/narko/.gradle/caches/8.10/transforms/d613b3435520b808d575e64933c46067/transformed/startup-runtime-1.1.1/AndroidManifest.xml:25:5-31:19
+	android:extractNativeLibs
+		INJECTED from /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/mobile/src/main/AndroidManifest.xml
+	android:appComponentFactory
+		ADDED from [androidx.core:core:1.13.1] /Users/narko/.gradle/caches/8.10/transforms/e6106630f63a52e63b7a2877a2d563fa/transformed/core-1.13.1/AndroidManifest.xml:28:18-86
+	android:supportsRtl
+		ADDED from /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/mobile/src/main/AndroidManifest.xml:46:7-33
+	android:label
+		ADDED from /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/mobile/src/main/AndroidManifest.xml:44:7-39
+	android:icon
+		ADDED from /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/mobile/src/main/AndroidManifest.xml:45:7-43
+meta-data#com.google.android.gms.car.application
+ADDED from /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/mobile/src/main/AndroidManifest.xml:48:5-51:58
+	android:resource
+		ADDED from /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/mobile/src/main/AndroidManifest.xml:50:9-52
+	tools:ignore
+		ADDED from /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/mobile/src/main/AndroidManifest.xml:51:9-55
+	android:name
+		ADDED from /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/mobile/src/main/AndroidManifest.xml:49:9-62
+meta-data#androidx.car.app.theme
+ADDED from /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/mobile/src/main/AndroidManifest.xml:53:5-56:58
+	android:resource
+		ADDED from /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/mobile/src/main/AndroidManifest.xml:55:9-46
+	tools:ignore
+		ADDED from /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/mobile/src/main/AndroidManifest.xml:56:9-55
+	android:name
+		ADDED from /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/mobile/src/main/AndroidManifest.xml:54:9-46
+meta-data#androidx.car.app.minCarApiLevel
+ADDED from /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/mobile/src/main/AndroidManifest.xml:58:5-60:58
+	tools:ignore
+		ADDED from /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/mobile/src/main/AndroidManifest.xml:60:9-55
+	android:value
+		ADDED from /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/mobile/src/main/AndroidManifest.xml:59:9-26
+	android:name
+		ADDED from /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/mobile/src/main/AndroidManifest.xml:58:16-62
+service#androidx.car.app.sample.showcase.common.ShowcaseService
+ADDED from /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/mobile/src/main/AndroidManifest.xml:62:5-74:15
+	android:exported
+		ADDED from /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/mobile/src/main/AndroidManifest.xml:64:9-32
+	android:name
+		ADDED from /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/mobile/src/main/AndroidManifest.xml:63:9-47
+intent-filter#action:name:androidx.car.app.CarAppService+category:name:androidx.car.app.category.NAVIGATION
+ADDED from /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/mobile/src/main/AndroidManifest.xml:65:7-68:23
+action#androidx.car.app.CarAppService
+ADDED from /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/mobile/src/main/AndroidManifest.xml:66:11-66
+	android:name
+		ADDED from /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/mobile/src/main/AndroidManifest.xml:66:19-64
+category#androidx.car.app.category.NAVIGATION
+ADDED from /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/mobile/src/main/AndroidManifest.xml:67:11-74
+	android:name
+		ADDED from /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/mobile/src/main/AndroidManifest.xml:67:21-72
+intent-filter#action:name:androidx.car.app.action.NAVIGATE+category:name:android.intent.category.DEFAULT+data:scheme:geo
+ADDED from /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/mobile/src/main/AndroidManifest.xml:69:7-73:23
+action#androidx.car.app.action.NAVIGATE
+ADDED from /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/mobile/src/main/AndroidManifest.xml:70:9-67
+	android:name
+		ADDED from /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/mobile/src/main/AndroidManifest.xml:70:17-64
+category#android.intent.category.DEFAULT
+ADDED from /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/mobile/src/main/AndroidManifest.xml:71:9-67
+	android:name
+		ADDED from /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/mobile/src/main/AndroidManifest.xml:71:19-65
+data
+ADDED from /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/mobile/src/main/AndroidManifest.xml:72:9-38
+	android:scheme
+		ADDED from /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/mobile/src/main/AndroidManifest.xml:72:15-35
+service#androidx.car.app.sample.showcase.common.screens.navigationdemos.NavigationNotificationService
+ADDED from /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/mobile/src/main/AndroidManifest.xml:76:5-80:15
+	android:exported
+		ADDED from /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/mobile/src/main/AndroidManifest.xml:79:9-32
+	android:foregroundServiceType
+		ADDED from /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/mobile/src/main/AndroidManifest.xml:78:9-49
+	android:name
+		ADDED from /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/mobile/src/main/AndroidManifest.xml:77:9-85
+provider#androidx.car.app.sample.showcase.common.screens.templatelayouts.listtemplates.DelayedFileProvider
+ADDED from /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/mobile/src/main/AndroidManifest.xml:82:5-90:16
+	android:grantUriPermissions
+		ADDED from /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/mobile/src/main/AndroidManifest.xml:86:9-43
+	android:authorities
+		ADDED from /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/mobile/src/main/AndroidManifest.xml:84:9-56
+	android:exported
+		ADDED from /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/mobile/src/main/AndroidManifest.xml:85:9-33
+	android:name
+		ADDED from /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/mobile/src/main/AndroidManifest.xml:83:9-89
+meta-data#android.support.FILE_PROVIDER_PATHS
+ADDED from /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/mobile/src/main/AndroidManifest.xml:87:7-89:56
+	android:resource
+		ADDED from /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/mobile/src/main/AndroidManifest.xml:89:11-54
+	android:name
+		ADDED from /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/mobile/src/main/AndroidManifest.xml:88:11-61
+uses-sdk
+INJECTED from /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/mobile/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/mobile/src/main/AndroidManifest.xml
+INJECTED from /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/mobile/src/main/AndroidManifest.xml
+MERGED from [:showcase:common] /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/common/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:20:5-44
+MERGED from [:showcase:common] /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/common/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:20:5-44
+MERGED from [androidx.car.app:app-projected:1.7.0-beta01] /Users/narko/.gradle/caches/8.10/transforms/6f3457a46f3195b9ef185c4fd9c79a01/transformed/app-projected-1.7.0-beta01/AndroidManifest.xml:21:5-44
+MERGED from [androidx.car.app:app-projected:1.7.0-beta01] /Users/narko/.gradle/caches/8.10/transforms/6f3457a46f3195b9ef185c4fd9c79a01/transformed/app-projected-1.7.0-beta01/AndroidManifest.xml:21:5-44
+MERGED from [androidx.car.app:app:1.7.0-beta01] /Users/narko/.gradle/caches/8.10/transforms/ca23afc590aafe8362c632c28d1b9165/transformed/app-1.7.0-beta01/AndroidManifest.xml:21:5-44
+MERGED from [androidx.car.app:app:1.7.0-beta01] /Users/narko/.gradle/caches/8.10/transforms/ca23afc590aafe8362c632c28d1b9165/transformed/app-1.7.0-beta01/AndroidManifest.xml:21:5-44
+MERGED from [androidx.activity:activity:1.2.0] /Users/narko/.gradle/caches/8.10/transforms/75cbcd1e9c1a7db3b3e6be62859bb773/transformed/activity-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.activity:activity:1.2.0] /Users/narko/.gradle/caches/8.10/transforms/75cbcd1e9c1a7db3b3e6be62859bb773/transformed/activity-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.media:media:1.6.0] /Users/narko/.gradle/caches/8.10/transforms/731f0aed45c9486aa0785d80ee92ad5a/transformed/media-1.6.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.media:media:1.6.0] /Users/narko/.gradle/caches/8.10/transforms/731f0aed45c9486aa0785d80ee92ad5a/transformed/media-1.6.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core:1.13.1] /Users/narko/.gradle/caches/8.10/transforms/e6106630f63a52e63b7a2877a2d563fa/transformed/core-1.13.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.13.1] /Users/narko/.gradle/caches/8.10/transforms/e6106630f63a52e63b7a2877a2d563fa/transformed/core-1.13.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.6.2] /Users/narko/.gradle/caches/8.10/transforms/b83b47fdb01605987dd58983ff92adc9/transformed/lifecycle-livedata-core-2.6.2/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.6.2] /Users/narko/.gradle/caches/8.10/transforms/b83b47fdb01605987dd58983ff92adc9/transformed/lifecycle-livedata-core-2.6.2/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.6.2] /Users/narko/.gradle/caches/8.10/transforms/aa4d3349a61477bf54ecd16006702b54/transformed/lifecycle-viewmodel-2.6.2/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.6.2] /Users/narko/.gradle/caches/8.10/transforms/aa4d3349a61477bf54ecd16006702b54/transformed/lifecycle-viewmodel-2.6.2/AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate:1.2.1] /Users/narko/.gradle/caches/8.10/transforms/d5836b1d81dac45c506ddc29a5826739/transformed/savedstate-1.2.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate:1.2.1] /Users/narko/.gradle/caches/8.10/transforms/d5836b1d81dac45c506ddc29a5826739/transformed/savedstate-1.2.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.6.2] /Users/narko/.gradle/caches/8.10/transforms/80f46f10d92af788e0e0030bd2d25dde/transformed/lifecycle-runtime-2.6.2/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.6.2] /Users/narko/.gradle/caches/8.10/transforms/80f46f10d92af788e0e0030bd2d25dde/transformed/lifecycle-runtime-2.6.2/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.6.2] /Users/narko/.gradle/caches/8.10/transforms/4d58143c3db66ed86ab29840bcd1d368/transformed/lifecycle-viewmodel-savedstate-2.6.2/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.6.2] /Users/narko/.gradle/caches/8.10/transforms/4d58143c3db66ed86ab29840bcd1d368/transformed/lifecycle-viewmodel-savedstate-2.6.2/AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core-ktx:1.13.1] /Users/narko/.gradle/caches/8.10/transforms/b10c882c0bd385d704b7bf780f1473b3/transformed/core-ktx-1.13.1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.core:core-ktx:1.13.1] /Users/narko/.gradle/caches/8.10/transforms/b10c882c0bd385d704b7bf780f1473b3/transformed/core-ktx-1.13.1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.annotation:annotation-experimental:1.4.1] /Users/narko/.gradle/caches/8.10/transforms/57ebd5c3573cfb1c2bab35ab52a3c42d/transformed/annotation-experimental-1.4.1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.annotation:annotation-experimental:1.4.1] /Users/narko/.gradle/caches/8.10/transforms/57ebd5c3573cfb1c2bab35ab52a3c42d/transformed/annotation-experimental-1.4.1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/narko/.gradle/caches/8.10/transforms/d80d77fe8d89e46a7fc8af50730470f3/transformed/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/narko/.gradle/caches/8.10/transforms/d80d77fe8d89e46a7fc8af50730470f3/transformed/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/narko/.gradle/caches/8.10/transforms/a080864163013ccaeed30c62a147f357/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/narko/.gradle/caches/8.10/transforms/a080864163013ccaeed30c62a147f357/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.0] /Users/narko/.gradle/caches/8.10/transforms/325dd23874201d71c6c7f402aff5dd3d/transformed/profileinstaller-1.3.0/AndroidManifest.xml:21:5-44
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.0] /Users/narko/.gradle/caches/8.10/transforms/325dd23874201d71c6c7f402aff5dd3d/transformed/profileinstaller-1.3.0/AndroidManifest.xml:21:5-44
+MERGED from [androidx.startup:startup-runtime:1.1.1] /Users/narko/.gradle/caches/8.10/transforms/d613b3435520b808d575e64933c46067/transformed/startup-runtime-1.1.1/AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.startup:startup-runtime:1.1.1] /Users/narko/.gradle/caches/8.10/transforms/d613b3435520b808d575e64933c46067/transformed/startup-runtime-1.1.1/AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.tracing:tracing:1.0.0] /Users/narko/.gradle/caches/8.10/transforms/3fe6f9737cf17ffcc04ba01dc6fd8aaa/transformed/tracing-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.tracing:tracing:1.0.0] /Users/narko/.gradle/caches/8.10/transforms/3fe6f9737cf17ffcc04ba01dc6fd8aaa/transformed/tracing-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.arch.core:core-runtime:2.2.0] /Users/narko/.gradle/caches/8.10/transforms/e8bc6007665ebd76a168825e8abd603e/transformed/core-runtime-2.2.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.2.0] /Users/narko/.gradle/caches/8.10/transforms/e8bc6007665ebd76a168825e8abd603e/transformed/core-runtime-2.2.0/AndroidManifest.xml:20:5-44
+	android:targetSdkVersion
+		INJECTED from /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/mobile/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/mobile/src/main/AndroidManifest.xml
+permission-group#android.permission-group.SHOWCASE
+ADDED from [:showcase:common] /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/common/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:22:5-25:46
+	android:label
+		ADDED from [:showcase:common] /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/common/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:25:9-43
+	android:description
+		ADDED from [:showcase:common] /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/common/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:24:9-61
+	android:name
+		ADDED from [:showcase:common] /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/common/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:23:9-57
+uses-permission#android.permission.RECORD_AUDIO
+ADDED from [:showcase:common] /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/common/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:37:5-41:71
+	android:label
+		ADDED from [:showcase:common] /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/common/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:40:9-50
+	android:permissionGroup
+		ADDED from [:showcase:common] /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/common/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:41:9-68
+	android:description
+		ADDED from [:showcase:common] /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/common/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:39:9-61
+	android:name
+		ADDED from [:showcase:common] /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/common/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:38:9-55
+activity#androidx.car.app.sample.showcase.common.screens.templatelayouts.SignInWithGoogleActivity
+ADDED from [:showcase:common] /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/common/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:44:9-125
+	android:name
+		ADDED from [:showcase:common] /Users/narko/Workspace/sandbox/car-samples-mirror/car/app/app-samples/showcase/common/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:44:19-122
+service#androidx.car.app.CarAppMetadataHolderService
+ADDED from [androidx.car.app:app-projected:1.7.0-beta01] /Users/narko/.gradle/caches/8.10/transforms/6f3457a46f3195b9ef185c4fd9c79a01/transformed/app-projected-1.7.0-beta01/AndroidManifest.xml:24:9-34:19
+	tools:node
+		ADDED from [androidx.car.app:app-projected:1.7.0-beta01] /Users/narko/.gradle/caches/8.10/transforms/6f3457a46f3195b9ef185c4fd9c79a01/transformed/app-projected-1.7.0-beta01/AndroidManifest.xml:30:13-31
+	android:process
+		ADDED from [androidx.car.app:app-projected:1.7.0-beta01] /Users/narko/.gradle/caches/8.10/transforms/6f3457a46f3195b9ef185c4fd9c79a01/transformed/app-projected-1.7.0-beta01/AndroidManifest.xml:28:13-31
+	android:enabled
+		ADDED from [androidx.car.app:app-projected:1.7.0-beta01] /Users/narko/.gradle/caches/8.10/transforms/6f3457a46f3195b9ef185c4fd9c79a01/transformed/app-projected-1.7.0-beta01/AndroidManifest.xml:26:13-36
+	android:exported
+		ADDED from [androidx.car.app:app-projected:1.7.0-beta01] /Users/narko/.gradle/caches/8.10/transforms/6f3457a46f3195b9ef185c4fd9c79a01/transformed/app-projected-1.7.0-beta01/AndroidManifest.xml:27:13-37
+	tools:ignore
+		ADDED from [androidx.car.app:app-projected:1.7.0-beta01] /Users/narko/.gradle/caches/8.10/transforms/6f3457a46f3195b9ef185c4fd9c79a01/transformed/app-projected-1.7.0-beta01/AndroidManifest.xml:29:13-75
+	android:name
+		ADDED from [androidx.car.app:app-projected:1.7.0-beta01] /Users/narko/.gradle/caches/8.10/transforms/6f3457a46f3195b9ef185c4fd9c79a01/transformed/app-projected-1.7.0-beta01/AndroidManifest.xml:25:13-72
+meta-data#androidx.car.app.CarAppMetadataHolderService.CAR_HARDWARE_MANAGER
+ADDED from [androidx.car.app:app-projected:1.7.0-beta01] /Users/narko/.gradle/caches/8.10/transforms/6f3457a46f3195b9ef185c4fd9c79a01/transformed/app-projected-1.7.0-beta01/AndroidManifest.xml:31:13-33:89
+	android:value
+		ADDED from [androidx.car.app:app-projected:1.7.0-beta01] /Users/narko/.gradle/caches/8.10/transforms/6f3457a46f3195b9ef185c4fd9c79a01/transformed/app-projected-1.7.0-beta01/AndroidManifest.xml:33:17-86
+	android:name
+		ADDED from [androidx.car.app:app-projected:1.7.0-beta01] /Users/narko/.gradle/caches/8.10/transforms/6f3457a46f3195b9ef185c4fd9c79a01/transformed/app-projected-1.7.0-beta01/AndroidManifest.xml:32:17-97
+queries
+ADDED from [androidx.car.app:app:1.7.0-beta01] /Users/narko/.gradle/caches/8.10/transforms/ca23afc590aafe8362c632c28d1b9165/transformed/app-1.7.0-beta01/AndroidManifest.xml:23:5-28:15
+provider#androidx.car.app.connection.provider
+ADDED from [androidx.car.app:app:1.7.0-beta01] /Users/narko/.gradle/caches/8.10/transforms/ca23afc590aafe8362c632c28d1b9165/transformed/app-1.7.0-beta01/AndroidManifest.xml:24:9-27:43
+	android:authorities
+		ADDED from [androidx.car.app:app:1.7.0-beta01] /Users/narko/.gradle/caches/8.10/transforms/ca23afc590aafe8362c632c28d1b9165/transformed/app-1.7.0-beta01/AndroidManifest.xml:26:13-62
+	tools:ignore
+		ADDED from [androidx.car.app:app:1.7.0-beta01] /Users/narko/.gradle/caches/8.10/transforms/ca23afc590aafe8362c632c28d1b9165/transformed/app-1.7.0-beta01/AndroidManifest.xml:27:13-40
+	android:name
+		ADDED from [androidx.car.app:app:1.7.0-beta01] /Users/narko/.gradle/caches/8.10/transforms/ca23afc590aafe8362c632c28d1b9165/transformed/app-1.7.0-beta01/AndroidManifest.xml:25:13-64
+activity#androidx.car.app.CarAppPermissionActivity
+ADDED from [androidx.car.app:app:1.7.0-beta01] /Users/narko/.gradle/caches/8.10/transforms/ca23afc590aafe8362c632c28d1b9165/transformed/app-1.7.0-beta01/AndroidManifest.xml:31:9-34:75
+	android:exported
+		ADDED from [androidx.car.app:app:1.7.0-beta01] /Users/narko/.gradle/caches/8.10/transforms/ca23afc590aafe8362c632c28d1b9165/transformed/app-1.7.0-beta01/AndroidManifest.xml:33:13-37
+	android:theme
+		ADDED from [androidx.car.app:app:1.7.0-beta01] /Users/narko/.gradle/caches/8.10/transforms/ca23afc590aafe8362c632c28d1b9165/transformed/app-1.7.0-beta01/AndroidManifest.xml:34:13-72
+	android:name
+		ADDED from [androidx.car.app:app:1.7.0-beta01] /Users/narko/.gradle/caches/8.10/transforms/ca23afc590aafe8362c632c28d1b9165/transformed/app-1.7.0-beta01/AndroidManifest.xml:32:13-69
+receiver#androidx.car.app.notification.CarAppNotificationBroadcastReceiver
+ADDED from [androidx.car.app:app:1.7.0-beta01] /Users/narko/.gradle/caches/8.10/transforms/ca23afc590aafe8362c632c28d1b9165/transformed/app-1.7.0-beta01/AndroidManifest.xml:36:9-38:40
+	android:exported
+		ADDED from [androidx.car.app:app:1.7.0-beta01] /Users/narko/.gradle/caches/8.10/transforms/ca23afc590aafe8362c632c28d1b9165/transformed/app-1.7.0-beta01/AndroidManifest.xml:38:13-37
+	android:name
+		ADDED from [androidx.car.app:app:1.7.0-beta01] /Users/narko/.gradle/caches/8.10/transforms/ca23afc590aafe8362c632c28d1b9165/transformed/app-1.7.0-beta01/AndroidManifest.xml:37:13-93
+permission#${applicationId}.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.13.1] /Users/narko/.gradle/caches/8.10/transforms/e6106630f63a52e63b7a2877a2d563fa/transformed/core-1.13.1/AndroidManifest.xml:22:5-24:47
+	android:protectionLevel
+		ADDED from [androidx.core:core:1.13.1] /Users/narko/.gradle/caches/8.10/transforms/e6106630f63a52e63b7a2877a2d563fa/transformed/core-1.13.1/AndroidManifest.xml:24:9-44
+	android:name
+		ADDED from [androidx.core:core:1.13.1] /Users/narko/.gradle/caches/8.10/transforms/e6106630f63a52e63b7a2877a2d563fa/transformed/core-1.13.1/AndroidManifest.xml:23:9-81
+permission#androidx.car.app.sample.showcase.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.13.1] /Users/narko/.gradle/caches/8.10/transforms/e6106630f63a52e63b7a2877a2d563fa/transformed/core-1.13.1/AndroidManifest.xml:22:5-24:47
+	android:protectionLevel
+		ADDED from [androidx.core:core:1.13.1] /Users/narko/.gradle/caches/8.10/transforms/e6106630f63a52e63b7a2877a2d563fa/transformed/core-1.13.1/AndroidManifest.xml:24:9-44
+	android:name
+		ADDED from [androidx.core:core:1.13.1] /Users/narko/.gradle/caches/8.10/transforms/e6106630f63a52e63b7a2877a2d563fa/transformed/core-1.13.1/AndroidManifest.xml:23:9-81
+uses-permission#${applicationId}.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.13.1] /Users/narko/.gradle/caches/8.10/transforms/e6106630f63a52e63b7a2877a2d563fa/transformed/core-1.13.1/AndroidManifest.xml:26:5-97
+	android:name
+		ADDED from [androidx.core:core:1.13.1] /Users/narko/.gradle/caches/8.10/transforms/e6106630f63a52e63b7a2877a2d563fa/transformed/core-1.13.1/AndroidManifest.xml:26:22-94
+uses-permission#androidx.car.app.sample.showcase.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.13.1] /Users/narko/.gradle/caches/8.10/transforms/e6106630f63a52e63b7a2877a2d563fa/transformed/core-1.13.1/AndroidManifest.xml:26:5-97
+	android:name
+		ADDED from [androidx.core:core:1.13.1] /Users/narko/.gradle/caches/8.10/transforms/e6106630f63a52e63b7a2877a2d563fa/transformed/core-1.13.1/AndroidManifest.xml:26:22-94
+provider#androidx.startup.InitializationProvider
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /Users/narko/.gradle/caches/8.10/transforms/325dd23874201d71c6c7f402aff5dd3d/transformed/profileinstaller-1.3.0/AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.startup:startup-runtime:1.1.1] /Users/narko/.gradle/caches/8.10/transforms/d613b3435520b808d575e64933c46067/transformed/startup-runtime-1.1.1/AndroidManifest.xml:26:9-30:34
+MERGED from [androidx.startup:startup-runtime:1.1.1] /Users/narko/.gradle/caches/8.10/transforms/d613b3435520b808d575e64933c46067/transformed/startup-runtime-1.1.1/AndroidManifest.xml:26:9-30:34
+	tools:node
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /Users/narko/.gradle/caches/8.10/transforms/325dd23874201d71c6c7f402aff5dd3d/transformed/profileinstaller-1.3.0/AndroidManifest.xml:28:13-31
+	android:authorities
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /Users/narko/.gradle/caches/8.10/transforms/325dd23874201d71c6c7f402aff5dd3d/transformed/profileinstaller-1.3.0/AndroidManifest.xml:26:13-68
+	android:exported
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /Users/narko/.gradle/caches/8.10/transforms/325dd23874201d71c6c7f402aff5dd3d/transformed/profileinstaller-1.3.0/AndroidManifest.xml:27:13-37
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /Users/narko/.gradle/caches/8.10/transforms/325dd23874201d71c6c7f402aff5dd3d/transformed/profileinstaller-1.3.0/AndroidManifest.xml:25:13-67
+meta-data#androidx.profileinstaller.ProfileInstallerInitializer
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /Users/narko/.gradle/caches/8.10/transforms/325dd23874201d71c6c7f402aff5dd3d/transformed/profileinstaller-1.3.0/AndroidManifest.xml:29:13-31:52
+	android:value
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /Users/narko/.gradle/caches/8.10/transforms/325dd23874201d71c6c7f402aff5dd3d/transformed/profileinstaller-1.3.0/AndroidManifest.xml:31:17-49
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /Users/narko/.gradle/caches/8.10/transforms/325dd23874201d71c6c7f402aff5dd3d/transformed/profileinstaller-1.3.0/AndroidManifest.xml:30:17-85
+receiver#androidx.profileinstaller.ProfileInstallReceiver
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /Users/narko/.gradle/caches/8.10/transforms/325dd23874201d71c6c7f402aff5dd3d/transformed/profileinstaller-1.3.0/AndroidManifest.xml:34:9-52:20
+	android:enabled
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /Users/narko/.gradle/caches/8.10/transforms/325dd23874201d71c6c7f402aff5dd3d/transformed/profileinstaller-1.3.0/AndroidManifest.xml:37:13-35
+	android:exported
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /Users/narko/.gradle/caches/8.10/transforms/325dd23874201d71c6c7f402aff5dd3d/transformed/profileinstaller-1.3.0/AndroidManifest.xml:38:13-36
+	android:permission
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /Users/narko/.gradle/caches/8.10/transforms/325dd23874201d71c6c7f402aff5dd3d/transformed/profileinstaller-1.3.0/AndroidManifest.xml:39:13-57
+	android:directBootAware
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /Users/narko/.gradle/caches/8.10/transforms/325dd23874201d71c6c7f402aff5dd3d/transformed/profileinstaller-1.3.0/AndroidManifest.xml:36:13-44
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /Users/narko/.gradle/caches/8.10/transforms/325dd23874201d71c6c7f402aff5dd3d/transformed/profileinstaller-1.3.0/AndroidManifest.xml:35:13-76
+intent-filter#action:name:androidx.profileinstaller.action.INSTALL_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /Users/narko/.gradle/caches/8.10/transforms/325dd23874201d71c6c7f402aff5dd3d/transformed/profileinstaller-1.3.0/AndroidManifest.xml:40:13-42:29
+action#androidx.profileinstaller.action.INSTALL_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /Users/narko/.gradle/caches/8.10/transforms/325dd23874201d71c6c7f402aff5dd3d/transformed/profileinstaller-1.3.0/AndroidManifest.xml:41:17-91
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /Users/narko/.gradle/caches/8.10/transforms/325dd23874201d71c6c7f402aff5dd3d/transformed/profileinstaller-1.3.0/AndroidManifest.xml:41:25-88
+intent-filter#action:name:androidx.profileinstaller.action.SKIP_FILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /Users/narko/.gradle/caches/8.10/transforms/325dd23874201d71c6c7f402aff5dd3d/transformed/profileinstaller-1.3.0/AndroidManifest.xml:43:13-45:29
+action#androidx.profileinstaller.action.SKIP_FILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /Users/narko/.gradle/caches/8.10/transforms/325dd23874201d71c6c7f402aff5dd3d/transformed/profileinstaller-1.3.0/AndroidManifest.xml:44:17-85
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /Users/narko/.gradle/caches/8.10/transforms/325dd23874201d71c6c7f402aff5dd3d/transformed/profileinstaller-1.3.0/AndroidManifest.xml:44:25-82
+intent-filter#action:name:androidx.profileinstaller.action.SAVE_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /Users/narko/.gradle/caches/8.10/transforms/325dd23874201d71c6c7f402aff5dd3d/transformed/profileinstaller-1.3.0/AndroidManifest.xml:46:13-48:29
+action#androidx.profileinstaller.action.SAVE_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /Users/narko/.gradle/caches/8.10/transforms/325dd23874201d71c6c7f402aff5dd3d/transformed/profileinstaller-1.3.0/AndroidManifest.xml:47:17-88
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /Users/narko/.gradle/caches/8.10/transforms/325dd23874201d71c6c7f402aff5dd3d/transformed/profileinstaller-1.3.0/AndroidManifest.xml:47:25-85
+intent-filter#action:name:androidx.profileinstaller.action.BENCHMARK_OPERATION
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /Users/narko/.gradle/caches/8.10/transforms/325dd23874201d71c6c7f402aff5dd3d/transformed/profileinstaller-1.3.0/AndroidManifest.xml:49:13-51:29
+action#androidx.profileinstaller.action.BENCHMARK_OPERATION
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /Users/narko/.gradle/caches/8.10/transforms/325dd23874201d71c6c7f402aff5dd3d/transformed/profileinstaller-1.3.0/AndroidManifest.xml:50:17-95
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /Users/narko/.gradle/caches/8.10/transforms/325dd23874201d71c6c7f402aff5dd3d/transformed/profileinstaller-1.3.0/AndroidManifest.xml:50:25-92
