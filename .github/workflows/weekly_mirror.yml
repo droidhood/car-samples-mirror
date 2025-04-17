@@ -19,9 +19,9 @@ jobs:
         git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
     - name: Install git-filter-repo
-        run: |
-          sudo apt-get update
-          sudo apt install git-filter-repo
+      run: |
+        sudo apt-get update
+        sudo apt install git-filter-repo
     
     - name: Run the script
       run: |
