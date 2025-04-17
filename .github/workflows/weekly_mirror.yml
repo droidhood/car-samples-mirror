@@ -38,7 +38,12 @@ jobs:
     - name: Get branch name
       id: get_branch
       shell: bash
-      run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+      run: |
+        echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+
+    - name: Prepare branch for PR
+      run: |      
+        git rebase origin/main
 
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v6
