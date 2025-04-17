@@ -22,7 +22,7 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt install git-filter-repo
-    
+
     - name: Run the script
       run: |
         chmod +x scripts/*
@@ -31,8 +31,6 @@ jobs:
 
     - name: Get current date
       id: date
-<<<<<<< HEAD
-<<<<<<< HEAD
       run: echo "date=$(date -u +"%Y-%m-%d-%H%M%S")" >> $GITHUB_ENV
 
     - name: Get branch name
@@ -51,26 +49,3 @@ jobs:
         labels: 'auto-generated'
         branch-sufix: timestamp
         delete-branch: true
-=======
-      run: echo "date=$(date -u +"%Y-%m-%d")" >> $GITHUB_ENV
-=======
-      run: echo "date=$(date -u +"%Y-%m-%d-%H%M%S")" >> $GITHUB_ENV
-
-    - name: Get branch name
-      id: get_branch
-      shell: bash
-      run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
-
-    - name: Create Pull Request
-      uses: peter-evans/create-pull-request@v6
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        base: ${{ steps.get_branch.outputs.branch }}
-        branch: update-samples-${{ env.date }}
-        title: "Weekly Update: ${{ env.date }}"
-        body: "This PR contains the weekly update from https://android.googlesource.com/platform/frameworks/support/+/refs/heads/androidx-main/car/app/app-samples"
-        labels: 'auto-generated'
-<<<<<<< HEAD
->>>>>>> b21575e7 (Add weekly action)
-=======
-        branch-sufix: timestamp
