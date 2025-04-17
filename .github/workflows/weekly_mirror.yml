@@ -20,14 +20,9 @@ jobs:
     
     - name: Run the script
       run: |
-<<<<<<< HEAD
-        chmod +x process_samples.sh
-        ./process_samples.sh
-=======
         chmod +x scripts/*
         scripts/get_samples.sh
         scripts/process_samples.sh
->>>>>>> arv/mirror-clone
 
     - name: Get current date
       id: date
