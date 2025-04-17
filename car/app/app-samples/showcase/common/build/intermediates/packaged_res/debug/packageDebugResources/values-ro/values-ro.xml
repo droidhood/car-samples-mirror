@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string msgid="2084026313768299185" name="accelerometer">"Accelerometru"</string>
+    <string msgid="4899660585470647578" name="accept_action_title">"Accept"</string>
+    <string msgid="2846223398214158872" name="additional_data_text">"Sunt permise actualizările operațiunilor în fundal."</string>
+    <string msgid="3546689652240300617" name="additional_data_title">"Date suplimentare"</string>
+    <string msgid="5755100726890686184" name="additional_text">"Consultă "<annotation link="terms_of_service">"termenii și condițiile"</annotation></string>
+    <string msgid="9010635942573581302" name="address">"Adresă"</string>
+    <string msgid="5568380708832805374" name="alert_timeout_toast_msg">"Alerta a expirat!"</string>
+    <string msgid="7534936683349723423" name="app_icon_title">"Pictograma aplicației"</string>
+    <string msgid="7429415605726615529" name="application_overflow_subtitle1">"Testează următoarele șabloane în timpul schimbării"</string>
+    <string msgid="4385123036846369714" name="application_overflow_subtitle2">"stării vehiculului din Parcat în Cu mașina"</string>
+    <string msgid="396427940886169325" name="application_overflow_title">"Program de validare a meniului suplimentar al aplicației"</string>
+    <string msgid="6708013121387053838" name="arrived_demo_title">"Demonstrație pentru sosire"</string>
+    <string msgid="9132265698563096988" name="arrived_exclamation_msg">"Ai sosit!"</string>
+    <string msgid="8232883866013711974" name="avoid_ferries_row_title">"Fără feriboturi"</string>
+    <string msgid="4711913426200490304" name="avoid_highways_row_title">"Fără autostrăzi"</string>
+    <string msgid="5194057244144831024" name="avoid_tolls_row_title">"Fără drumuri cu taxă"</string>
+    <string msgid="6392829425035919422" name="back_caps_action_title">"ÎNAPOI"</string>
+    <string msgid="2183623637331546820" name="battery">"Baterie"</string>
+    <string msgid="7246005909846715898" name="browse_places_title">"Răsfoiește locații"</string>
+    <string msgid="2487119172744644317" name="bug_reported_toast_msg">"Eroarea a fost raportată!"</string>
+    <string msgid="6218977436905001611" name="call_action_title">"Sună"</string>
+    <string msgid="1149738685397349236" name="cancel_action_title">"Anulează"</string>
+    <string msgid="1374986823057959608" name="cancel_reservation_title">"Ecran de anulare a rezervării"</string>
+    <string msgid="3679106197233262689" name="car_hardware_demo_title">"Demonstrație cu hardware-ul pentru mașină"</string>
+    <string msgid="1244783247616395012" name="car_hardware_info">"Informații despre hardware-ul pentru mașină"</string>
+    <string msgid="5826128477363068617" name="car_hardware_location">"Locația hardware-ului pentru mașină"</string>
+    <string msgid="4783851267093259949" name="category_title">"Categorie"</string>
+    <string msgid="957766225794389167" name="changes_selection_to_index_toast_msg_prefix">"Opțiunea selectată s-a schimbat în index"</string>
+    <string msgid="906023941445896399" name="checked_action_title">"Bifat"</string>
+    <string msgid="9068303427922069941" name="clicked_row_prefix">"S-a dat clic pe rândul"</string>
+    <string msgid="2661907510124308560" name="close_action_title">"Închide"</string>
+    <string msgid="1822427636476178993" name="color_demo">"Demonstrație cu culori"</string>
+    <string msgid="5173288934252528929" name="colored_secondary_row_title">"Text secundar colorat"</string>
+    <string msgid="2585755255290185096" name="commute_action_title">"Navetă"</string>
+    <string msgid="4112684360647638688" name="commute_toast_msg">"A fost apăsat butonul Navetă"</string>
+    <string msgid="7037367764762441245" name="compass">"Busolă"</string>
+    <string msgid="5726880972110281095" name="content_limits">"Limite privind conținutul"</string>
+    <string msgid="3207211638386727610" name="content_limits_demo_title">"Demonstrație cu limite privind conținutul"</string>
+    <string msgid="5708602618664311097" name="content_provider_icons_demo_title">"Demonstrație cu pictogramele furnizorilor de conținut"</string>
+    <string msgid="5172258139245088080" name="continue_route">"Accesează traseul"</string>
+    <string msgid="6231797535084469163" name="continue_start_nav">"Continuă pentru a începe navigarea"</string>
+    <string msgid="8450127046762442244" name="decoration_test_title">"Test pentru decorație"</string>
+    <string msgid="6347996298832939989" name="default_importance">"Prestabilit"</string>
+    <string msgid="3145707439707628311" name="dial">"Sună"</string>
+    <string msgid="3003225080532928046" name="disable_all_rows">"Dezactivează toate rândurile"</string>
+    <string msgid="9161318805331348165" name="display_speed">"Afișează viteza"</string>
+    <string msgid="7205549445477319606" name="email_hint">"E-mail"</string>
+    <string msgid="5989013634820902455" name="empty_list_demo_title">"Listă goală demonstrativă"</string>
+    <string msgid="5331395517560728138" name="empty_list_message">"Lista este goală"</string>
+    <string msgid="7274285275711872091" name="enable_all_rows">"Activează toate rândurile"</string>
+    <string msgid="8181862247222797044" name="enable_location_action_title">"Activează locația"</string>
+    <string msgid="472752487966156897" name="enable_location_permission_on_device_msg">"Activează permisiunile pentru locație pe dispozitiv"</string>
+    <string msgid="5082615523959139121" name="enable_location_permission_on_phone_msg">"Activează locația pe ecranul telefonului"</string>
+    <string msgid="81415433590192158" name="energy_profile">"Profil energetic"</string>
+    <string msgid="2277845607662494696" name="ev_connected">"Port de încărcare VE conectat"</string>
+    <string msgid="735458637011996125" name="ev_connector_types">"Tipuri de conectori VE"</string>
+    <string msgid="4916704450914519643" name="ev_open">"Port de încărcare VE deschis"</string>
+    <string msgid="8631503055894800688" name="example_1_text">"Textul este "<annotation color="red">"roșu"</annotation></string>
+    <string msgid="1359373957397219102" name="example_2_text">"Textul este "<annotation color="green">"verde"</annotation></string>
+    <string msgid="2409207170762049673" name="example_3_text">"Textul este "<annotation color="blue">"albastru"</annotation></string>
+    <string msgid="9055989886645433000" name="example_4_text">"Textul este "<annotation color="yellow">"galben"</annotation></string>
+    <string msgid="8828804968749423500" name="example_5_text">"Acest text folosește culoarea primară"</string>
+    <string msgid="7991523168517599600" name="example_6_text">"Textul folosește culoarea secundară"</string>
+    <string msgid="530257630320010494" name="example_title">"Exemplu de %d"</string>
+    <string msgid="9086586388884500731" name="exit_action_title">"Ieși"</string>
+    <string msgid="1471602619507306261" name="fail_start_dialer">"Eroare la deschiderea tastaturii telefonului"</string>
+    <string msgid="6921321606009212189" name="fail_start_nav">"Eroare la începerea navigării"</string>
+    <string msgid="522064494016370117" name="favorite_toast_msg">"Marcat drept preferat!"</string>
+    <string msgid="697750041126810911" name="fetch_accelerometer">"Se preia accelerometrul."</string>
+    <string msgid="7316188117590056717" name="fetch_compass">"Se preia busola."</string>
+    <string msgid="1773415471137542832" name="fetch_energy_level">"Se preia nivelul de energie."</string>
+    <string msgid="2798910410830567052" name="fetch_ev_status">"Se preia starea VE."</string>
+    <string msgid="7153155318827188539" name="fetch_gyroscope">"Se preia giroscopul."</string>
+    <string msgid="5015066922035852615" name="fetch_location">"Se preia locația."</string>
+    <string msgid="7490131687788025123" name="fetch_mileage">"Se preia kilometrajul."</string>
+    <string msgid="7333830984597189627" name="fetch_speed">"Se preia viteza."</string>
+    <string msgid="6864627977128179834" name="fetch_toll_info">"Se preiau informații despre taxele de drum."</string>
+    <string msgid="295284272719956932" name="fifth_item">"Al cincilea element are setat un titlu lung"</string>
+    <string msgid="1627599668504718594" name="fifth_item_checked_toast_msg">"Al cincilea element a fost bifat"</string>
+    <string msgid="8223819062053448384" name="finish_app_demo_title">"Pregătește ecranul pentru permisiuni la următoarea rulare a demonstrației"</string>
+    <string msgid="8354334557053141891" name="finish_app_msg">"Astfel, aplicația se va închide și, când revii, va pregăti un ecran pentru permisiuni"</string>
+    <string msgid="9013328479438745074" name="finish_app_title">"Finalizează demonstrația aplicației"</string>
+    <string msgid="6648055806656590336" name="first_line_text">"Primul rând de text"</string>
+    <string msgid="3887390298628338716" name="first_row_text">"Text text text"</string>
+    <string msgid="219428344573165351" name="first_row_title">"Rând cu o imagine mare și text lung text lung text lung text lung text lung"</string>
+    <string msgid="1153409687260543158" name="fourth_item">"Al patrulea element"</string>
+    <string msgid="4253578650127250651" name="fuel">"Combustibil"</string>
+    <string msgid="6811375173343218212" name="fuel_types">"Tipuri de combustibil"</string>
+    <string msgid="1203313937444666161" name="gas_station">"Benzinărie"</string>
+    <string msgid="2301747728609198718" name="go_straight">"Mergi drept înainte"</string>
+    <string msgid="6556259799319701727" name="google_sign_in">"Conectare cu Google"</string>
+    <string msgid="4033140828804350723" name="grant_access_action_title">"Acordă accesul"</string>
+    <string msgid="268046297444808010" name="grant_location_permission_toast_msg">"Acordă permisiunea pentru locație ca să vezi locația actuală"</string>
+    <string msgid="1350116012893549206" name="grid_limit">"Limita grilei"</string>
+    <string msgid="6159115661928982245" name="grid_template_demo_title">"Demonstrație cu șablon pentru grilă"</string>
+    <string msgid="7096285873490705119" name="grid_template_menu_demo_title">"Demonstrații cu șablon pentru grilă"</string>
+    <string msgid="3428075828014504651" name="gyroscope">"Giroscop"</string>
+    <string msgid="5009120714837304882" name="high_importance">"Ridicată"</string>
+    <string msgid="4853167242566949502" name="home_caps_action_title">"ECRAN DE PORNIRE"</string>
+    <string msgid="6956152104754594971" name="hov_friendly">"Acceptă vehicule cu mai mulți pasageri"</string>
+    <string msgid="8487026131229541244" name="icon_title_prefix">"Pictogramă"</string>
+    <string msgid="4082976685262307357" name="icons_demo_title">"Demonstrație cu pictograme"</string>
+    <string msgid="6264812093895530445" name="image_test_text">"Sunt permise modificări ale imaginilor"</string>
+    <string msgid="8273863429801477547" name="image_test_title">"Test pentru imagini"</string>
+    <string msgid="3180661817432720076" name="images_unknown_host_error">"Nu se pot afișa imagini pentru o gazdă necunoscută"</string>
+    <string msgid="9034862997821839831" name="importance_title">"Importanță"</string>
+    <string msgid="5261362663718987167" name="invalid_email_error_msg">"Numele utilizatorului trebuie să fie o adresă de e-mail validă"</string>
+    <string msgid="8238905276326976425" name="invalid_length_error_msg">"Numele utilizatorului trebuie să aibă minimum %s caractere"</string>
+    <string msgid="1090359893902674610" name="invalid_password_error_msg">"Parolă nevalidă"</string>
+    <string msgid="3302979708776502314" name="junction_image_demo_title">"Demonstrație cu imagine a unei intersecții"</string>
+    <string msgid="965700021568970725" name="just_row_title">"Doar un titlu"</string>
+    <string msgid="6843008350392721502" name="latest_feature_details">"Cluster Displays în mașini!"</string>
+    <string msgid="7929405790070777460" name="latest_feature_title">"Cele mai recente funcții"</string>
+    <string msgid="310625272281710983" name="less_busy">"Mai puțin aglomerat"</string>
+    <string msgid="3023536401535417286" name="list_limit">"Limita listei"</string>
+    <string msgid="1740208242737246151" name="list_template_demo_title">"Demonstrație cu șablon pentru listă"</string>
+    <string msgid="8933049915126088142" name="loading_demo_row_title">"Încărcarea s-a finalizat!"</string>
+    <string msgid="1086529475809143517" name="loading_demo_title">"Se încarcă demonstrația"</string>
+    <string msgid="4771507490730308794" name="loading_screen">"Ecran de încărcare"</string>
+    <string msgid="7689738885077382673" name="loading_toggle_disabled">"Încărcare dezactivată"</string>
+    <string msgid="8828072732804454994" name="loading_toggle_enabled">"Încărcare activată"</string>
+    <string msgid="4801052291684791371" name="location_1_description">"Vector de resursă colorat"</string>
+    <string msgid="3331356135359047166" name="location_2_description">"Bitmap cu resursele imaginii"</string>
+    <string msgid="3982142774088944850" name="location_3_description">"Marcator de text colorat"</string>
+    <string msgid="6560365445044381911" name="location_4_description">"Bitmap pentru imagine"</string>
+    <string msgid="2779911545316756419" name="location_description_text_label">"Eticheta textului"</string>
+    <string msgid="8082962600953333087" name="long_line_text">"Subtextul se poate afișa integral în modul nerestricționat (de ex., modul de parcare, modul restricționat cu viteză redusă). Dar va fi trunchiat la numai două rânduri în modul restricționat (de ex., modul cu mașina). În scopuri de testare, subtextul va fi foarte lung."</string>
+    <string msgid="1793748562161438131" name="long_msg_template_demo_title">"Demonstrație cu șablon pentru mesaj lung"</string>
+    <string msgid="3641559637317672505" name="long_msg_template_not_supported_text">"Gazda nu acceptă șablonul pentru mesaj lung"</string>
+    <string msgid="8600719470226274925" name="long_msg_template_not_supported_title">"Gazdă incompatibilă"</string>
+    <string msgid="4737969235741057506" name="long_route">"Traseu lung"</string>
+    <string msgid="3462774027012877028" name="low_energy">"Consum redus de energie"</string>
+    <string msgid="4721161314404294033" name="low_importance">"Redusă"</string>
+    <string msgid="4978995415869838056" name="manufacturer_unavailable">"Producător indisponibil"</string>
+    <string msgid="2169766615521476592" name="map_demos_title">"Demonstrații cu hartă"</string>
+    <string msgid="1473810899303903185" name="map_template_list_demo_title">"Demonstrație cu șablon pentru hartă și listă"</string>
+    <string msgid="4849450903277412004" name="map_template_pane_demo_title">"Demonstrație cu șablon pentru hartă și panou"</string>
+    <string msgid="6510798293640092611" name="map_template_toggle_demo_title">"Șablon pentru hartă cu comutatoare"</string>
+    <string msgid="1032610482145018739" name="map_with_content_demo_title">"Demonstrații cu hartă cu conținut"</string>
+    <string msgid="688667167861193192" name="map_with_grid_demo_title">"Demonstrație cu șablon pentru hartă cu grilă"</string>
+    <string msgid="7007078234918054436" name="map_with_message_demo_title">"Demonstrație cu șablon pentru hartă cu mesaj"</string>
+    <string msgid="7399959062407349380" name="misc_demo_title">"Demonstrații diverse"</string>
+    <string msgid="6077169010255928114" name="misc_templates_demos_title">"Demonstrații diverse cu șabloane"</string>
+    <string msgid="494224423025683030" name="model_info">"Informații despre model"</string>
+    <string msgid="4075463010215406573" name="model_unavailable">"Model indisponibil"</string>
+    <string msgid="1039516575011403837" name="more_action_title">"Mai mult"</string>
+    <string msgid="5938288138225509885" name="more_toast_msg">"S-a dat clic pe Mai mult"</string>
+    <string msgid="2275291617716161409" name="msg_template_demo_text">"Introdu mesajul aici.\nMai mult text pe al doilea rând."</string>
+    <string msgid="3895210951340409473" name="msg_template_demo_title">"Demonstrație cu șablon pentru mesaj"</string>
+    <string msgid="72781206086461004" name="nav_demos_title">"Demonstrații pentru navigare"</string>
+    <string msgid="344985380763975398" name="nav_map_template_demo_title">"Demonstrație cu șablon pentru navigare numai cu hartă"</string>
+    <string msgid="4448683262984308442" name="nav_notification_demo_title">"Demonstrație cu notificări privind navigarea"</string>
+    <string msgid="6696525973145493908" name="nav_requested_toast_msg">"S-a solicitat navigarea"</string>
+    <string msgid="8215835368932160866" name="nav_template_demos_title">"Demonstrații cu șabloane pentru navigare"</string>
+    <string msgid="2713090390373996139" name="navigate">"Navighează"</string>
+    <string msgid="7454579665387386476" name="navigating_demo_title">"Demonstrație pentru navigare"</string>
+    <string msgid="3331130131492672264" name="navigation_alert_subtitle">"Raportat acum 10 minute"</string>
+    <string msgid="8306554249264200848" name="navigation_alert_title">"Urmează un radar mobil?"</string>
+    <string msgid="2204136858798832382" name="needs_access_msg_prefix">"Aplicația are nevoie de acces la următoarele permisiuni:\n"</string>
+    <string msgid="896914448469117234" name="no_accelerometer_permission">"Nicio permisiune pentru accelerometru."</string>
+    <string msgid="1452124604210014010" name="no_action_title">"Nu"</string>
+    <string msgid="6165492423831023809" name="no_action_toast_msg">"A fost apăsat butonul Nu!"</string>
+    <string msgid="3505517472938045093" name="no_car_hardware_location">"Nicio permisiune pentru locația hardware-ului mașinii."</string>
+    <string msgid="5162304489577567125" name="no_compass_permission">"Nicio permisiune pentru busolă."</string>
+    <string msgid="1684773185095107825" name="no_energy_level_permission">"Nicio permisiune pentru nivelul de energie."</string>
+    <string msgid="4662285713731308888" name="no_energy_profile_permission">"Nicio permisiune pentru profilul energetic."</string>
+    <string msgid="933075402821938973" name="no_ev_status_permission">"Nicio permisiune pentru starea VE."</string>
+    <string msgid="665293140266771569" name="no_gyroscope_permission">"Nicio permisiune pentru giroscop."</string>
+    <string msgid="4074779840599589847" name="no_mileage_permission">"Nicio permisiune pentru kilometraj."</string>
+    <string msgid="5333629877014978947" name="no_model_permission">"Nicio permisiune pentru model."</string>
+    <string msgid="5812532480922675390" name="no_speed_permission">"Nicio permisiune pentru viteză."</string>
+    <string msgid="6789073114449712090" name="no_toll_card_permission">"Nicio permisiune pentru cardul de taxe de drum."</string>
+    <string msgid="8999757911111188784" name="non_actionable">"Nu poți lua măsuri"</string>
+    <string msgid="6831181108681007428" name="not_favorite_toast_msg">"Nu s-a marcat drept preferat!"</string>
+    <string msgid="7498800528148447270" name="not_started_for_result_msg">"Aplicația nu a fost pornită pentru rezultat"</string>
+    <string msgid="1819496937832036387" name="notification_demo">"Demonstrație cu notificări"</string>
+    <string msgid="5076051497316030274" name="notification_template_demo_title">"Demonstrație cu șablon pentru notificări"</string>
+    <string msgid="5507590705935298176" name="notification_title">"Notificare"</string>
+    <string msgid="3925174645651546591" name="odometer">"Odometru"</string>
+    <string msgid="8669201170189204848" name="off_action_title">"Dezactivat"</string>
+    <string msgid="7128494973966098611" name="ok_action_title">"OK"</string>
+    <string msgid="4129601573763429611" name="on_action_title">"Activat"</string>
+    <string msgid="4957996003270280496" name="ongoing_title">"În desfășurare"</string>
+    <string msgid="7221252541651471199" name="option_1_title">"Opțiunea 1"</string>
+    <string msgid="1905146448697963818" name="option_2_title">"Opțiunea 2"</string>
+    <string msgid="6319268250436119258" name="option_3_title">"Opțiunea 3"</string>
+    <string msgid="947641896184637026" name="option_row_radio_icon_colored_text_title">"Rând cu buton radio, pictogramă și text colorat"</string>
+    <string msgid="3304229002524317977" name="option_row_radio_icon_title">"Rând cu buton radio și pictogramă"</string>
+    <string msgid="5978617101267398181" name="option_row_radio_title">"Rând cu buton radio"</string>
+    <string msgid="1168121856107932984" name="options_action_title">"Opțiuni"</string>
+    <string msgid="2146223786877557730" name="options_toast_msg">"Butonul Opțiuni a fost apăsat"</string>
+    <string msgid="7510279447493169945" name="other_row_text">"Textul de pe rând"</string>
+    <string msgid="4702355788835253197" name="other_row_title_prefix">"Titlul rândului"</string>
+    <string msgid="7525619456883627939" name="package_not_found_error_msg">"Pachetul nu a fost găsit."</string>
+    <string msgid="981518409516855230" name="pane_limit">"Limita panoului"</string>
+    <string msgid="7804292600060341608" name="pane_template_demo_title">"Demonstrație cu șablonul pentru panou"</string>
+    <string msgid="8720610556452272916" name="parked_only_text">"Mai mult text pentru Numai parcare."</string>
+    <string msgid="3190603222397552672" name="parked_only_title">"Titlul Numai parcare"</string>
+    <string msgid="2532422265890824446" name="parked_toast_msg">"Acțiune de parcare"</string>
+    <string msgid="3367862800135053111" name="parking_vs_driving_demo_title">"Demonstrație de parcare vs. condus"</string>
+    <string msgid="2869107073860012864" name="password_hint">"parolă"</string>
+    <string msgid="9105788349198243508" name="password_sign_in_instruction_prefix">"Nume de utilizator"</string>
+    <string msgid="6140337431619481015" name="perm_coarse_location">"Acces la locația brută"</string>
+    <string msgid="6074759942301565943" name="perm_coarse_location_desc">"Permisiune pentru acces la locația brută"</string>
+    <string msgid="5438874642600304118" name="perm_fine_location">"Acces la locația fină"</string>
+    <string msgid="3549183883787912516" name="perm_fine_location_desc">"Permisiune pentru acces la locația fină"</string>
+    <string msgid="3834918337351876270" name="perm_group">"Grup de permisiuni"</string>
+    <string msgid="7348847631139139024" name="perm_group_description">"Grup de permisiuni pentru aplicația Showcase"</string>
+    <string msgid="2758340693260523493" name="perm_record_audio">"Acces pentru înregistrare audio"</string>
+    <string msgid="8038648467605928912" name="perm_record_audio_desc">"Permisiune de acces pentru înregistrare audio"</string>
+    <string msgid="2348556088141992714" name="permissions_granted_msg">"Toate permisiunile au fost acordate. Revocă permisiunile din Setări."</string>
+    <string msgid="2504766809811627577" name="phone">"Telefon"</string>
+    <string msgid="3599815596923367256" name="phone_screen_permission_msg">"Acordă permisiunea pe ecranul telefonului"</string>
+    <string msgid="2288691296234360441" name="pin_sign_in_instruction">"Introdu acest cod PIN pe telefon"</string>
+    <string msgid="6785181191763056582" name="place_list_limit">"Limita listei de locații"</string>
+    <string msgid="8019588508812955290" name="place_list_nav_template_demo_title">"Demonstrație cu șablon pentru navigarea în lista de locații"</string>
+    <string msgid="2054022985455460469" name="place_list_template_demo_title">"Demonstrație cu șablon pentru lista de locații"</string>
+    <string msgid="3385912074130977032" name="png_bitmap_title">"PNG trimis ca bitmap"</string>
+    <string msgid="7437083018336747544" name="png_res_title">"PNG trimis ca resursă"</string>
+    <string msgid="5007078308762725207" name="pop_to_marker">"Accesează marcatorul pentru demonstrații diverse"</string>
+    <string msgid="4288884615669751608" name="pop_to_prefix">"Accesează"</string>
+    <string msgid="2078277386355064198" name="pop_to_root">"Accesează ecranul rădăcină"</string>
+    <string msgid="3924696281273379455" name="pop_to_title">"Accesează demonstrația"</string>
+    <string msgid="182847662545676962" name="preseed_permission_app_title">"Pregătește demonstrația privind aplicația de permisiune"</string>
+    <string msgid="5476541421753978071" name="preseed_permission_demo_title">"Pregătește ecranul pentru permisiuni la următoarea rulare a demonstrației"</string>
+    <string msgid="7042003552215710683" name="primary_action_title">"Principal"</string>
+    <string msgid="7153771322662005447" name="primary_toast_msg">"A fost apăsat butonul principal"</string>
+    <string msgid="7586815688292506743" name="provider_sign_in_instruction">"Folosește acest buton pentru a finaliza conectarea cu Google"</string>
+    <string msgid="2433062141810168976" name="push_stack">"Trimite mai departe în stivă"</string>
+    <string msgid="5487041647280777397" name="qr_code">"Cod QR"</string>
+    <string msgid="8137070561006464518" name="qr_code_sign_in_title">"Scanează codul QR pentru a te conecta"</string>
+    <string msgid="9082264324855338774" name="radio_button_list_demo_title">"Demonstrație cu liste de butoane radio"</string>
+    <string msgid="8744960568263400641" name="range">"Interval"</string>
+    <string msgid="7295910214088983967" name="raw_speed">"Viteză brută"</string>
+    <string msgid="3674260822403151377" name="refresh_action_title">"Actualizează"</string>
+    <string msgid="6730366705938402668" name="reject_action_title">"Închide"</string>
+    <string msgid="4796486779527427017" name="request_permission_menu_demo_title">"Solicită demonstrații privind permisiunile"</string>
+    <string msgid="7456426341142412300" name="request_permissions_title">"Demonstrație pentru solicitarea permisiunii"</string>
+    <string msgid="5351791879153568211" name="required_permissions_title">"Permisiuni necesare"</string>
+    <string msgid="6334213670275547875" name="reservation_cancelled_msg">"Rezervare anulată"</string>
+    <string msgid="3900525190662148290" name="result_demo_title">"Demonstrație pentru rezultat"</string>
+    <string msgid="505793441615134116" name="route_list_limit">"Limita listei de trasee"</string>
+    <string msgid="4599699012716426514" name="route_options_demo_title">"Opțiuni pentru traseu"</string>
+    <string msgid="7878704357953167555" name="route_preview_template_demo_title">"Demonstrație cu șablon pentru previzualizarea traseului"</string>
+    <string msgid="7799772149932075357" name="routes_title">"Trasee"</string>
+    <string msgid="756516694751965204" name="row_primary_action_toast">"Acțiunea principală de pe rând a fost selectată"</string>
+    <string msgid="135167694047524905" name="row_text_icons_demo_title">"Demonstrație pentru rânduri cu text și pictograme"</string>
+    <string msgid="3198566660454251007" name="rows_demo_title">"Demonstrație pentru rânduri"</string>
+    <string msgid="5085372891301576306" name="sample_additional_list">"Exemplu de listă care poate fi selectată"</string>
+    <string msgid="3483459674263446335" name="search_action_title">"Caută"</string>
+    <string msgid="978495498991026792" name="search_hint">"Caută aici"</string>
+    <string msgid="1770474418958318114" name="search_template_demo_title">"Demonstrație cu șablon pentru căutare"</string>
+    <string msgid="7826530065407699347" name="search_toast_msg">"A fost apăsat butonul de căutare"</string>
+    <string msgid="5245792503030812493" name="second_item">"Al doilea element"</string>
+    <string msgid="7210054709419608215" name="second_item_toast_msg">"S-a dat clic pe al doilea element"</string>
+    <string msgid="38664490158836864" name="second_line_text">"Al doilea rând de text"</string>
+    <string msgid="5076434693504006565" name="secondary_action_toast">"Acțiunea secundară a fost selectată"</string>
+    <string msgid="3710817648501132309" name="secondary_actions_decoration_button_demo_title">"Demonstrație pentru acțiunea secundară și decorație"</string>
+    <string msgid="155884606592724532" name="secondary_actions_decoration_test_subtitle">"Și rândul poate fi selectat"</string>
+    <string msgid="6282873404859209490" name="secondary_actions_decoration_test_title">"Acțiuni secundare și decorație"</string>
+    <string msgid="3700606949229899169" name="secondary_actions_decoration_test_title_long">"Rând cu acțiuni secundare și element decorativ cu un titlu foarte lung"</string>
+    <string msgid="6985282813402073703" name="secondary_actions_test_subtitle">"Numai acțiunea secundară poate fi selectată"</string>
+    <string msgid="3664453747553733613" name="secondary_actions_test_title">"Test pentru acțiunea secundară"</string>
+    <string msgid="1236735461225007729" name="sectioned_item_list_demo_title">"Demonstrație cu listă de articole cu secțiuni"</string>
+    <string msgid="6594204350307263338" name="sectioned_item_list_one_title">"Lista 1"</string>
+    <string msgid="2963927693547537519" name="sectioned_item_list_subtext">"Subtextul de sub fiecare listă"</string>
+    <string msgid="4941545381743022833" name="sectioned_item_list_two_title">"Lista 2"</string>
+    <string msgid="8377594346379786774" name="sectioned_item_template_demo_title">"Demonstrație cu șablon pentru elemente cu secțiuni"</string>
+    <string msgid="1501401956386938735" name="sectioned_item_template_lots_of_rows_section_title">"Secțiune cu multe rânduri"</string>
+    <string msgid="1014325865070733609" name="sectioned_item_template_radio_button_section_title">"Secțiune cu butoane radio"</string>
+    <string msgid="3197227971733559949" name="sectioned_item_template_toggle_section_title">"Comută secțiunea"</string>
+    <string msgid="5492658731113129386" name="selectable_lists_demo_title">"Demonstrație cu liste care se pot selecta"</string>
+    <string msgid="3149189677200086656" name="selected_route_toast_msg">"Traseu selectat"</string>
+    <string msgid="4731688444696028193" name="send_notification_title">"Trimite o notificare"</string>
+    <string msgid="8616900063253887861" name="settings_action_title">"Setări"</string>
+    <string msgid="7697794473002342727" name="settings_toast_msg">"S-a dat clic pe Setări"</string>
+    <string msgid="6798738013668580714" name="short_msg_template_demo_title">"Demonstrație cu șablon pentru mesaj scurt"</string>
+    <string msgid="4831864276538141265" name="short_route">"Traseu scurt"</string>
+    <string msgid="1542092687878113304" name="showcase_demos_title">"Demonstrații pentru Showcase"</string>
+    <string msgid="8423984266325680606" name="sign_in_complete_text">"Te-ai conectat!"</string>
+    <string msgid="8919868148773983428" name="sign_in_complete_title">"Conectare finalizată"</string>
+    <string msgid="9044850228284294762" name="sign_in_instructions">"Introdu datele de conectare"</string>
+    <string msgid="6052035424941410249" name="sign_in_template_demo_title">"Demonstrație cu șablon pentru conectare"</string>
+    <string msgid="7184733753948837646" name="sign_in_template_not_supported_text">"Gazda nu acceptă șablonul pentru conectare"</string>
+    <string msgid="4892883228898541764" name="sign_in_template_not_supported_title">"Gazdă incompatibilă"</string>
+    <string msgid="4551967308262681703" name="sign_in_title">"Conectează-te"</string>
+    <string msgid="8043752000786977249" name="sign_in_with_google_title">"Conectează-te cu Google"</string>
+    <string msgid="5720947549233124775" name="sign_in_with_google_toast_msg">"Conectarea cu Google începe aici"</string>
+    <string msgid="1653943000866713010" name="sign_out_action_title">"Deconectează-te"</string>
+    <string msgid="3880321601391343607" name="sixth_item">"Al șaselea element are setat un titlu lung"</string>
+    <string msgid="6117028866385793707" name="sixth_item_toast_msg">"S-a dat clic pe al șaselea element"</string>
+    <string msgid="4009872495806318260" name="some_additional_text">"Text suplimentar"</string>
+    <string msgid="2208831088632818681" name="start_notification_title">"Activează notificarea"</string>
+    <string msgid="8699668027543530460" name="start_notifications_title">"Activează notificările"</string>
+    <string msgid="4225260243713833974" name="started_for_result_msg">"S-a solicitat rezultatul în această aplicație din %s. Selectează rezultatul pentru a-l trimite înapoi apelantului"</string>
+    <string msgid="1187619482795416314" name="stop_action_title">"Oprește"</string>
+    <string msgid="3709643750540881176" name="stop_notification_title">"Oprește notificarea"</string>
+    <string msgid="3703892710275206239" name="stop_notifications_title">"Oprește notificările"</string>
+    <string msgid="7587839101813629975" name="tab_template_demo_title">"Demonstrație cu șablonul de file"</string>
+    <string msgid="6529681462424538165" name="tab_template_layouts_demo_title">"Demonstrații cu șablonul de file"</string>
+    <string msgid="4638051615030345574" name="tab_template_loading_demo_title">"Demonstrație cu încărcarea șablonului de file"</string>
+    <string msgid="6907466201298082309" name="tab_template_no_tabs_demo_title">"Demonstrație fără file pentru șablon"</string>
+    <string msgid="5268168907976325154" name="tab_title_grid">"Filă cu grilă și titlu lung"</string>
+    <string msgid="5104962518489668123" name="tab_title_list">"Filă cu listă"</string>
+    <string msgid="5385807479734490989" name="tab_title_loading">"Se încarcă fila"</string>
+    <string msgid="5266710951630087246" name="tab_title_message">"Filă cu mesaj"</string>
+    <string msgid="2520606145526537263" name="tab_title_pane">"Filă cu panou"</string>
+    <string msgid="1892925693146631173" name="tab_title_search">"Filă cu căutare"</string>
+    <string msgid="3804796387195842741" name="take_520">"Mergi pe 520"</string>
+    <string msgid="545061986612431190" name="task_content_allowed">"Accesează diferitele șabloane și asigură-te că mașina este în modul Cu mașina"</string>
+    <string msgid="7162842196382260992" name="task_limit_reached_msg">"Astfel, numărul de pași va fi depășit și se va afișa un ecran nou."</string>
+    <string msgid="2212084350718766941" name="task_restriction_demo_title">"Demonstrație pentru restricția privind activitățile"</string>
+    <string msgid="4646729781462227219" name="task_step_of_text">"Dă clic pentru a merge înainte"</string>
+    <string msgid="2791717962535723839" name="task_step_of_title">"Pasul activității: %1$d din %2$d"</string>
+    <string msgid="788249269446087847" name="template_layouts_demo_title">"Demonstrații cu aspecte de șablon"</string>
+    <string msgid="8732943920672143201" name="text_icons_demo_title">"Demonstrații pentru text și pictograme"</string>
+    <string msgid="334088179008716411" name="third_item">"Al treilea element"</string>
+    <string msgid="3022450599567347361" name="third_item_checked_toast_msg">"Al treilea element a fost bifat"</string>
+    <string msgid="7163710562670220163" name="throw_action_title">"Întrerupe"</string>
+    <string msgid="3991742709199357049" name="title_prefix">"Titlu"</string>
+    <string msgid="6294250714820740520" name="title_with_app_icon_row_title">"Titlu cu pictograma aplicației"</string>
+    <string msgid="3813134904602875778" name="title_with_res_id_image_row_title">"Titlu cu imaginea codului resursei"</string>
+    <string msgid="8945114692653524102" name="title_with_secondary_lines_row_text_1">"Greșește și greșește și greșește din nou, dar mai puțin și mai puțin și mai puțin."</string>
+    <string msgid="1017734603405251531" name="title_with_secondary_lines_row_text_2">"– Piet Hein"</string>
+    <string msgid="7769408881272549837" name="title_with_secondary_lines_row_title">"Titlu cu mai multe rânduri de text secundare"</string>
+    <string msgid="6109092343637263755" name="title_with_svg_image_row_title">"Titlu cu imagine SVG"</string>
+    <string msgid="3179103600967398928" name="toggle_button_demo_title">"Demonstrație cu buton de comutare"</string>
+    <string msgid="8366040658408451664" name="toggle_test_disabled">"Testul de comutare este dezactivat"</string>
+    <string msgid="982370904182034076" name="toggle_test_enabled">"Testul de comutare este activat"</string>
+    <string msgid="5914741538328669668" name="toggle_test_first_toggle_text">"Bifează opțiunea pentru a activa testul de comutare"</string>
+    <string msgid="3635022201072117680" name="toggle_test_first_toggle_title">"Activează testul de comutare"</string>
+    <string msgid="1813071017415876745" name="toggle_test_second_toggle_text">"Modificările cu menținere de stare sunt permise"</string>
+    <string msgid="1083594617400613969" name="toggle_test_second_toggle_title">"Test de comutare"</string>
+    <string msgid="8107217216013312857" name="toggle_test_text">"Modificările cu menținere de stare sunt permise"</string>
+    <string msgid="924485265152862631" name="toggle_test_title">"Activează / dezactivează testul"</string>
+    <string msgid="4430544885695162226" name="toll_card_state">"Starea cardului de taxe de drum"</string>
+    <string msgid="5134365408383171144" name="travel_est_trip_text">"Ia-o pe Maria cu mașina"</string>
+    <string msgid="3396166539208366382" name="triggered_toast_msg">"S-a declanșat"</string>
+    <string msgid="7384500054249311718" name="try_anyway_action_title">"Încearcă oricum"</string>
+    <string msgid="4710562732720109969" name="turn_right">"Fă la dreapta"</string>
+    <string msgid="3636401138255192934" name="unavailable">"Indisponibil"</string>
+    <string msgid="802503415474307811" name="unchecked_action_title">"Debifat"</string>
+    <string msgid="7697521583928135171" name="unit">"Unitate"</string>
+    <string msgid="909001735933359216" name="unknown_importance">"Necunoscută"</string>
+    <string msgid="7850893299484337431" name="use_pin">"Folosește PIN-ul"</string>
+    <string msgid="1356952319161314986" name="user_interactions_demo_title">"Interacțiunile utilizatorilor"</string>
+    <string msgid="874591632279039146" name="vector_no_tint_title">"Resursă care se poate desena în vectori, fără culoare"</string>
+    <string msgid="1301305340033556819" name="vector_toggle_details">"Comută pentru a adăuga / elimina culori"</string>
+    <string msgid="4890094482708376219" name="vector_with_app_theme_attr_title">"Resursă care se poate desena în vectori, cu atributul temei unei aplicații pentru culoare"</string>
+    <string msgid="1022346419829696827" name="vector_with_tint_title">"Resursă care se poate desena în vectori colorată"</string>
+    <string msgid="7065558153736024203" name="visible_routes_toast_msg">"Trasee vizibile"</string>
+    <string msgid="3825223890895361496" name="voice_access_demo_title">"Ecran demonstrativ pentru accesul vocal"</string>
+    <string msgid="994338773299644607" name="year_unavailable">"Anul nu este disponibil"</string>
+    <string msgid="5507096013762092189" name="yes_action_title">"Da"</string>
+    <string msgid="6216215197177241247" name="yes_action_toast_msg">"A fost apăsat butonul Da!"</string>
+    <string msgid="8915301497303842649" name="zoomed_in_toast_msg">"Mărit"</string>
+    <string msgid="6260981223227212493" name="zoomed_out_toast_msg">"Micșorat"</string>
+</resources>

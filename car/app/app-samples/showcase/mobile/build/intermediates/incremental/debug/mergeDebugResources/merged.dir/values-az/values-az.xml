@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string msgid="2084026313768299185" name="accelerometer">"Akselerometr"</string>
+    <string msgid="4899660585470647578" name="accept_action_title">"Qəbul edin"</string>
+    <string msgid="2846223398214158872" name="additional_data_text">"Geri əməliyyatlar üzrə güncəlləmələrə icazə verilir."</string>
+    <string msgid="3546689652240300617" name="additional_data_title">"Əlavə Data"</string>
+    <string msgid="5755100726890686184" name="additional_text"><annotation link="terms_of_service">"Xidmət şərtlərimizə"</annotation>" nəzər salın"</string>
+    <string msgid="9010635942573581302" name="address">"Ünvan"</string>
+    <string msgid="5568380708832805374" name="alert_timeout_toast_msg">"Siqnalın vaxtı keçib!"</string>
+    <string msgid="7534936683349723423" name="app_icon_title">"Tətbiq ikonası"</string>
+    <string msgid="7429415605726615529" name="application_overflow_subtitle1">"Avtomobili park vəziyyətindən sürmə vəziyyətinə"</string>
+    <string msgid="4385123036846369714" name="application_overflow_subtitle2">"dəyişdirərkən aşağıdakı şablonları sınayın"</string>
+    <string msgid="396427940886169325" name="application_overflow_title">"Tətbiq Aşma Doğrulayıcısı"</string>
+    <string msgid="6708013121387053838" name="arrived_demo_title">"Demo Gəlib"</string>
+    <string msgid="9132265698563096988" name="arrived_exclamation_msg">"Gəlib!"</string>
+    <string msgid="8232883866013711974" name="avoid_ferries_row_title">"Bərədən istifadə etməyin"</string>
+    <string msgid="4711913426200490304" name="avoid_highways_row_title">"Magistral yollardan istifadə etməyin"</string>
+    <string msgid="5194057244144831024" name="avoid_tolls_row_title">"Ödənişli yollardan istifadə etməyin"</string>
+    <string msgid="6392829425035919422" name="back_caps_action_title">"GERİ"</string>
+    <string msgid="2183623637331546820" name="battery">"Batareya"</string>
+    <string msgid="7246005909846715898" name="browse_places_title">"Yerlərə Baxın"</string>
+    <string msgid="2487119172744644317" name="bug_reported_toast_msg">"Baq barədə bildirilib!"</string>
+    <string msgid="6218977436905001611" name="call_action_title">"Zəng"</string>
+    <string msgid="881409763997275156" name="call_notification_answer_action">"Cavab verin"</string>
+    <string msgid="8793775615905189152" name="call_notification_answer_video_action">"Video"</string>
+    <string msgid="3229508546291798546" name="call_notification_decline_action">"İmtina edin"</string>
+    <string msgid="2659457946726154263" name="call_notification_hang_up_action">"Dəstəyi asın"</string>
+    <string msgid="6107532579223922871" name="call_notification_incoming_text">"Gələn zəng"</string>
+    <string msgid="8623827134497363134" name="call_notification_ongoing_text">"Davam edən zəng"</string>
+    <string msgid="59049573811482460" name="call_notification_screening_text">"Gələn zəng göstərilir"</string>
+    <string msgid="1149738685397349236" name="cancel_action_title">"Ləğv edin"</string>
+    <string msgid="1374986823057959608" name="cancel_reservation_title">"Reservasiyanın Ləğvi Ekranı"</string>
+    <string msgid="3679106197233262689" name="car_hardware_demo_title">"Avtomobil Avadanlıq Demosu"</string>
+    <string msgid="1244783247616395012" name="car_hardware_info">"Avtomobil Avadanlıq Məlumatı"</string>
+    <string msgid="5826128477363068617" name="car_hardware_location">"Avtomobil Avadanlıq Məkanı"</string>
+    <string msgid="4783851267093259949" name="category_title">"Kateqoriya"</string>
+    <string msgid="957766225794389167" name="changes_selection_to_index_toast_msg_prefix">"Seçim indeksə dəyişdirildi"</string>
+    <string msgid="906023941445896399" name="checked_action_title">"Seçilib"</string>
+    <string msgid="9068303427922069941" name="clicked_row_prefix">"Kliklənmiş sıra"</string>
+    <string msgid="2661907510124308560" name="close_action_title">"Bağlayın"</string>
+    <string msgid="1822427636476178993" name="color_demo">"Rəng Demosu"</string>
+    <string msgid="5173288934252528929" name="colored_secondary_row_title">"Rəngli ikinci dərəcəli mətn"</string>
+    <string msgid="2585755255290185096" name="commute_action_title">"İşə gediş-gəliş"</string>
+    <string msgid="4112684360647638688" name="commute_toast_msg">"İşə gediş-gəliş düyməsi basılıb"</string>
+    <string msgid="7037367764762441245" name="compass">"Kompas"</string>
+    <string msgid="5726880972110281095" name="content_limits">"Kontent Limitləri"</string>
+    <string msgid="3207211638386727610" name="content_limits_demo_title">"Kontent Limitləri Demosu"</string>
+    <string msgid="5708602618664311097" name="content_provider_icons_demo_title">"Kontent Təminatçısı İkonaları Demosu"</string>
+    <string msgid="5172258139245088080" name="continue_route">"Marşruta davam edin"</string>
+    <string msgid="6231797535084469163" name="continue_start_nav">"Naviqasiyaya başlamaq üçün davam edin"</string>
+    <string msgid="8450127046762442244" name="decoration_test_title">"Dekorasiya Testi"</string>
+    <string msgid="6347996298832939989" name="default_importance">"Defolt"</string>
+    <string msgid="3145707439707628311" name="dial">"Yığın"</string>
+    <string msgid="3003225080532928046" name="disable_all_rows">"Bütün Sıraları deaktiv edin"</string>
+    <string msgid="9161318805331348165" name="display_speed">"Sürəti Göstərin"</string>
+    <string msgid="7205549445477319606" name="email_hint">"E-poçt"</string>
+    <string msgid="5989013634820902455" name="empty_list_demo_title">"Boş siyahı demosu"</string>
+    <string msgid="5331395517560728138" name="empty_list_message">"Siyahı boşdur"</string>
+    <string msgid="7274285275711872091" name="enable_all_rows">"Bütün Sıraları aktiv edin"</string>
+    <string msgid="8181862247222797044" name="enable_location_action_title">"Məkanı Aktivləşdirin"</string>
+    <string msgid="472752487966156897" name="enable_location_permission_on_device_msg">"Cihazda Məkan İcazələrini Aktivləşdirin"</string>
+    <string msgid="5082615523959139121" name="enable_location_permission_on_phone_msg">"Telefon ekranında məkanı aktivləşdirin"</string>
+    <string msgid="81415433590192158" name="energy_profile">"Enerji Profili"</string>
+    <string msgid="2277845607662494696" name="ev_connected">"EA Şarj Portu Qoşulub"</string>
+    <string msgid="735458637011996125" name="ev_connector_types">"EA Birləşdirici Növləri"</string>
+    <string msgid="4916704450914519643" name="ev_open">"EA Şarj Portu Açıqdır"</string>
+    <string msgid="8631503055894800688" name="example_1_text">"Bu mətn "<annotation color="red">"qırmızı"</annotation>" rəngdədir"</string>
+    <string msgid="1359373957397219102" name="example_2_text">"Bu mətn "<annotation color="green">"yaşıl"</annotation>" rəngdədir"</string>
+    <string msgid="2409207170762049673" name="example_3_text">"Bu mətn "<annotation color="blue">"mavi"</annotation>" rəngdədir"</string>
+    <string msgid="9055989886645433000" name="example_4_text">"Bu mətn "<annotation color="yellow">"sarı"</annotation>" rəngdədir"</string>
+    <string msgid="8828804968749423500" name="example_5_text">"Bu mətn əsas rəngdən istifadə edir"</string>
+    <string msgid="7991523168517599600" name="example_6_text">"Bu mətn ikinci dərəcəli rəngdən istifadə edir"</string>
+    <string msgid="530257630320010494" name="example_title">"Nümunə %d"</string>
+    <string msgid="9086586388884500731" name="exit_action_title">"Çıxın"</string>
+    <string msgid="1471602619507306261" name="fail_start_dialer">"Nömrə yığanı başlatmaq alınmadı"</string>
+    <string msgid="6921321606009212189" name="fail_start_nav">"Naviqasiyanı başlatmaq alınmadı"</string>
+    <string msgid="522064494016370117" name="favorite_toast_msg">"Sevimli!"</string>
+    <string msgid="697750041126810911" name="fetch_accelerometer">"Akselerometr əldə edilir."</string>
+    <string msgid="7316188117590056717" name="fetch_compass">"Kompas əldə edilir."</string>
+    <string msgid="1773415471137542832" name="fetch_energy_level">"Enerji Səviyyəsi əldə edilir."</string>
+    <string msgid="2798910410830567052" name="fetch_ev_status">"EA statusu əldə edilir."</string>
+    <string msgid="7153155318827188539" name="fetch_gyroscope">"Giroskop əldə edilir."</string>
+    <string msgid="5015066922035852615" name="fetch_location">"Məkan əldə edilir."</string>
+    <string msgid="7490131687788025123" name="fetch_mileage">"Kilometraj əldə edilir."</string>
+    <string msgid="7333830984597189627" name="fetch_speed">"Sürət əldə edilir."</string>
+    <string msgid="6864627977128179834" name="fetch_toll_info">"Ödəniş məlumatı əldə edilir."</string>
+    <string msgid="295284272719956932" name="fifth_item">"Beşinci Element üçün uzun başlıq təyin edilib"</string>
+    <string msgid="1627599668504718594" name="fifth_item_checked_toast_msg">"Beşinci element seçilib"</string>
+    <string msgid="8223819062053448384" name="finish_app_demo_title">"Növbəti işə salınmada İcazə Ekranını əvvəlcədən yükləmə Demosu"</string>
+    <string msgid="8354334557053141891" name="finish_app_msg">"Bu, tətbiqi bitirəcək və geri qaytardığınız zaman o, icazə ekranını əvvəlcədən yükləyəcək"</string>
+    <string msgid="9013328479438745074" name="finish_app_title">"Tətbiq Demosunu Bitirin"</string>
+    <string msgid="6648055806656590336" name="first_line_text">"Mətnin birinci sətri"</string>
+    <string msgid="3887390298628338716" name="first_row_text">"Mətn mətn mətn"</string>
+    <string msgid="219428344573165351" name="first_row_title">"Böyük şəkil və uzun mətn olan sıra uzun mətn uzun mətn uzun mətn uzun mətn"</string>
+    <string msgid="1153409687260543158" name="fourth_item">"Dördüncü Element"</string>
+    <string msgid="4253578650127250651" name="fuel">"Yanacaq"</string>
+    <string msgid="6811375173343218212" name="fuel_types">"Yanacaq Növləri"</string>
+    <string msgid="1203313937444666161" name="gas_station">"Yanacaq Stansiyası"</string>
+    <string msgid="2301747728609198718" name="go_straight">"Birbaşa gedin"</string>
+    <string msgid="6556259799319701727" name="google_sign_in">"Google girişi"</string>
+    <string msgid="4033140828804350723" name="grant_access_action_title">"Giriş Təmin Edin"</string>
+    <string msgid="268046297444808010" name="grant_location_permission_toast_msg">"Cari məkanı görmək üçün məkan icazəsi verin"</string>
+    <string msgid="1350116012893549206" name="grid_limit">"Tor Limiti"</string>
+    <string msgid="6159115661928982245" name="grid_template_demo_title">"Tor Şablonu Demosu"</string>
+    <string msgid="7096285873490705119" name="grid_template_menu_demo_title">"Tor Şablon Demoları"</string>
+    <string msgid="3428075828014504651" name="gyroscope">"Giroskop"</string>
+    <string msgid="5009120714837304882" name="high_importance">"Yüksək"</string>
+    <string msgid="4853167242566949502" name="home_caps_action_title">"ƏSAS SƏHİFƏ"</string>
+    <string msgid="6956152104754594971" name="hov_friendly">"İTN üçün uyğun"</string>
+    <string msgid="8487026131229541244" name="icon_title_prefix">"İkona"</string>
+    <string msgid="4082976685262307357" name="icons_demo_title">"İkona Demosu"</string>
+    <string msgid="6264812093895530445" name="image_test_text">"Şəkil dəyişikliklərinə icazə verilir"</string>
+    <string msgid="8273863429801477547" name="image_test_title">"Şəkil testi"</string>
+    <string msgid="3180661817432720076" name="images_unknown_host_error">"Şəkillər naməlum host üçün göstərilə bilməz"</string>
+    <string msgid="9034862997821839831" name="importance_title">"Əhəmiyyət"</string>
+    <string msgid="5261362663718987167" name="invalid_email_error_msg">"İstifadəçi adı etibarlı e-poçt ünvanı olmalıdır"</string>
+    <string msgid="8238905276326976425" name="invalid_length_error_msg">"İstifadəçi adı ən azı %s simvol uzunluğunda olmalıdır"</string>
+    <string msgid="1090359893902674610" name="invalid_password_error_msg">"Yanlış parol"</string>
+    <string msgid="3302979708776502314" name="junction_image_demo_title">"Birləşmə Şəkli Demosu"</string>
+    <string msgid="965700021568970725" name="just_row_title">"Sadəcə başlıq"</string>
+    <string msgid="6843008350392721502" name="latest_feature_details">"Avtomobillərdə Klaster Displeyləri!"</string>
+    <string msgid="7929405790070777460" name="latest_feature_title">"Son Funksiyalar"</string>
+    <string msgid="310625272281710983" name="less_busy">"Daha az məşğul"</string>
+    <string msgid="3023536401535417286" name="list_limit">"Siyahı Limiti"</string>
+    <string msgid="1740208242737246151" name="list_template_demo_title">"Siyahı Şablonu Demosu"</string>
+    <string msgid="8933049915126088142" name="loading_demo_row_title">"Yükləmə Tamamlandı!"</string>
+    <string msgid="1086529475809143517" name="loading_demo_title">"Demo Yüklənir"</string>
+    <string msgid="4771507490730308794" name="loading_screen">"Ekranın yüklənməsi"</string>
+    <string msgid="7689738885077382673" name="loading_toggle_disabled">"Yükləmə deaktiv edilib"</string>
+    <string msgid="8828072732804454994" name="loading_toggle_enabled">"Yükləmə aktiv edilib"</string>
+    <string msgid="4801052291684791371" name="location_1_description">"Rənglənmiş resurs vektoru"</string>
+    <string msgid="3331356135359047166" name="location_2_description">"Şəkil resursunun nöqtəli görüntüsü"</string>
+    <string msgid="3982142774088944850" name="location_3_description">"Rəngli mətn markeri"</string>
+    <string msgid="6560365445044381911" name="location_4_description">"Nöqtəli görüntü"</string>
+    <string msgid="2779911545316756419" name="location_description_text_label">"Mətn etiketi"</string>
+    <string msgid="8082962600953333087" name="long_line_text">"Bu alt mətn məhdudiyyətsiz rejimdə tam olaraq göstərilə bilər (məs. parkinq rejimi, məhdudlaşdırılmış aşağı sürət rejimi). Lakin bu, məhdudlaşdırılmış rejimdə (məs. sürücülük rejimi) olduqda yalnız iki xəttə endiriləcək. Test məqsədləri üçün bu alt mətn həddindən çox uzundur"</string>
+    <string msgid="1793748562161438131" name="long_msg_template_demo_title">"Uzun Mesaj Şablonu Demosu"</string>
+    <string msgid="3641559637317672505" name="long_msg_template_not_supported_text">"Host Uzun Mesaj şablonunu dəstəkləmir"</string>
+    <string msgid="8600719470226274925" name="long_msg_template_not_supported_title">"Uyğun olmayan host"</string>
+    <string msgid="4737969235741057506" name="long_route">"Uzun marşrut"</string>
+    <string msgid="3462774027012877028" name="low_energy">"Aşağı enerjili"</string>
+    <string msgid="4721161314404294033" name="low_importance">"Aşağı"</string>
+    <string msgid="4978995415869838056" name="manufacturer_unavailable">"İstehsalçı əlçatan deyil"</string>
+    <string msgid="2169766615521476592" name="map_demos_title">"Xəritə demoları"</string>
+    <string msgid="1473810899303903185" name="map_template_list_demo_title">"Siyahı ilə Xəritə Şablonu Demosu"</string>
+    <string msgid="4849450903277412004" name="map_template_pane_demo_title">"Panel ilə Xəritə Şablonu Demosu"</string>
+    <string msgid="6510798293640092611" name="map_template_toggle_demo_title">"Keçiricilərlə Xəritə Şablonu"</string>
+    <string msgid="1032610482145018739" name="map_with_content_demo_title">"Kontentli xəritə demoları"</string>
+    <string msgid="688667167861193192" name="map_with_grid_demo_title">"Şəbəkə şablonlu xəritə demosu"</string>
+    <string msgid="7007078234918054436" name="map_with_message_demo_title">"Mesaj şablonlu xəritə demosu"</string>
+    <string msgid="7399959062407349380" name="misc_demo_title">"Digər Demolar"</string>
+    <string msgid="6077169010255928114" name="misc_templates_demos_title">"Digər Şablon Demoları"</string>
+    <string msgid="494224423025683030" name="model_info">"Model Məlumatı"</string>
+    <string msgid="4075463010215406573" name="model_unavailable">"Model əlçatan deyil"</string>
+    <string msgid="1039516575011403837" name="more_action_title">"Ardı"</string>
+    <string msgid="5938288138225509885" name="more_toast_msg">"Digərlərinə klikləyib"</string>
+    <string msgid="2275291617716161409" name="msg_template_demo_text">"Mesaj burada olmalıdır.\nİkinci sətirdə daha çox mətn."</string>
+    <string msgid="3895210951340409473" name="msg_template_demo_title">"Message Şablonu Demosu"</string>
+    <string msgid="72781206086461004" name="nav_demos_title">"Naviqasiya Demoları"</string>
+    <string msgid="344985380763975398" name="nav_map_template_demo_title">"Yalnız Xəritə ilə Naviqasiya Şablonu Demosu"</string>
+    <string msgid="4448683262984308442" name="nav_notification_demo_title">"Naviqasiya Bildiriş Demosu"</string>
+    <string msgid="6696525973145493908" name="nav_requested_toast_msg">"Naviqasiya Sorğulanıb"</string>
+    <string msgid="8215835368932160866" name="nav_template_demos_title">"Naviqasiya Şablonu Demoları"</string>
+    <string msgid="2713090390373996139" name="navigate">"Naviqasiya"</string>
+    <string msgid="7454579665387386476" name="navigating_demo_title">"Naviqasiya Demosu"</string>
+    <string msgid="3331130131492672264" name="navigation_alert_subtitle">"10 dəq əvvəl bildirilib"</string>
+    <string msgid="8306554249264200848" name="navigation_alert_title">"Hələ də sürət tələsi var?"</string>
+    <string msgid="2204136858798832382" name="needs_access_msg_prefix">"Tətbiq aşağıdakı icazələrə giriş tələb edir:\n"</string>
+    <string msgid="896914448469117234" name="no_accelerometer_permission">"Akselerometr İcazəsi Yoxdur."</string>
+    <string msgid="1452124604210014010" name="no_action_title">"Yox"</string>
+    <string msgid="6165492423831023809" name="no_action_toast_msg">"Xeyr düyməsi basılıb!"</string>
+    <string msgid="3505517472938045093" name="no_car_hardware_location">"Avtomobil Avadanlıq Məkanı İcazəsi Yoxdur."</string>
+    <string msgid="5162304489577567125" name="no_compass_permission">"Kompas İcazəsi Yoxdur."</string>
+    <string msgid="1684773185095107825" name="no_energy_level_permission">"Enerji Səviyyəsi İcazəsi Yoxdur."</string>
+    <string msgid="4662285713731308888" name="no_energy_profile_permission">"Enerji Profili İcazəsi Yoxdur."</string>
+    <string msgid="933075402821938973" name="no_ev_status_permission">"EA Statusu İcazəsi Yoxdur."</string>
+    <string msgid="665293140266771569" name="no_gyroscope_permission">"Giroskop İcazəsi Yoxdur."</string>
+    <string msgid="4074779840599589847" name="no_mileage_permission">"Kilometraj İcazəsi Yoxdur."</string>
+    <string msgid="5333629877014978947" name="no_model_permission">"Model İcazəsi Yoxdur."</string>
+    <string msgid="5812532480922675390" name="no_speed_permission">"Sürət İcazəsi Yoxdur."</string>
+    <string msgid="6789073114449712090" name="no_toll_card_permission">"Ödəniş Kartı İcazəsi Yoxdur."</string>
+    <string msgid="8999757911111188784" name="non_actionable">"Əməliyyat mümkün olmayan"</string>
+    <string msgid="6831181108681007428" name="not_favorite_toast_msg">"Sevimli deyil!"</string>
+    <string msgid="7498800528148447270" name="not_started_for_result_msg">"Bu tətbiq nəticə üçün başladılmayıb"</string>
+    <string msgid="1819496937832036387" name="notification_demo">"Bildiriş Demosu"</string>
+    <string msgid="5076051497316030274" name="notification_template_demo_title">"Bildiriş Şablonu Demosu"</string>
+    <string msgid="5507590705935298176" name="notification_title">"Bildiriş"</string>
+    <string msgid="3925174645651546591" name="odometer">"Odometr"</string>
+    <string msgid="8669201170189204848" name="off_action_title">"Deaktiv"</string>
+    <string msgid="7128494973966098611" name="ok_action_title">"OK"</string>
+    <string msgid="4129601573763429611" name="on_action_title">"Aktiv"</string>
+    <string msgid="4957996003270280496" name="ongoing_title">"Davam edir"</string>
+    <string msgid="7221252541651471199" name="option_1_title">"Seçim 1"</string>
+    <string msgid="1905146448697963818" name="option_2_title">"Seçim 2"</string>
+    <string msgid="6319268250436119258" name="option_3_title">"Seçim 3"</string>
+    <string msgid="947641896184637026" name="option_row_radio_icon_colored_text_title">"Radio Düyməsi, İşarə və Rəngli Mətn olan sıra"</string>
+    <string msgid="3304229002524317977" name="option_row_radio_icon_title">"Radio Düyməsi və İşarə olan sıra"</string>
+    <string msgid="5978617101267398181" name="option_row_radio_title">"Radio Düyməsi olan sıra"</string>
+    <string msgid="1168121856107932984" name="options_action_title">"Seçimlər"</string>
+    <string msgid="2146223786877557730" name="options_toast_msg">"Seçimlər düyməsi basılıb"</string>
+    <string msgid="7510279447493169945" name="other_row_text">"Sıra mətni"</string>
+    <string msgid="4702355788835253197" name="other_row_title_prefix">"Sıra başlığı"</string>
+    <string msgid="7525619456883627939" name="package_not_found_error_msg">"Paket Tapılmadı."</string>
+    <string msgid="981518409516855230" name="pane_limit">"Panel Limiti"</string>
+    <string msgid="7804292600060341608" name="pane_template_demo_title">"Panel Şablonu Demosu"</string>
+    <string msgid="8720610556452272916" name="parked_only_text">"Daha çox Yalnız Park mətni."</string>
+    <string msgid="3190603222397552672" name="parked_only_title">"Yalnız Park Başlığı"</string>
+    <string msgid="2532422265890824446" name="parked_toast_msg">"Park əməliyyatı"</string>
+    <string msgid="3367862800135053111" name="parking_vs_driving_demo_title">"Parkinq - Sürmə Demosu"</string>
+    <string msgid="2869107073860012864" name="password_hint">"parol"</string>
+    <string msgid="9105788349198243508" name="password_sign_in_instruction_prefix">"İstifadəçi adı"</string>
+    <string msgid="6140337431619481015" name="perm_coarse_location">"Təqribi Məkana Giriş"</string>
+    <string msgid="6074759942301565943" name="perm_coarse_location_desc">"Təqribi Məkana Giriş üçün İcazə"</string>
+    <string msgid="5438874642600304118" name="perm_fine_location">"Dəqiq Məkana Giriş"</string>
+    <string msgid="3549183883787912516" name="perm_fine_location_desc">"Dəqiq Məkana Giriş üçün İcazə"</string>
+    <string msgid="3834918337351876270" name="perm_group">"İcazə Qrupu"</string>
+    <string msgid="7348847631139139024" name="perm_group_description">"Xəbərlər Vitrini Tətbiqi üçün İcazə Qrupu"</string>
+    <string msgid="2758340693260523493" name="perm_record_audio">"Audio Yazmağa Giriş"</string>
+    <string msgid="8038648467605928912" name="perm_record_audio_desc">"Audio Yazmağa Giriş üçün İcazə"</string>
+    <string msgid="2348556088141992714" name="permissions_granted_msg">"Bütün icazələr verilib. Ayarlardan icazələri ləğv edin."</string>
+    <string msgid="2504766809811627577" name="phone">"Telefon"</string>
+    <string msgid="3599815596923367256" name="phone_screen_permission_msg">"Telefon ekranında icazə verin"</string>
+    <string msgid="2288691296234360441" name="pin_sign_in_instruction">"Bu PIN kodu telefonunuza daxil edin"</string>
+    <string msgid="6785181191763056582" name="place_list_limit">"Yer Siyahısı Limiti"</string>
+    <string msgid="8019588508812955290" name="place_list_nav_template_demo_title">"Yer Siyahısı Naviqasiya Şablonu Demosu"</string>
+    <string msgid="2054022985455460469" name="place_list_template_demo_title">"Yer Siyahısı Şablonu Demosu"</string>
+    <string msgid="3385912074130977032" name="png_bitmap_title">"Bitmap olaraq göndərilən PNG"</string>
+    <string msgid="7437083018336747544" name="png_res_title">"Resurs olaraq göndərilən PNG"</string>
+    <string msgid="5007078308762725207" name="pop_to_marker">"Keçid üzrə Digər Demo Markeri"</string>
+    <string msgid="4288884615669751608" name="pop_to_prefix">"Keçid"</string>
+    <string msgid="2078277386355064198" name="pop_to_root">"Kökə keçid"</string>
+    <string msgid="3924696281273379455" name="pop_to_title">"Keçid Demosu"</string>
+    <string msgid="182847662545676962" name="preseed_permission_app_title">"Əvvəlcədən yükləmə Tətbiq Demosu"</string>
+    <string msgid="5476541421753978071" name="preseed_permission_demo_title">"Növbəti işə salınmada İcazə Ekranını əvvəlcədən yükləmə Demosu"</string>
+    <string msgid="7042003552215710683" name="primary_action_title">"Əsas"</string>
+    <string msgid="7153771322662005447" name="primary_toast_msg">"Əsas düymə basılıb"</string>
+    <string msgid="7586815688292506743" name="provider_sign_in_instruction">"Google girişinizi tamamlamaq üçün bu düymədən istifadə edin"</string>
+    <string msgid="2433062141810168976" name="push_stack">"Yığında daha da irəliləyin"</string>
+    <string msgid="5487041647280777397" name="qr_code">"QR Kod"</string>
+    <string msgid="8137070561006464518" name="qr_code_sign_in_title">"Giriş üçün QR kodu skan edin"</string>
+    <string msgid="9082264324855338774" name="radio_button_list_demo_title">"Radio Düymə Siyahıları Demosu"</string>
+    <string msgid="8744960568263400641" name="range">"Aralıq"</string>
+    <string msgid="7295910214088983967" name="raw_speed">"Raw Sürəti"</string>
+    <string msgid="3674260822403151377" name="refresh_action_title">"Yeniləyin"</string>
+    <string msgid="6730366705938402668" name="reject_action_title">"Rədd edin"</string>
+    <string msgid="4796486779527427017" name="request_permission_menu_demo_title">"İcazə Demosu Tələb edin"</string>
+    <string msgid="7456426341142412300" name="request_permissions_title">"İcazə Tələb Etmə Demosu"</string>
+    <string msgid="5351791879153568211" name="required_permissions_title">"Tələb Olunan İcazələr"</string>
+    <string msgid="6334213670275547875" name="reservation_cancelled_msg">"Rezervasiya ləğv edilib"</string>
+    <string msgid="3900525190662148290" name="result_demo_title">"Nəticə demosu"</string>
+    <string msgid="505793441615134116" name="route_list_limit">"Marşrut Siyahısı Limiti"</string>
+    <string msgid="4599699012716426514" name="route_options_demo_title">"Marşrut seçimləri"</string>
+    <string msgid="7878704357953167555" name="route_preview_template_demo_title">"Marşrut Önizləməsi Şablonu Demosu"</string>
+    <string msgid="7799772149932075357" name="routes_title">"Marşrutlar"</string>
+    <string msgid="756516694751965204" name="row_primary_action_toast">"Sıra üzrə əsas əməliyyat seçilib"</string>
+    <string msgid="135167694047524905" name="row_text_icons_demo_title">"Mətn və İkonalar olan Sıralar Demosu"</string>
+    <string msgid="3198566660454251007" name="rows_demo_title">"Sıra Demosu"</string>
+    <string msgid="5085372891301576306" name="sample_additional_list">"Nümunə seçilə bilən siyahı"</string>
+    <string msgid="3483459674263446335" name="search_action_title">"Axtarış"</string>
+    <string msgid="978495498991026792" name="search_hint">"Burada axtarın"</string>
+    <string msgid="1770474418958318114" name="search_template_demo_title">"Axtarış Şablonu Demosu"</string>
+    <string msgid="7826530065407699347" name="search_toast_msg">"Axtarış düyməsi basılıb"</string>
+    <string msgid="5245792503030812493" name="second_item">"İkinci Element"</string>
+    <string msgid="7210054709419608215" name="second_item_toast_msg">"İkinci element kliklənib"</string>
+    <string msgid="38664490158836864" name="second_line_text">"Mətnin ikinci sətri"</string>
+    <string msgid="5076434693504006565" name="secondary_action_toast">"İkinci Dərəcəli Əməliyyat seçilib"</string>
+    <string msgid="3710817648501132309" name="secondary_actions_decoration_button_demo_title">"İkinci Dərəcəli Əməliyyat və Dekorasiya Demosu"</string>
+    <string msgid="155884606592724532" name="secondary_actions_decoration_test_subtitle">"Sıra da seçilə bilər"</string>
+    <string msgid="6282873404859209490" name="secondary_actions_decoration_test_title">"İkinci Dərəcəli Əməliyyatlar və Dekorasiya"</string>
+    <string msgid="3700606949229899169" name="secondary_actions_decoration_test_title_long">"Həqiqətən uzun başlığa sahib İkincil Fəaliyyətlər və Dekorasiya olan sətir"</string>
+    <string msgid="6985282813402073703" name="secondary_actions_test_subtitle">"Yalnız ikinci dərəcəli əməliyyat seçilə bilər"</string>
+    <string msgid="3664453747553733613" name="secondary_actions_test_title">"İkinci Dərəcəli Əməliyyat Testi"</string>
+    <string msgid="1236735461225007729" name="sectioned_item_list_demo_title">"Bölməli element siyahısı demosu"</string>
+    <string msgid="6594204350307263338" name="sectioned_item_list_one_title">"Siyahı 1"</string>
+    <string msgid="2963927693547537519" name="sectioned_item_list_subtext">"Hər siyahı üzrə alt mətn"</string>
+    <string msgid="4941545381743022833" name="sectioned_item_list_two_title">"Siyahı 2"</string>
+    <string msgid="8377594346379786774" name="sectioned_item_template_demo_title">"Bölməli element şablonu demosu"</string>
+    <string msgid="1501401956386938735" name="sectioned_item_template_lots_of_rows_section_title">"Bir çox sıra bölməsi"</string>
+    <string msgid="1014325865070733609" name="sectioned_item_template_radio_button_section_title">"Radio düyməsi bölməsi"</string>
+    <string msgid="3197227971733559949" name="sectioned_item_template_toggle_section_title">"Bölməni aktiv/deaktiv edin"</string>
+    <string msgid="5492658731113129386" name="selectable_lists_demo_title">"Seçilə Bilən Siyahılar Demosu"</string>
+    <string msgid="3149189677200086656" name="selected_route_toast_msg">"Seçilmiş marşrut"</string>
+    <string msgid="4731688444696028193" name="send_notification_title">"Bildiriş göndərin"</string>
+    <string msgid="8616900063253887861" name="settings_action_title">"Ayarlar"</string>
+    <string msgid="7697794473002342727" name="settings_toast_msg">"Kliklənmiş Ayarlar"</string>
+    <string msgid="6798738013668580714" name="short_msg_template_demo_title">"Qısa Mesaj Şablonu Demosu"</string>
+    <string msgid="4831864276538141265" name="short_route">"Qısa marşrut"</string>
+    <string msgid="1542092687878113304" name="showcase_demos_title">"Vitrin Demoları"</string>
+    <string msgid="8423984266325680606" name="sign_in_complete_text">"Daxil olmusunuz!"</string>
+    <string msgid="8919868148773983428" name="sign_in_complete_title">"Giriş tamamlanıb"</string>
+    <string msgid="9044850228284294762" name="sign_in_instructions">"Giriş məlumatlarınızı daxil edin"</string>
+    <string msgid="6052035424941410249" name="sign_in_template_demo_title">"Giriş Şablonu Demosu"</string>
+    <string msgid="7184733753948837646" name="sign_in_template_not_supported_text">"Host Giriş şablonunu dəstəkləmir"</string>
+    <string msgid="4892883228898541764" name="sign_in_template_not_supported_title">"Uyğun olmayan host"</string>
+    <string msgid="4551967308262681703" name="sign_in_title">"Giriş"</string>
+    <string msgid="8043752000786977249" name="sign_in_with_google_title">"Google ilə Giriş"</string>
+    <string msgid="5720947549233124775" name="sign_in_with_google_toast_msg">"Google ilə Giriş burada başlayır"</string>
+    <string msgid="1653943000866713010" name="sign_out_action_title">"Çıxış"</string>
+    <string msgid="3880321601391343607" name="sixth_item">"Altıncı Element üçün uzun başlıq təyin edilib"</string>
+    <string msgid="6117028866385793707" name="sixth_item_toast_msg">"Altıncı element kliklənib"</string>
+    <string msgid="4009872495806318260" name="some_additional_text">"Bəzi əlavə mətn"</string>
+    <string msgid="2208831088632818681" name="start_notification_title">"Bildirişi başladın"</string>
+    <string msgid="8699668027543530460" name="start_notifications_title">"Bildirişləri başladın"</string>
+    <string msgid="4225260243713833974" name="started_for_result_msg">"Bu tətbiqə %s nəticəsi üçün zəng edilib. Zəng edənə geri göndərmək üçün nəticəni seçin"</string>
+    <string msgid="6277540029070332960" name="status_bar_notification_info_overflow">"999+"</string>
+    <string msgid="1187619482795416314" name="stop_action_title">"Dayandırın"</string>
+    <string msgid="3709643750540881176" name="stop_notification_title">"Bildirişi dayandırın"</string>
+    <string msgid="3703892710275206239" name="stop_notifications_title">"Bildirişləri dayandırın"</string>
+    <string msgid="7587839101813629975" name="tab_template_demo_title">"Tab Şablonu Demosu"</string>
+    <string msgid="6529681462424538165" name="tab_template_layouts_demo_title">"Tab Şablonu Demoları"</string>
+    <string msgid="4638051615030345574" name="tab_template_loading_demo_title">"Tab Şablonu - Yükləmə Demosu"</string>
+    <string msgid="6907466201298082309" name="tab_template_no_tabs_demo_title">"Tab Şablonu - Tabın Olmaması Demosu"</string>
+    <string msgid="5268168907976325154" name="tab_title_grid">"Uzun Tab Başlığı ilə Torlu Tab"</string>
+    <string msgid="5104962518489668123" name="tab_title_list">"Siyahı Tabı"</string>
+    <string msgid="5385807479734490989" name="tab_title_loading">"Tab yüklənir"</string>
+    <string msgid="5266710951630087246" name="tab_title_message">"Mesaj Tabı"</string>
+    <string msgid="2520606145526537263" name="tab_title_pane">"Panel Tabı"</string>
+    <string msgid="1892925693146631173" name="tab_title_search">"Axtarış Tabı"</string>
+    <string msgid="3804796387195842741" name="take_520">"Keçin: 520"</string>
+    <string msgid="545061986612431190" name="task_content_allowed">"Müxtəlif şablonları ziyarət edin və avtomobilin sürücülük rejimində olduğuna əmin olun"</string>
+    <string msgid="7162842196382260992" name="task_limit_reached_msg">"Addım sayını keçəcək və yeni ekrana yönləndiriləcəksiniz."</string>
+    <string msgid="2212084350718766941" name="task_restriction_demo_title">"Tapşırıq Məhdudiyyəti Demosu"</string>
+    <string msgid="4646729781462227219" name="task_step_of_text">"İrəli keçmək üçün klikləyin"</string>
+    <string msgid="2791717962535723839" name="task_step_of_title">"Tapşırıq mərhələsi %1$d/%2$d"</string>
+    <string msgid="788249269446087847" name="template_layouts_demo_title">"Şablon Düzən Demoları"</string>
+    <string msgid="8732943920672143201" name="text_icons_demo_title">"Mətn və İkona Demoları"</string>
+    <string msgid="334088179008716411" name="third_item">"Üçüncü Element"</string>
+    <string msgid="3022450599567347361" name="third_item_checked_toast_msg">"Üçüncü element seçilib"</string>
+    <string msgid="7163710562670220163" name="throw_action_title">"Atın"</string>
+    <string msgid="3991742709199357049" name="title_prefix">"Başlıq"</string>
+    <string msgid="6294250714820740520" name="title_with_app_icon_row_title">"Tətbiq ikonası ilə başlıq"</string>
+    <string msgid="3813134904602875778" name="title_with_res_id_image_row_title">"Resurs ID şəkli ilə başlıq"</string>
+    <string msgid="8945114692653524102" name="title_with_secondary_lines_row_text_1">"Səhv və səhv və yenidən səhv, lakin daha az və daha az."</string>
+    <string msgid="1017734603405251531" name="title_with_secondary_lines_row_text_2">"- Piet Hein"</string>
+    <string msgid="7769408881272549837" name="title_with_secondary_lines_row_title">"Çox sayda ikinci dərəcəli mətn sətirləri olan başlıq"</string>
+    <string msgid="6109092343637263755" name="title_with_svg_image_row_title">"SVG şəkli olan başlıq"</string>
+    <string msgid="3179103600967398928" name="toggle_button_demo_title">"Keçirmə Düyməsi Demosu"</string>
+    <string msgid="8366040658408451664" name="toggle_test_disabled">"Keçirmə Testi Deaktivdir"</string>
+    <string msgid="982370904182034076" name="toggle_test_enabled">"Keçirmə Testi Aktivdir"</string>
+    <string msgid="5914741538328669668" name="toggle_test_first_toggle_text">"Keçirmə testini aktiv etmək üçün bunu işarələyin"</string>
+    <string msgid="3635022201072117680" name="toggle_test_first_toggle_title">"Keçirmə Testini Aktivdir edin"</string>
+    <string msgid="1813071017415876745" name="toggle_test_second_toggle_text">"Status dəyişikliyinə icazə verilir"</string>
+    <string msgid="1083594617400613969" name="toggle_test_second_toggle_title">"Keçirmə testi"</string>
+    <string msgid="8107217216013312857" name="toggle_test_text">"Status dəyişikliyinə icazə verilir"</string>
+    <string msgid="924485265152862631" name="toggle_test_title">"Keçirmə testi"</string>
+    <string msgid="4430544885695162226" name="toll_card_state">"Ödəniş kartı statusu"</string>
+    <string msgid="5134365408383171144" name="travel_est_trip_text">"Götürülmə: Alice"</string>
+    <string msgid="3396166539208366382" name="triggered_toast_msg">"İşə salınıb"</string>
+    <string msgid="7384500054249311718" name="try_anyway_action_title">"İstənilən halda cəhd edin"</string>
+    <string msgid="4710562732720109969" name="turn_right">"Sağa Dönün"</string>
+    <string msgid="3636401138255192934" name="unavailable">"Əlçatmazdır"</string>
+    <string msgid="802503415474307811" name="unchecked_action_title">"Seçim ləğv edildi"</string>
+    <string msgid="7697521583928135171" name="unit">"Vahid"</string>
+    <string msgid="909001735933359216" name="unknown_importance">"Naməlum"</string>
+    <string msgid="7850893299484337431" name="use_pin">"PIN istifadə edin"</string>
+    <string msgid="1356952319161314986" name="user_interactions_demo_title">"İstifadəçi əlaqələri"</string>
+    <string msgid="874591632279039146" name="vector_no_tint_title">"Rəngsiz çəkilə bilən vektor"</string>
+    <string msgid="1301305340033556819" name="vector_toggle_details">"Rəng əlavə etmək/silmək üçün keçirin"</string>
+    <string msgid="4890094482708376219" name="vector_with_app_theme_attr_title">"Rənginə görə tətbiqin tema atributu ilə çəkilə bilən vektor"</string>
+    <string msgid="1022346419829696827" name="vector_with_tint_title">"Rəng ilə çəkilə bilən vektor"</string>
+    <string msgid="7065558153736024203" name="visible_routes_toast_msg">"Görünən marşrutlar"</string>
+    <string msgid="3825223890895361496" name="voice_access_demo_title">"Səsli Giriş Demo Ekranı"</string>
+    <string msgid="994338773299644607" name="year_unavailable">"Əlçatmaz olan il"</string>
+    <string msgid="5507096013762092189" name="yes_action_title">"Hə"</string>
+    <string msgid="6216215197177241247" name="yes_action_toast_msg">"Bəli düyməsi basılıb!"</string>
+    <string msgid="8915301497303842649" name="zoomed_in_toast_msg">"Yaxınlaşdırıldı"</string>
+    <string msgid="6260981223227212493" name="zoomed_out_toast_msg">"Uzaqlaşdırıldı"</string>
+</resources>
