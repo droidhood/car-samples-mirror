@@ -21,7 +21,7 @@ jobs:
     - name: Run the script
       run: |
         chmod +x scripts/*
-        scripts/get_samples.sh
+        scripts/get_changes.sh
         scripts/process_samples.sh
 
     - name: Get current date
