@@ -20,8 +20,9 @@ jobs:
     
     - name: Run the script
       run: |
-        chmod +x process_samples.sh
-        ./process_samples.sh
+        chmod +x scripts/*
+        scripts/get_samples.sh
+        scripts/process_samples.sh
 
     - name: Get current date
       id: date
