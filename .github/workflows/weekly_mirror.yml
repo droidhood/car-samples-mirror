@@ -44,7 +44,7 @@ jobs:
     - name: Check for commits
       id: check_commits
       run: |
-        COMMIT_DIFF=$(git log --oneline origin/main..HEAD)
+        COMMIT_DIFF=$(git log --oneline origin/main..${{ steps.get_branch.outputs.branch }})
         if [ -z "$COMMIT_DIFF" ]; then
           echo "No commits between branches found"
           echo "has_commits=false" >> $GITHUB_ENV
