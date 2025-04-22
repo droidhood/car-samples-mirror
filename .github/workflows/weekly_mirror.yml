@@ -41,20 +41,7 @@ jobs:
       run: |
         echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
 
-    - name: Check for commits
-      id: check_commits
-      run: |
-        COMMIT_DIFF=$(git log --oneline origin/main..${{ steps.get_branch.outputs.branch }})
-        if [ -z "$COMMIT_DIFF" ]; then
-          echo "No commits between branches found"
-          echo "has_commits=false" >> $GITHUB_ENV
-        else
-          echo "Found commits between branches"
-          echo "has_commits=true" >> $GITHUB_ENV
-        fi
-
     - name: Create Pull Request
-      if: ${{ env.has_commits == 'true' }}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
@@ -62,4 +49,5 @@ jobs:
           --title "Weekly Update: ${{ env.date }}" \
           --body "This PR contains the weekly update from https://android.googlesource.com/platform/frameworks/support/+/refs/heads/androidx-main/car/app/app-samples" \
           --base origin/main \
-          --head ${{ steps.get_branch.outputs.branch }}
+          --head ${{ steps.get_branch.outputs.branch }} \
+        || echo "No changes to commit, skipping PR creation"
