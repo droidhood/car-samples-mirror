@@ -47,14 +47,14 @@ jobs:
         COMMIT_DIFF=$(git log --oneline origin/main..HEAD)
         if [ -z "$COMMIT_DIFF" ]; then
           echo "No commits between branches found"
-          echo "has_commits=false" >> $GITHUB_OUTPUT
+          echo "has_commits=false" >> $GITHUB_ENV
         else
           echo "Found commits between branches"
-          echo "has_commits=true" >> $GITHUB_OUTPUT
+          echo "has_commits=true" >> $GITHUB_ENV
         fi
 
     - name: Create Pull Request
-      if: steps.check_commits.outputs.has_commits == 'true'
+      if: ${{ env.has_commits == 'true' }}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
