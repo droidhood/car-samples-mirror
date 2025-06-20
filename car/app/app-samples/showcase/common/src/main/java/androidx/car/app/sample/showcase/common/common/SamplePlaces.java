@@ -203,7 +203,10 @@ public class SamplePlaces {
                         carContext.getString(R.string.location_description_text_label),
                         carContext.getString(R.string.location_phone_not_available),
                         location6,
-                        new PlaceMarker.Builder().build()));
+                        new PlaceMarker.Builder()
+                                .setLabel("X")
+                                .setColor(CarColor.createCustom(carContext.getColor(R.color.yellow), carContext.getColor(R.color.yellow)))
+                                .build()));
 
         // Some hosts may display more items in the list than others, so create 3 more items.
         Location location7 = new Location(SamplePlaces.class.getSimpleName());
