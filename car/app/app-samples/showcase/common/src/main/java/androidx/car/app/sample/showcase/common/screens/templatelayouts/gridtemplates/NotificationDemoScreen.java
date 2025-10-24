@@ -51,7 +51,6 @@ import androidx.car.app.sample.showcase.common.R;
 import androidx.car.app.sample.showcase.common.ShowcaseService;
 import androidx.core.app.NotificationChannelCompat;
 import androidx.core.app.NotificationCompat;
-import androidx.core.content.ContextCompat;
 import androidx.core.graphics.drawable.IconCompat;
 import androidx.lifecycle.DefaultLifecycleObserver;
 import androidx.lifecycle.LifecycleOwner;
@@ -336,8 +335,7 @@ public final class NotificationDemoScreen extends Screen implements DefaultLifec
         filter.addAction(INTENT_ACTION_PRIMARY_PHONE);
         filter.addAction(INTENT_ACTION_SECONDARY_PHONE);
 
-        ContextCompat.registerReceiver(getCarContext(), mBroadcastReceiver, filter,
-                ContextCompat.RECEIVER_NOT_EXPORTED);
+        getCarContext().registerReceiver(mBroadcastReceiver, filter);
     }
 
     private void unregisterBroadcastReceiver() {
