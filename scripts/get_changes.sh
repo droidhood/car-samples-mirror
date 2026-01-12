@@ -11,18 +11,18 @@ fi
 echo "Fetching latest changes from AOSP..."
 git fetch --depth=100 aosp androidx-main
 
-# Use filter-repo to rewrite the history of the current branch (HEAD) 
-# based on the fetched AOSP branch. 
-# This does two things at once:
-# 1. --path: Isolates only the 'car/app/app-samples/' directory.
-# 2. --filename-callback: Renames any file starting with 'github_'.
-# The result is a clean, filtered history that preserves the original commits.
-echo "Filtering AOSP history and renaming files..."
-git filter-repo \
-  --source refs/remotes/aosp/androidx-main \
-  --target HEAD \
+# 1. Reset the current branch (weekly-update) to match the upstream AOSP branch.
+#    This gives us the complete, unfiltered history to work with.
+echo "Resetting branch to upstream AOSP history..."
+git reset --hard aosp/androidx-main
+
+# 2. Filter the history of the current branch (HEAD) in-place.
+#    --refs HEAD ensures that only the current branch is rewritten.
+echo "Filtering history and renaming files for the current branch..."
+git filter-repo --refs HEAD \
   --path car/app/app-samples/ \
-  --filename-callback '
+  --filename-callback \
+  '\
     return filename.replace(b"github_", b"")
   ' \
   --force
