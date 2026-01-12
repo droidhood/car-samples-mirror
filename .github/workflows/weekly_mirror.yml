@@ -8,10 +8,13 @@ on:
 jobs:
   run-script:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
       with:
         fetch-depth: '0'
 
@@ -25,29 +28,25 @@ jobs:
         sudo apt-get update
         sudo apt install git-filter-repo
 
-    - name: Run the script
-      run: |
-        chmod +x scripts/*
-        scripts/get_changes.sh
-        scripts/process_samples.sh
-
     - name: Get current date
       id: date
-      run: echo "date=$(date -u +"%Y-%m-%d-%H%M%S")" >> $GITHUB_ENV
+      run: echo "date=$(date -u +'%Y-%m-%d')" >> $GITHUB_ENV
 
-    - name: Get branch name
-      id: get_branch
-      shell: bash
+    - name: Run the script and create new branch
       run: |
-        echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+        chmod +x scripts/*
+        git checkout -b weekly-update/${{ env.date }}
+        scripts/get_changes.sh
+        scripts/process_samples.sh
 
     - name: Create Pull Request
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
+        git push --set-upstream origin weekly-update/${{ env.date }}
         gh pr create \
           --title "Weekly Update: ${{ env.date }}" \
           --body "This PR contains the weekly update from https://android.googlesource.com/platform/frameworks/support/+/refs/heads/androidx-main/car/app/app-samples" \
-          --base origin/main \
-          --head ${{ steps.get_branch.outputs.branch }} \
+          --base main \
+          --head weekly-update/${{ env.date }} \
         || echo "No changes to commit, skipping PR creation"
