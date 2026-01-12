@@ -46,7 +46,7 @@ jobs:
         # Check if there are any new commits on this branch compared to the main branch
         if git rev-list main..HEAD --count > 0; then
           echo "Commits found. Pushing branch and creating PR."
-          git push --set-upstream origin weekly-update/${{ env.date }}
+          git push --force --set-upstream origin weekly-update/${{ env.date }}
           gh pr create \
             --title "Weekly Update: ${{ env.date }}" \
             --body "This PR contains the weekly update from https://android.googlesource.com/platform/frameworks/support/+/refs/heads/androidx-main/car/app/app-samples" \
