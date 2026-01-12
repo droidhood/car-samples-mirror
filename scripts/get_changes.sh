@@ -17,13 +17,14 @@ echo "Resetting branch to upstream AOSP history..."
 git reset --hard aosp/androidx-main
 
 # 2. Filter the history of the current branch (HEAD) in-place.
-#    --refs HEAD ensures that only the current branch is rewritten.
+#    The filename_callback is updated to handle cases where the filename is None.
 echo "Filtering history and renaming files for the current branch..."
 git filter-repo --refs HEAD \
   --path car/app/app-samples/ \
   --filename-callback \
   '\
-    return filename.replace(b"github_", b"")
+    # Return the filename, replacing "github_" if the filename is not None.
+    return filename.replace(b"github_", b"") if filename else filename
   ' \
   --force
 
