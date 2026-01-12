@@ -16,6 +16,7 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
       with:
+        # Fetch all history for all branches and tags
         fetch-depth: '0'
 
     - name: Set up Git
@@ -32,21 +33,25 @@ jobs:
       id: date
       run: echo "date=$(date -u +'%Y-%m-%d')" >> $GITHUB_ENV
 
-    - name: Run the script and create new branch
+    - name: Create new branch and run update script
       run: |
         chmod +x scripts/*
         git checkout -b weekly-update/${{ env.date }}
         scripts/get_changes.sh
-        scripts/process_samples.sh
 
-    - name: Create Pull Request
+    - name: Push changes and create Pull Request if commits exist
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-        git push --set-upstream origin weekly-update/${{ env.date }}
-        gh pr create \
-          --title "Weekly Update: ${{ env.date }}" \
-          --body "This PR contains the weekly update from https://android.googlesource.com/platform/frameworks/support/+/refs/heads/androidx-main/car/app/app-samples" \
-          --base main \
-          --head weekly-update/${{ env.date }} \
-        || echo "No changes to commit, skipping PR creation"
+        # Check if there are any new commits on this branch compared to the main branch
+        if git rev-list main..HEAD --count > 0; then
+          echo "Commits found. Pushing branch and creating PR."
+          git push --set-upstream origin weekly-update/${{ env.date }}
+          gh pr create \
+            --title "Weekly Update: ${{ env.date }}" \
+            --body "This PR contains the weekly update from https://android.googlesource.com/platform/frameworks/support/+/refs/heads/androidx-main/car/app/app-samples" \
+            --base main \
+            --head weekly-update/${{ env.date }}
+        else
+          echo "No new commits found. Skipping PR creation."
+        fi
