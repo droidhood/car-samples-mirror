@@ -9,3 +9,5 @@ git fetch android_temp
 git rebase android_temp/androidx-main
 git remote remove android_temp
 rm -rf support
+git add .
+git commit -m "Weekly update from AOSP"
