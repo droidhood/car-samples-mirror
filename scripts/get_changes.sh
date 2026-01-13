@@ -9,12 +9,12 @@ fi
 
 # Fetch the latest changes from the AOSP androidx-main branch
 echo "Fetching latest changes from AOSP..."
-git fetch --depth=100 aosp androidx-main
+git fetch aosp androidx-main
 
 # Create a temporary directory to clone the AOSP repo
 TEMP_AOSP_DIR=$(mktemp -d)
 echo "Cloning AOSP into temporary directory: $TEMP_AOSP_DIR"
-git clone --depth 100 --filter=blob:none https://android.googlesource.com/platform/frameworks/support "$TEMP_AOSP_DIR"
+git clone https://android.googlesource.com/platform/frameworks/support "$TEMP_AOSP_DIR"
 
 # Navigate into the temporary clone
 pushd "$TEMP_AOSP_DIR"
