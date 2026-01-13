@@ -43,16 +43,15 @@ find "$TEMP_STAGING_DIR" -type f \( -name "github_*.gradle" -o -name "github_*.p
   target_filename="${filename#github_}"
   target_path="$dir/$target_filename"
 
+  # Check if a non-github_ prefixed file with the target name exists
   if [[ -f "$target_path" ]]; then
-    # Collision detected: A non-github_ prefixed file with the same target name already exists.
-    # The user wants the non-github_ prefixed file to take precedence, so delete the github_ prefixed one.
-    echo "Collision detected: '$target_path' exists. Deleting redundant '$github_file'."
-    rm "$github_file"
-  else
-    # No collision: Safely remove 'github_' prefix.
-    echo "No collision for '$github_file'. Renaming to '$target_path'."
-    mv "$github_file" "$target_path"
+    aosp_filename="aosp_${target_filename}"
+    aosp_path="$dir/$aosp_filename"
+    echo "Collision detected: '$target_path' and '$github_file'. Renaming '$target_path' to '$aosp_path'."
+    mv "$target_path" "$aosp_path"
   fi
+  echo "Renaming '$github_file' to '$target_path'."
+  mv "$github_file" "$target_path"
 done
 
 # Handle github_README.md deletion if it exists
