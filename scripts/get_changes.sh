@@ -36,7 +36,7 @@ rsync -a --exclude='.git' "$TEMP_AOSP_DIR/car/app/app-samples/." "$TEMP_STAGING_
 
 echo "Resolving naming collisions in staging directory..."
 # Iterate through files in the staging directory to resolve naming conflicts
-find "$TEMP_STAGING_DIR" -type f -name "github_*.gradle" | while read -r github_file; do
+find "$TEMP_STAGING_DIR" -type f \( -name "github_*.gradle" -o -name "github_*.properties" \) | while read -r github_file; do
   dir=$(dirname "$github_file")
   filename=$(basename "$github_file")
   # Remove 'github_' prefix to get the target name
@@ -60,13 +60,13 @@ find "$TEMP_STAGING_DIR" -type f -name "github_README.md" | while read -r readme
   rm "$readme_file"
 done
 
-echo "Copying resolved content to main repository's car/app/app-samples."
+echo "Copying resolved content to main repository's car/app-samples."
 # Ensure the target directory exists and is empty before copying
-rm -rf car/app/app-samples/* || true
-mkdir -p car/app/app-samples/
+rm -rf car/app-samples/* || true
+mkdir -p car/app-samples/
 
 # Copy processed files from staging to the final destination
-rsync -a "$TEMP_STAGING_DIR/." "car/app/app-samples/"
+rsync -a "$TEMP_STAGING_DIR/." "car/app-samples/"
 
 # Clean up temporary directories
 rm -rf "$TEMP_AOSP_DIR"
