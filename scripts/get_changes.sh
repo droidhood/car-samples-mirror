@@ -60,13 +60,13 @@ find "$TEMP_STAGING_DIR" -type f -name "github_README.md" | while read -r readme
   rm "$readme_file"
 done
 
-echo "Copying resolved content to main repository's car/app-samples."
+echo "Copying resolved content to main repository's car/app/app-samples."
 # Ensure the target directory exists and is empty before copying
-rm -rf car/app-samples/* || true
-mkdir -p car/app-samples/
+rm -rf car/app/app-samples/* || true
+mkdir -p car/app/app-samples/
 
 # Copy processed files from staging to the final destination
-rsync -a "$TEMP_STAGING_DIR/." "car/app-samples/"
+rsync -a "$TEMP_STAGING_DIR/." "car/app/app-samples/"
 
 # Clean up temporary directories
 rm -rf "$TEMP_AOSP_DIR"
