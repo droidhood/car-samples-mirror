@@ -47,7 +47,7 @@ rm -rf car/app/app-samples/* || true
 mkdir -p car/app/app-samples/
 
 # Use 'rsync' to copy files, excluding the .git directory
-rsync -a --exclude='.git' "$TEMP_AOSP_DIR/." "car/app/app-samples/"
+rsync -a --exclude='.git' "$TEMP_AOSP_DIR/car/app/app-samples/." "car/app/app-samples/"
 
 # Clean up the temporary directory
 rm -rf "$TEMP_AOSP_DIR"
