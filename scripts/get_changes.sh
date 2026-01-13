@@ -36,7 +36,7 @@ rsync -a --exclude='.git' "$TEMP_AOSP_DIR/car/app/app-samples/." "$TEMP_STAGING_
 
 echo "Resolving naming collisions in staging directory..."
 # Iterate through files in the staging directory to resolve naming conflicts
-find "$TEMP_STAGING_DIR" -type f -name "github_*.gradle" | while read -r github_file; do
+find "$TEMP_STAGING_DIR" -type f \( -name "github_*.gradle" -o -name "github_*.properties" \) | while read -r github_file; do
   dir=$(dirname "$github_file")
   filename=$(basename "$github_file")
   # Remove 'github_' prefix to get the target name
