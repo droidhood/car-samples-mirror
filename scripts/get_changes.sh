@@ -32,7 +32,7 @@ TEMP_STAGING_DIR=$(mktemp -d)
 echo "Copying filtered content to temporary staging directory: $TEMP_STAGING_DIR"
 # Use 'rsync' to copy files from the filtered temporary AOSP clone to the staging directory
 # The filter-repo --path should have flattened car/app/app-samples to the root of TEMP_AOSP_DIR
-rsync -a --exclude='.git' "$TEMP_AOSP_DIR/." "$TEMP_STAGING_DIR/"
+rsync -a --exclude='.git' "$TEMP_AOSP_DIR/car/app/app-samples/." "$TEMP_STAGING_DIR/"
 
 echo "Resolving naming collisions in staging directory..."
 # Iterate through files in the staging directory to resolve naming conflicts
