@@ -24,14 +24,22 @@ if [ -n "${LAST_SUBTREE_COMMIT}" ]; then
   echo "Last subtree merge was at commit: ${LAST_SUBTREE_COMMIT}"
 fi
 
-# Pull the latest changes from the subtree, replaying the original commits
-# The --squash flag can be used to create a single commit instead of replaying all commits
-# Remove --squash to preserve full history (recommended for your use case)
+# Pull the latest changes from the subtree using split to ensure only the target directory is included
 echo "Pulling latest changes from AOSP subtree..."
 echo "This may take a few minutes and will preserve all AOSP commit history..."
-git config merge.allowUnrelatedHistories true
-git subtree pull --prefix=${SUBTREE_PREFIX} ${AOSP_REMOTE} ${AOSP_BRANCH} \
+
+# Create a filtered branch from AOSP containing only car/app/app-samples
+echo "Splitting AOSP history to extract only ${SUBTREE_PREFIX}..."
+git subtree split --prefix=car/app/app-samples --branch=aosp-filtered ${AOSP_REMOTE}/${AOSP_BRANCH}
+
+# Merge only the filtered content
+echo "Merging filtered AOSP content..."
+git merge -s subtree aosp-filtered --allow-unrelated-histories \
   -m "Merge AOSP car/app/app-samples from ${AOSP_BRANCH}"
+
+# Clean up temporary branch
+echo "Cleaning up temporary branch..."
+git branch -D aosp-filtered
 
 echo "✅ AOSP content updated successfully!"
 echo "New commits have been merged into car/app/app-samples/"
