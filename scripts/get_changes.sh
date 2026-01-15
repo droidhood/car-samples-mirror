@@ -29,7 +29,9 @@ fi
 # Remove --squash to preserve full history (recommended for your use case)
 echo "Pulling latest changes from AOSP subtree..."
 echo "This may take a few minutes and will preserve all AOSP commit history..."
-git subtree pull --prefix=${SUBTREE_PREFIX} ${AOSP_REMOTE} ${AOSP_BRANCH} -m "Merge AOSP car/app/app-samples from ${AOSP_BRANCH}"
+git subtree pull --prefix=${SUBTREE_PREFIX} ${AOSP_REMOTE} ${AOSP_BRANCH} \
+  --allow-unrelated-histories \
+  -m "Merge AOSP car/app/app-samples from ${AOSP_BRANCH}"
 
 echo "✅ AOSP content updated successfully!"
 echo "New commits have been merged into car/app/app-samples/"
