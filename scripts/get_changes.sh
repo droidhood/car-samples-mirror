@@ -16,7 +16,7 @@ fi
 
 # Fetch the latest changes from the AOSP androidx-main branch
 echo "Fetching latest changes from AOSP ${AOSP_BRANCH}..."
-git fetch ${AOSP_REMOTE} ${AOSP_BRANCH} --depth=100
+git fetch ${AOSP_REMOTE} ${AOSP_BRANCH}
 
 # Check if there are any new commits to pull
 LAST_SUBTREE_COMMIT=$(git log --grep="git-subtree-dir: ${SUBTREE_PREFIX}" --format="%H" -1 2>/dev/null || echo "")
