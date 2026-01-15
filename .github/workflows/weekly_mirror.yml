@@ -35,7 +35,6 @@ jobs:
 
     - name: Create new branch and run update script
       run: |
-        chmod +x scripts/*
         git checkout -b weekly-update/${{ env.date }}
         scripts/get_changes.sh
 
