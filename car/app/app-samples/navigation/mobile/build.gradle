@@ -14,38 +14,47 @@
  * limitations under the License.
  */
 
-/**
- * This file was created using the `create_project.py` script located in the
- * `<AndroidX root>/development/project-creator` directory.
- *
- * Please use that script when creating a new project, rather than copying an existing project and
- * modifying its settings.
- */
-import androidx.build.SoftwareType
-
 plugins {
-    id("AndroidXPlugin")
-    id("com.android.application")
+    alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.android.application)
 }
 
 android {
+    compileSdk 34
+
     defaultConfig {
-        applicationId = "androidx.car.app.sample.navigation"
+        applicationId "androidx.car.app.sample.navigation"
+        minSdkVersion 23
+        targetSdkVersion 34
+        // Increment this to generate signed builds for uploading to Playstore
+        // Make sure this is different from the navigation-automotive version
+        versionCode 114
+        versionName "114"
     }
 
     buildTypes {
         release {
             // Enables code shrinking, obfuscation, and optimization.
-            minifyEnabled = true
+            minifyEnabled true
             proguardFiles getDefaultProguardFile(
-                    'proguard-android-optimize.txt')
+                    'proguard-android-optimize.txt'),
+                    'proguard-rules.pro'
         }
     }
-    namespace = "androidx.car.app.sample.navigation"
+
+    java.toolchain {
+        languageVersion.set(JavaLanguageVersion.of(libs.versions.java.get()))
+    }
+
+    kotlinOptions {
+        jvmTarget = libs.versions.java.get()
+    }
+
+    namespace "androidx.car.app.sample.navigation"
 }
 
 dependencies {
-    implementation(project(":car:app:app-samples:navigation-common"))
-    implementation(project(":car:app:app-projected"))
+    implementation libs.androidx.app.projected
+    implementation project(":navigation:common")
+    implementation libs.androidx.core.ktx
 }
-
