@@ -46,4 +46,5 @@ dependencies {
     implementation libs.androidx.car.app
     implementation libs.androidx.annotation.experimental
     implementation libs.androidx.core.ktx
+    implementation(libs.jspecify)
 }
