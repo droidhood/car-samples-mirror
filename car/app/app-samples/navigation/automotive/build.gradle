@@ -14,47 +14,42 @@
  * limitations under the License.
  */
 
+/**
+ * This file was created using the `create_project.py` script located in the
+ * `<AndroidX root>/development/project-creator` directory.
+ *
+ * Please use that script when creating a new project, rather than copying an existing project and
+ * modifying its settings.
+ */
+import androidx.build.SoftwareType
+
 plugins {
-    alias(libs.plugins.jetbrains.kotlin.android)
-    alias(libs.plugins.android.application)
+    id("AndroidXPlugin")
+    id("com.android.application")
 }
 
 android {
-    compileSdk 34
-
     defaultConfig {
-        applicationId "androidx.car.app.sample.navigation"
-        minSdkVersion 29
-        targetSdkVersion 34
-        // Increment this to generate signed builds for uploading to Playstore
-        // Make sure this is different from the navigation-mobile version
-        versionCode 113
-        versionName "113"
+        applicationId = "androidx.car.app.sample.navigation"
+        minSdk { version = release(29) }
     }
 
     buildTypes {
         release {
             // Enables code shrinking, obfuscation, and optimization.
-            minifyEnabled true
+            minifyEnabled = true
             proguardFiles getDefaultProguardFile(
-                    'proguard-android-optimize.txt'),
-                    'proguard-rules.pro'
+                    'proguard-android-optimize.txt')
         }
     }
-
-    java.toolchain {
-        languageVersion.set(JavaLanguageVersion.of(libs.versions.java.get()))
-    }
-
-    kotlinOptions {
-        jvmTarget = libs.versions.java.get()
-    }
-
-    namespace "androidx.car.app.sample.navigation"
+    namespace = "androidx.car.app.sample.navigation"
 }
 
 dependencies {
-    implementation libs.androidx.app.automotive
-    implementation project(":navigation:common")
-    implementation libs.androidx.core.ktx
+    implementation(project(":car:app:app-samples:navigation-common"))
+    implementation(project(":car:app:app-automotive"))
+}
+
+androidx {
+    type = SoftwareType.TEST_APPLICATION
 }
