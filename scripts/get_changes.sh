@@ -71,17 +71,66 @@ if [ -z "$MERGE_BASE" ]; then
   BRANCH_NAME="${BRANCH_PREFIX}/$(date +%Y-%m-%d)"
   git checkout -B ${BRANCH_NAME} ${TARGET_BRANCH}
   
-  # Rebase aosp-filtered onto current branch
+  # Clean untracked files before rebasing
+  git clean -fdx ${SUBTREE_PREFIX}/ 2>/dev/null || true
+  
+  # Rebase aosp-filtered onto current branch with auto-conflict resolution
   echo "Rebasing AOSP changes onto ${TARGET_BRANCH}..."
-  if ! git rebase aosp-filtered; then
-    echo "❌ Rebase failed - conflicts need to be resolved"
-    echo "Please resolve conflicts manually and run:"
-    echo "  git rebase --continue"
-    echo "Or abort with:"
-    echo "  git rebase --abort"
-    git branch -D aosp-filtered 2>/dev/null || true
-    exit 1
-  fi
+  git rebase aosp-filtered || {
+    echo "⚠️  Rebase conflicts detected, attempting auto-resolution..."
+    
+    # Loop to auto-resolve all conflicts
+    while [ -d .git/rebase-merge ] || [ -d .git/rebase-apply ]; do
+      # Clean untracked files
+      git clean -f ${SUBTREE_PREFIX}/local.properties 2>/dev/null || true
+      git clean -fdx ${SUBTREE_PREFIX}/build/ 2>/dev/null || true
+      git clean -fdx ${SUBTREE_PREFIX}/.gradle/ 2>/dev/null || true
+      git clean -fdx ${SUBTREE_PREFIX}/.idea/ 2>/dev/null || true
+      
+      # Get conflicted files
+      CONFLICTED=$(git diff --name-only --diff-filter=U)
+      
+      if [ -n "$CONFLICTED" ]; then
+        echo "Resolving conflicts..."
+        echo "$CONFLICTED" | while IFS= read -r file; do
+          if [ -n "$file" ] && [ -f "$file" ]; then
+            git checkout --theirs "$file" 2>/dev/null || true
+          elif [ -n "$file" ]; then
+            git rm "$file" 2>/dev/null || true
+          fi
+        done
+        git add -A ${SUBTREE_PREFIX}/ 2>/dev/null || true
+      fi
+      
+      # Check if conflicts remain
+      if git diff --name-only --diff-filter=U | grep -q .; then
+        echo "❌ Rebase failed - unresolved conflicts remain"
+        echo "Please resolve conflicts manually and run:"
+        echo "  git rebase --continue"
+        echo "Or abort with:"
+        echo "  git rebase --abort"
+        git branch -D aosp-filtered 2>/dev/null || true
+        exit 1
+      fi
+      
+      # Continue rebase
+      if GIT_EDITOR=true git rebase --continue 2>&1 | tee /tmp/rebase_out.txt; then
+        if [ ! -d .git/rebase-merge ] && [ ! -d .git/rebase-apply ]; then
+          echo "✅ Rebase completed!"
+          break
+        fi
+      else
+        # Check if it's an empty commit
+        if grep -q "No changes\|nothing to commit" /tmp/rebase_out.txt; then
+          git rebase --skip || break
+        else
+          echo "❌ Rebase failed - see errors above"
+          git branch -D aosp-filtered 2>/dev/null || true
+          exit 1
+        fi
+      fi
+    done
+  }
 else
   # Get list of new commits in reverse chronological order (oldest first)
   NEW_COMMITS=$(git rev-list ${MERGE_BASE}..aosp-filtered --reverse)
@@ -107,7 +156,7 @@ else
       COMMIT_MSG=$(git log -1 --format="%s" $commit)
       echo "Cherry-picking: ${COMMIT_MSG}"
       
-      if ! git cherry-pick $commit --strategy-option=theirs; then
+      if ! git cherry-pick $commit; then
         # If cherry-pick fails, try to auto-resolve with theirs strategy
         echo "⚠️  Conflict detected, attempting auto-resolution..."
         
@@ -115,27 +164,59 @@ else
         git clean -f ${SUBTREE_PREFIX}/local.properties 2>/dev/null || true
         git clean -fdx ${SUBTREE_PREFIX}/build/ 2>/dev/null || true
         git clean -fdx ${SUBTREE_PREFIX}/.gradle/ 2>/dev/null || true
+        git clean -fdx ${SUBTREE_PREFIX}/.idea/ 2>/dev/null || true
         
-        # Take their version for all conflicts
-        git diff --name-only --diff-filter=U | while IFS= read -r file; do
-          if [ -f "$file" ]; then
-            git checkout --theirs "$file" && git add "$file"
-          else
-            git rm "$file" 2>/dev/null || true
-          fi
-        done
+        # Get list of conflicted files
+        CONFLICTED_FILES=$(git diff --name-only --diff-filter=U)
         
-        # Try to continue
-        if ! git -c core.editor=true cherry-pick --continue; then
+        if [ -n "$CONFLICTED_FILES" ]; then
+          echo "Resolving conflicts in: $CONFLICTED_FILES"
+          
+          # Resolve each conflicted file
+          echo "$CONFLICTED_FILES" | while IFS= read -r file; do
+            if [ -n "$file" ]; then
+              if [ -f "$file" ]; then
+                echo "  Taking incoming version: $file"
+                git checkout --theirs "$file" 2>/dev/null || true
+              else
+                echo "  Removing deleted file: $file"
+                git rm "$file" 2>/dev/null || true
+              fi
+            fi
+          done
+          
+          # Stage all changes (both resolved and unresolved)
+          git add -A ${SUBTREE_PREFIX}/ 2>/dev/null || git add -u 2>/dev/null || true
+        fi
+        
+        # Check if there are still unresolved conflicts
+        if git diff --name-only --diff-filter=U | grep -q .; then
           echo "❌ Cherry-pick failed for commit: ${commit}"
-          echo "Please resolve conflicts manually and run:"
-          echo "  git cherry-pick --continue"
-          echo "Or skip this commit with:"
-          echo "  git cherry-pick --skip"
-          echo "Or abort with:"
-          echo "  git cherry-pick --abort"
+          echo "Unresolved conflicts remain. Please resolve manually."
+          echo "Then run: git cherry-pick --continue"
+          echo "Or skip: git cherry-pick --skip"
+          echo "Or abort: git cherry-pick --abort"
           git branch -D aosp-filtered 2>/dev/null || true
           exit 1
+        fi
+        
+        # Try to continue with empty editor to auto-accept commit message
+        if ! GIT_EDITOR=true git cherry-pick --continue; then
+          # If continue fails, check if it's because there are no changes
+          if git diff --cached --quiet; then
+            echo "  Commit is empty, skipping..."
+            git cherry-pick --skip
+          else
+            echo "❌ Cherry-pick failed for commit: ${commit}"
+            echo "Please resolve conflicts manually and run:"
+            echo "  git cherry-pick --continue"
+            echo "Or skip this commit with:"
+            echo "  git cherry-pick --skip"
+            echo "Or abort with:"
+            echo "  git cherry-pick --abort"
+            git branch -D aosp-filtered 2>/dev/null || true
+            exit 1
+          fi
         fi
       fi
     done
