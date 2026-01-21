@@ -93,13 +93,21 @@ if [ -z "$MERGE_BASE" ]; then
       if [ -n "$CONFLICTED" ]; then
         echo "Resolving conflicts..."
         echo "$CONFLICTED" | while IFS= read -r file; do
-          if [ -n "$file" ] && [ -f "$file" ]; then
-            git checkout --theirs "$file" 2>/dev/null || true
-          elif [ -n "$file" ]; then
-            git rm "$file" 2>/dev/null || true
+          if [ -n "$file" ]; then
+            # Keep README.md from our branch (main), take others from incoming (AOSP)
+            if [ "$file" = "README.md" ]; then
+              echo "  Keeping local README.md"
+              git checkout --ours "$file" 2>/dev/null || true
+            elif [ -f "$file" ]; then
+              git checkout --theirs "$file" 2>/dev/null || true
+            else
+              git rm "$file" 2>/dev/null || true
+            fi
           fi
         done
         git add -A ${SUBTREE_PREFIX}/ 2>/dev/null || true
+        # Also add README.md if it was in conflict
+        git add README.md 2>/dev/null || true
       fi
       
       # Check if conflicts remain
@@ -175,7 +183,11 @@ else
           # Resolve each conflicted file
           echo "$CONFLICTED_FILES" | while IFS= read -r file; do
             if [ -n "$file" ]; then
-              if [ -f "$file" ]; then
+              # Keep README.md from our branch (main), take others from incoming (AOSP)
+              if [ "$file" = "README.md" ]; then
+                echo "  Keeping local README.md"
+                git checkout --ours "$file" 2>/dev/null || true
+              elif [ -f "$file" ]; then
                 echo "  Taking incoming version: $file"
                 git checkout --theirs "$file" 2>/dev/null || true
               else
@@ -187,6 +199,8 @@ else
           
           # Stage all changes (both resolved and unresolved)
           git add -A ${SUBTREE_PREFIX}/ 2>/dev/null || git add -u 2>/dev/null || true
+          # Also add README.md if it was in conflict
+          git add README.md 2>/dev/null || true
         fi
         
         # Check if there are still unresolved conflicts
