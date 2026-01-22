@@ -176,7 +176,12 @@ if [ -z "$MERGE_BASE" ]; then
         while IFS= read -r file; do
           if [ -n "$file" ]; then
             echo "  Keeping deletion: $file"
-            git rm "$file" 2>/dev/null || true
+            # Remove the file if it exists in working tree
+            if [ -e "$file" ]; then
+              rm -f "$file" 2>/dev/null || true
+            fi
+            # Mark the deletion as resolved in the index
+            git rm -f "$file" 2>/dev/null || git add "$file" 2>/dev/null || true
           fi
         done < <(echo "$DELETED_BY_US")
       fi
@@ -299,7 +304,12 @@ else
           while IFS= read -r file; do
             if [ -n "$file" ]; then
               echo "  Keeping deletion: $file"
-              git rm "$file" 2>/dev/null || true
+              # Remove the file if it exists in working tree
+              if [ -e "$file" ]; then
+                rm -f "$file" 2>/dev/null || true
+              fi
+              # Mark the deletion as resolved in the index
+              git rm -f "$file" 2>/dev/null || git add "$file" 2>/dev/null || true
             fi
           done < <(echo "$DELETED_BY_US")
         fi
