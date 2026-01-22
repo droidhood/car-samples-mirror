@@ -34,29 +34,107 @@ echo "Pulling latest changes from AOSP subtree..."
 LAST_SYNC_TAG="last-aosp-sync"
 git fetch origin "refs/tags/${LAST_SYNC_TAG}:refs/tags/${LAST_SYNC_TAG}" 2>/dev/null || true
 
+# Create a branch to work with filtered AOSP commits
+git branch -D aosp-filtered 2>/dev/null || true
+
 # Verify the tag exists and resolve it to a commit SHA
 if git rev-parse "refs/tags/${LAST_SYNC_TAG}" >/dev/null 2>&1; then
-  LAST_SYNCED_COMMIT=$(git rev-parse "refs/tags/${LAST_SYNC_TAG}")
-  echo "Found last sync marker at commit: ${LAST_SYNCED_COMMIT}"
-  echo "Performing incremental split (much faster!)..."
+  LAST_SYNCED_AOSP_COMMIT=$(git rev-parse "refs/tags/${LAST_SYNC_TAG}")
+  echo "Found last sync marker at AOSP commit: ${LAST_SYNCED_AOSP_COMMIT}"
+  echo "Finding new commits since last sync (fast!)..."
   
-  # Create a temporary branch from the last synced state
-  git branch -f aosp-base ${LAST_SYNCED_COMMIT}
+  # Find commits in AOSP that touch our subtree path since last sync
+  # This is MUCH faster than git subtree split
+  NEW_AOSP_COMMITS=$(git log --reverse --format="%H" \
+    ${LAST_SYNCED_AOSP_COMMIT}..${AOSP_REMOTE}/${AOSP_BRANCH} \
+    -- ${SUBTREE_PREFIX} 2>/dev/null || echo "")
   
-  # Perform incremental split - only process new commits
-  git subtree split --prefix=car/app/app-samples --branch=aosp-filtered \
-    --onto=aosp-base ${AOSP_REMOTE}/${AOSP_BRANCH}
+  if [ -z "$NEW_AOSP_COMMITS" ]; then
+    echo "✅ No new commits in AOSP for ${SUBTREE_PREFIX} - already up to date!"
+    exit 0
+  fi
   
-  # Clean up temporary branch
-  git branch -D aosp-base
+  COMMIT_COUNT=$(echo "$NEW_AOSP_COMMITS" | wc -l | tr -d ' ')
+  echo "Found ${COMMIT_COUNT} new AOSP commit(s) touching ${SUBTREE_PREFIX}"
+  
+  # Create aosp-filtered branch by filtering just the new commits
+  # Start from the last synced commit
+  git branch aosp-filtered ${LAST_SYNCED_AOSP_COMMIT}
+  git checkout aosp-filtered
+  
+  # Apply each new commit with path filtering
+  for commit in $NEW_AOSP_COMMITS; do
+    COMMIT_MSG=$(git log -1 --format="%s" $commit)
+    echo "  Filtering: ${COMMIT_MSG}"
+    
+    # Cherry-pick with subdirectory filter
+    # This keeps only changes to our subtree path
+    if git cherry-pick -n $commit 2>/dev/null; then
+      # Remove changes outside our subtree
+      git reset HEAD -- . 2>/dev/null || true
+      git checkout HEAD -- . 2>/dev/null || true
+      git add ${SUBTREE_PREFIX}/ 2>/dev/null || true
+      
+      # Commit if there are actual changes
+      if ! git diff --cached --quiet 2>/dev/null; then
+        git commit -C $commit --allow-empty 2>/dev/null || true
+      fi
+    else
+      # If cherry-pick fails, try to extract just the subtree changes
+      git cherry-pick --abort 2>/dev/null || true
+      
+      # Extract the patch for our subtree only
+      if git format-patch -1 --stdout $commit -- ${SUBTREE_PREFIX} | \
+         git apply --directory="" 2>/dev/null; then
+        git add ${SUBTREE_PREFIX}/ 2>/dev/null || true
+        if ! git diff --cached --quiet 2>/dev/null; then
+          git commit -C $commit --allow-empty 2>/dev/null || true
+        fi
+      fi
+    fi
+  done
+  
+  # Return to previous branch
+  git checkout ${TARGET_BRANCH}
+  
 else
-  echo "No previous sync found - performing full split..."
-  echo "This may take a few minutes and will preserve all AOSP commit history..."
-  echo "(Subsequent runs will be much faster!)"
+  echo "No previous sync found - performing initial sync..."
+  echo "This will take a few minutes but subsequent runs will be instant..."
   
-  # Full split on first run
-  git subtree split --prefix=car/app/app-samples --branch=aosp-filtered \
-    ${AOSP_REMOTE}/${AOSP_BRANCH}
+  # For first run, we need to do a full subtree split
+  # But we'll be smart about it - only process recent history
+  RECENT_AOSP_COMMIT=$(git log -1 --format="%H" ${AOSP_REMOTE}/${AOSP_BRANCH})
+  
+  # Get commits that touch our subtree (limit to last 1000 for initial sync)
+  echo "Finding recent commits in AOSP that touch ${SUBTREE_PREFIX}..."
+  AOSP_COMMITS=$(git log --reverse --format="%H" -1000 \
+    ${AOSP_REMOTE}/${AOSP_BRANCH} -- ${SUBTREE_PREFIX})
+  
+  COMMIT_COUNT=$(echo "$AOSP_COMMITS" | wc -l | tr -d ' ')
+  echo "Processing ${COMMIT_COUNT} recent commit(s)..."
+  
+  # Create filtered branch from scratch
+  FIRST_COMMIT=$(echo "$AOSP_COMMITS" | head -1)
+  git checkout --orphan aosp-filtered $FIRST_COMMIT
+  git rm -rf . 2>/dev/null || true
+  git checkout $FIRST_COMMIT -- ${SUBTREE_PREFIX} 2>/dev/null || true
+  git commit -m "Initial sync from AOSP" --allow-empty
+  
+  # Apply remaining commits
+  for commit in $(echo "$AOSP_COMMITS" | tail -n +2); do
+    git cherry-pick -n $commit 2>/dev/null || true
+    git reset HEAD -- . 2>/dev/null || true
+    git checkout HEAD -- . 2>/dev/null || true
+    git add ${SUBTREE_PREFIX}/ 2>/dev/null || true
+    if ! git diff --cached --quiet 2>/dev/null; then
+      git commit -C $commit --allow-empty 2>/dev/null || true
+    fi
+  done
+  
+  git checkout ${TARGET_BRANCH}
+  
+  # Tag the last synced AOSP commit for next time
+  LAST_SYNCED_AOSP_COMMIT=$RECENT_AOSP_COMMIT
 fi
 
 # Find the merge base and get only new commits
@@ -242,12 +320,14 @@ fi
 
 # Update the sync marker tag for next run
 echo "Updating sync marker for future incremental updates..."
-git tag -f ${LAST_SYNC_TAG} aosp-filtered
+# Tag should point to the AOSP commit, not our filtered branch
+LATEST_AOSP_COMMIT=$(git log -1 --format="%H" ${AOSP_REMOTE}/${AOSP_BRANCH})
+git tag -f ${LAST_SYNC_TAG} ${LATEST_AOSP_COMMIT}
 git push origin ${LAST_SYNC_TAG} --force 2>/dev/null || echo "⚠️  Could not push tag (may need manual push)"
 
 # Clean up temporary branch
 echo "Cleaning up temporary branch..."
-git branch -D aosp-filtered
+git branch -D aosp-filtered 2>/dev/null || true
 
 echo ""
 echo "✅ AOSP content updated successfully!"
