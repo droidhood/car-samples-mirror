@@ -36,10 +36,10 @@ apply_subtree_commits() {
     commit_msg=$(git log -1 --format="%s" "${commit}")
     echo "  Applying: ${commit_msg}"
 
-    git restore --source=HEAD --staged --worktree -- . --ignore-unmerged 2>/dev/null || true
+    git reset --hard HEAD 2>/dev/null || true
 
     if git cat-file -e "${commit}:${SUBTREE_PREFIX}" 2>/dev/null; then
-      git restore --source="${commit}" --staged --worktree -- "${SUBTREE_PREFIX}" --ignore-unmerged 2>/dev/null || true
+      git restore --source="${commit}" --staged --worktree -- "${SUBTREE_PREFIX}" 2>/dev/null || true
     else
       if git ls-files --error-unmatch "${SUBTREE_PREFIX}" >/dev/null 2>&1; then
         git rm -rf "${SUBTREE_PREFIX}" 2>/dev/null || true
