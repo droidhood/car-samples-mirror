@@ -175,13 +175,20 @@ if [ -z "$MERGE_BASE" ]; then
         echo "Handling files deleted in main branch:"
         while IFS= read -r file; do
           if [ -n "$file" ]; then
-            echo "  Keeping deletion: $file"
-            # Remove the file if it exists in working tree
-            if [ -e "$file" ]; then
-              rm -f "$file" 2>/dev/null || true
+            # Only allow deletions for files under SUBTREE_PREFIX
+            if [[ "$file" == "${SUBTREE_PREFIX}/"* ]]; then
+              echo "  Keeping deletion: $file"
+              # Remove the file if it exists in working tree
+              if [ -e "$file" ]; then
+                rm -f "$file" 2>/dev/null || true
+              fi
+              # Mark the deletion as resolved in the index
+              git rm -f "$file" 2>/dev/null || git add "$file" 2>/dev/null || true
+            else
+              echo "  Keeping local file (outside AOSP path): $file"
+              git checkout --ours "$file" 2>/dev/null || true
+              git add "$file" 2>/dev/null || true
             fi
-            # Mark the deletion as resolved in the index
-            git rm -f "$file" 2>/dev/null || git add "$file" 2>/dev/null || true
           fi
         done < <(echo "$DELETED_BY_US")
       fi
@@ -191,8 +198,15 @@ if [ -z "$MERGE_BASE" ]; then
         echo "Handling files deleted by AOSP:"
         while IFS= read -r file; do
           if [ -n "$file" ]; then
-            echo "  Removing: $file"
-            git rm "$file" 2>/dev/null || true
+            # Only allow AOSP deletions for files under SUBTREE_PREFIX
+            if [[ "$file" == "${SUBTREE_PREFIX}/"* ]]; then
+              echo "  Removing: $file"
+              git rm "$file" 2>/dev/null || true
+            else
+              echo "  Keeping local file (outside AOSP path): $file"
+              git checkout --ours "$file" 2>/dev/null || true
+              git add "$file" 2>/dev/null || true
+            fi
           fi
         done < <(echo "$DELETED_BY_THEM")
       fi
@@ -204,24 +218,22 @@ if [ -z "$MERGE_BASE" ]; then
         # Use process substitution to avoid subshell
         while IFS= read -r file; do
           if [ -n "$file" ]; then
-            # Keep README files from our branch (main), take others from incoming (AOSP)
-            case "$file" in
-              README.md|github_README.md|*/README.md)
-                echo "  Keeping local: $file"
-                git checkout --ours "$file" 2>/dev/null || true
+            # Files outside SUBTREE_PREFIX are custom code - always keep ours
+            if [[ "$file" != "${SUBTREE_PREFIX}/"* ]]; then
+              echo "  Keeping local (outside AOSP path): $file"
+              git checkout --ours "$file" 2>/dev/null || true
+              git add "$file" 2>/dev/null || true
+            # Files inside SUBTREE_PREFIX: take AOSP version
+            else
+              if [ -f "$file" ]; then
+                echo "  Taking AOSP version: $file"
+                git checkout --theirs "$file" 2>/dev/null || true
                 git add "$file" 2>/dev/null || true
-                ;;
-              *)
-                if [ -f "$file" ]; then
-                  echo "  Taking incoming: $file"
-                  git checkout --theirs "$file" 2>/dev/null || true
-                  git add "$file" 2>/dev/null || true
-                else
-                  echo "  Removing: $file"
-                  git rm "$file" 2>/dev/null || true
-                fi
-                ;;
-            esac
+              else
+                echo "  Removing: $file"
+                git rm "$file" 2>/dev/null || true
+              fi
+            fi
           fi
         done < <(echo "$CONFLICTED")
         
@@ -303,13 +315,20 @@ else
           echo "Handling files deleted in main branch:"
           while IFS= read -r file; do
             if [ -n "$file" ]; then
-              echo "  Keeping deletion: $file"
-              # Remove the file if it exists in working tree
-              if [ -e "$file" ]; then
-                rm -f "$file" 2>/dev/null || true
+              # Only allow deletions for files under SUBTREE_PREFIX
+              if [[ "$file" == "${SUBTREE_PREFIX}/"* ]]; then
+                echo "  Keeping deletion: $file"
+                # Remove the file if it exists in working tree
+                if [ -e "$file" ]; then
+                  rm -f "$file" 2>/dev/null || true
+                fi
+                # Mark the deletion as resolved in the index
+                git rm -f "$file" 2>/dev/null || git add "$file" 2>/dev/null || true
+              else
+                echo "  Keeping local file (outside AOSP path): $file"
+                git checkout --ours "$file" 2>/dev/null || true
+                git add "$file" 2>/dev/null || true
               fi
-              # Mark the deletion as resolved in the index
-              git rm -f "$file" 2>/dev/null || git add "$file" 2>/dev/null || true
             fi
           done < <(echo "$DELETED_BY_US")
         fi
@@ -319,8 +338,15 @@ else
           echo "Handling files deleted by AOSP:"
           while IFS= read -r file; do
             if [ -n "$file" ]; then
-              echo "  Removing: $file"
-              git rm "$file" 2>/dev/null || true
+              # Only allow AOSP deletions for files under SUBTREE_PREFIX
+              if [[ "$file" == "${SUBTREE_PREFIX}/"* ]]; then
+                echo "  Removing: $file"
+                git rm "$file" 2>/dev/null || true
+              else
+                echo "  Keeping local file (outside AOSP path): $file"
+                git checkout --ours "$file" 2>/dev/null || true
+                git add "$file" 2>/dev/null || true
+              fi
             fi
           done < <(echo "$DELETED_BY_THEM")
         fi
@@ -332,24 +358,22 @@ else
           # Resolve each conflicted file - use process substitution to avoid subshell
           while IFS= read -r file; do
             if [ -n "$file" ]; then
-              # Keep README files from our branch (main), take others from incoming (AOSP)
-              case "$file" in
-                README.md|github_README.md|*/README.md)
-                  echo "  Keeping local: $file"
-                  git checkout --ours "$file" 2>/dev/null || true
+              # Files outside SUBTREE_PREFIX are custom code - always keep ours
+              if [[ "$file" != "${SUBTREE_PREFIX}/"* ]]; then
+                echo "  Keeping local (outside AOSP path): $file"
+                git checkout --ours "$file" 2>/dev/null || true
+                git add "$file" 2>/dev/null || true
+              # Files inside SUBTREE_PREFIX: take AOSP version
+              else
+                if [ -f "$file" ]; then
+                  echo "  Taking AOSP version: $file"
+                  git checkout --theirs "$file" 2>/dev/null || true
                   git add "$file" 2>/dev/null || true
-                  ;;
-                *)
-                  if [ -f "$file" ]; then
-                    echo "  Taking incoming: $file"
-                    git checkout --theirs "$file" 2>/dev/null || true
-                    git add "$file" 2>/dev/null || true
-                  else
-                    echo "  Removing: $file"
-                    git rm "$file" 2>/dev/null || true
-                  fi
-                  ;;
-              esac
+                else
+                  echo "  Removing: $file"
+                  git rm "$file" 2>/dev/null || true
+                fi
+              fi
             fi
           done < <(echo "$CONFLICTED_FILES")
           
