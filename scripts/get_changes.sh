@@ -10,11 +10,16 @@ SUBTREE_PREFIX="car/app/app-samples"
 BRANCH_PREFIX="weekly-update"
 TARGET_BRANCH="${TARGET_BRANCH:-main}"
 
+AOSP_COMMIT_MAP=""
+LOCAL_COMMIT_MAP=""
+
 apply_subtree_commits() {
   local branch="$1"
   local commits="$2"
+  local mapping_var="$3"
   local commit
   local commit_msg
+  local new_commit
 
   if [ -z "${commits}" ]; then
     echo "⚠️  No commits to apply to ${SUBTREE_PREFIX} for ${branch}."
@@ -26,6 +31,10 @@ apply_subtree_commits() {
 
   if [ -d "${SUBTREE_PREFIX}" ]; then
     git clean -fdx -- "${SUBTREE_PREFIX}" 2>/dev/null || true
+  fi
+
+  if [ -n "${mapping_var}" ]; then
+    eval "${mapping_var}=''"
   fi
 
   for commit in $commits; do
@@ -61,6 +70,11 @@ apply_subtree_commits() {
       git reset --hard HEAD
       git checkout "${TARGET_BRANCH}"
       exit 1
+    fi
+
+    if [ -n "${mapping_var}" ]; then
+      new_commit=$(git rev-parse HEAD)
+      eval "${mapping_var}+='${new_commit}|${commit}'$'\n'"
     fi
   done
 
@@ -252,7 +266,7 @@ if git rev-parse "refs/tags/${LAST_SYNC_TAG}" >/dev/null 2>&1; then
   COMMIT_COUNT=$(echo "$NEW_AOSP_COMMITS" | wc -l | tr -d ' ')
   echo "Found ${COMMIT_COUNT} new AOSP commit(s) touching ${SUBTREE_PREFIX}"
 
-  apply_subtree_commits "aosp-filtered" "$NEW_AOSP_COMMITS"
+  apply_subtree_commits "aosp-filtered" "$NEW_AOSP_COMMITS" "AOSP_COMMIT_MAP"
 
 else
   echo "No previous sync found - performing initial sync..."
@@ -274,13 +288,13 @@ else
     exit 0
   fi
 
-  apply_subtree_commits "aosp-filtered" "$AOSP_COMMITS"
+  apply_subtree_commits "aosp-filtered" "$AOSP_COMMITS" "AOSP_COMMIT_MAP"
 
 fi
 
 LOCAL_FILTERED_COMMITS=""
 if [ -n "$LOCAL_COMMITS" ]; then
-  apply_subtree_commits "local-filtered" "$LOCAL_COMMITS"
+  apply_subtree_commits "local-filtered" "$LOCAL_COMMITS" "LOCAL_COMMIT_MAP"
   if git show-ref --verify --quiet refs/heads/local-filtered; then
     LOCAL_FILTERED_COMMITS=$(git rev-list origin/${TARGET_BRANCH}..local-filtered --reverse 2>/dev/null || echo "")
   fi
@@ -323,7 +337,11 @@ ORDER_COUNTER=0
 if [ -n "$AOSP_FILTERED_COMMITS" ]; then
   while IFS= read -r commit; do
     if [ -n "$commit" ]; then
-      commit_time=$(git show -s --format="%ct" "$commit")
+      original_commit=$(printf "%s" "${AOSP_COMMIT_MAP}" | awk -F'|' -v f="$commit" 'BEGIN{found=""} $1==f {found=$2; exit} END{print found}')
+      if [ -z "$original_commit" ]; then
+        original_commit="$commit"
+      fi
+      commit_time=$(git show -s --format="%ct" "$original_commit")
       COMMIT_METADATA+="aosp|${commit_time}|${ORDER_COUNTER}|${commit}"$'\n'
       ORDER_COUNTER=$((ORDER_COUNTER + 1))
     fi
@@ -333,7 +351,11 @@ fi
 if [ -n "$LOCAL_FILTERED_COMMITS" ]; then
   while IFS= read -r commit; do
     if [ -n "$commit" ]; then
-      commit_time=$(git show -s --format="%ct" "$commit")
+      original_commit=$(printf "%s" "${LOCAL_COMMIT_MAP}" | awk -F'|' -v f="$commit" 'BEGIN{found=""} $1==f {found=$2; exit} END{print found}')
+      if [ -z "$original_commit" ]; then
+        original_commit="$commit"
+      fi
+      commit_time=$(git show -s --format="%ct" "$original_commit")
       COMMIT_METADATA+="local|${commit_time}|${ORDER_COUNTER}|${commit}"$'\n'
       ORDER_COUNTER=$((ORDER_COUNTER + 1))
     fi
