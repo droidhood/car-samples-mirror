@@ -11,17 +11,18 @@ BRANCH_PREFIX="weekly-update"
 TARGET_BRANCH="${TARGET_BRANCH:-main}"
 
 apply_subtree_commits() {
-  local commits="$1"
+  local branch="$1"
+  local commits="$2"
   local commit
   local commit_msg
 
   if [ -z "${commits}" ]; then
-    echo "⚠️  No commits to apply to ${SUBTREE_PREFIX}."
+    echo "⚠️  No commits to apply to ${SUBTREE_PREFIX} for ${branch}."
     return
   fi
 
-  echo "Preparing filtered branch from origin/${TARGET_BRANCH}..."
-  git checkout -B aosp-filtered "origin/${TARGET_BRANCH}"
+  echo "Preparing filtered branch ${branch} from origin/${TARGET_BRANCH}..."
+  git checkout -B "${branch}" "origin/${TARGET_BRANCH}"
 
   if [ -d "${SUBTREE_PREFIX}" ]; then
     git clean -fdx -- "${SUBTREE_PREFIX}" 2>/dev/null || true
@@ -198,7 +199,7 @@ git fetch ${AOSP_REMOTE} ${AOSP_BRANCH}
 git fetch origin ${TARGET_BRANCH}
 
 # Capture local commits ahead of origin to replay after syncing AOSP
-LOCAL_COMMITS=$(git rev-list --reverse origin/${TARGET_BRANCH}..${TARGET_BRANCH} 2>/dev/null || echo "")
+LOCAL_COMMITS=$(git log --reverse --format="%H" origin/${TARGET_BRANCH}..${TARGET_BRANCH} -- ${SUBTREE_PREFIX} 2>/dev/null || echo "")
 
 # Check if there are any new commits to pull
 LAST_SUBTREE_COMMIT=$(git log --grep="git-subtree-dir: ${SUBTREE_PREFIX}" --format="%H" -1 2>/dev/null || echo "")
@@ -213,8 +214,9 @@ echo "Pulling latest changes from AOSP subtree..."
 LAST_SYNC_TAG="last-aosp-sync"
 git fetch origin "refs/tags/${LAST_SYNC_TAG}:refs/tags/${LAST_SYNC_TAG}" 2>/dev/null || true
 
-# Create a branch to work with filtered AOSP commits
+# Create branches to work with filtered commits
 git branch -D aosp-filtered 2>/dev/null || true
+git branch -D local-filtered 2>/dev/null || true
 
 # Verify the tag exists and resolve it to a commit SHA
 if git rev-parse "refs/tags/${LAST_SYNC_TAG}" >/dev/null 2>&1; then
@@ -237,7 +239,7 @@ if git rev-parse "refs/tags/${LAST_SYNC_TAG}" >/dev/null 2>&1; then
   COMMIT_COUNT=$(echo "$NEW_AOSP_COMMITS" | wc -l | tr -d ' ')
   echo "Found ${COMMIT_COUNT} new AOSP commit(s) touching ${SUBTREE_PREFIX}"
 
-  apply_subtree_commits "$NEW_AOSP_COMMITS"
+  apply_subtree_commits "aosp-filtered" "$NEW_AOSP_COMMITS"
 
 else
   echo "No previous sync found - performing initial sync..."
@@ -259,12 +261,23 @@ else
     exit 0
   fi
 
-  apply_subtree_commits "$AOSP_COMMITS"
+  apply_subtree_commits "aosp-filtered" "$AOSP_COMMITS"
 
 fi
 
+LOCAL_FILTERED_COMMITS=""
+if [ -n "$LOCAL_COMMITS" ]; then
+  apply_subtree_commits "local-filtered" "$LOCAL_COMMITS"
+  if git show-ref --verify --quiet refs/heads/local-filtered; then
+    LOCAL_FILTERED_COMMITS=$(git rev-list origin/${TARGET_BRANCH}..local-filtered --reverse 2>/dev/null || echo "")
+  fi
+fi
+
 # Determine commits to apply in chronological order
-AOSP_FILTERED_COMMITS=$(git rev-list origin/${TARGET_BRANCH}..aosp-filtered --reverse)
+AOSP_FILTERED_COMMITS=""
+if git show-ref --verify --quiet refs/heads/aosp-filtered; then
+  AOSP_FILTERED_COMMITS=$(git rev-list origin/${TARGET_BRANCH}..aosp-filtered --reverse 2>/dev/null || echo "")
+fi
 
 if [ -n "$AOSP_FILTERED_COMMITS" ]; then
   AOSP_COMMIT_COUNT=$(echo "$AOSP_FILTERED_COMMITS" | wc -l | tr -d ' ')
@@ -272,15 +285,16 @@ else
   AOSP_COMMIT_COUNT=0
 fi
 
-if [ -n "$LOCAL_COMMITS" ]; then
-  LOCAL_COMMIT_COUNT=$(echo "$LOCAL_COMMITS" | wc -l | tr -d ' ')
+if [ -n "$LOCAL_FILTERED_COMMITS" ]; then
+  LOCAL_COMMIT_COUNT=$(echo "$LOCAL_FILTERED_COMMITS" | wc -l | tr -d ' ')
 else
   LOCAL_COMMIT_COUNT=0
 fi
 
-if [ -z "$AOSP_FILTERED_COMMITS" ] && [ -z "$LOCAL_COMMITS" ]; then
+if [ -z "$AOSP_FILTERED_COMMITS" ] && [ -z "$LOCAL_FILTERED_COMMITS" ]; then
   echo "✅ No new commits to add - already up to date!"
   git branch -D aosp-filtered 2>/dev/null || true
+  git branch -D local-filtered 2>/dev/null || true
   exit 0
 fi
 
@@ -295,9 +309,9 @@ if [ -n "$AOSP_FILTERED_COMMITS" ]; then
   cherry_pick_commits "$AOSP_FILTERED_COMMITS"
 fi
 
-if [ -n "$LOCAL_COMMITS" ]; then
+if [ -n "$LOCAL_FILTERED_COMMITS" ]; then
   echo "Replaying ${LOCAL_COMMIT_COUNT} local commit(s) to maintain chronology..."
-  cherry_pick_commits "$LOCAL_COMMITS"
+  cherry_pick_commits "$LOCAL_FILTERED_COMMITS"
 fi
 
 echo "✅ Successfully built branch ${BRANCH_NAME} with linear chronological history!"
@@ -309,9 +323,10 @@ LATEST_AOSP_COMMIT=$(git log -1 --format="%H" ${AOSP_REMOTE}/${AOSP_BRANCH})
 git tag -f ${LAST_SYNC_TAG} ${LATEST_AOSP_COMMIT}
 git push origin ${LAST_SYNC_TAG} --force 2>/dev/null || echo "⚠️  Could not push tag (may need manual push)"
 
-# Clean up temporary branch
+# Clean up temporary branches
 echo "Cleaning up temporary branch..."
 git branch -D aosp-filtered 2>/dev/null || true
+git branch -D local-filtered 2>/dev/null || true
 
 echo ""
 echo "✅ AOSP content updated successfully!"
