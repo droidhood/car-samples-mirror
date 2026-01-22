@@ -165,6 +165,7 @@ cherry_pick_commits() {
       echo "Or skip: git cherry-pick --skip"
       echo "Or abort: git cherry-pick --abort"
       git branch -D aosp-filtered 2>/dev/null || true
+      git branch -D local-filtered 2>/dev/null || true
       exit 1
     fi
 
@@ -181,10 +182,22 @@ cherry_pick_commits() {
         echo "Or abort with:"
         echo "  git cherry-pick --abort"
         git branch -D aosp-filtered 2>/dev/null || true
+        git branch -D local-filtered 2>/dev/null || true
         exit 1
       fi
     fi
   done
+}
+
+merge_commits_by_author_time() {
+  local queue="$1"
+
+  if [ -z "${queue}" ]; then
+    echo ""
+    return
+  fi
+
+  printf "%s" "${queue}" | sort -t'|' -k2,2n -k3,3n | awk -F'|' '{print $4}'
 }
 
 # Add the AOSP repository as a remote if it doesn't exist
@@ -304,14 +317,34 @@ git checkout -B ${BRANCH_NAME} origin/${TARGET_BRANCH}
 
 git clean -fdx ${SUBTREE_PREFIX}/ 2>/dev/null || true
 
+COMMIT_METADATA=""
+ORDER_COUNTER=0
+
 if [ -n "$AOSP_FILTERED_COMMITS" ]; then
-  echo "Applying ${AOSP_COMMIT_COUNT} AOSP commit(s)..."
-  cherry_pick_commits "$AOSP_FILTERED_COMMITS"
+  while IFS= read -r commit; do
+    if [ -n "$commit" ]; then
+      commit_time=$(git show -s --format="%ct" "$commit")
+      COMMIT_METADATA+="aosp|${commit_time}|${ORDER_COUNTER}|${commit}"$'\n'
+      ORDER_COUNTER=$((ORDER_COUNTER + 1))
+    fi
+  done <<< "$AOSP_FILTERED_COMMITS"
 fi
 
 if [ -n "$LOCAL_FILTERED_COMMITS" ]; then
-  echo "Replaying ${LOCAL_COMMIT_COUNT} local commit(s) to maintain chronology..."
-  cherry_pick_commits "$LOCAL_FILTERED_COMMITS"
+  while IFS= read -r commit; do
+    if [ -n "$commit" ]; then
+      commit_time=$(git show -s --format="%ct" "$commit")
+      COMMIT_METADATA+="local|${commit_time}|${ORDER_COUNTER}|${commit}"$'\n'
+      ORDER_COUNTER=$((ORDER_COUNTER + 1))
+    fi
+  done <<< "$LOCAL_FILTERED_COMMITS"
+fi
+
+MERGED_COMMIT_LIST=$(merge_commits_by_author_time "${COMMIT_METADATA}")
+
+if [ -n "$MERGED_COMMIT_LIST" ]; then
+  echo "Applying ${AOSP_COMMIT_COUNT} AOSP and ${LOCAL_COMMIT_COUNT} local commit(s) in chronological order..."
+  cherry_pick_commits "$MERGED_COMMIT_LIST"
 fi
 
 echo "✅ Successfully built branch ${BRANCH_NAME} with linear chronological history!"
