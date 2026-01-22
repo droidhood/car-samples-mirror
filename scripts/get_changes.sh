@@ -165,9 +165,34 @@ if [ -z "$MERGE_BASE" ]; then
       git clean -fdx ${SUBTREE_PREFIX}/.gradle/ 2>/dev/null || true
       git clean -fdx ${SUBTREE_PREFIX}/.idea/ 2>/dev/null || true
       
-      # Get conflicted files
+      # Get conflicted files (both content conflicts and modify/delete)
       CONFLICTED=$(git diff --name-only --diff-filter=U)
+      DELETED_BY_US=$(git diff --name-only --diff-filter=DU 2>/dev/null || true)
+      DELETED_BY_THEM=$(git diff --name-only --diff-filter=UD 2>/dev/null || true)
       
+      # Handle modify/delete conflicts first (files deleted in main but modified in AOSP)
+      if [ -n "$DELETED_BY_US" ]; then
+        echo "Handling files deleted in main branch:"
+        while IFS= read -r file; do
+          if [ -n "$file" ]; then
+            echo "  Keeping deletion: $file"
+            git rm "$file" 2>/dev/null || true
+          fi
+        done < <(echo "$DELETED_BY_US")
+      fi
+      
+      # Handle files deleted by AOSP but modified locally
+      if [ -n "$DELETED_BY_THEM" ]; then
+        echo "Handling files deleted by AOSP:"
+        while IFS= read -r file; do
+          if [ -n "$file" ]; then
+            echo "  Removing: $file"
+            git rm "$file" 2>/dev/null || true
+          fi
+        done < <(echo "$DELETED_BY_THEM")
+      fi
+      
+      # Handle regular content conflicts
       if [ -n "$CONFLICTED" ]; then
         echo "Resolving conflicts..."
         
@@ -263,9 +288,34 @@ else
         git clean -fdx ${SUBTREE_PREFIX}/.gradle/ 2>/dev/null || true
         git clean -fdx ${SUBTREE_PREFIX}/.idea/ 2>/dev/null || true
         
-        # Get list of conflicted files
+        # Get list of conflicted files (both content conflicts and modify/delete)
         CONFLICTED_FILES=$(git diff --name-only --diff-filter=U)
+        DELETED_BY_US=$(git diff --name-only --diff-filter=DU 2>/dev/null || true)
+        DELETED_BY_THEM=$(git diff --name-only --diff-filter=UD 2>/dev/null || true)
         
+        # Handle modify/delete conflicts first (files deleted in main but modified in AOSP)
+        if [ -n "$DELETED_BY_US" ]; then
+          echo "Handling files deleted in main branch:"
+          while IFS= read -r file; do
+            if [ -n "$file" ]; then
+              echo "  Keeping deletion: $file"
+              git rm "$file" 2>/dev/null || true
+            fi
+          done < <(echo "$DELETED_BY_US")
+        fi
+        
+        # Handle files deleted by AOSP but modified locally
+        if [ -n "$DELETED_BY_THEM" ]; then
+          echo "Handling files deleted by AOSP:"
+          while IFS= read -r file; do
+            if [ -n "$file" ]; then
+              echo "  Removing: $file"
+              git rm "$file" 2>/dev/null || true
+            fi
+          done < <(echo "$DELETED_BY_THEM")
+        fi
+        
+        # Handle regular content conflicts
         if [ -n "$CONFLICTED_FILES" ]; then
           echo "Resolving conflicts in: $CONFLICTED_FILES"
           
