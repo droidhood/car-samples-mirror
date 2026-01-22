@@ -170,22 +170,33 @@ if [ -z "$MERGE_BASE" ]; then
       
       if [ -n "$CONFLICTED" ]; then
         echo "Resolving conflicts..."
-        echo "$CONFLICTED" | while IFS= read -r file; do
+        
+        # Use process substitution to avoid subshell
+        while IFS= read -r file; do
           if [ -n "$file" ]; then
-            # Keep README.md from our branch (main), take others from incoming (AOSP)
-            if [ "$file" = "README.md" ]; then
-              echo "  Keeping local README.md"
-              git checkout --ours "$file" 2>/dev/null || true
-            elif [ -f "$file" ]; then
-              git checkout --theirs "$file" 2>/dev/null || true
-            else
-              git rm "$file" 2>/dev/null || true
-            fi
+            # Keep README files from our branch (main), take others from incoming (AOSP)
+            case "$file" in
+              README.md|github_README.md|*/README.md)
+                echo "  Keeping local: $file"
+                git checkout --ours "$file" 2>/dev/null || true
+                git add "$file" 2>/dev/null || true
+                ;;
+              *)
+                if [ -f "$file" ]; then
+                  echo "  Taking incoming: $file"
+                  git checkout --theirs "$file" 2>/dev/null || true
+                  git add "$file" 2>/dev/null || true
+                else
+                  echo "  Removing: $file"
+                  git rm "$file" 2>/dev/null || true
+                fi
+                ;;
+            esac
           fi
-        done
+        done < <(echo "$CONFLICTED")
+        
+        # Ensure everything is staged
         git add -A ${SUBTREE_PREFIX}/ 2>/dev/null || true
-        # Also add README.md if it was in conflict
-        git add README.md 2>/dev/null || true
       fi
       
       # Check if conflicts remain
@@ -258,27 +269,32 @@ else
         if [ -n "$CONFLICTED_FILES" ]; then
           echo "Resolving conflicts in: $CONFLICTED_FILES"
           
-          # Resolve each conflicted file
-          echo "$CONFLICTED_FILES" | while IFS= read -r file; do
+          # Resolve each conflicted file - use process substitution to avoid subshell
+          while IFS= read -r file; do
             if [ -n "$file" ]; then
-              # Keep README.md from our branch (main), take others from incoming (AOSP)
-              if [ "$file" = "README.md" ]; then
-                echo "  Keeping local README.md"
-                git checkout --ours "$file" 2>/dev/null || true
-              elif [ -f "$file" ]; then
-                echo "  Taking incoming version: $file"
-                git checkout --theirs "$file" 2>/dev/null || true
-              else
-                echo "  Removing deleted file: $file"
-                git rm "$file" 2>/dev/null || true
-              fi
+              # Keep README files from our branch (main), take others from incoming (AOSP)
+              case "$file" in
+                README.md|github_README.md|*/README.md)
+                  echo "  Keeping local: $file"
+                  git checkout --ours "$file" 2>/dev/null || true
+                  git add "$file" 2>/dev/null || true
+                  ;;
+                *)
+                  if [ -f "$file" ]; then
+                    echo "  Taking incoming: $file"
+                    git checkout --theirs "$file" 2>/dev/null || true
+                    git add "$file" 2>/dev/null || true
+                  else
+                    echo "  Removing: $file"
+                    git rm "$file" 2>/dev/null || true
+                  fi
+                  ;;
+              esac
             fi
-          done
+          done < <(echo "$CONFLICTED_FILES")
           
-          # Stage all changes (both resolved and unresolved)
+          # Stage all changes to ensure everything is committed
           git add -A ${SUBTREE_PREFIX}/ 2>/dev/null || git add -u 2>/dev/null || true
-          # Also add README.md if it was in conflict
-          git add README.md 2>/dev/null || true
         fi
         
         # Check if there are still unresolved conflicts
