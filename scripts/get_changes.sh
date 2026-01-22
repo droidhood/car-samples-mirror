@@ -10,6 +10,63 @@ SUBTREE_PREFIX="car/app/app-samples"
 BRANCH_PREFIX="weekly-update"
 TARGET_BRANCH="${TARGET_BRANCH:-main}"
 
+apply_subtree_commits() {
+  local commits="$1"
+  local commit
+  local commit_msg
+
+  if [ -z "${commits}" ]; then
+    echo "⚠️  No commits to apply to ${SUBTREE_PREFIX}."
+    return
+  fi
+
+  echo "Preparing filtered branch from ${TARGET_BRANCH}..."
+  git checkout -B aosp-filtered "${TARGET_BRANCH}"
+  git reset --hard "${TARGET_BRANCH}"
+
+  if [ -d "${SUBTREE_PREFIX}" ]; then
+    git clean -fdx -- "${SUBTREE_PREFIX}" 2>/dev/null || true
+  fi
+
+  for commit in $commits; do
+    if [ -z "${commit}" ]; then
+      continue
+    fi
+
+    commit_msg=$(git log -1 --format="%s" "${commit}")
+    echo "  Applying: ${commit_msg}"
+
+    git restore --source=HEAD --staged --worktree -- . --ignore-unmerged 2>/dev/null || true
+
+    if git cat-file -e "${commit}:${SUBTREE_PREFIX}" 2>/dev/null; then
+      git restore --source="${commit}" --staged --worktree -- "${SUBTREE_PREFIX}" --ignore-unmerged 2>/dev/null || true
+    else
+      if git ls-files --error-unmatch "${SUBTREE_PREFIX}" >/dev/null 2>&1; then
+        git rm -rf "${SUBTREE_PREFIX}" 2>/dev/null || true
+      fi
+      rm -rf "${SUBTREE_PREFIX}" 2>/dev/null || true
+    fi
+
+    if [ -d "${SUBTREE_PREFIX}" ]; then
+      git clean -fd -- "${SUBTREE_PREFIX}" 2>/dev/null || true
+    fi
+
+    if git diff --cached --quiet; then
+      git reset HEAD -- "${SUBTREE_PREFIX}" 2>/dev/null || true
+      continue
+    fi
+
+    if ! GIT_EDITOR=true git commit -C "${commit}" --allow-empty; then
+      echo "❌ Failed to commit filtered changes for ${commit}"
+      git reset --hard HEAD
+      git checkout "${TARGET_BRANCH}"
+      exit 1
+    fi
+  done
+
+  git checkout "${TARGET_BRANCH}"
+}
+
 # Add the AOSP repository as a remote if it doesn't exist
 if ! git remote | grep -q "${AOSP_REMOTE}"; then
   echo "Adding AOSP remote..."
@@ -56,55 +113,16 @@ if git rev-parse "refs/tags/${LAST_SYNC_TAG}" >/dev/null 2>&1; then
   
   COMMIT_COUNT=$(echo "$NEW_AOSP_COMMITS" | wc -l | tr -d ' ')
   echo "Found ${COMMIT_COUNT} new AOSP commit(s) touching ${SUBTREE_PREFIX}"
-  
-  # Create aosp-filtered branch by filtering just the new commits
-  # Start from the last synced commit
-  git branch aosp-filtered ${LAST_SYNCED_AOSP_COMMIT}
-  git checkout aosp-filtered
-  
-  # Apply each new commit with path filtering
-  for commit in $NEW_AOSP_COMMITS; do
-    COMMIT_MSG=$(git log -1 --format="%s" $commit)
-    echo "  Filtering: ${COMMIT_MSG}"
-    
-    # Cherry-pick with subdirectory filter
-    # This keeps only changes to our subtree path
-    if git cherry-pick -n $commit 2>/dev/null; then
-      # Remove changes outside our subtree
-      git reset HEAD -- . 2>/dev/null || true
-      git checkout HEAD -- . 2>/dev/null || true
-      git add ${SUBTREE_PREFIX}/ 2>/dev/null || true
-      
-      # Commit if there are actual changes
-      if ! git diff --cached --quiet 2>/dev/null; then
-        git commit -C $commit --allow-empty 2>/dev/null || true
-      fi
-    else
-      # If cherry-pick fails, try to extract just the subtree changes
-      git cherry-pick --abort 2>/dev/null || true
-      
-      # Extract the patch for our subtree only
-      if git format-patch -1 --stdout $commit -- ${SUBTREE_PREFIX} | \
-         git apply --directory="" 2>/dev/null; then
-        git add ${SUBTREE_PREFIX}/ 2>/dev/null || true
-        if ! git diff --cached --quiet 2>/dev/null; then
-          git commit -C $commit --allow-empty 2>/dev/null || true
-        fi
-      fi
-    fi
-  done
-  
-  # Return to previous branch
-  git checkout ${TARGET_BRANCH}
+
+  apply_subtree_commits "$NEW_AOSP_COMMITS"
   
 else
   echo "No previous sync found - performing initial sync..."
   echo "This will take a few minutes but subsequent runs will be instant..."
   
-  # For first run, we need to do a full subtree split
-  # But we'll be smart about it - only process recent history
-  RECENT_AOSP_COMMIT=$(git log -1 --format="%H" ${AOSP_REMOTE}/${AOSP_BRANCH})
-  
+  # For first run, gather recent history that touches the subtree
+  # so we can replay it onto our local branch without subtree split
+
   # Get commits that touch our subtree (limit to last 1000 for initial sync)
   echo "Finding recent commits in AOSP that touch ${SUBTREE_PREFIX}..."
   AOSP_COMMITS=$(git log --reverse --format="%H" -1000 \
@@ -112,29 +130,13 @@ else
   
   COMMIT_COUNT=$(echo "$AOSP_COMMITS" | wc -l | tr -d ' ')
   echo "Processing ${COMMIT_COUNT} recent commit(s)..."
-  
-  # Create filtered branch from scratch
-  FIRST_COMMIT=$(echo "$AOSP_COMMITS" | head -1)
-  git checkout --orphan aosp-filtered $FIRST_COMMIT
-  git rm -rf . 2>/dev/null || true
-  git checkout $FIRST_COMMIT -- ${SUBTREE_PREFIX} 2>/dev/null || true
-  git commit -m "Initial sync from AOSP" --allow-empty
-  
-  # Apply remaining commits
-  for commit in $(echo "$AOSP_COMMITS" | tail -n +2); do
-    git cherry-pick -n $commit 2>/dev/null || true
-    git reset HEAD -- . 2>/dev/null || true
-    git checkout HEAD -- . 2>/dev/null || true
-    git add ${SUBTREE_PREFIX}/ 2>/dev/null || true
-    if ! git diff --cached --quiet 2>/dev/null; then
-      git commit -C $commit --allow-empty 2>/dev/null || true
-    fi
-  done
-  
-  git checkout ${TARGET_BRANCH}
-  
-  # Tag the last synced AOSP commit for next time
-  LAST_SYNCED_AOSP_COMMIT=$RECENT_AOSP_COMMIT
+
+  if [ -z "$AOSP_COMMITS" ]; then
+    echo "⚠️  No commits found in ${AOSP_REMOTE}/${AOSP_BRANCH} for ${SUBTREE_PREFIX}."
+    exit 0
+  fi
+
+  apply_subtree_commits "$AOSP_COMMITS"
 fi
 
 # Find the merge base and get only new commits
