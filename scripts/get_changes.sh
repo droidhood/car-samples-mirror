@@ -269,27 +269,11 @@ if git rev-parse "refs/tags/${LAST_SYNC_TAG}" >/dev/null 2>&1; then
   apply_subtree_commits "aosp-filtered" "$NEW_AOSP_COMMITS" "AOSP_COMMIT_MAP"
 
 else
-  echo "No previous sync found - performing initial sync..."
-  echo "This will take a few minutes but subsequent runs will be instant..."
-  
-  # For first run, gather recent history that touches the subtree
-  # so we can replay it onto our local branch without subtree split
-  
-  # Get commits that touch our subtree (limit to last 1000 for initial sync)
-  echo "Finding recent commits in AOSP that touch ${SUBTREE_PREFIX}..."
-  AOSP_COMMITS=$(git log --reverse --format="%H" -1000 \
-    ${AOSP_REMOTE}/${AOSP_BRANCH} -- ${SUBTREE_PREFIX})
-  
-  COMMIT_COUNT=$(echo "$AOSP_COMMITS" | wc -l | tr -d ' ')
-  echo "Processing ${COMMIT_COUNT} recent commit(s)..."
-
-  if [ -z "$AOSP_COMMITS" ]; then
-    echo "⚠️  No commits found in ${AOSP_REMOTE}/${AOSP_BRANCH} for ${SUBTREE_PREFIX}."
-    exit 0
-  fi
-
-  apply_subtree_commits "aosp-filtered" "$AOSP_COMMITS" "AOSP_COMMIT_MAP"
-
+  echo "❌ Sync marker tag '${LAST_SYNC_TAG}' is missing."
+  echo "   Please create it on the last AOSP commit that already exists in ${TARGET_BRANCH}."
+  echo "   Example: git tag -f ${LAST_SYNC_TAG} <commit-from-aosp> && git push origin ${LAST_SYNC_TAG} --force"
+  echo "Aborting to avoid replaying the full AOSP history."
+  exit 1
 fi
 
 LOCAL_FILTERED_COMMITS=""
