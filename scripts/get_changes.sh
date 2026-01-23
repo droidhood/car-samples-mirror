@@ -128,18 +128,48 @@ cherry_pick_commits() {
             git checkout --ours "$file" 2>/dev/null || true
             git add "$file" 2>/dev/null || true
           fi
-        fi
-      done < <(echo "$DELETED_BY_US")
-    fi
+          diff_output=$(git diff --name-status -M "${commit}^" "${commit}" -- "${SUBTREE_PREFIX}" 2>/dev/null || true)
+          if [ -z "${diff_output}" ]; then
+            diff_output=$(git diff --name-status -M --root "${commit}" -- "${SUBTREE_PREFIX}" 2>/dev/null || true)
+          fi
 
-    if [ -n "$DELETED_BY_THEM" ]; then
-      echo "Handling files deleted by AOSP:"
-      while IFS= read -r file; do
-        if [ -n "$file" ]; then
-          if [[ "$file" == "${SUBTREE_PREFIX}/"* ]]; then
-            echo "  Removing: $file"
-            git rm "$file" 2>/dev/null || true
-          else
+          if [ -z "${diff_output}" ]; then
+            echo "  No changes under ${SUBTREE_PREFIX} in ${commit}, skipping..."
+            continue
+          fi
+
+          while IFS=$'\t' read -r status src dst; do
+            if [ -z "${status}" ]; then
+              continue
+            fi
+
+            case "${status}" in
+              D*)
+                if [ -n "${src}" ]; then
+                  if git ls-files --error-unmatch "${src}" >/dev/null 2>&1; then
+                    git rm -rf --ignore-unmatch "${src}" >/dev/null 2>&1 || true
+                  else
+                    rm -rf "${src}" 2>/dev/null || true
+                  fi
+                fi
+                ;;
+              R*|C*)
+                if [ -n "${src}" ] && [ -n "${dst}" ] && [ "${src}" != "${dst}" ]; then
+                  git rm -rf --ignore-unmatch "${src}" >/dev/null 2>&1 || true
+                fi
+                target="${dst:-${src}}"
+                if [ -n "${target}" ]; then
+                  git restore --source="${commit}" --staged --worktree -- "${target}" 2>/dev/null || true
+                fi
+                ;;
+              *)
+                target="${src}"
+                if [ -n "${target}" ]; then
+                  git restore --source="${commit}" --staged --worktree -- "${target}" 2>/dev/null || true
+                fi
+                ;;
+            esac
+          done <<< "${diff_output}"
             echo "  Keeping local (outside AOSP path): $file"
             git checkout --ours "$file" 2>/dev/null || true
             git add "$file" 2>/dev/null || true
