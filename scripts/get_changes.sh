@@ -361,6 +361,64 @@ if [ -f "${SYNC_MARKER_FILE}" ]; then
   if [ -z "$NEW_AOSP_COMMITS" ]; then
     echo "✅ All commits already in ${TARGET_BRANCH} - up to date!"
     git branch -D aosp-filtered 2>/dev/null || true
+    
+    # Check if AOSP has moved forward (marker needs update even with no code changes)
+    LATEST_AOSP_COMMIT=$(git log -1 --format="%H" ${AOSP_REMOTE}/${AOSP_BRANCH})
+    if [ "${LAST_SYNCED_AOSP_COMMIT}" != "${LATEST_AOSP_COMMIT}" ]; then
+      echo "However, AOSP HEAD has moved forward from ${LAST_SYNCED_AOSP_COMMIT:0:12} to ${LATEST_AOSP_COMMIT:0:12}"
+      echo "All commits are duplicates, but updating sync marker to reflect current AOSP state."
+      echo "Will create PR with just the sync marker update."
+      
+      # Create branch for marker-only update
+      BRANCH_NAME="${BRANCH_PREFIX}/$(date +%Y-%m-%d)"
+      echo "Creating branch ${BRANCH_NAME} from origin/${TARGET_BRANCH}..."
+      git checkout -B ${BRANCH_NAME} origin/${TARGET_BRANCH}
+      
+      # Update sync marker file
+      echo "# Last AOSP sync commit
+# This file tracks the last commit from aosp/androidx-main that was synced
+# DO NOT manually edit unless you know what you're doing
+${LATEST_AOSP_COMMIT}" > ${SYNC_MARKER_FILE}
+      
+      # Commit the marker update
+      git add ${SYNC_MARKER_FILE}
+      AOSP_COMMIT_DATE=$(git log -1 --format='%ad' --date=short ${LATEST_AOSP_COMMIT})
+      AOSP_COMMIT_MSG=$(git log -1 --format='%s' ${LATEST_AOSP_COMMIT})
+      
+      if git commit -m "Update sync marker to ${LATEST_AOSP_COMMIT:0:12}
+
+Synced up to AOSP commit: ${LATEST_AOSP_COMMIT}
+Date: ${AOSP_COMMIT_DATE}
+Message: ${AOSP_COMMIT_MSG}
+
+This commit tracks the latest AOSP commit that was synced to this repository.
+All commits in this AOSP update were duplicates already present in main.
+The .last-sync-commit file is used by the sync script to determine which
+commits need to be pulled in the next sync operation."; then
+        echo "✅ Committed sync marker update (marker-only PR)"
+        
+        # Push and create PR
+        echo "Pushing branch to origin..."
+        git push -u origin ${BRANCH_NAME}
+        
+        echo "Creating pull request..."
+        gh pr create --title "Sync AOSP changes (marker update only)" --body "$(cat <<'EOF'
+## Summary
+- All new AOSP commits were duplicates already in main
+- Updated sync marker to track current AOSP HEAD
+- No code changes in this PR
+
+**AOSP HEAD:** ${LATEST_AOSP_COMMIT:0:12}
+**Date:** ${AOSP_COMMIT_DATE}
+**Latest commit:** ${AOSP_COMMIT_MSG}
+EOF
+)"
+        echo "✅ Pull request created successfully!"
+      else
+        echo "⚠️  WARNING: Failed to commit sync marker update."
+        echo "   Exiting without creating PR."
+      fi
+    fi
     exit 0
   fi
   
@@ -465,6 +523,34 @@ echo "# Last AOSP sync commit
 # DO NOT manually edit unless you know what you're doing
 ${LATEST_AOSP_COMMIT}" > ${SYNC_MARKER_FILE}
 echo "Updated ${SYNC_MARKER_FILE} to ${LATEST_AOSP_COMMIT}"
+
+# Commit the updated sync marker file
+if ! git diff --quiet ${SYNC_MARKER_FILE} 2>/dev/null; then
+  echo "Committing sync marker update..."
+  git add ${SYNC_MARKER_FILE}
+  
+  # Get AOSP commit details for verbose commit message
+  AOSP_COMMIT_DATE=$(git log -1 --format='%ad' --date=short ${LATEST_AOSP_COMMIT})
+  AOSP_COMMIT_MSG=$(git log -1 --format='%s' ${LATEST_AOSP_COMMIT})
+  
+  if git commit -m "Update sync marker to ${LATEST_AOSP_COMMIT:0:12}
+
+Synced up to AOSP commit: ${LATEST_AOSP_COMMIT}
+Date: ${AOSP_COMMIT_DATE}
+Message: ${AOSP_COMMIT_MSG}
+
+This commit tracks the latest AOSP commit that was synced to this repository.
+The .last-sync-commit file is used by the sync script to determine which
+commits need to be pulled in the next sync operation."; then
+    echo "✅ Committed sync marker update"
+  else
+    echo "⚠️  WARNING: Failed to commit sync marker update. Continuing anyway..."
+    echo "   The marker file has been updated locally but not committed."
+    echo "   You may need to commit it manually or it will be updated in the next run."
+  fi
+else
+  echo "ℹ️  Sync marker unchanged (no commit needed)"
+fi
 
 # Clean up temporary branches
 echo "Cleaning up temporary branch..."
