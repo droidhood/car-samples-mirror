@@ -13,6 +13,31 @@ TARGET_BRANCH="${TARGET_BRANCH:-main}"
 AOSP_COMMIT_MAP=""
 LOCAL_COMMIT_MAP=""
 
+# Check if a commit already exists in main by comparing Change-Id
+# Returns 0 (true) if the commit exists, 1 (false) if it doesn't
+commit_exists_in_main() {
+  local commit="$1"
+  
+  # Extract Change-Id from commit message body
+  # AOSP uses Gerrit which adds Change-Id to all commits
+  local change_id=$(git log -1 --format="%b" "$commit" 2>/dev/null | grep -o "Change-Id: I[a-f0-9]*" | head -1)
+  
+  if [ -z "$change_id" ]; then
+    # No Change-Id found - this might be a local commit or unusual case
+    # Be conservative and assume it's new to avoid skipping legitimate commits
+    return 1
+  fi
+  
+  # Search for this Change-Id in origin/main's history
+  # We search the commit bodies without path filtering because git --grep
+  # with path filters can miss commits due to how git processes the filters
+  if git log origin/${TARGET_BRANCH} --format="%b" | grep -q "$change_id"; then
+    return 0  # Change-Id exists in main - this is a duplicate
+  else
+    return 1  # Change-Id not found - this is a new commit
+  fi
+}
+
 apply_subtree_commits() {
   local branch="$1"
   local commits="$2"
@@ -270,19 +295,25 @@ fi
 # Pull the latest changes from the subtree using split to ensure only the target directory is included
 echo "Pulling latest changes from AOSP subtree..."
 
-# Check for last sync tag to enable incremental splitting
-LAST_SYNC_TAG="last-aosp-sync"
-git fetch origin "refs/tags/${LAST_SYNC_TAG}:refs/tags/${LAST_SYNC_TAG}" 2>/dev/null || true
+# Check for last sync commit marker file
+SYNC_MARKER_FILE=".last-sync-commit"
 
 # Create branches to work with filtered commits
 git branch -D aosp-filtered 2>/dev/null || true
 git branch -D local-filtered 2>/dev/null || true
 
-# Verify the tag exists and resolve it to a commit SHA
-if git rev-parse "refs/tags/${LAST_SYNC_TAG}" >/dev/null 2>&1; then
-  LAST_SYNCED_AOSP_COMMIT=$(git rev-parse "refs/tags/${LAST_SYNC_TAG}")
-  echo "Found last sync marker at AOSP commit: ${LAST_SYNCED_AOSP_COMMIT}"
-  echo "Finding new commits since last sync (fast!)..."
+# Read the last synced commit from the marker file
+if [ -f "${SYNC_MARKER_FILE}" ]; then
+  LAST_SYNCED_AOSP_COMMIT=$(grep -v '^#' "${SYNC_MARKER_FILE}" | grep -v '^$' | head -1)
+  
+  if [ -n "${LAST_SYNCED_AOSP_COMMIT}" ]; then
+    echo "Found last sync marker at AOSP commit: ${LAST_SYNCED_AOSP_COMMIT}"
+    echo "Finding new commits since last sync (fast!)..."
+  else
+    echo "❌ Sync marker file exists but is empty or invalid."
+    echo "   Please ensure ${SYNC_MARKER_FILE} contains a valid commit SHA."
+    exit 1
+  fi
   
   # Find commits in AOSP that touch our subtree path since last sync
   # This is MUCH faster than git subtree split
@@ -299,12 +330,49 @@ if git rev-parse "refs/tags/${LAST_SYNC_TAG}" >/dev/null 2>&1; then
   COMMIT_COUNT=$(echo "$NEW_AOSP_COMMITS" | wc -l | tr -d ' ')
   echo "Found ${COMMIT_COUNT} new AOSP commit(s) touching ${SUBTREE_PREFIX}"
 
+  # Filter out commits that already exist in main (by Change-Id)
+  # This prevents re-applying commits that were already synced but have different SHAs
+  # due to rebasing or other history modifications
+  echo "Checking for duplicates already in ${TARGET_BRANCH}..."
+  FILTERED_AOSP_COMMITS=""
+  SKIPPED_COUNT=0
+  
+  for commit in $NEW_AOSP_COMMITS; do
+    if [ -z "$commit" ]; then
+      continue
+    fi
+    
+    if commit_exists_in_main "$commit"; then
+      commit_msg=$(git log -1 --format="%s" "$commit" 2>/dev/null)
+      echo "  ⏭️  Skipping duplicate: ${commit_msg} (${commit:0:7})"
+      SKIPPED_COUNT=$((SKIPPED_COUNT + 1))
+    else
+      FILTERED_AOSP_COMMITS+="$commit"$'\n'
+    fi
+  done
+  
+  # Update NEW_AOSP_COMMITS with filtered list (remove empty lines)
+  NEW_AOSP_COMMITS=$(echo -n "$FILTERED_AOSP_COMMITS" | grep -v '^$')
+  
+  if [ $SKIPPED_COUNT -gt 0 ]; then
+    echo "✓ Skipped ${SKIPPED_COUNT} duplicate commit(s) already in ${TARGET_BRANCH}"
+  fi
+  
+  if [ -z "$NEW_AOSP_COMMITS" ]; then
+    echo "✅ All commits already in ${TARGET_BRANCH} - up to date!"
+    git branch -D aosp-filtered 2>/dev/null || true
+    exit 0
+  fi
+  
+  COMMIT_COUNT=$(echo "$NEW_AOSP_COMMITS" | wc -l | tr -d ' ')
+  echo "Proceeding with ${COMMIT_COUNT} new commit(s) to sync..."
+
   apply_subtree_commits "aosp-filtered" "$NEW_AOSP_COMMITS" "AOSP_COMMIT_MAP"
 
 else
-  echo "❌ Sync marker tag '${LAST_SYNC_TAG}' is missing."
-  echo "   Please create it on the last AOSP commit that already exists in ${TARGET_BRANCH}."
-  echo "   Example: git tag -f ${LAST_SYNC_TAG} <commit-from-aosp> && git push origin ${LAST_SYNC_TAG} --force"
+  echo "❌ Sync marker file '${SYNC_MARKER_FILE}' is missing."
+  echo "   Please create it with the last AOSP commit SHA that was synced."
+  echo "   Example: echo '<commit-sha-from-aosp>' > ${SYNC_MARKER_FILE}"
   echo "Aborting to avoid replaying the full AOSP history."
   exit 1
 fi
@@ -388,12 +456,15 @@ fi
 
 echo "✅ Successfully built branch ${BRANCH_NAME} with linear chronological history!"
 
-# Update the sync marker tag for next run
+# Update the sync marker file for next run
 echo "Updating sync marker for future incremental updates..."
-# Tag should point to the AOSP commit, not our filtered branch
+# Marker should point to the latest AOSP commit, not our filtered branch
 LATEST_AOSP_COMMIT=$(git log -1 --format="%H" ${AOSP_REMOTE}/${AOSP_BRANCH})
-git tag -f ${LAST_SYNC_TAG} ${LATEST_AOSP_COMMIT}
-git push origin ${LAST_SYNC_TAG} --force 2>/dev/null || echo "⚠️  Could not push tag (may need manual push)"
+echo "# Last AOSP sync commit
+# This file tracks the last commit from aosp/androidx-main that was synced
+# DO NOT manually edit unless you know what you're doing
+${LATEST_AOSP_COMMIT}" > ${SYNC_MARKER_FILE}
+echo "Updated ${SYNC_MARKER_FILE} to ${LATEST_AOSP_COMMIT}"
 
 # Clean up temporary branches
 echo "Cleaning up temporary branch..."
