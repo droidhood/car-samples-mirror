@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 The Android Open Source Project
+ * Copyright (C) 2020 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,45 +14,48 @@
  * limitations under the License.
  */
 
-/**
- * This file was created using the `create_project.py` script located in the
- * `<AndroidX root>/development/project-creator` directory.
- *
- * Please use that script when creating a new project, rather than copying an existing project and
- * modifying its settings.
- */
-import androidx.build.SoftwareType
-
 plugins {
-    id("AndroidXPlugin")
-    id("com.android.application")
+    alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.android.application)
 }
 
 android {
+    compileSdk 34
+
     defaultConfig {
-        applicationId = "androidx.car.app.sample.showcase"
+        applicationId "androidx.car.app.sample.showcase"
+        minSdkVersion 23
+        targetSdkVersion 34
         // Increment this to generate signed builds for uploading to Playstore
         // Make sure this is different from the showcase-automotive version
-        versionCode = 106
-        versionName = "106"
+        versionCode 114
+        versionName "114"
     }
 
     buildTypes {
-        debug {
-            pseudoLocalesEnabled = true
-        }
         release {
             // Enables code shrinking, obfuscation, and optimization.
-            minifyEnabled = true
+            minifyEnabled true
             proguardFiles getDefaultProguardFile(
-                    'proguard-android-optimize.txt')
+                    'proguard-android-optimize.txt'),
+                    'proguard-rules.pro'
         }
     }
-    namespace = "androidx.car.app.sample.showcase"
+
+    java.toolchain {
+        languageVersion.set(JavaLanguageVersion.of(libs.versions.java.get()))
+    }
+
+    kotlinOptions {
+        jvmTarget = libs.versions.java.get()
+    }
+
+    testOptions.unitTests.includeAndroidResources true
+    namespace "androidx.car.app.sample.showcase"
 }
 
 dependencies {
-    implementation(project(":car:app:app-samples:showcase-common"))
-    implementation(project(":car:app:app-projected"))
+    implementation libs.androidx.app.projected
+    implementation project(":showcase:common")
+    implementation libs.androidx.core.ktx
 }
-
