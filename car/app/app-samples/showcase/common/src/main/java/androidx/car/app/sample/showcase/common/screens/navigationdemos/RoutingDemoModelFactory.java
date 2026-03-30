@@ -193,12 +193,7 @@ public class RoutingDemoModelFactory {
                 .setRemainingTimeColor(CarColor.YELLOW)
                 .setRemainingDistanceColor(CarColor.RED)
                 .setTripText(createCarText(R.string.travel_est_trip_text))
-                .setTripIcon(
-                        new CarIcon.Builder(
-                                        IconCompat.createWithResource(
-                                                mCarContext, R.drawable.ic_face_24px))
-                                .setTint(CarColor.BLUE)
-                                .build())
+                .setTripIcon(createCarIcon(R.drawable.ic_face_24px))
                 .build();
     }
 

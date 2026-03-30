@@ -29,16 +29,10 @@ import androidx.car.app.model.SectionedItemTemplate
 import androidx.car.app.model.Template
 import androidx.car.app.sample.showcase.common.R
 import androidx.car.app.sample.showcase.common.screens.templatelayouts.sectioneditemtemplates.AlphaJumpDemoScreen
-import androidx.car.app.sample.showcase.common.screens.templatelayouts.sectioneditemtemplates.BannerDemoScreen
 import androidx.car.app.sample.showcase.common.screens.templatelayouts.sectioneditemtemplates.ChipDemoScreen
-import androidx.car.app.sample.showcase.common.screens.templatelayouts.sectioneditemtemplates.CondensedItemDemoScreen
 import androidx.car.app.sample.showcase.common.screens.templatelayouts.sectioneditemtemplates.EndImageAndActionsDemo
-import androidx.car.app.sample.showcase.common.screens.templatelayouts.sectioneditemtemplates.EnhancedHeaderDemoScreen
 import androidx.car.app.sample.showcase.common.screens.templatelayouts.sectioneditemtemplates.ProgressBarDemoScreen
-import androidx.car.app.sample.showcase.common.screens.templatelayouts.sectioneditemtemplates.SectionHeaderDemoScreen
 import androidx.car.app.sample.showcase.common.screens.templatelayouts.sectioneditemtemplates.SimpleListDemoScreen
-import androidx.car.app.sample.showcase.common.screens.templatelayouts.sectioneditemtemplates.SpotlightSectionDemoScreen
-import androidx.car.app.versioning.CarAppApiLevels
 
 @RequiresCarApi(8)
 @OptIn(ExperimentalCarApi::class)
@@ -61,22 +55,6 @@ class SectionedItemTemplateDemoScreen(carContext: CarContext) : Screen(carContex
                             R.string.sectioned_item_alpha_jump_demo_title,
                         )
                     )
-                    .apply {
-                        if (carContext.getCarAppApiLevel() >= CarAppApiLevels.LEVEL_9) {
-                            addItem(
-                                buildRowForTemplate(
-                                    CondensedItemDemoScreen(carContext),
-                                    R.string.condensed_item_demo_title,
-                                )
-                            )
-                            addItem(
-                                buildRowForTemplate(
-                                    EnhancedHeaderDemoScreen(carContext),
-                                    R.string.enhanced_header_demo_title,
-                                )
-                            )
-                        }
-                    }
                     .addItem(
                         buildRowForTemplate(
                             EndImageAndActionsDemo(carContext),
@@ -92,28 +70,6 @@ class SectionedItemTemplateDemoScreen(carContext: CarContext) : Screen(carContex
                             R.string.progress_bar_demo_title,
                         )
                     )
-                    .addItem(
-                        buildRowForTemplate(
-                            SectionHeaderDemoScreen(carContext),
-                            R.string.section_header_demo_title,
-                        )
-                    )
-                    .apply {
-                        if (carContext.getCarAppApiLevel() >= CarAppApiLevels.LEVEL_9) {
-                            addItem(
-                                buildRowForTemplate(
-                                    SpotlightSectionDemoScreen(carContext),
-                                    R.string.spotlight_section_demo_title,
-                                )
-                            )
-                            addItem(
-                                buildRowForTemplate(
-                                    BannerDemoScreen(carContext),
-                                    R.string.banner_demo_title,
-                                )
-                            )
-                        }
-                    }
                     .build()
             )
             .setHeader(
