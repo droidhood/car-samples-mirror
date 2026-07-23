@@ -30,7 +30,6 @@ import androidx.car.app.constraints.ConstraintManager;
 import androidx.car.app.model.Action;
 import androidx.car.app.model.CarColor;
 import androidx.car.app.model.CarIcon;
-import androidx.car.app.model.CarIconStyle;
 import androidx.car.app.model.Header;
 import androidx.car.app.model.Pane;
 import androidx.car.app.model.PaneTemplate;
@@ -56,6 +55,8 @@ public final class PaneTemplateDemoScreen extends Screen implements DefaultLifec
     private @Nullable IconCompat mRowLargeIcon;
 
     private @Nullable IconCompat mCommuteIcon;
+
+    private static final int IPC_LIST_SIZE_LIMIT = 100;
 
     public PaneTemplateDemoScreen(@NonNull CarContext carContext) {
         super(carContext);
@@ -105,6 +106,10 @@ public final class PaneTemplateDemoScreen extends Screen implements DefaultLifec
         int listLimit = getCarContext().getCarService(ConstraintManager.class).getContentLimit(
                 ConstraintManager.CONTENT_LIMIT_TYPE_PANE);
 
+        if (listLimit > IPC_LIST_SIZE_LIMIT) {
+            listLimit = IPC_LIST_SIZE_LIMIT;
+        }
+
         Pane.Builder paneBuilder = new Pane.Builder();
         for (int i = 0; i < listLimit; i++) {
             paneBuilder.addRow(createRow(i));
@@ -144,7 +149,7 @@ public final class PaneTemplateDemoScreen extends Screen implements DefaultLifec
                 .setTitle("Map+X this!")
                 .setIcon(
                         new CarIcon.Builder(mCommuteIcon)
-                                .setStyle(new CarIconStyle.Builder().setTint(CarColor.BLUE).build())
+                                .setTint(CarColor.BLUE)
                                 .build())
                 .setOnClickListener(
                         () -> getScreenManager().push(new MapPaneDemoScreen(getCarContext())))
